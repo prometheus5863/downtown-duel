@@ -28,7 +28,9 @@ func _ready() -> void:
 	_joy_knob = _sprite(KNOB_R, Color(1, 1, 1, 0.5))
 	_add_button("attack_strike", "STRIKE", 72, Color(1.0, 0.85, 0.3), func(s): return Vector2(s.x - 140, s.y - 150))
 	_add_button("attack_ember", "EMBER", 58, Color(1.0, 0.5, 0.15), func(s): return Vector2(s.x - 300, s.y - 105))
+	_add_button("dodge", "DODGE", 54, Color(0.4, 1.0, 0.7), func(s): return Vector2(s.x - 270, s.y - 250))
 	_add_button("lock_on", "LOCK", 46, Color(0.5, 0.8, 1.0), func(s): return Vector2(s.x - 115, s.y - 315))
+	_add_button("interact", "TALK", 50, Color(0.6, 1.0, 0.6), func(s): return Vector2(s.x - 260, s.y - 390))
 
 	_portrait = ColorRect.new()
 	_portrait.color = Color(0, 0, 0, 0.85)
@@ -58,7 +60,25 @@ func _layout() -> void:
 	_portrait.visible = s.y > s.x
 
 
+func _process(_delta: float) -> void:
+	# Menus open: hide pads so taps reach the dialogue buttons. TALK only when something is near.
+	var menu_open: bool = player.talking
+	for b in _buttons:
+		if b[0].action == "interact":
+			b[0].visible = not menu_open and player.can_control and player.nearest_interactable() != null
+		else:
+			b[0].visible = not menu_open
+	_joy_base.visible = not menu_open
+	_joy_knob.visible = not menu_open
+
+
 func _input(event: InputEvent) -> void:
+	if player.talking:
+		if _joy_id != -1:
+			_joy_id = -1
+			_set_move(Vector2.ZERO)
+		_cam_id = -1
+		return
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			if _hits_button(event.position):
@@ -108,6 +128,8 @@ func _axis(pos_action: String, neg_action: String, value: float) -> void:
 
 func _hits_button(p: Vector2) -> bool:
 	for b in _buttons:
+		if not b[0].visible:
+			continue
 		if p.distance_to(b[0].get_meta("center")) <= b[1] * 1.1:
 			return true
 	return false

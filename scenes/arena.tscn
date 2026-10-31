@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3]
+[gd_scene load_steps=155 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/city/Exports/glTF (Godot)/T_Concrete_Asphalt_BaseColor.png" id="e0"]
 [ext_resource type="PackedScene" path="res://assets/city/Exports/glTF (Godot)/Building_Large_2.gltf" id="e1"]
@@ -26,87 +26,89 @@
 [ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Crate_Wooden.gltf" id="e23"]
 [ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Bench.gltf" id="e24"]
 [ext_resource type="PackedScene" path="res://assets/medieval-village/Medieval Village MegaKit[Standard]/glTF/Prop_Wagon.gltf" id="e25"]
-[ext_resource type="PackedScene" path="res://assets/medieval-village/Medieval Village MegaKit[Standard]/glTF/Prop_WoodenFence_Single.gltf" id="e26"]
-[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/WeaponStand.gltf" id="e27"]
-[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Anvil.gltf" id="e28"]
-[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Workbench.gltf" id="e29"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_1.gltf" id="e30"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_3.gltf" id="e31"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_2.gltf" id="e32"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/TwistedTree_1.gltf" id="e33"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_1.gltf" id="e34"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_3.gltf" id="e35"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_2.gltf" id="e36"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/TwistedTree_2.gltf" id="e37"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_4.gltf" id="e38"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Rock_Medium_3.gltf" id="e39"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Rock_Medium_2.gltf" id="e40"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Rock_Medium_1.gltf" id="e41"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Bush_Common.gltf" id="e42"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Bush_Common_Flowers.gltf" id="e43"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Plant_7_Big.gltf" id="e44"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Plant_1_Big.gltf" id="e45"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Fern_1.gltf" id="e46"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Grass_Common_Short.gltf" id="e47"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Clover_1.gltf" id="e48"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Grass_Wispy_Tall.gltf" id="e49"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Grass_Common_Tall.gltf" id="e50"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Flower_4_Group.gltf" id="e51"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Flower_3_Group.gltf" id="e52"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Mushroom_Common.gltf" id="e53"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Mushroom_Laetiporus.gltf" id="e54"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Platforms/Platform_DarkPlates.gltf" id="e55"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight.gltf" id="e56"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight_Window.gltf" id="e57"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Platforms/Platform_Metal.gltf" id="e58"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallBand_Straight.gltf" id="e59"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight_Divided.gltf" id="e60"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Computer.gltf" id="e61"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Crate3.gltf" id="e62"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Crate4.gltf" id="e63"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Barrel_Large.gltf" id="e64"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Chest.gltf" id="e65"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Light_Floor.gltf" id="e66"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Aliens/Alien_Cyclop.gltf" id="e67"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Aliens/Alien_Oculichrysalis.gltf" id="e68"]
-[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Aliens/Alien_Scolitex.gltf" id="e69"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_4.gltf" id="e70"]
-[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_5.gltf" id="e71"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="e72"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenBlob.gltf" id="e73"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenSpikyBlob.gltf" id="e74"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Ninja.gltf" id="e75"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Wizard.gltf" id="e76"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/PinkBlob.gltf" id="e77"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Orc.gltf" id="e78"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Pigeon.gltf" id="e79"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Alien.gltf" id="e80"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Chicken.gltf" id="e81"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Cat.gltf" id="e82"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Dog.gltf" id="e83"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub.gltf" id="e84"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Bunny.gltf" id="e85"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub_Evolved.gltf" id="e86"]
-[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Dummy.gltf" id="e87"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Orc.gltf" id="e88"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Ninja.gltf" id="e89"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Dragon.gltf" id="e90"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Armabee.gltf" id="e91"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Goleling.gltf" id="e92"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Ghost.gltf" id="e93"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Squidle.gltf" id="e94"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Hywirl.gltf" id="e95"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Yeti.gltf" id="e96"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Dino.gltf" id="e97"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Frog.gltf" id="e98"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Cactoro.gltf" id="e99"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/MushroomKing.gltf" id="e100"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Alien.gltf" id="e101"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/BlueDemon.gltf" id="e102"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Glub.gltf" id="e103"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="e104"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="e105"]
-[ext_resource type="Script" path="res://scripts/intro_camera.gd" id="e106"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="e26"]
+[ext_resource type="PackedScene" path="res://assets/animations/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb" id="e27"]
+[ext_resource type="PackedScene" path="res://assets/medieval-village/Medieval Village MegaKit[Standard]/glTF/Prop_WoodenFence_Single.gltf" id="e28"]
+[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/WeaponStand.gltf" id="e29"]
+[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Anvil.gltf" id="e30"]
+[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Workbench.gltf" id="e31"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_1.gltf" id="e32"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_3.gltf" id="e33"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_2.gltf" id="e34"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/TwistedTree_1.gltf" id="e35"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_1.gltf" id="e36"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_3.gltf" id="e37"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_2.gltf" id="e38"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/TwistedTree_2.gltf" id="e39"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/CommonTree_4.gltf" id="e40"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Rock_Medium_3.gltf" id="e41"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Rock_Medium_2.gltf" id="e42"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Rock_Medium_1.gltf" id="e43"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Bush_Common.gltf" id="e44"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Bush_Common_Flowers.gltf" id="e45"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Plant_7_Big.gltf" id="e46"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Plant_1_Big.gltf" id="e47"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Fern_1.gltf" id="e48"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Grass_Common_Short.gltf" id="e49"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Clover_1.gltf" id="e50"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Grass_Wispy_Tall.gltf" id="e51"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Grass_Common_Tall.gltf" id="e52"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Flower_4_Group.gltf" id="e53"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Flower_3_Group.gltf" id="e54"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Mushroom_Common.gltf" id="e55"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Mushroom_Laetiporus.gltf" id="e56"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Platforms/Platform_DarkPlates.gltf" id="e57"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight.gltf" id="e58"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight_Window.gltf" id="e59"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Platforms/Platform_Metal.gltf" id="e60"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallBand_Straight.gltf" id="e61"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight_Divided.gltf" id="e62"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Computer.gltf" id="e63"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Crate3.gltf" id="e64"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Crate4.gltf" id="e65"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Barrel_Large.gltf" id="e66"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Chest.gltf" id="e67"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Light_Floor.gltf" id="e68"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Aliens/Alien_Cyclop.gltf" id="e69"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Aliens/Alien_Oculichrysalis.gltf" id="e70"]
+[ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Aliens/Alien_Scolitex.gltf" id="e71"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_4.gltf" id="e72"]
+[ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_5.gltf" id="e73"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="e74"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenBlob.gltf" id="e75"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenSpikyBlob.gltf" id="e76"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Ninja.gltf" id="e77"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Wizard.gltf" id="e78"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/PinkBlob.gltf" id="e79"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Orc.gltf" id="e80"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Pigeon.gltf" id="e81"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Alien.gltf" id="e82"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Chicken.gltf" id="e83"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Cat.gltf" id="e84"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Dog.gltf" id="e85"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub.gltf" id="e86"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Bunny.gltf" id="e87"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub_Evolved.gltf" id="e88"]
+[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Dummy.gltf" id="e89"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Orc.gltf" id="e90"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Ninja.gltf" id="e91"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Dragon.gltf" id="e92"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Armabee.gltf" id="e93"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Goleling.gltf" id="e94"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Ghost.gltf" id="e95"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Squidle.gltf" id="e96"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Hywirl.gltf" id="e97"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Yeti.gltf" id="e98"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Dino.gltf" id="e99"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Frog.gltf" id="e100"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Cactoro.gltf" id="e101"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/MushroomKing.gltf" id="e102"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Alien.gltf" id="e103"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/BlueDemon.gltf" id="e104"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Glub.gltf" id="e105"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="e106"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="e107"]
+[ext_resource type="Script" path="res://scripts/intro_camera.gd" id="e108"]
 
 [sub_resource type="StandardMaterial3D" id="m_grass"]
 albedo_color = Color(0.33, 0.47, 0.24, 1)
@@ -171,6 +173,10 @@ size = Vector3(1.845, 2.627, 0.932)
 
 [sub_resource type="BoxShape3D" id="box_1p95_1p53_4p02"]
 size = Vector3(1.951, 1.529, 4.024)
+
+[sub_resource type="CapsuleShape3D" id="npc_cap"]
+radius = 0.4
+height = 1.8
 
 [sub_resource type="PlaneMesh" id="pm_28_28_m_dirt"]
 material = SubResource("m_dirt")
@@ -1065,22 +1071,35 @@ rotation = Vector3(0, 0.30000, 0)
 position = Vector3(-0.004, 0.768, -1.138)
 shape = SubResource("box_1p95_1p53_4p02")
 
-[node name="Prop_WoodenFence_Single1" parent="World/Village" instance=ExtResource("e26")]
+[node name="Merchant" type="Node3D" parent="World/Village"]
+position = Vector3(-129.60, 0.03, -18.00)
+rotation = Vector3(0, 1.57080, 0)
+script = ExtResource("e26")
+display_name = "Merchant"
+model_scene = ExtResource("e27")
+
+[node name="Col" type="StaticBody3D" parent="World/Village/Merchant"]
+
+[node name="S" type="CollisionShape3D" parent="World/Village/Merchant/Col"]
+position = Vector3(0, 0.9, 0)
+shape = SubResource("npc_cap")
+
+[node name="Prop_WoodenFence_Single1" parent="World/Village" instance=ExtResource("e28")]
 position = Vector3(-136.000, 0.000, -5.500)
 
-[node name="Prop_WoodenFence_Single2" parent="World/Village" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single2" parent="World/Village" instance=ExtResource("e28")]
 position = Vector3(-133.940, 0.000, -5.500)
 
-[node name="Prop_WoodenFence_Single3" parent="World/Village" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single3" parent="World/Village" instance=ExtResource("e28")]
 position = Vector3(-131.880, 0.000, -5.500)
 
-[node name="Prop_WoodenFence_Single4" parent="World/Village" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single4" parent="World/Village" instance=ExtResource("e28")]
 position = Vector3(-129.820, 0.000, -5.500)
 
-[node name="Prop_WoodenFence_Single5" parent="World/Village" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single5" parent="World/Village" instance=ExtResource("e28")]
 position = Vector3(-127.760, 0.000, -5.500)
 
-[node name="Prop_WoodenFence_Single6" parent="World/Village" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single6" parent="World/Village" instance=ExtResource("e28")]
 position = Vector3(-125.700, 0.000, -5.500)
 
 [node name="Training" type="Node3D" parent="World"]
@@ -1097,7 +1116,7 @@ font_size = 160
 outline_size = 36
 modulate = Color(1, 0.95, 0.8, 1)
 
-[node name="Prop_WoodenFence_Single7" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single7" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-29.970, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single7"]
@@ -1106,7 +1125,7 @@ position = Vector3(-29.970, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single8" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single8" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -127.970)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1116,7 +1135,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single9" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single9" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -127.970)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1126,7 +1145,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single10" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single10" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-29.970, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single10"]
@@ -1135,7 +1154,7 @@ position = Vector3(-29.970, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single11" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single11" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-27.910, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single11"]
@@ -1144,7 +1163,7 @@ position = Vector3(-27.910, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single12" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single12" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -125.910)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1154,7 +1173,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single13" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single13" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -125.910)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1164,7 +1183,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single14" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single14" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-27.910, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single14"]
@@ -1173,7 +1192,7 @@ position = Vector3(-27.910, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single15" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single15" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-25.850, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single15"]
@@ -1182,7 +1201,7 @@ position = Vector3(-25.850, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single16" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single16" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -123.850)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1192,7 +1211,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single17" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single17" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -123.850)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1202,7 +1221,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single18" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single18" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-25.850, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single18"]
@@ -1211,7 +1230,7 @@ position = Vector3(-25.850, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single19" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single19" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-23.790, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single19"]
@@ -1220,7 +1239,7 @@ position = Vector3(-23.790, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single20" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single20" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -121.790)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1230,7 +1249,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single21" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single21" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -121.790)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1240,7 +1259,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single22" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single22" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-23.790, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single22"]
@@ -1249,7 +1268,7 @@ position = Vector3(-23.790, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single23" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single23" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-21.730, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single23"]
@@ -1258,7 +1277,7 @@ position = Vector3(-21.730, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single24" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single24" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -119.730)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1268,7 +1287,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single25" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single25" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -119.730)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1278,7 +1297,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single26" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single26" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-19.670, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single26"]
@@ -1287,7 +1306,7 @@ position = Vector3(-19.670, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single27" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single27" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -117.670)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1297,7 +1316,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single28" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single28" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -117.670)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1307,7 +1326,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single29" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single29" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-17.610, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single29"]
@@ -1316,7 +1335,7 @@ position = Vector3(-17.610, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single30" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single30" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -115.610)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1326,7 +1345,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single31" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single31" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -115.610)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1336,7 +1355,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single32" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single32" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-15.550, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single32"]
@@ -1345,7 +1364,7 @@ position = Vector3(-15.550, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single33" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single33" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -113.550)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1355,7 +1374,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single34" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single34" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -113.550)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1365,7 +1384,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single35" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single35" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-13.490, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single35"]
@@ -1374,7 +1393,7 @@ position = Vector3(-13.490, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single36" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single36" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -111.490)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1384,7 +1403,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single37" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single37" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -111.490)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1394,7 +1413,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single38" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single38" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-13.490, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single38"]
@@ -1403,7 +1422,7 @@ position = Vector3(-13.490, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single39" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single39" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-11.430, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single39"]
@@ -1412,7 +1431,7 @@ position = Vector3(-11.430, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single40" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single40" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -109.430)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1422,7 +1441,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single41" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single41" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -109.430)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1432,7 +1451,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single42" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single42" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-11.430, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single42"]
@@ -1441,7 +1460,7 @@ position = Vector3(-11.430, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single43" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single43" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-9.370, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single43"]
@@ -1450,7 +1469,7 @@ position = Vector3(-9.370, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single44" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single44" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -107.370)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1460,7 +1479,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single45" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single45" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -107.370)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1470,7 +1489,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single46" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single46" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-9.370, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single46"]
@@ -1479,7 +1498,7 @@ position = Vector3(-9.370, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single47" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single47" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-7.310, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single47"]
@@ -1488,7 +1507,7 @@ position = Vector3(-7.310, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single48" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single48" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -105.310)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1498,7 +1517,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single49" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single49" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -105.310)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1508,7 +1527,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single50" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single50" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-7.310, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single50"]
@@ -1517,7 +1536,7 @@ position = Vector3(-7.310, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single51" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single51" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-5.250, 0.000, -129.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single51"]
@@ -1526,7 +1545,7 @@ position = Vector3(-5.250, 0.000, -129.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single52" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single52" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-31.500, 0.000, -103.250)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1536,7 +1555,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single53" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single53" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-4.500, 0.000, -103.250)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -1546,7 +1565,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="Prop_WoodenFence_Single54" parent="World/Training" instance=ExtResource("e26")]
+[node name="Prop_WoodenFence_Single54" parent="World/Training" instance=ExtResource("e28")]
 position = Vector3(-5.250, 0.000, -102.500)
 
 [node name="Col" type="StaticBody3D" parent="World/Training/Prop_WoodenFence_Single54"]
@@ -1555,7 +1574,7 @@ position = Vector3(-5.250, 0.000, -102.500)
 position = Vector3(0.000, 0.500, 0.000)
 shape = SubResource("box_2p06_1p00_0p30")
 
-[node name="WeaponStand1" parent="World/Training" instance=ExtResource("e27")]
+[node name="WeaponStand1" parent="World/Training" instance=ExtResource("e29")]
 position = Vector3(-29.000, 0.000, -127.000)
 rotation = Vector3(0, 0.60000, 0)
 
@@ -1565,7 +1584,7 @@ rotation = Vector3(0, 0.60000, 0)
 position = Vector3(0.000, 0.551, -0.003)
 shape = SubResource("box_1p39_1p11_0p98")
 
-[node name="WeaponStand2" parent="World/Training" instance=ExtResource("e27")]
+[node name="WeaponStand2" parent="World/Training" instance=ExtResource("e29")]
 position = Vector3(-7.000, 0.000, -127.000)
 rotation = Vector3(0, -0.60000, 0)
 
@@ -1593,7 +1612,7 @@ position = Vector3(-28.200, 0.000, -111.400)
 position = Vector3(-0.000, 0.452, 0.000)
 shape = SubResource("box_0p70_0p90_0p70")
 
-[node name="Anvil1" parent="World/Training" instance=ExtResource("e28")]
+[node name="Anvil1" parent="World/Training" instance=ExtResource("e30")]
 position = Vector3(-7.000, 0.000, -112.000)
 rotation = Vector3(0, 0.30000, 0)
 
@@ -1603,7 +1622,7 @@ rotation = Vector3(0, 0.30000, 0)
 position = Vector3(0.061, 0.281, 0.000)
 shape = SubResource("box_1p08_0p56_0p40")
 
-[node name="Workbench1" parent="World/Training" instance=ExtResource("e29")]
+[node name="Workbench1" parent="World/Training" instance=ExtResource("e31")]
 position = Vector3(-8.000, 0.000, -110.000)
 rotation = Vector3(0, -1.57000, 0)
 
@@ -1647,7 +1666,7 @@ font_size = 160
 outline_size = 36
 modulate = Color(1, 0.95, 0.8, 1)
 
-[node name="CommonTree_11" parent="World/Grove" instance=ExtResource("e30")]
+[node name="CommonTree_11" parent="World/Grove" instance=ExtResource("e32")]
 position = Vector3(145.141, 0.000, 26.064)
 rotation = Vector3(0, 0.54002, 0)
 scale = Vector3(1.01, 1.01, 1.01)
@@ -1658,7 +1677,7 @@ scale = Vector3(1.01, 1.01, 1.01)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_12" parent="World/Grove" instance=ExtResource("e30")]
+[node name="CommonTree_12" parent="World/Grove" instance=ExtResource("e32")]
 position = Vector3(125.370, 0.000, 41.328)
 rotation = Vector3(0, 5.19527, 0)
 scale = Vector3(0.86, 0.86, 0.86)
@@ -1669,7 +1688,7 @@ scale = Vector3(0.86, 0.86, 0.86)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_13" parent="World/Grove" instance=ExtResource("e30")]
+[node name="CommonTree_13" parent="World/Grove" instance=ExtResource("e32")]
 position = Vector3(128.128, 0.000, 42.318)
 rotation = Vector3(0, 3.62604, 0)
 
@@ -1679,7 +1698,7 @@ rotation = Vector3(0, 3.62604, 0)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_31" parent="World/Grove" instance=ExtResource("e31")]
+[node name="CommonTree_31" parent="World/Grove" instance=ExtResource("e33")]
 position = Vector3(138.628, 0.000, 15.801)
 rotation = Vector3(0, 1.81967, 0)
 scale = Vector3(0.87, 0.87, 0.87)
@@ -1690,7 +1709,7 @@ scale = Vector3(0.87, 0.87, 0.87)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_32" parent="World/Grove" instance=ExtResource("e31")]
+[node name="CommonTree_32" parent="World/Grove" instance=ExtResource("e33")]
 position = Vector3(138.210, 0.000, 30.978)
 rotation = Vector3(0, 0.64752, 0)
 scale = Vector3(1.09, 1.09, 1.09)
@@ -1701,7 +1720,7 @@ scale = Vector3(1.09, 1.09, 1.09)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_21" parent="World/Grove" instance=ExtResource("e32")]
+[node name="CommonTree_21" parent="World/Grove" instance=ExtResource("e34")]
 position = Vector3(129.958, 0.000, 32.478)
 rotation = Vector3(0, 3.54603, 0)
 scale = Vector3(1.11, 1.11, 1.11)
@@ -1712,7 +1731,7 @@ scale = Vector3(1.11, 1.11, 1.11)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="TwistedTree_11" parent="World/Grove" instance=ExtResource("e33")]
+[node name="TwistedTree_11" parent="World/Grove" instance=ExtResource("e35")]
 position = Vector3(127.731, 0.000, -3.595)
 rotation = Vector3(0, 2.27189, 0)
 scale = Vector3(0.92, 0.92, 0.92)
@@ -1723,7 +1742,7 @@ scale = Vector3(0.92, 0.92, 0.92)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_22" parent="World/Grove" instance=ExtResource("e32")]
+[node name="CommonTree_22" parent="World/Grove" instance=ExtResource("e34")]
 position = Vector3(135.642, 0.000, 42.646)
 rotation = Vector3(0, 3.60921, 0)
 scale = Vector3(1.06, 1.06, 1.06)
@@ -1734,7 +1753,7 @@ scale = Vector3(1.06, 1.06, 1.06)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_11" parent="World/Grove" instance=ExtResource("e34")]
+[node name="Pine_11" parent="World/Grove" instance=ExtResource("e36")]
 position = Vector3(142.684, 0.000, -0.652)
 rotation = Vector3(0, 3.82620, 0)
 scale = Vector3(0.84, 0.84, 0.84)
@@ -1745,7 +1764,7 @@ scale = Vector3(0.84, 0.84, 0.84)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_31" parent="World/Grove" instance=ExtResource("e35")]
+[node name="Pine_31" parent="World/Grove" instance=ExtResource("e37")]
 position = Vector3(107.673, 0.000, 43.008)
 rotation = Vector3(0, 0.24635, 0)
 scale = Vector3(1.13, 1.13, 1.13)
@@ -1756,7 +1775,7 @@ scale = Vector3(1.13, 1.13, 1.13)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_21" parent="World/Grove" instance=ExtResource("e36")]
+[node name="Pine_21" parent="World/Grove" instance=ExtResource("e38")]
 position = Vector3(126.171, 0.000, -5.642)
 rotation = Vector3(0, 2.13705, 0)
 scale = Vector3(0.98, 0.98, 0.98)
@@ -1767,7 +1786,7 @@ scale = Vector3(0.98, 0.98, 0.98)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_12" parent="World/Grove" instance=ExtResource("e34")]
+[node name="Pine_12" parent="World/Grove" instance=ExtResource("e36")]
 position = Vector3(138.158, 0.000, 24.529)
 rotation = Vector3(0, 2.97885, 0)
 scale = Vector3(1.13, 1.13, 1.13)
@@ -1778,7 +1797,7 @@ scale = Vector3(1.13, 1.13, 1.13)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="TwistedTree_12" parent="World/Grove" instance=ExtResource("e33")]
+[node name="TwistedTree_12" parent="World/Grove" instance=ExtResource("e35")]
 position = Vector3(148.064, 0.000, 27.645)
 rotation = Vector3(0, 1.78817, 0)
 scale = Vector3(0.99, 0.99, 0.99)
@@ -1789,7 +1808,7 @@ scale = Vector3(0.99, 0.99, 0.99)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="TwistedTree_13" parent="World/Grove" instance=ExtResource("e33")]
+[node name="TwistedTree_13" parent="World/Grove" instance=ExtResource("e35")]
 position = Vector3(116.964, 0.000, 5.455)
 rotation = Vector3(0, 2.23345, 0)
 scale = Vector3(1.11, 1.11, 1.11)
@@ -1800,7 +1819,7 @@ scale = Vector3(1.11, 1.11, 1.11)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_32" parent="World/Grove" instance=ExtResource("e35")]
+[node name="Pine_32" parent="World/Grove" instance=ExtResource("e37")]
 position = Vector3(117.813, 0.000, 43.821)
 rotation = Vector3(0, 2.45641, 0)
 scale = Vector3(1.24, 1.24, 1.24)
@@ -1811,7 +1830,7 @@ scale = Vector3(1.24, 1.24, 1.24)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="TwistedTree_21" parent="World/Grove" instance=ExtResource("e37")]
+[node name="TwistedTree_21" parent="World/Grove" instance=ExtResource("e39")]
 position = Vector3(142.922, 0.000, 28.492)
 rotation = Vector3(0, 1.74571, 0)
 scale = Vector3(0.87, 0.87, 0.87)
@@ -1822,7 +1841,7 @@ scale = Vector3(0.87, 0.87, 0.87)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_33" parent="World/Grove" instance=ExtResource("e35")]
+[node name="Pine_33" parent="World/Grove" instance=ExtResource("e37")]
 position = Vector3(102.836, 0.000, 27.874)
 rotation = Vector3(0, 6.19816, 0)
 scale = Vector3(1.14, 1.14, 1.14)
@@ -1833,7 +1852,7 @@ scale = Vector3(1.14, 1.14, 1.14)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_23" parent="World/Grove" instance=ExtResource("e32")]
+[node name="CommonTree_23" parent="World/Grove" instance=ExtResource("e34")]
 position = Vector3(110.901, 0.000, 30.233)
 rotation = Vector3(0, 1.10721, 0)
 scale = Vector3(0.92, 0.92, 0.92)
@@ -1844,7 +1863,7 @@ scale = Vector3(0.92, 0.92, 0.92)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_33" parent="World/Grove" instance=ExtResource("e31")]
+[node name="CommonTree_33" parent="World/Grove" instance=ExtResource("e33")]
 position = Vector3(126.325, 0.000, 40.123)
 rotation = Vector3(0, 1.65089, 0)
 scale = Vector3(0.8, 0.8, 0.8)
@@ -1855,7 +1874,7 @@ scale = Vector3(0.8, 0.8, 0.8)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_22" parent="World/Grove" instance=ExtResource("e36")]
+[node name="Pine_22" parent="World/Grove" instance=ExtResource("e38")]
 position = Vector3(106.296, 0.000, 27.886)
 rotation = Vector3(0, 5.98849, 0)
 scale = Vector3(1.15, 1.15, 1.15)
@@ -1866,7 +1885,7 @@ scale = Vector3(1.15, 1.15, 1.15)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="TwistedTree_22" parent="World/Grove" instance=ExtResource("e37")]
+[node name="TwistedTree_22" parent="World/Grove" instance=ExtResource("e39")]
 position = Vector3(117.328, 0.000, 4.657)
 rotation = Vector3(0, 2.46539, 0)
 
@@ -1876,7 +1895,7 @@ rotation = Vector3(0, 2.46539, 0)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_14" parent="World/Grove" instance=ExtResource("e30")]
+[node name="CommonTree_14" parent="World/Grove" instance=ExtResource("e32")]
 position = Vector3(143.721, 0.000, 33.009)
 rotation = Vector3(0, 1.19764, 0)
 scale = Vector3(1.29, 1.29, 1.29)
@@ -1887,7 +1906,7 @@ scale = Vector3(1.29, 1.29, 1.29)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_34" parent="World/Grove" instance=ExtResource("e31")]
+[node name="CommonTree_34" parent="World/Grove" instance=ExtResource("e33")]
 position = Vector3(111.308, 0.000, 8.690)
 rotation = Vector3(0, 3.37167, 0)
 scale = Vector3(1.27, 1.27, 1.27)
@@ -1898,7 +1917,7 @@ scale = Vector3(1.27, 1.27, 1.27)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_41" parent="World/Grove" instance=ExtResource("e38")]
+[node name="CommonTree_41" parent="World/Grove" instance=ExtResource("e40")]
 position = Vector3(112.522, 0.000, 8.042)
 rotation = Vector3(0, 3.85831, 0)
 scale = Vector3(0.87, 0.87, 0.87)
@@ -1909,7 +1928,7 @@ scale = Vector3(0.87, 0.87, 0.87)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_23" parent="World/Grove" instance=ExtResource("e36")]
+[node name="Pine_23" parent="World/Grove" instance=ExtResource("e38")]
 position = Vector3(123.718, 0.000, 37.904)
 rotation = Vector3(0, 2.97918, 0)
 scale = Vector3(0.86, 0.86, 0.86)
@@ -1920,7 +1939,7 @@ scale = Vector3(0.86, 0.86, 0.86)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Pine_13" parent="World/Grove" instance=ExtResource("e34")]
+[node name="Pine_13" parent="World/Grove" instance=ExtResource("e36")]
 position = Vector3(140.509, 0.000, 39.041)
 rotation = Vector3(0, 3.00727, 0)
 scale = Vector3(1.15, 1.15, 1.15)
@@ -1931,7 +1950,7 @@ scale = Vector3(1.15, 1.15, 1.15)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="TwistedTree_23" parent="World/Grove" instance=ExtResource("e37")]
+[node name="TwistedTree_23" parent="World/Grove" instance=ExtResource("e39")]
 position = Vector3(143.241, 0.000, 12.017)
 rotation = Vector3(0, 5.74375, 0)
 scale = Vector3(1.18, 1.18, 1.18)
@@ -1942,7 +1961,7 @@ scale = Vector3(1.18, 1.18, 1.18)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_24" parent="World/Grove" instance=ExtResource("e32")]
+[node name="CommonTree_24" parent="World/Grove" instance=ExtResource("e34")]
 position = Vector3(116.581, 0.000, 41.800)
 rotation = Vector3(0, 4.37433, 0)
 scale = Vector3(0.93, 0.93, 0.93)
@@ -1953,7 +1972,7 @@ scale = Vector3(0.93, 0.93, 0.93)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_42" parent="World/Grove" instance=ExtResource("e38")]
+[node name="CommonTree_42" parent="World/Grove" instance=ExtResource("e40")]
 position = Vector3(112.729, 0.000, 30.512)
 rotation = Vector3(0, 3.34638, 0)
 scale = Vector3(1.19, 1.19, 1.19)
@@ -1964,7 +1983,7 @@ scale = Vector3(1.19, 1.19, 1.19)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="CommonTree_43" parent="World/Grove" instance=ExtResource("e38")]
+[node name="CommonTree_43" parent="World/Grove" instance=ExtResource("e40")]
 position = Vector3(115.462, 0.000, 33.609)
 rotation = Vector3(0, 5.06474, 0)
 scale = Vector3(1.21, 1.21, 1.21)
@@ -1975,7 +1994,7 @@ scale = Vector3(1.21, 1.21, 1.21)
 position = Vector3(0.000, 2.000, 0.000)
 shape = SubResource("box_0p80_4p00_0p80")
 
-[node name="Rock_Medium_31" parent="World/Grove" instance=ExtResource("e39")]
+[node name="Rock_Medium_31" parent="World/Grove" instance=ExtResource("e41")]
 position = Vector3(123.154, 0.000, 4.719)
 rotation = Vector3(0, 3.09624, 0)
 scale = Vector3(1.17, 1.17, 1.17)
@@ -1986,7 +2005,7 @@ scale = Vector3(1.17, 1.17, 1.17)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_21" parent="World/Grove" instance=ExtResource("e40")]
+[node name="Rock_Medium_21" parent="World/Grove" instance=ExtResource("e42")]
 position = Vector3(147.961, 0.000, 16.433)
 rotation = Vector3(0, 1.62844, 0)
 scale = Vector3(1.15, 1.15, 1.15)
@@ -1997,7 +2016,7 @@ scale = Vector3(1.15, 1.15, 1.15)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_32" parent="World/Grove" instance=ExtResource("e39")]
+[node name="Rock_Medium_32" parent="World/Grove" instance=ExtResource("e41")]
 position = Vector3(140.848, 0.000, 13.279)
 rotation = Vector3(0, 6.20803, 0)
 scale = Vector3(1.28, 1.28, 1.28)
@@ -2008,7 +2027,7 @@ scale = Vector3(1.28, 1.28, 1.28)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_11" parent="World/Grove" instance=ExtResource("e41")]
+[node name="Rock_Medium_11" parent="World/Grove" instance=ExtResource("e43")]
 position = Vector3(115.301, 0.000, 27.913)
 rotation = Vector3(0, 2.95360, 0)
 scale = Vector3(0.97, 0.97, 0.97)
@@ -2019,7 +2038,7 @@ scale = Vector3(0.97, 0.97, 0.97)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_33" parent="World/Grove" instance=ExtResource("e39")]
+[node name="Rock_Medium_33" parent="World/Grove" instance=ExtResource("e41")]
 position = Vector3(137.076, 0.000, 9.609)
 rotation = Vector3(0, 0.53268, 0)
 scale = Vector3(1.13, 1.13, 1.13)
@@ -2030,7 +2049,7 @@ scale = Vector3(1.13, 1.13, 1.13)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_12" parent="World/Grove" instance=ExtResource("e41")]
+[node name="Rock_Medium_12" parent="World/Grove" instance=ExtResource("e43")]
 position = Vector3(144.131, 0.000, 5.185)
 rotation = Vector3(0, 3.00357, 0)
 scale = Vector3(0.89, 0.89, 0.89)
@@ -2041,7 +2060,7 @@ scale = Vector3(0.89, 0.89, 0.89)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_34" parent="World/Grove" instance=ExtResource("e39")]
+[node name="Rock_Medium_34" parent="World/Grove" instance=ExtResource("e41")]
 position = Vector3(127.729, 0.000, 3.143)
 rotation = Vector3(0, 2.48713, 0)
 
@@ -2051,7 +2070,7 @@ rotation = Vector3(0, 2.48713, 0)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_13" parent="World/Grove" instance=ExtResource("e41")]
+[node name="Rock_Medium_13" parent="World/Grove" instance=ExtResource("e43")]
 position = Vector3(145.511, 0.000, 10.529)
 rotation = Vector3(0, 6.23991, 0)
 scale = Vector3(0.81, 0.81, 0.81)
@@ -2062,7 +2081,7 @@ scale = Vector3(0.81, 0.81, 0.81)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_35" parent="World/Grove" instance=ExtResource("e39")]
+[node name="Rock_Medium_35" parent="World/Grove" instance=ExtResource("e41")]
 position = Vector3(108.985, 0.000, 8.363)
 rotation = Vector3(0, 0.91844, 0)
 scale = Vector3(1.21, 1.21, 1.21)
@@ -2073,7 +2092,7 @@ scale = Vector3(1.21, 1.21, 1.21)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Rock_Medium_22" parent="World/Grove" instance=ExtResource("e40")]
+[node name="Rock_Medium_22" parent="World/Grove" instance=ExtResource("e42")]
 position = Vector3(145.324, 0.000, 15.348)
 rotation = Vector3(0, 0.97963, 0)
 scale = Vector3(1.07, 1.07, 1.07)
@@ -2084,421 +2103,421 @@ scale = Vector3(1.07, 1.07, 1.07)
 position = Vector3(0.000, 0.800, 0.000)
 shape = SubResource("box_2p00_1p60_2p00")
 
-[node name="Bush_Common1" parent="World/Grove" instance=ExtResource("e42")]
+[node name="Bush_Common1" parent="World/Grove" instance=ExtResource("e44")]
 position = Vector3(148.165, 0.000, 21.268)
 rotation = Vector3(0, 3.30861, 0)
 scale = Vector3(1.27, 1.27, 1.27)
 
-[node name="Bush_Common_Flowers1" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers1" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(100.170, 0.000, 28.524)
 rotation = Vector3(0, 0.17589, 0)
 scale = Vector3(0.91, 0.91, 0.91)
 
-[node name="Bush_Common_Flowers2" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers2" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(115.490, 0.000, 34.449)
 rotation = Vector3(0, 0.38267, 0)
 scale = Vector3(1.17, 1.17, 1.17)
 
-[node name="Plant_7_Big1" parent="World/Grove" instance=ExtResource("e44")]
+[node name="Plant_7_Big1" parent="World/Grove" instance=ExtResource("e46")]
 position = Vector3(140.999, 0.000, 5.271)
 rotation = Vector3(0, 2.64289, 0)
 scale = Vector3(1.26, 1.26, 1.26)
 
-[node name="Bush_Common_Flowers3" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers3" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(148.373, 0.000, 18.602)
 rotation = Vector3(0, 0.88944, 0)
 scale = Vector3(1.11, 1.11, 1.11)
 
-[node name="Plant_7_Big2" parent="World/Grove" instance=ExtResource("e44")]
+[node name="Plant_7_Big2" parent="World/Grove" instance=ExtResource("e46")]
 position = Vector3(129.398, 0.000, 23.091)
 rotation = Vector3(0, 3.33465, 0)
 scale = Vector3(1.04, 1.04, 1.04)
 
-[node name="Bush_Common2" parent="World/Grove" instance=ExtResource("e42")]
+[node name="Bush_Common2" parent="World/Grove" instance=ExtResource("e44")]
 position = Vector3(128.360, 0.000, -7.951)
 rotation = Vector3(0, 1.56134, 0)
 scale = Vector3(0.94, 0.94, 0.94)
 
-[node name="Plant_7_Big3" parent="World/Grove" instance=ExtResource("e44")]
+[node name="Plant_7_Big3" parent="World/Grove" instance=ExtResource("e46")]
 position = Vector3(126.464, 0.000, 0.495)
 rotation = Vector3(0, 0.17509, 0)
 scale = Vector3(1.25, 1.25, 1.25)
 
-[node name="Plant_7_Big4" parent="World/Grove" instance=ExtResource("e44")]
+[node name="Plant_7_Big4" parent="World/Grove" instance=ExtResource("e46")]
 position = Vector3(136.434, 0.000, 23.230)
 rotation = Vector3(0, 3.80848, 0)
 scale = Vector3(0.9, 0.9, 0.9)
 
-[node name="Plant_1_Big1" parent="World/Grove" instance=ExtResource("e45")]
+[node name="Plant_1_Big1" parent="World/Grove" instance=ExtResource("e47")]
 position = Vector3(120.993, 0.000, 35.430)
 rotation = Vector3(0, 3.19030, 0)
 scale = Vector3(0.92, 0.92, 0.92)
 
-[node name="Bush_Common_Flowers4" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers4" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(148.471, 0.000, 6.071)
 rotation = Vector3(0, 5.27787, 0)
 scale = Vector3(0.87, 0.87, 0.87)
 
-[node name="Bush_Common3" parent="World/Grove" instance=ExtResource("e42")]
+[node name="Bush_Common3" parent="World/Grove" instance=ExtResource("e44")]
 position = Vector3(135.673, 0.000, 29.188)
 rotation = Vector3(0, 4.21699, 0)
 scale = Vector3(1.01, 1.01, 1.01)
 
-[node name="Bush_Common4" parent="World/Grove" instance=ExtResource("e42")]
+[node name="Bush_Common4" parent="World/Grove" instance=ExtResource("e44")]
 position = Vector3(127.011, 0.000, 30.609)
 rotation = Vector3(0, 5.63618, 0)
 scale = Vector3(0.88, 0.88, 0.88)
 
-[node name="Bush_Common_Flowers5" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers5" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(119.524, 0.000, -2.708)
 rotation = Vector3(0, 1.59032, 0)
 scale = Vector3(0.87, 0.87, 0.87)
 
-[node name="Bush_Common_Flowers6" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers6" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(145.877, 0.000, 32.693)
 rotation = Vector3(0, 6.21955, 0)
 scale = Vector3(1.22, 1.22, 1.22)
 
-[node name="Plant_7_Big5" parent="World/Grove" instance=ExtResource("e44")]
+[node name="Plant_7_Big5" parent="World/Grove" instance=ExtResource("e46")]
 position = Vector3(132.409, 0.000, 31.524)
 rotation = Vector3(0, 2.53721, 0)
 scale = Vector3(1.01, 1.01, 1.01)
 
-[node name="Fern_11" parent="World/Grove" instance=ExtResource("e46")]
+[node name="Fern_11" parent="World/Grove" instance=ExtResource("e48")]
 position = Vector3(118.958, 0.000, 24.366)
 rotation = Vector3(0, 0.12241, 0)
 scale = Vector3(1.08, 1.08, 1.08)
 
-[node name="Fern_12" parent="World/Grove" instance=ExtResource("e46")]
+[node name="Fern_12" parent="World/Grove" instance=ExtResource("e48")]
 position = Vector3(118.028, 0.000, 20.345)
 rotation = Vector3(0, 3.25113, 0)
 scale = Vector3(0.95, 0.95, 0.95)
 
-[node name="Bush_Common_Flowers7" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers7" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(132.336, 0.000, 15.903)
 rotation = Vector3(0, 6.10535, 0)
 scale = Vector3(0.85, 0.85, 0.85)
 
-[node name="Bush_Common_Flowers8" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers8" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(123.325, 0.000, 24.878)
 rotation = Vector3(0, 1.69926, 0)
 scale = Vector3(0.86, 0.86, 0.86)
 
-[node name="Fern_13" parent="World/Grove" instance=ExtResource("e46")]
+[node name="Fern_13" parent="World/Grove" instance=ExtResource("e48")]
 position = Vector3(100.191, 0.000, 30.653)
 rotation = Vector3(0, 2.55065, 0)
 scale = Vector3(1.07, 1.07, 1.07)
 
-[node name="Bush_Common_Flowers9" parent="World/Grove" instance=ExtResource("e43")]
+[node name="Bush_Common_Flowers9" parent="World/Grove" instance=ExtResource("e45")]
 position = Vector3(118.220, 0.000, 28.991)
 rotation = Vector3(0, 2.67235, 0)
 scale = Vector3(0.84, 0.84, 0.84)
 
-[node name="Grass_Common_Short1" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short1" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(142.051, 0.000, 10.636)
 rotation = Vector3(0, 0.52617, 0)
 scale = Vector3(1.23, 1.23, 1.23)
 
-[node name="Clover_11" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_11" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(147.236, 0.000, 28.338)
 rotation = Vector3(0, 0.07255, 0)
 scale = Vector3(1.3, 1.3, 1.3)
 
-[node name="Grass_Wispy_Tall1" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall1" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(100.698, 0.000, 31.241)
 rotation = Vector3(0, 0.27147, 0)
 scale = Vector3(1.15, 1.15, 1.15)
 
-[node name="Grass_Common_Short2" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short2" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(150.095, 0.000, 7.311)
 rotation = Vector3(0, 0.31655, 0)
 scale = Vector3(0.9, 0.9, 0.9)
 
-[node name="Grass_Wispy_Tall2" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall2" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(119.849, 0.000, 28.111)
 rotation = Vector3(0, 1.82188, 0)
 scale = Vector3(1.05, 1.05, 1.05)
 
-[node name="Grass_Common_Tall1" parent="World/Grove" instance=ExtResource("e50")]
+[node name="Grass_Common_Tall1" parent="World/Grove" instance=ExtResource("e52")]
 position = Vector3(129.262, 0.000, 28.809)
 rotation = Vector3(0, 6.24862, 0)
 scale = Vector3(0.82, 0.82, 0.82)
 
-[node name="Grass_Wispy_Tall3" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall3" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(140.039, 0.000, 19.866)
 rotation = Vector3(0, 3.23103, 0)
 scale = Vector3(0.92, 0.92, 0.92)
 
-[node name="Clover_12" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_12" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(104.987, 0.000, 24.569)
 rotation = Vector3(0, 4.12497, 0)
 scale = Vector3(1.07, 1.07, 1.07)
 
-[node name="Grass_Common_Short3" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short3" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(145.605, 0.000, -0.167)
 rotation = Vector3(0, 4.32121, 0)
 scale = Vector3(1.29, 1.29, 1.29)
 
-[node name="Grass_Wispy_Tall4" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall4" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(110.446, 0.000, 38.576)
 rotation = Vector3(0, 2.54279, 0)
 scale = Vector3(0.97, 0.97, 0.97)
 
-[node name="Grass_Common_Tall2" parent="World/Grove" instance=ExtResource("e50")]
+[node name="Grass_Common_Tall2" parent="World/Grove" instance=ExtResource("e52")]
 position = Vector3(130.007, 0.000, 20.136)
 rotation = Vector3(0, 3.92981, 0)
 scale = Vector3(1.24, 1.24, 1.24)
 
-[node name="Clover_13" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_13" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(119.973, 0.000, 19.872)
 rotation = Vector3(0, 5.46975, 0)
 scale = Vector3(1.14, 1.14, 1.14)
 
-[node name="Grass_Common_Short4" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short4" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(122.147, 0.000, 27.111)
 rotation = Vector3(0, 0.28424, 0)
 scale = Vector3(0.89, 0.89, 0.89)
 
-[node name="Grass_Common_Short5" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short5" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(123.631, 0.000, 21.072)
 rotation = Vector3(0, 6.04308, 0)
 scale = Vector3(1.29, 1.29, 1.29)
 
-[node name="Grass_Common_Short6" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short6" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(134.792, 0.000, 15.635)
 rotation = Vector3(0, 1.14956, 0)
 scale = Vector3(0.97, 0.97, 0.97)
 
-[node name="Grass_Wispy_Tall5" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall5" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(132.861, 0.000, 23.157)
 rotation = Vector3(0, 1.55936, 0)
 scale = Vector3(1.19, 1.19, 1.19)
 
-[node name="Grass_Wispy_Tall6" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall6" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(144.399, 0.000, 31.099)
 rotation = Vector3(0, 2.51020, 0)
 scale = Vector3(0.82, 0.82, 0.82)
 
-[node name="Grass_Wispy_Tall7" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall7" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(134.802, 0.000, 19.537)
 rotation = Vector3(0, 0.53082, 0)
 scale = Vector3(1.28, 1.28, 1.28)
 
-[node name="Clover_14" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_14" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(128.251, 0.000, 12.393)
 rotation = Vector3(0, 4.80231, 0)
 scale = Vector3(1.16, 1.16, 1.16)
 
-[node name="Clover_15" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_15" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(119.032, 0.000, 13.410)
 rotation = Vector3(0, 4.61093, 0)
 scale = Vector3(1.21, 1.21, 1.21)
 
-[node name="Grass_Common_Tall3" parent="World/Grove" instance=ExtResource("e50")]
+[node name="Grass_Common_Tall3" parent="World/Grove" instance=ExtResource("e52")]
 position = Vector3(134.648, 0.000, 30.758)
 rotation = Vector3(0, 5.19248, 0)
 scale = Vector3(1.09, 1.09, 1.09)
 
-[node name="Grass_Wispy_Tall8" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall8" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(140.225, 0.000, 5.057)
 rotation = Vector3(0, 0.53465, 0)
 scale = Vector3(0.82, 0.82, 0.82)
 
-[node name="Clover_16" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_16" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(105.799, 0.000, -3.208)
 rotation = Vector3(0, 5.25162, 0)
 scale = Vector3(1.08, 1.08, 1.08)
 
-[node name="Grass_Wispy_Tall9" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall9" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(110.605, 0.000, 4.131)
 rotation = Vector3(0, 3.07433, 0)
 scale = Vector3(0.8, 0.8, 0.8)
 
-[node name="Grass_Common_Tall4" parent="World/Grove" instance=ExtResource("e50")]
+[node name="Grass_Common_Tall4" parent="World/Grove" instance=ExtResource("e52")]
 position = Vector3(130.629, 0.000, -3.454)
 rotation = Vector3(0, 4.14250, 0)
 scale = Vector3(0.83, 0.83, 0.83)
 
-[node name="Grass_Common_Tall5" parent="World/Grove" instance=ExtResource("e50")]
+[node name="Grass_Common_Tall5" parent="World/Grove" instance=ExtResource("e52")]
 position = Vector3(123.208, 0.000, 8.476)
 rotation = Vector3(0, 5.31641, 0)
 scale = Vector3(0.92, 0.92, 0.92)
 
-[node name="Clover_17" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_17" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(124.364, 0.000, 9.008)
 rotation = Vector3(0, 3.10357, 0)
 scale = Vector3(0.99, 0.99, 0.99)
 
-[node name="Grass_Wispy_Tall10" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall10" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(126.026, 0.000, -0.933)
 rotation = Vector3(0, 0.48677, 0)
 scale = Vector3(0.87, 0.87, 0.87)
 
-[node name="Grass_Common_Short7" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short7" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(123.447, 0.000, 40.317)
 rotation = Vector3(0, 3.90281, 0)
 scale = Vector3(0.87, 0.87, 0.87)
 
-[node name="Grass_Wispy_Tall11" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall11" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(129.504, 0.000, 17.040)
 rotation = Vector3(0, 4.24560, 0)
 scale = Vector3(0.95, 0.95, 0.95)
 
-[node name="Grass_Wispy_Tall12" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall12" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(118.054, 0.000, 19.277)
 rotation = Vector3(0, 1.95831, 0)
 scale = Vector3(0.84, 0.84, 0.84)
 
-[node name="Clover_18" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_18" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(138.341, 0.000, 25.474)
 rotation = Vector3(0, 6.24528, 0)
 scale = Vector3(0.99, 0.99, 0.99)
 
-[node name="Grass_Common_Tall6" parent="World/Grove" instance=ExtResource("e50")]
+[node name="Grass_Common_Tall6" parent="World/Grove" instance=ExtResource("e52")]
 position = Vector3(147.541, 0.000, 4.386)
 rotation = Vector3(0, 3.65350, 0)
 scale = Vector3(0.87, 0.87, 0.87)
 
-[node name="Grass_Common_Short8" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short8" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(140.360, 0.000, 36.003)
 rotation = Vector3(0, 5.57232, 0)
 scale = Vector3(1.15, 1.15, 1.15)
 
-[node name="Clover_19" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_19" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(127.074, 0.000, 44.160)
 rotation = Vector3(0, 2.47608, 0)
 scale = Vector3(0.88, 0.88, 0.88)
 
-[node name="Clover_110" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_110" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(143.705, 0.000, 11.592)
 rotation = Vector3(0, 1.89721, 0)
 scale = Vector3(0.87, 0.87, 0.87)
 
-[node name="Grass_Common_Short9" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short9" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(117.755, 0.000, 27.319)
 rotation = Vector3(0, 0.01094, 0)
 scale = Vector3(1.18, 1.18, 1.18)
 
-[node name="Grass_Wispy_Tall13" parent="World/Grove" instance=ExtResource("e49")]
+[node name="Grass_Wispy_Tall13" parent="World/Grove" instance=ExtResource("e51")]
 position = Vector3(127.251, 0.000, 12.814)
 rotation = Vector3(0, 4.48006, 0)
 scale = Vector3(1.25, 1.25, 1.25)
 
-[node name="Clover_111" parent="World/Grove" instance=ExtResource("e48")]
+[node name="Clover_111" parent="World/Grove" instance=ExtResource("e50")]
 position = Vector3(120.860, 0.000, 30.283)
 rotation = Vector3(0, 2.45145, 0)
 scale = Vector3(1.23, 1.23, 1.23)
 
-[node name="Grass_Common_Short10" parent="World/Grove" instance=ExtResource("e47")]
+[node name="Grass_Common_Short10" parent="World/Grove" instance=ExtResource("e49")]
 position = Vector3(148.002, 0.000, 30.497)
 rotation = Vector3(0, 5.36744, 0)
 scale = Vector3(0.94, 0.94, 0.94)
 
-[node name="Flower_4_Group1" parent="World/Grove" instance=ExtResource("e51")]
+[node name="Flower_4_Group1" parent="World/Grove" instance=ExtResource("e53")]
 position = Vector3(141.596, 0.000, 23.916)
 rotation = Vector3(0, 1.56655, 0)
 scale = Vector3(0.93, 0.93, 0.93)
 
-[node name="Flower_3_Group1" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group1" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(106.482, 0.000, 35.886)
 rotation = Vector3(0, 5.10171, 0)
 scale = Vector3(1.12, 1.12, 1.12)
 
-[node name="Flower_4_Group2" parent="World/Grove" instance=ExtResource("e51")]
+[node name="Flower_4_Group2" parent="World/Grove" instance=ExtResource("e53")]
 position = Vector3(145.131, 0.000, 5.219)
 rotation = Vector3(0, 4.52121, 0)
 scale = Vector3(0.82, 0.82, 0.82)
 
-[node name="Flower_4_Group3" parent="World/Grove" instance=ExtResource("e51")]
+[node name="Flower_4_Group3" parent="World/Grove" instance=ExtResource("e53")]
 position = Vector3(122.460, 0.000, 4.167)
 rotation = Vector3(0, 4.04945, 0)
 scale = Vector3(0.94, 0.94, 0.94)
 
-[node name="Flower_4_Group4" parent="World/Grove" instance=ExtResource("e51")]
+[node name="Flower_4_Group4" parent="World/Grove" instance=ExtResource("e53")]
 position = Vector3(147.243, 0.000, 25.387)
 rotation = Vector3(0, 1.07293, 0)
 scale = Vector3(1.01, 1.01, 1.01)
 
-[node name="Mushroom_Common1" parent="World/Grove" instance=ExtResource("e53")]
+[node name="Mushroom_Common1" parent="World/Grove" instance=ExtResource("e55")]
 position = Vector3(122.093, 0.000, 27.435)
 rotation = Vector3(0, 2.55229, 0)
 scale = Vector3(0.92, 0.92, 0.92)
 
-[node name="Flower_3_Group2" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group2" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(137.251, 0.000, 30.403)
 rotation = Vector3(0, 1.30610, 0)
 scale = Vector3(1.25, 1.25, 1.25)
 
-[node name="Mushroom_Laetiporus1" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus1" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(145.555, 0.000, 3.600)
 rotation = Vector3(0, 2.68558, 0)
 scale = Vector3(1.07, 1.07, 1.07)
 
-[node name="Flower_3_Group3" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group3" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(124.291, 0.000, 25.838)
 rotation = Vector3(0, 2.00614, 0)
 scale = Vector3(0.98, 0.98, 0.98)
 
-[node name="Flower_3_Group4" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group4" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(127.078, 0.000, 10.134)
 rotation = Vector3(0, 4.71024, 0)
 scale = Vector3(1.01, 1.01, 1.01)
 
-[node name="Mushroom_Laetiporus2" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus2" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(110.687, 0.000, 26.000)
 rotation = Vector3(0, 1.69797, 0)
 scale = Vector3(1.18, 1.18, 1.18)
 
-[node name="Flower_4_Group5" parent="World/Grove" instance=ExtResource("e51")]
+[node name="Flower_4_Group5" parent="World/Grove" instance=ExtResource("e53")]
 position = Vector3(111.806, 0.000, 32.712)
 rotation = Vector3(0, 0.58181, 0)
 scale = Vector3(1.25, 1.25, 1.25)
 
-[node name="Mushroom_Laetiporus3" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus3" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(110.376, 0.000, 30.078)
 rotation = Vector3(0, 5.99380, 0)
 scale = Vector3(1.22, 1.22, 1.22)
 
-[node name="Flower_3_Group5" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group5" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(127.125, 0.000, 14.791)
 rotation = Vector3(0, 2.67161, 0)
 scale = Vector3(1.18, 1.18, 1.18)
 
-[node name="Mushroom_Laetiporus4" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus4" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(132.458, 0.000, -5.847)
 rotation = Vector3(0, 0.00112, 0)
 
-[node name="Mushroom_Laetiporus5" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus5" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(143.862, 0.000, 8.166)
 rotation = Vector3(0, 6.10877, 0)
 scale = Vector3(0.92, 0.92, 0.92)
 
-[node name="Flower_3_Group6" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group6" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(129.727, 0.000, 22.680)
 rotation = Vector3(0, 5.91556, 0)
 scale = Vector3(1.16, 1.16, 1.16)
 
-[node name="Mushroom_Laetiporus6" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus6" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(111.480, 0.000, 1.358)
 rotation = Vector3(0, 0.53409, 0)
 scale = Vector3(1.19, 1.19, 1.19)
 
-[node name="Flower_3_Group7" parent="World/Grove" instance=ExtResource("e52")]
+[node name="Flower_3_Group7" parent="World/Grove" instance=ExtResource("e54")]
 position = Vector3(130.764, 0.000, 18.058)
 rotation = Vector3(0, 4.05583, 0)
 scale = Vector3(0.95, 0.95, 0.95)
 
-[node name="Mushroom_Laetiporus7" parent="World/Grove" instance=ExtResource("e54")]
+[node name="Mushroom_Laetiporus7" parent="World/Grove" instance=ExtResource("e56")]
 position = Vector3(130.619, 0.000, 24.870)
 rotation = Vector3(0, 4.38932, 0)
 scale = Vector3(0.86, 0.86, 0.86)
 
-[node name="Flower_4_Group6" parent="World/Grove" instance=ExtResource("e51")]
+[node name="Flower_4_Group6" parent="World/Grove" instance=ExtResource("e53")]
 position = Vector3(138.044, 0.000, 24.647)
 rotation = Vector3(0, 2.43839, 0)
 scale = Vector3(0.91, 0.91, 0.91)
 
-[node name="Mushroom_Common2" parent="World/Grove" instance=ExtResource("e53")]
+[node name="Mushroom_Common2" parent="World/Grove" instance=ExtResource("e55")]
 position = Vector3(120.594, 0.000, 15.491)
 rotation = Vector3(0, 6.26040, 0)
 scale = Vector3(0.94, 0.94, 0.94)
@@ -2513,10 +2532,10 @@ font_size = 160
 outline_size = 36
 modulate = Color(1, 0.95, 0.8, 1)
 
-[node name="Platform_DarkPlates1" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates1" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(10.000, 0.030, 116.000)
 
-[node name="WallAstra_Straight1" parent="World/Lab" instance=ExtResource("e56")]
+[node name="WallAstra_Straight1" parent="World/Lab" instance=ExtResource("e58")]
 position = Vector3(10.000, 0.000, 116.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/WallAstra_Straight1"]
@@ -2525,7 +2544,7 @@ position = Vector3(10.000, 0.000, 116.000)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="WallAstra_Straight_Window1" parent="World/Lab" instance=ExtResource("e57")]
+[node name="WallAstra_Straight_Window1" parent="World/Lab" instance=ExtResource("e59")]
 position = Vector3(10.000, 0.000, 116.000)
 rotation = Vector3(0, -1.57080, 0)
 
@@ -2535,10 +2554,10 @@ rotation = Vector3(0, -1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_Metal1" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal1" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(10.000, 0.030, 120.000)
 
-[node name="WallAstra_Straight_Window2" parent="World/Lab" instance=ExtResource("e57")]
+[node name="WallAstra_Straight_Window2" parent="World/Lab" instance=ExtResource("e59")]
 position = Vector3(10.000, 0.000, 120.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/WallAstra_Straight_Window2"]
@@ -2547,10 +2566,10 @@ position = Vector3(10.000, 0.000, 120.000)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_DarkPlates2" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates2" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(10.000, 0.030, 124.000)
 
-[node name="WallBand_Straight1" parent="World/Lab" instance=ExtResource("e59")]
+[node name="WallBand_Straight1" parent="World/Lab" instance=ExtResource("e61")]
 position = Vector3(10.000, 0.000, 124.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/WallBand_Straight1"]
@@ -2559,10 +2578,10 @@ position = Vector3(10.000, 0.000, 124.000)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_Metal2" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal2" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(10.000, 0.030, 128.000)
 
-[node name="WallAstra_Straight_Divided1" parent="World/Lab" instance=ExtResource("e60")]
+[node name="WallAstra_Straight_Divided1" parent="World/Lab" instance=ExtResource("e62")]
 position = Vector3(10.000, 0.000, 128.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/WallAstra_Straight_Divided1"]
@@ -2571,7 +2590,7 @@ position = Vector3(10.000, 0.000, 128.000)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="WallBand_Straight2" parent="World/Lab" instance=ExtResource("e59")]
+[node name="WallBand_Straight2" parent="World/Lab" instance=ExtResource("e61")]
 position = Vector3(10.000, 0.000, 128.000)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -2581,10 +2600,10 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_Metal3" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal3" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(14.000, 0.030, 116.000)
 
-[node name="WallAstra_Straight2" parent="World/Lab" instance=ExtResource("e56")]
+[node name="WallAstra_Straight2" parent="World/Lab" instance=ExtResource("e58")]
 position = Vector3(14.000, 0.000, 116.000)
 rotation = Vector3(0, -1.57080, 0)
 
@@ -2594,16 +2613,16 @@ rotation = Vector3(0, -1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_DarkPlates3" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates3" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(14.000, 0.030, 120.000)
 
-[node name="Platform_Metal4" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal4" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(14.000, 0.030, 124.000)
 
-[node name="Platform_DarkPlates4" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates4" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(14.000, 0.030, 128.000)
 
-[node name="WallAstra_Straight_Window3" parent="World/Lab" instance=ExtResource("e57")]
+[node name="WallAstra_Straight_Window3" parent="World/Lab" instance=ExtResource("e59")]
 position = Vector3(14.000, 0.000, 128.000)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -2613,19 +2632,19 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_DarkPlates5" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates5" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(18.000, 0.030, 116.000)
 
-[node name="Platform_Metal5" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal5" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(18.000, 0.030, 120.000)
 
-[node name="Platform_DarkPlates6" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates6" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(18.000, 0.030, 124.000)
 
-[node name="Platform_Metal6" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal6" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(18.000, 0.030, 128.000)
 
-[node name="WallAstra_Straight3" parent="World/Lab" instance=ExtResource("e56")]
+[node name="WallAstra_Straight3" parent="World/Lab" instance=ExtResource("e58")]
 position = Vector3(18.000, 0.000, 128.000)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -2635,10 +2654,10 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_Metal7" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal7" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(22.000, 0.030, 116.000)
 
-[node name="WallBand_Straight3" parent="World/Lab" instance=ExtResource("e59")]
+[node name="WallBand_Straight3" parent="World/Lab" instance=ExtResource("e61")]
 position = Vector3(22.000, 0.000, 116.000)
 rotation = Vector3(0, -1.57080, 0)
 
@@ -2648,16 +2667,16 @@ rotation = Vector3(0, -1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_DarkPlates7" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates7" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(22.000, 0.030, 120.000)
 
-[node name="Platform_Metal8" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal8" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(22.000, 0.030, 124.000)
 
-[node name="Platform_DarkPlates8" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates8" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(22.000, 0.030, 128.000)
 
-[node name="WallAstra_Straight_Divided2" parent="World/Lab" instance=ExtResource("e60")]
+[node name="WallAstra_Straight_Divided2" parent="World/Lab" instance=ExtResource("e62")]
 position = Vector3(22.000, 0.000, 128.000)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -2667,10 +2686,10 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_DarkPlates9" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates9" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(26.000, 0.030, 116.000)
 
-[node name="WallBand_Straight4" parent="World/Lab" instance=ExtResource("e59")]
+[node name="WallBand_Straight4" parent="World/Lab" instance=ExtResource("e61")]
 position = Vector3(26.000, 0.000, 116.000)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2680,7 +2699,7 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="WallAstra_Straight_Window4" parent="World/Lab" instance=ExtResource("e57")]
+[node name="WallAstra_Straight_Window4" parent="World/Lab" instance=ExtResource("e59")]
 position = Vector3(26.000, 0.000, 116.000)
 rotation = Vector3(0, -1.57080, 0)
 
@@ -2690,10 +2709,10 @@ rotation = Vector3(0, -1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_Metal9" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal9" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(26.000, 0.030, 120.000)
 
-[node name="WallAstra_Straight_Divided3" parent="World/Lab" instance=ExtResource("e60")]
+[node name="WallAstra_Straight_Divided3" parent="World/Lab" instance=ExtResource("e62")]
 position = Vector3(26.000, 0.000, 120.000)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2703,10 +2722,10 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_DarkPlates10" parent="World/Lab" instance=ExtResource("e55")]
+[node name="Platform_DarkPlates10" parent="World/Lab" instance=ExtResource("e57")]
 position = Vector3(26.000, 0.030, 124.000)
 
-[node name="WallAstra_Straight4" parent="World/Lab" instance=ExtResource("e56")]
+[node name="WallAstra_Straight4" parent="World/Lab" instance=ExtResource("e58")]
 position = Vector3(26.000, 0.000, 124.000)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2716,10 +2735,10 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Platform_Metal10" parent="World/Lab" instance=ExtResource("e58")]
+[node name="Platform_Metal10" parent="World/Lab" instance=ExtResource("e60")]
 position = Vector3(26.000, 0.030, 128.000)
 
-[node name="WallAstra_Straight_Window5" parent="World/Lab" instance=ExtResource("e57")]
+[node name="WallAstra_Straight_Window5" parent="World/Lab" instance=ExtResource("e59")]
 position = Vector3(26.000, 0.000, 128.000)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2729,7 +2748,7 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="WallBand_Straight5" parent="World/Lab" instance=ExtResource("e59")]
+[node name="WallBand_Straight5" parent="World/Lab" instance=ExtResource("e61")]
 position = Vector3(26.000, 0.000, 128.000)
 rotation = Vector3(0, 1.57080, 0)
 
@@ -2739,7 +2758,7 @@ rotation = Vector3(0, 1.57080, 0)
 position = Vector3(-2.170, 1.500, 0.000)
 shape = SubResource("box_1p20_3p00_4p00")
 
-[node name="Prop_Computer1" parent="World/Lab" instance=ExtResource("e61")]
+[node name="Prop_Computer1" parent="World/Lab" instance=ExtResource("e63")]
 position = Vector3(12.000, 0.030, 127.600)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2749,7 +2768,7 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(0.000, 0.795, 0.065)
 shape = SubResource("box_0p74_1p59_0p56")
 
-[node name="Prop_Computer2" parent="World/Lab" instance=ExtResource("e61")]
+[node name="Prop_Computer2" parent="World/Lab" instance=ExtResource("e63")]
 position = Vector3(15.000, 0.030, 127.600)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2759,7 +2778,7 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(0.000, 0.795, 0.065)
 shape = SubResource("box_0p74_1p59_0p56")
 
-[node name="Prop_Computer3" parent="World/Lab" instance=ExtResource("e61")]
+[node name="Prop_Computer3" parent="World/Lab" instance=ExtResource("e63")]
 position = Vector3(24.000, 0.030, 127.600)
 rotation = Vector3(0, 3.14159, 0)
 
@@ -2769,7 +2788,7 @@ rotation = Vector3(0, 3.14159, 0)
 position = Vector3(0.000, 0.795, 0.065)
 shape = SubResource("box_0p74_1p59_0p56")
 
-[node name="Prop_Crate31" parent="World/Lab" instance=ExtResource("e62")]
+[node name="Prop_Crate31" parent="World/Lab" instance=ExtResource("e64")]
 position = Vector3(10.500, 0.030, 119.000)
 rotation = Vector3(0, 0.30000, 0)
 
@@ -2779,7 +2798,7 @@ rotation = Vector3(0, 0.30000, 0)
 position = Vector3(0.000, 0.000, 0.000)
 shape = SubResource("box_1p00_1p00_1p00")
 
-[node name="Prop_Crate41" parent="World/Lab" instance=ExtResource("e63")]
+[node name="Prop_Crate41" parent="World/Lab" instance=ExtResource("e65")]
 position = Vector3(10.600, 0.030, 120.600)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/Prop_Crate41"]
@@ -2788,7 +2807,7 @@ position = Vector3(10.600, 0.030, 120.600)
 position = Vector3(0.000, -0.000, 0.000)
 shape = SubResource("box_1p12_1p12_1p12")
 
-[node name="Prop_Barrel_Large1" parent="World/Lab" instance=ExtResource("e64")]
+[node name="Prop_Barrel_Large1" parent="World/Lab" instance=ExtResource("e66")]
 position = Vector3(25.300, 0.030, 118.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/Prop_Barrel_Large1"]
@@ -2797,7 +2816,7 @@ position = Vector3(25.300, 0.030, 118.000)
 position = Vector3(0.000, 0.559, 0.000)
 shape = SubResource("box_0p51_1p10_0p53")
 
-[node name="Prop_Chest1" parent="World/Lab" instance=ExtResource("e65")]
+[node name="Prop_Chest1" parent="World/Lab" instance=ExtResource("e67")]
 position = Vector3(25.300, 0.030, 123.000)
 rotation = Vector3(0, -1.57000, 0)
 
@@ -2807,7 +2826,7 @@ rotation = Vector3(0, -1.57000, 0)
 position = Vector3(0.000, 0.368, 0.012)
 shape = SubResource("box_1p50_0p73_0p75")
 
-[node name="Prop_Light_Floor1" parent="World/Lab" instance=ExtResource("e66")]
+[node name="Prop_Light_Floor1" parent="World/Lab" instance=ExtResource("e68")]
 position = Vector3(18.000, 0.030, 122.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/Prop_Light_Floor1"]
@@ -2816,7 +2835,7 @@ position = Vector3(18.000, 0.030, 122.000)
 position = Vector3(0.000, 0.103, -0.000)
 shape = SubResource("box_1p33_0p21_0p52")
 
-[node name="Prop_Light_Floor2" parent="World/Lab" instance=ExtResource("e66")]
+[node name="Prop_Light_Floor2" parent="World/Lab" instance=ExtResource("e68")]
 position = Vector3(14.000, 0.030, 117.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/Prop_Light_Floor2"]
@@ -2825,7 +2844,7 @@ position = Vector3(14.000, 0.030, 117.000)
 position = Vector3(0.000, 0.103, -0.000)
 shape = SubResource("box_1p33_0p21_0p52")
 
-[node name="Prop_Light_Floor3" parent="World/Lab" instance=ExtResource("e66")]
+[node name="Prop_Light_Floor3" parent="World/Lab" instance=ExtResource("e68")]
 position = Vector3(22.000, 0.030, 117.000)
 
 [node name="Col" type="StaticBody3D" parent="World/Lab/Prop_Light_Floor3"]
@@ -2834,366 +2853,366 @@ position = Vector3(22.000, 0.030, 117.000)
 position = Vector3(0.000, 0.103, -0.000)
 shape = SubResource("box_1p33_0p21_0p52")
 
-[node name="Alien_Cyclop1" parent="World/Lab" instance=ExtResource("e67")]
+[node name="Alien_Cyclop1" parent="World/Lab" instance=ExtResource("e69")]
 position = Vector3(13.500, 1.150, 125.000)
 rotation = Vector3(0, 3.14159, 0)
 
-[node name="Alien_Oculichrysalis1" parent="World/Lab" instance=ExtResource("e68")]
+[node name="Alien_Oculichrysalis1" parent="World/Lab" instance=ExtResource("e70")]
 position = Vector3(18.000, 1.150, 125.000)
 rotation = Vector3(0, 3.14159, 0)
 
-[node name="Alien_Scolitex1" parent="World/Lab" instance=ExtResource("e69")]
+[node name="Alien_Scolitex1" parent="World/Lab" instance=ExtResource("e71")]
 position = Vector3(22.500, 1.150, 125.000)
 rotation = Vector3(0, 3.14159, 0)
 
 [node name="Edge" type="Node3D" parent="World"]
 
-[node name="Pine_24" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_24" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(160.063, 0.000, -1.764)
 rotation = Vector3(0, 2.98642, 0)
 scale = Vector3(1.59, 1.59, 1.59)
 
-[node name="Pine_34" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_34" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(161.078, 0.000, 12.036)
 rotation = Vector3(0, 0.34751, 0)
 scale = Vector3(1.56, 1.56, 1.56)
 
-[node name="Pine_14" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_14" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(154.539, 0.000, 31.747)
 rotation = Vector3(0, 1.61639, 0)
 scale = Vector3(1.93, 1.93, 1.93)
 
-[node name="Pine_15" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_15" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(146.134, 0.000, 44.371)
 rotation = Vector3(0, 4.37198, 0)
 scale = Vector3(1.97, 1.97, 1.97)
 
-[node name="Pine_16" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_16" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(145.332, 0.000, 53.179)
 rotation = Vector3(0, 5.00810, 0)
 scale = Vector3(1.99, 1.99, 1.99)
 
-[node name="Pine_25" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_25" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(137.345, 0.000, 66.191)
 rotation = Vector3(0, 1.95857, 0)
 scale = Vector3(2.06, 2.06, 2.06)
 
-[node name="Pine_35" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_35" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(132.296, 0.000, 76.171)
 rotation = Vector3(0, 0.68492, 0)
 scale = Vector3(1.9, 1.9, 1.9)
 
-[node name="Pine_41" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_41" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(129.429, 0.000, 95.348)
 rotation = Vector3(0, 2.62027, 0)
 scale = Vector3(1.93, 1.93, 1.93)
 
-[node name="Pine_42" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_42" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(111.554, 0.000, 102.887)
 rotation = Vector3(0, 0.34154, 0)
 scale = Vector3(1.42, 1.42, 1.42)
 
-[node name="Pine_17" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_17" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(106.456, 0.000, 112.638)
 rotation = Vector3(0, 1.15676, 0)
 scale = Vector3(1.76, 1.76, 1.76)
 
-[node name="Pine_18" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_18" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(94.337, 0.000, 121.432)
 rotation = Vector3(0, 6.26766, 0)
 scale = Vector3(2.15, 2.15, 2.15)
 
-[node name="Pine_51" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_51" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(85.158, 0.000, 126.178)
 rotation = Vector3(0, 4.68919, 0)
 scale = Vector3(1.43, 1.43, 1.43)
 
-[node name="Pine_36" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_36" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(71.887, 0.000, 136.806)
 rotation = Vector3(0, 6.18883, 0)
 scale = Vector3(1.75, 1.75, 1.75)
 
-[node name="Pine_19" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_19" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(62.563, 0.000, 137.363)
 rotation = Vector3(0, 2.20833, 0)
 scale = Vector3(2.16, 2.16, 2.16)
 
-[node name="Pine_26" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_26" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(53.385, 0.000, 152.497)
 rotation = Vector3(0, 2.38843, 0)
 scale = Vector3(2.01, 2.01, 2.01)
 
-[node name="Pine_110" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_110" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(37.309, 0.000, 155.227)
 rotation = Vector3(0, 0.30949, 0)
 scale = Vector3(1.78, 1.78, 1.78)
 
-[node name="Pine_27" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_27" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(22.834, 0.000, 159.407)
 rotation = Vector3(0, 2.03141, 0)
 scale = Vector3(1.99, 1.99, 1.99)
 
-[node name="Pine_28" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_28" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(7.310, 0.000, 157.410)
 rotation = Vector3(0, 5.10084, 0)
 scale = Vector3(2.01, 2.01, 2.01)
 
-[node name="Pine_111" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_111" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-2.605, 0.000, 150.396)
 rotation = Vector3(0, 5.04752, 0)
 scale = Vector3(1.45, 1.45, 1.45)
 
-[node name="Pine_52" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_52" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-17.499, 0.000, 149.735)
 rotation = Vector3(0, 2.13044, 0)
 scale = Vector3(1.62, 1.62, 1.62)
 
-[node name="Pine_37" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_37" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-39.226, 0.000, 152.438)
 rotation = Vector3(0, 4.69001, 0)
 scale = Vector3(1.95, 1.95, 1.95)
 
-[node name="Pine_53" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_53" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-51.157, 0.000, 144.798)
 rotation = Vector3(0, 5.75829, 0)
 scale = Vector3(1.91, 1.91, 1.91)
 
-[node name="Pine_29" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_29" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-62.722, 0.000, 136.577)
 rotation = Vector3(0, 0.67394, 0)
 scale = Vector3(1.97, 1.97, 1.97)
 
-[node name="Pine_38" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_38" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-75.206, 0.000, 140.448)
 rotation = Vector3(0, 5.73997, 0)
 scale = Vector3(2.05, 2.05, 2.05)
 
-[node name="Pine_112" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_112" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-83.028, 0.000, 132.020)
 rotation = Vector3(0, 5.04269, 0)
 scale = Vector3(1.99, 1.99, 1.99)
 
-[node name="Pine_54" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_54" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-101.698, 0.000, 122.579)
 rotation = Vector3(0, 1.48373, 0)
 scale = Vector3(2.09, 2.09, 2.09)
 
-[node name="Pine_55" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_55" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-109.888, 0.000, 115.477)
 rotation = Vector3(0, 0.49647, 0)
 scale = Vector3(1.56, 1.56, 1.56)
 
-[node name="Pine_113" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_113" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-116.709, 0.000, 98.884)
 rotation = Vector3(0, 4.08122, 0)
 scale = Vector3(1.79, 1.79, 1.79)
 
-[node name="Pine_43" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_43" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(-123.151, 0.000, 88.972)
 rotation = Vector3(0, 5.55103, 0)
 scale = Vector3(2.19, 2.19, 2.19)
 
-[node name="Pine_114" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_114" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-128.528, 0.000, 79.273)
 rotation = Vector3(0, 2.64560, 0)
 scale = Vector3(2.19, 2.19, 2.19)
 
-[node name="Pine_210" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_210" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-138.832, 0.000, 62.077)
 rotation = Vector3(0, 2.61909, 0)
 scale = Vector3(1.9, 1.9, 1.9)
 
-[node name="Pine_115" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_115" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-149.414, 0.000, 54.302)
 rotation = Vector3(0, 4.89932, 0)
 scale = Vector3(1.64, 1.64, 1.64)
 
-[node name="Pine_39" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_39" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-147.138, 0.000, 42.711)
 rotation = Vector3(0, 4.63741, 0)
 scale = Vector3(1.56, 1.56, 1.56)
 
-[node name="Pine_211" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_211" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-150.055, 0.000, 29.587)
 rotation = Vector3(0, 1.76780, 0)
 scale = Vector3(2.13, 2.13, 2.13)
 
-[node name="Pine_310" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_310" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-149.892, 0.000, 16.322)
 rotation = Vector3(0, 6.23574, 0)
 scale = Vector3(1.81, 1.81, 1.81)
 
-[node name="Pine_44" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_44" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(-159.681, 0.000, 2.574)
 rotation = Vector3(0, 6.22636, 0)
 scale = Vector3(1.48, 1.48, 1.48)
 
-[node name="Pine_45" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_45" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(-159.207, 0.000, -14.086)
 rotation = Vector3(0, 5.74519, 0)
 scale = Vector3(1.43, 1.43, 1.43)
 
-[node name="Pine_212" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_212" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-149.320, 0.000, -25.192)
 rotation = Vector3(0, 3.77301, 0)
 scale = Vector3(2.06, 2.06, 2.06)
 
-[node name="Pine_56" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_56" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-146.175, 0.000, -37.469)
 rotation = Vector3(0, 5.44204, 0)
 scale = Vector3(1.76, 1.76, 1.76)
 
-[node name="Pine_116" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_116" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-149.964, 0.000, -53.831)
 rotation = Vector3(0, 0.66464, 0)
 scale = Vector3(1.88, 1.88, 1.88)
 
-[node name="Pine_311" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_311" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-137.018, 0.000, -67.204)
 rotation = Vector3(0, 2.13639, 0)
 scale = Vector3(1.44, 1.44, 1.44)
 
-[node name="Pine_213" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_213" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-126.789, 0.000, -81.009)
 rotation = Vector3(0, 5.11919, 0)
 scale = Vector3(2.06, 2.06, 2.06)
 
-[node name="Pine_57" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_57" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-125.456, 0.000, -90.107)
 rotation = Vector3(0, 1.96158, 0)
 scale = Vector3(1.56, 1.56, 1.56)
 
-[node name="Pine_117" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_117" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(-116.070, 0.000, -105.091)
 rotation = Vector3(0, 2.56461, 0)
 scale = Vector3(2.04, 2.04, 2.04)
 
-[node name="Pine_58" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_58" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(-103.856, 0.000, -110.787)
 rotation = Vector3(0, 0.57273, 0)
 scale = Vector3(1.53, 1.53, 1.53)
 
-[node name="Pine_312" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_312" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-95.163, 0.000, -122.243)
 rotation = Vector3(0, 4.19598, 0)
 scale = Vector3(1.73, 1.73, 1.73)
 
-[node name="Pine_313" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_313" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(-91.100, 0.000, -130.246)
 rotation = Vector3(0, 2.60174, 0)
 scale = Vector3(1.41, 1.41, 1.41)
 
-[node name="Pine_214" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_214" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-73.383, 0.000, -141.759)
 rotation = Vector3(0, 2.45504, 0)
 scale = Vector3(1.72, 1.72, 1.72)
 
-[node name="Pine_215" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_215" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-57.196, 0.000, -144.287)
 rotation = Vector3(0, 2.66253, 0)
 scale = Vector3(2.06, 2.06, 2.06)
 
-[node name="Pine_46" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_46" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(-50.485, 0.000, -152.452)
 rotation = Vector3(0, 4.85724, 0)
 scale = Vector3(1.5, 1.5, 1.5)
 
-[node name="Pine_47" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_47" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(-37.724, 0.000, -146.945)
 rotation = Vector3(0, 0.55940, 0)
 scale = Vector3(1.9, 1.9, 1.9)
 
-[node name="Pine_216" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_216" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(-22.145, 0.000, -154.474)
 rotation = Vector3(0, 2.18620, 0)
 scale = Vector3(1.53, 1.53, 1.53)
 
-[node name="Pine_48" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_48" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(-9.731, 0.000, -150.491)
 rotation = Vector3(0, 3.08196, 0)
 scale = Vector3(2.04, 2.04, 2.04)
 
-[node name="Pine_217" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_217" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(11.097, 0.000, -151.963)
 rotation = Vector3(0, 5.26086, 0)
 scale = Vector3(1.43, 1.43, 1.43)
 
-[node name="Pine_59" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_59" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(24.409, 0.000, -151.825)
 rotation = Vector3(0, 5.81928, 0)
 scale = Vector3(1.71, 1.71, 1.71)
 
-[node name="Pine_218" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_218" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(38.747, 0.000, -152.602)
 rotation = Vector3(0, 4.02328, 0)
 scale = Vector3(2.09, 2.09, 2.09)
 
-[node name="Pine_219" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_219" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(49.718, 0.000, -149.317)
 rotation = Vector3(0, 5.20994, 0)
 scale = Vector3(1.55, 1.55, 1.55)
 
-[node name="Pine_510" parent="World/Edge" instance=ExtResource("e71")]
+[node name="Pine_510" parent="World/Edge" instance=ExtResource("e73")]
 position = Vector3(58.423, 0.000, -143.349)
 rotation = Vector3(0, 0.98319, 0)
 scale = Vector3(1.69, 1.69, 1.69)
 
-[node name="Pine_220" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_220" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(73.590, 0.000, -143.926)
 rotation = Vector3(0, 0.25823, 0)
 scale = Vector3(1.85, 1.85, 1.85)
 
-[node name="Pine_314" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_314" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(84.816, 0.000, -124.273)
 rotation = Vector3(0, 0.73973, 0)
 scale = Vector3(1.88, 1.88, 1.88)
 
-[node name="Pine_315" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_315" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(98.584, 0.000, -122.862)
 rotation = Vector3(0, 4.07796, 0)
 scale = Vector3(1.65, 1.65, 1.65)
 
-[node name="Pine_316" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_316" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(105.193, 0.000, -113.390)
 rotation = Vector3(0, 2.80726, 0)
 scale = Vector3(1.75, 1.75, 1.75)
 
-[node name="Pine_49" parent="World/Edge" instance=ExtResource("e70")]
+[node name="Pine_49" parent="World/Edge" instance=ExtResource("e72")]
 position = Vector3(115.543, 0.000, -106.925)
 rotation = Vector3(0, 2.92340, 0)
 scale = Vector3(1.76, 1.76, 1.76)
 
-[node name="Pine_221" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_221" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(129.968, 0.000, -93.022)
 rotation = Vector3(0, 5.09271, 0)
 scale = Vector3(1.72, 1.72, 1.72)
 
-[node name="Pine_317" parent="World/Edge" instance=ExtResource("e35")]
+[node name="Pine_317" parent="World/Edge" instance=ExtResource("e37")]
 position = Vector3(130.361, 0.000, -82.555)
 rotation = Vector3(0, 0.57625, 0)
 scale = Vector3(1.75, 1.75, 1.75)
 
-[node name="Pine_222" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_222" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(135.626, 0.000, -65.212)
 rotation = Vector3(0, 0.51674, 0)
 scale = Vector3(1.99, 1.99, 1.99)
 
-[node name="Pine_118" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_118" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(147.075, 0.000, -52.420)
 rotation = Vector3(0, 4.72533, 0)
 scale = Vector3(2.12, 2.12, 2.12)
 
-[node name="Pine_119" parent="World/Edge" instance=ExtResource("e34")]
+[node name="Pine_119" parent="World/Edge" instance=ExtResource("e36")]
 position = Vector3(154.048, 0.000, -40.999)
 rotation = Vector3(0, 5.38513, 0)
 scale = Vector3(2.2, 2.2, 2.2)
 
-[node name="Pine_223" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_223" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(157.594, 0.000, -26.338)
 rotation = Vector3(0, 0.82698, 0)
 scale = Vector3(2.11, 2.11, 2.11)
 
-[node name="Pine_224" parent="World/Edge" instance=ExtResource("e36")]
+[node name="Pine_224" parent="World/Edge" instance=ExtResource("e38")]
 position = Vector3(158.894, 0.000, -16.342)
 rotation = Vector3(0, 4.31111, 0)
 scale = Vector3(1.98, 1.98, 1.98)
@@ -3224,15 +3243,16 @@ shape = SubResource("wall_1_300")
 
 [node name="Gloop1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(0.00, 0.05, -9.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Gloop"
 max_hp = 80
 height = 1.10
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e73")
+model_scene = ExtResource("e75")
 model_scale = 0.6
+attack_damage = 7
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/Gloop1"]
 mesh = SubResource("capsule_mesh")
@@ -3241,15 +3261,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Spikeball1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(18.00, 0.05, 4.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Spikeball"
 max_hp = 110
 height = 2.45
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e74")
+model_scene = ExtResource("e76")
 model_scale = 0.6
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/Spikeball1"]
 mesh = SubResource("capsule_mesh")
@@ -3258,15 +3279,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="ShadowNinja1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(-18.00, 0.05, -4.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Shadow Ninja"
 max_hp = 90
 height = 1.67
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e75")
+model_scene = ExtResource("e77")
 model_scale = 0.6
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/ShadowNinja1"]
 mesh = SubResource("capsule_mesh")
@@ -3275,15 +3297,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="StreetWizard1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(4.00, 0.05, 18.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Street Wizard"
 max_hp = 120
 height = 1.56
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e76")
+model_scene = ExtResource("e78")
 model_scale = 0.6
+attack_damage = 9
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/StreetWizard1"]
 mesh = SubResource("capsule_mesh")
@@ -3292,15 +3315,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Pinkle1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(-4.00, 0.05, -18.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Pinkle"
 max_hp = 60
 height = 1.16
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e77")
+model_scene = ExtResource("e79")
 model_scale = 0.6
+attack_damage = 6
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/Pinkle1"]
 mesh = SubResource("capsule_mesh")
@@ -3309,15 +3333,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="AlleyOrc1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(18.00, 0.05, 30.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Alley Orc"
 max_hp = 140
 height = 1.40
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e78")
+model_scene = ExtResource("e80")
 model_scale = 0.6
+attack_damage = 10
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/AlleyOrc1"]
 mesh = SubResource("capsule_mesh")
@@ -3326,15 +3351,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Coo1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(-30.00, 0.05, 18.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Coo"
 max_hp = 50
 height = 1.08
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e79")
+model_scene = ExtResource("e81")
 model_scale = 0.6
+attack_damage = 6
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/Coo1"]
 mesh = SubResource("capsule_mesh")
@@ -3343,15 +3369,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SpaceBlob1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(30.00, 0.05, -18.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Space Blob"
 max_hp = 100
 height = 1.96
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e80")
+model_scene = ExtResource("e82")
 model_scale = 0.6
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Downtown/SpaceBlob1"]
 mesh = SubResource("capsule_mesh")
@@ -3360,15 +3387,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Clucky1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-122.00, 0.05, -22.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Clucky"
 max_hp = 40
 height = 1.05
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e81")
+model_scene = ExtResource("e83")
 model_scale = 0.45
+attack_damage = 6
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/Clucky1"]
 mesh = SubResource("capsule_mesh")
@@ -3377,15 +3406,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Bok1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-120.00, 0.05, -13.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Bok"
 max_hp = 40
 height = 1.05
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e81")
+model_scene = ExtResource("e83")
 model_scale = 0.45
+attack_damage = 6
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/Bok1"]
 mesh = SubResource("capsule_mesh")
@@ -3394,15 +3425,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Whiskers1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-125.00, 0.05, -10.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Whiskers"
 max_hp = 60
 height = 0.96
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e82")
+model_scene = ExtResource("e84")
 model_scale = 0.5
+attack_damage = 6
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/Whiskers1"]
 mesh = SubResource("capsule_mesh")
@@ -3411,15 +3444,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Barkley1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-113.00, 0.05, -22.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Barkley"
 max_hp = 70
 height = 1.00
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e83")
+model_scene = ExtResource("e85")
 model_scale = 0.55
+attack_damage = 7
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/Barkley1"]
 mesh = SubResource("capsule_mesh")
@@ -3428,15 +3463,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Mushnub1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-132.00, 0.05, -26.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Mushnub"
 max_hp = 90
 height = 1.62
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e84")
+model_scene = ExtResource("e86")
 model_scale = 0.5
+attack_damage = 8
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/Mushnub1"]
 mesh = SubResource("capsule_mesh")
@@ -3445,15 +3482,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Bunbun1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-112.00, 0.05, -8.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Bunbun"
 max_hp = 80
 height = 1.72
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e85")
+model_scene = ExtResource("e87")
 model_scale = 0.5
+attack_damage = 7
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/Bunbun1"]
 mesh = SubResource("capsule_mesh")
@@ -3462,15 +3501,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="ElderMushnub1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-134.00, 0.05, -14.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Elder Mushnub"
 max_hp = 150
 height = 2.39
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e86")
+model_scene = ExtResource("e88")
 model_scale = 0.55
+attack_damage = 10
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Village/ElderMushnub1"]
 mesh = SubResource("capsule_mesh")
@@ -3479,15 +3520,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy1" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-26.00, 0.05, -123.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy1"]
 mesh = SubResource("capsule_mesh")
@@ -3496,15 +3539,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy2" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-22.00, 0.05, -123.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy2"]
 mesh = SubResource("capsule_mesh")
@@ -3513,15 +3558,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy3" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-18.00, 0.05, -123.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy3"]
 mesh = SubResource("capsule_mesh")
@@ -3530,15 +3577,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy4" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-14.00, 0.05, -123.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy4"]
 mesh = SubResource("capsule_mesh")
@@ -3547,15 +3596,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy5" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-10.00, 0.05, -123.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy5"]
 mesh = SubResource("capsule_mesh")
@@ -3564,15 +3615,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy6" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-26.00, 0.05, -118.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy6"]
 mesh = SubResource("capsule_mesh")
@@ -3581,15 +3634,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy7" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-22.00, 0.05, -118.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy7"]
 mesh = SubResource("capsule_mesh")
@@ -3598,15 +3653,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy8" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-18.00, 0.05, -118.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy8"]
 mesh = SubResource("capsule_mesh")
@@ -3615,15 +3672,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy9" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-14.00, 0.05, -118.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy9"]
 mesh = SubResource("capsule_mesh")
@@ -3632,15 +3691,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy10" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-10.00, 0.05, -118.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e87")
+model_scene = ExtResource("e89")
 model_scale = 1.0
+attack_damage = 9
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/TrainingDummy10"]
 mesh = SubResource("capsule_mesh")
@@ -3649,15 +3710,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SparringOrc1" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-13.00, 0.05, -110.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Sparring Orc"
 max_hp = 250
 height = 1.92
 radius = 0.50
 wander_radius = 4
 move_speed = 2.0
-model_scene = ExtResource("e88")
+model_scene = ExtResource("e90")
 model_scale = 0.6
+attack_damage = 14
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/SparringOrc1"]
 mesh = SubResource("capsule_mesh")
@@ -3666,15 +3729,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="NinjaSensei1" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-23.00, 0.05, -110.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Ninja Sensei"
 max_hp = 220
 height = 1.80
 radius = 0.50
 wander_radius = 4
 move_speed = 2.0
-model_scene = ExtResource("e89")
+model_scene = ExtResource("e91")
 model_scale = 0.6
+attack_damage = 13
+aggressive = false
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Training/NinjaSensei1"]
 mesh = SubResource("capsule_mesh")
@@ -3683,15 +3748,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Emberwing1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(118.00, 0.05, 10.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Emberwing"
 max_hp = 140
 height = 1.88
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e90")
+model_scene = ExtResource("e92")
 model_scale = 0.6
+attack_damage = 10
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Emberwing1"]
 mesh = SubResource("capsule_mesh")
@@ -3700,15 +3766,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Buzzbee1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(131.00, 0.05, 8.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Buzzbee"
 max_hp = 90
 height = 1.69
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e91")
+model_scene = ExtResource("e93")
 model_scale = 0.55
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Buzzbee1"]
 mesh = SubResource("capsule_mesh")
@@ -3717,15 +3784,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Pebbling1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(134.00, 0.05, 24.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Pebbling"
 max_hp = 120
 height = 1.82
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e92")
+model_scene = ExtResource("e94")
 model_scale = 0.6
+attack_damage = 9
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Pebbling1"]
 mesh = SubResource("capsule_mesh")
@@ -3734,15 +3802,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Wisp1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(116.00, 0.05, 28.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Wisp"
 max_hp = 80
 height = 1.86
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e93")
+model_scene = ExtResource("e95")
 model_scale = 0.55
+attack_damage = 7
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Wisp1"]
 mesh = SubResource("capsule_mesh")
@@ -3751,15 +3820,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Squidle1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(124.00, 0.05, 32.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Squidle"
 max_hp = 90
 height = 1.64
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e94")
+model_scene = ExtResource("e96")
 model_scale = 0.55
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Squidle1"]
 mesh = SubResource("capsule_mesh")
@@ -3768,15 +3838,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Hywirl1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(138.00, 0.05, 16.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Hywirl"
 max_hp = 100
 height = 1.52
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e95")
+model_scene = ExtResource("e97")
 model_scale = 0.55
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Hywirl1"]
 mesh = SubResource("capsule_mesh")
@@ -3785,15 +3856,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Yeti1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(112.00, 0.05, 16.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Yeti"
 max_hp = 180
 height = 1.83
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e96")
+model_scene = ExtResource("e98")
 model_scale = 0.65
+attack_damage = 11
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Yeti1"]
 mesh = SubResource("capsule_mesh")
@@ -3802,15 +3874,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Dino1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(128.00, 0.05, 2.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Dino"
 max_hp = 170
 height = 2.09
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e97")
+model_scene = ExtResource("e99")
 model_scale = 0.65
+attack_damage = 11
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Dino1"]
 mesh = SubResource("capsule_mesh")
@@ -3819,15 +3892,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Hopper1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(120.00, 0.05, 34.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Hopper"
 max_hp = 110
 height = 1.61
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e98")
+model_scene = ExtResource("e100")
 model_scale = 0.6
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Hopper1"]
 mesh = SubResource("capsule_mesh")
@@ -3836,15 +3910,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Cactoro1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(139.00, 0.05, 30.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Cactoro"
 max_hp = 130
 height = 2.37
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e99")
+model_scene = ExtResource("e101")
 model_scale = 0.6
+attack_damage = 9
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/Cactoro1"]
 mesh = SubResource("capsule_mesh")
@@ -3853,17 +3928,20 @@ mesh = SubResource("capsule_mesh")
 
 [node name="MUSHROOMKING1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(126.00, 0.05, 18.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "MUSHROOM KING"
 max_hp = 600
 height = 3.60
 radius = 1.00
 wander_radius = 3
 move_speed = 1.2
-model_scene = ExtResource("e100")
+model_scene = ExtResource("e102")
 model_scale = 1.0
 is_boss = true
 respawn_time = 8.0
+attack_damage = 22
+windup_time = 1.1
+attack_cooldown = 2.4
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/MUSHROOMKING1"]
 mesh = SubResource("capsule_mesh")
@@ -3872,15 +3950,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SpecimenX-11" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(14.00, 0.05, 120.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Specimen X-1"
 max_hp = 150
 height = 2.13
 radius = 0.50
 wander_radius = 3
 move_speed = 2.0
-model_scene = ExtResource("e101")
+model_scene = ExtResource("e103")
 model_scale = 0.6
+attack_damage = 10
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Lab/SpecimenX-11"]
 mesh = SubResource("capsule_mesh")
@@ -3889,15 +3968,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SpecimenX-21" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(22.00, 0.05, 121.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Specimen X-2"
 max_hp = 100
 height = 1.96
 radius = 0.50
 wander_radius = 3
 move_speed = 2.0
-model_scene = ExtResource("e80")
+model_scene = ExtResource("e82")
 model_scale = 0.6
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Lab/SpecimenX-21"]
 mesh = SubResource("capsule_mesh")
@@ -3906,15 +3986,16 @@ mesh = SubResource("capsule_mesh")
 
 [node name="LabEscapee1" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(18.00, 0.05, 110.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Lab Escapee"
 max_hp = 160
 height = 1.70
 radius = 0.50
 wander_radius = 6
 move_speed = 2.0
-model_scene = ExtResource("e102")
+model_scene = ExtResource("e104")
 model_scale = 0.6
+attack_damage = 10
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Lab/LabEscapee1"]
 mesh = SubResource("capsule_mesh")
@@ -3923,29 +4004,30 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Glub1" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(24.00, 0.05, 108.00)
-script = ExtResource("e72")
+script = ExtResource("e74")
 display_name = "Glub"
 max_hp = 90
 height = 2.05
 radius = 0.50
 wander_radius = 6
 move_speed = 2.0
-model_scene = ExtResource("e103")
+model_scene = ExtResource("e105")
 model_scale = 0.55
+attack_damage = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Lab/Glub1"]
 mesh = SubResource("capsule_mesh")
 
 [node name="Collision" type="CollisionShape3D" parent="World/Lab/Glub1"]
 
-[node name="Player" parent="." instance=ExtResource("e104")]
+[node name="Player" parent="." instance=ExtResource("e106")]
 position = Vector3(0, 1.1, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("e105")
+script = ExtResource("e107")
 player = NodePath("../Player")
 
 [node name="IntroCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player", "hud")]
-script = ExtResource("e106")
+script = ExtResource("e108")
 player = NodePath("../Player")
 hud = NodePath("../HUD")

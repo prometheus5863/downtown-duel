@@ -85,22 +85,27 @@ def sign(parent, text, x, z, y=7.0):
                  f'billboard = 1\ntext = "{text}"\nfont_size = 160\noutline_size = 36\nmodulate = Color(1, 0.95, 0.8, 1)\n')
 
 monsters = []
+ZONE_HOSTILE = {"Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True}
 def monster(parent, name, x, z, model=None, scale=1.0, hp=80, height=None, radius=0.5,
-            wander=6.0, speed=2.0, boss=False, color=(0.85, 0.2, 0.2)):
+            wander=6.0, speed=2.0, boss=False, color=(0.85, 0.2, 0.2), aggressive=None):
     if model and height is None:
         mn, mx = bounds(model); height = max(mx[1], 1.0) * scale
-    monsters.append((parent, name, x, z, model, scale, hp, height or 2.0, radius, wander, speed, boss, color))
+    if aggressive is None:
+        aggressive = ZONE_HOSTILE.get(parent.split("/")[-1], True)
+    monsters.append((parent, name, x, z, model, scale, hp, height or 2.0, radius, wander, speed, boss, color, aggressive))
 
 def emit_monsters():
     out = ""
-    for parent, nm, x, z, model, scale, hp, h, r, w, spd, boss, c in monsters:
+    for parent, nm, x, z, model, scale, hp, h, r, w, spd, boss, c, aggr in monsters:
         node = uname(nm.replace(" ", ""))
         out += f'[node name="{node}" type="CharacterBody3D" parent="{parent}"]\nposition = Vector3({x:.2f}, 0.05, {z:.2f})\n'
         out += f'script = ExtResource("{ext_id("scripts/enemy.gd", "Script")}")\ndisplay_name = "{nm}"\nmax_hp = {hp}\n'
         out += f'height = {h:.2f}\nradius = {r:.2f}\nwander_radius = {w}\nmove_speed = {spd}\n'
         if model: out += f'model_scene = ExtResource("{ext_id(model)}")\nmodel_scale = {scale}\n'
         else: out += f'color = Color({c[0]}, {c[1]}, {c[2]}, 1)\n'
-        if boss: out += "is_boss = true\nrespawn_time = 8.0\n"
+        if boss: out += "is_boss = true\nrespawn_time = 8.0\nattack_damage = 22\nwindup_time = 1.1\nattack_cooldown = 2.4\n"
+        else: out += f"attack_damage = {round(4 + hp / 25)}\n"
+        if not aggr: out += "aggressive = false\n"
         out += f'\n[node name="Mesh" type="MeshInstance3D" parent="{parent}/{node}"]\nmesh = SubResource("capsule_mesh")\n'
         out += f'\n[node name="Collision" type="CollisionShape3D" parent="{parent}/{node}"]\n\n'
     return out
@@ -206,6 +211,15 @@ for i, (dx, dz) in enumerate([(-6, -6), (-6, 0), (-6, 6)]):
 for dx, dz, m in [(4,-9,"Barrel"),(5,-9.6,"Barrel"),(4.5,9,"Crate_Wooden"),(6,9.5,"Crate_Wooden"),(2,-11,"Bench"),(2,11,"Bench")]:
     place(V, FP + m + ".gltf", VX + dx, VZ + dz, random.random()*0.4)
 place(V, MED + "Prop_Wagon.gltf", VX + 7, VZ + 3, 0.3, collide="box")
+# shopkeeper behind the middle stall
+npc_cap = sub("npc_cap", '[sub_resource type="CapsuleShape3D" id="ID"]\nradius = 0.4\nheight = 1.8\n')
+npc_script = ext_id("scripts/npc.gd", "Script")
+npc_model = ext_id(UAL)
+nodes.append('[node name="Merchant" type="Node3D" parent="%s"]\nposition = Vector3(%.2f, 0.03, %.2f)\n'
+             'rotation = Vector3(0, %.5f, 0)\nscript = ExtResource("%s")\ndisplay_name = "Merchant"\nmodel_scene = ExtResource("%s")\n'
+             % (V, VX - 7.6, VZ, math.pi / 2, npc_script, npc_model))
+nodes.append('[node name="Col" type="StaticBody3D" parent="%s/Merchant"]\n\n[node name="S" type="CollisionShape3D" parent="%s/Merchant/Col"]\n'
+             'position = Vector3(0, 0.9, 0)\nshape = SubResource("%s")\n' % (V, V, npc_cap))
 for i in range(6):
     place(V, MED + "Prop_WoodenFence_Single.gltf", VX - 14 + 2.06*i, VZ + 12.5)
 BG = MON + "Big/glTF/"

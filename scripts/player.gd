@@ -1,8 +1,8 @@
 extends CharacterBody3D
-## Arena player: movement, lock-on, two attacks, hit feedback.
-##   WASD move · Tab lock-on · J strike (melee) · K ember (projectile) · RMB-drag orbit
+## Player: movement, camera, lock-on, two attacks, dodge roll (i-frames), HP, death/respawn.
 
 const ProjectileScript := preload("res://scripts/projectile.gd")
+const Items := preload("res://scripts/items.gd")
 const GRAVITY := 20.0
 
 @export var speed := 6.0
@@ -19,6 +19,24 @@ var target: Node3D                      ## current lock-on target (nearest enemy
 @export_group("Ember (K)")
 @export var ember_damage := 15
 @export var ember_cooldown := 1.0
+@export_group("Dodge (Space)")
+@export var roll_time := 0.5
+@export var roll_speed := 11.0
+@export var dodge_cooldown := 0.7
+@export var iframe_start := 0.04            ## i-frames from this many s into the roll...
+@export var iframe_end := 0.42              ## ...until this many s
+@export_group("Health")
+@export var max_hp := 100
+@export var regen_delay := 5.0              ## s without damage before regen
+@export var regen_rate := 6.0               ## hp/s
+
+signal hp_changed(hp: int, max_hp: int)
+signal progress_changed                  ## level / xp / coins / gear / route counters changed
+signal leveled_up(level: int)
+signal interact_requested(node: Node)
+signal hurt(amount: int)
+signal dodged
+signal died
 
 @onready var cam_pivot: Node3D = $CamPivot
 @onready var spring_arm: SpringArm3D = $CamPivot/SpringArm3D
@@ -29,7 +47,26 @@ var target: Node3D                      ## current lock-on target (nearest enemy
 var locked := false
 var can_control := true                 ## turned off during the intro flyover
 var touch_mode := false                 ## set by touch_controls.gd on phones/tablets
-var cooldowns := {"strike": 0.0, "ember": 0.0}
+var cooldowns := {"strike": 0.0, "ember": 0.0, "dodge": 0.0}
+var hp := 100.0
+var alive := true
+var spawn_point := Vector3.ZERO
+
+# --- progression -------------------------------------------------------
+var level := 1
+var xp := 0
+var coins := 0
+var gear := Items.STARTER.duplicate()
+var owned: Array = ["wood_knuckles", "cloth_tunic"]
+var route := {"defeated": 0, "spared": 0, "friends": 0}
+var followers: Array = []
+const MAX_FOLLOWERS := 3
+var talking := false                    ## dialogue / shop open
+var _queued_attack := ""                # LMB/RMB while mouse-captured
+var _roll_t := -1.0                     # time since roll start (-1 = not rolling)
+var _roll_dir := Vector3.ZERO
+var _knock_v := Vector3.ZERO
+var _since_hurt := 99.0
 var _shake := 0.0
 var _anim: AnimationPlayer
 var _act_t := 0.0                       # attack animation lock
@@ -45,6 +82,8 @@ func _ready() -> void:
 	spring_arm.add_excluded_object(get_rid())
 	swipe.visible = false
 	add_to_group("player")
+	hp = max_hp
+	spawn_point = global_position
 	if model_scene:
 		$Body.visible = false
 		$Nose.visible = false
@@ -60,8 +99,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	# Desktop: click to capture the mouse (mouse-look), Esc to release.
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT and not touch_mode \
-				and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		var captured := Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+		if captured and event.button_index == MOUSE_BUTTON_LEFT:
+			_queued_attack = "strike"
+		elif captured and event.button_index == MOUSE_BUTTON_RIGHT:
+			_queued_attack = "ember"
+		elif event.button_index == MOUSE_BUTTON_LEFT and not touch_mode and not talking:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom_camera(-0.8)
@@ -93,40 +136,66 @@ func _physics_process(delta: float) -> void:
 		locked = false
 
 	var input := Vector2.ZERO
-	if can_control:
+	var rolling := _roll_t >= 0.0
+	if can_control and alive and not rolling:
+		if Input.is_action_just_pressed("dodge") and cooldowns.dodge == 0.0:
+			_start_roll()
+			rolling = true
+	if can_control and alive and not rolling:
 		if Input.is_action_just_pressed("lock_on"):
 			if locked:
 				locked = false
 			else:
 				target = _nearest_enemy()
 				locked = target != null
-		if Input.is_action_just_pressed("attack_strike") and cooldowns.strike == 0.0:
+		if (Input.is_action_just_pressed("attack_strike") or _queued_attack == "strike") and cooldowns.strike == 0.0:
 			_strike()
-		if Input.is_action_just_pressed("attack_ember") and cooldowns.ember == 0.0:
+		if (Input.is_action_just_pressed("attack_ember") or _queued_attack == "ember") and cooldowns.ember == 0.0:
 			_ember()
+		if Input.is_action_just_pressed("interact"):
+			var n := nearest_interactable()
+			if n:
+				interact_requested.emit(n)
 		input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var turn := Input.get_axis("cam_left", "cam_right")
 		if turn != 0.0:
 			rotate_camera(Vector2(turn * key_turn_speed * delta, 0.0))
 
+	_queued_attack = ""
 	# --- Movement, relative to camera yaw ---
 	var b := cam_pivot.global_transform.basis
 	var dir := b.x * input.x + b.z * input.y
 	dir.y = 0.0
 	dir = dir.normalized()
 
-	velocity.x = dir.x * speed
-	velocity.z = dir.z * speed
+	var spd := speed * (1.0 + Items.stat(gear, "speed"))
+	velocity.x = dir.x * spd + _knock_v.x
+	velocity.z = dir.z * spd + _knock_v.z
+	_knock_v = _knock_v.move_toward(Vector3.ZERO, 30.0 * delta)
+	if rolling:
+		_roll_t += delta
+		velocity.x = _roll_dir.x * roll_speed
+		velocity.z = _roll_dir.z * roll_speed
+		if _roll_t >= roll_time:
+			_roll_t = -1.0
+	_since_hurt += delta
+	if alive and _since_hurt > regen_delay and hp < max_hp:
+		hp = minf(hp + regen_rate * delta, max_hp)
+		hp_changed.emit(int(hp), max_hp)
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 	move_and_slide()
 
 	_act_t = maxf(_act_t - delta, 0.0)
-	if _act_t == 0.0:
+	if _act_t == 0.0 and alive and _roll_t < 0.0:
 		_play("Jog_Fwd" if Vector2(velocity.x, velocity.z).length() > 0.1 else "Idle")
 
-	# --- Facing: locked -> face target, free -> face movement ---
-	if locked:
+	# --- Facing: rolling -> roll dir, locked -> target, free -> movement ---
+	if _roll_t >= 0.0:
+		_face(_roll_dir)
+	elif not alive:
+		pass
+	elif locked:
 		_face(target.global_position - global_position)
 	elif dir.length() > 0.0:
 		_face(dir)
@@ -155,8 +224,8 @@ func _strike() -> void:
 	_act_t = _play("Punch_Jab" if _jab else "Punch_Cross", false, 1.6) * 0.6
 	_flash_swipe()
 	for body in melee_hitbox.get_overlapping_bodies():
-		if body != self and body.has_method("take_damage"):
-			body.take_damage(strike_damage, -global_transform.basis.z)
+		if body != self and body.has_method("take_damage") and not body.get("friend"):
+			body.take_damage(strike_power(), -global_transform.basis.z)
 			_on_hit(0.25, 0.07)
 
 
@@ -170,7 +239,7 @@ func _ember() -> void:
 	var p: Area3D = ProjectileScript.new()
 	p.shooter = self
 	p.direction = dir
-	p.damage = ember_damage
+	p.damage = ember_power()
 	get_parent().add_child(p)
 	p.global_position = global_position + dir * 0.9
 	p.hit.connect(_on_hit.bind(0.15, 0.04))
@@ -192,11 +261,183 @@ func _flash_swipe() -> void:
 
 # ---------------------------------------------------------------- helpers
 
+# ---------------------------------------------------------------- dodge / damage
+
+func _start_roll() -> void:
+	cooldowns.dodge = maxf(dodge_cooldown - Items.stat(gear, "dodge_cd"), 0.1) + roll_time
+	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var b := cam_pivot.global_transform.basis
+	_roll_dir = (b.x * input.x + b.z * input.y) * Vector3(1, 0, 1)
+	if _roll_dir.length() < 0.1:
+		_roll_dir = -global_transform.basis.z * Vector3(1, 0, 1)   # no input: roll forward
+	_roll_dir = _roll_dir.normalized()
+	_roll_t = 0.0
+	_act_t = 0.0
+	if _anim and _anim.has_animation("Roll"):
+		_play("Roll", false, _anim.get_animation("Roll").length / roll_time)
+
+
+# ---------------------------------------------------------------- progression
+
+func strike_power() -> int:
+	return strike_damage + (level - 1) * 2 + int(Items.stat(gear, "atk"))
+
+
+func ember_power() -> int:
+	return ember_damage + (level - 1) * 2 + int(Items.stat(gear, "ember"))
+
+
+func defense() -> int:
+	return int(Items.stat(gear, "def"))
+
+
+func xp_to_next() -> int:
+	return 30 + level * 25
+
+
+## Called by monsters when defeated / spared.
+func reward(xp_gain: int, coin_gain: int, kind: String) -> void:
+	if route.has(kind):
+		route[kind] += 1
+	coins += coin_gain
+	xp += xp_gain
+	var txt := "+%d XP" % xp_gain + ("   +%d coins" % coin_gain if coin_gain > 0 else "")
+	_popup(txt, Color(0.6, 1.0, 0.5) if kind == "spared" else Color(1.0, 0.85, 0.3))
+	while xp >= xp_to_next():
+		xp -= xp_to_next()
+		level += 1
+		max_hp += 12
+		hp = max_hp
+		hp_changed.emit(int(hp), max_hp)
+		leveled_up.emit(level)
+	progress_changed.emit()
+
+
+func route_name() -> String:
+	if route.defeated == 0 and route.spared + route.friends > 0:
+		return "Pacifist"
+	if route.defeated >= 8 and route.spared + route.friends == 0:
+		return "Hunter"
+	return "Balanced"
+
+
+func buy(id: String) -> String:
+	var it := Items.get_item(id)
+	if it.is_empty():
+		return "Unknown item."
+	if id in owned:
+		equip(id)
+		return "Equipped %s." % it.name
+	if coins < it.price:
+		return "Not enough coins (%d / %d)." % [coins, it.price]
+	coins -= it.price
+	owned.append(id)
+	equip(id)
+	return "Bought and equipped %s!" % it.name
+
+
+func equip(id: String) -> void:
+	var it := Items.get_item(id)
+	if it.is_empty() or not (id in owned):
+		return
+	gear[it.slot] = id
+	progress_changed.emit()
+
+
+func spend(amount: int) -> bool:
+	if coins < amount:
+		return false
+	coins -= amount
+	progress_changed.emit()
+	return true
+
+
+func add_follower(e: Node) -> bool:
+	if followers.size() >= MAX_FOLLOWERS:
+		return false
+	followers.append(e)
+	route.friends += 1
+	progress_changed.emit()
+	return true
+
+
+func nearest_interactable(max_dist := 3.2) -> Node:
+	var best: Node = null
+	var best_d := max_dist
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if n.has_method("can_interact") and not n.can_interact():
+			continue
+		var d := global_position.distance_to(n.global_position)
+		if d < best_d:
+			best_d = d
+			best = n
+	return best
+
+
+func is_invulnerable() -> bool:
+	return _roll_t >= iframe_start and _roll_t <= iframe_end
+
+
+## Returns true if the hit landed, false if dodged / ignored.
+func take_damage(amount: int, from_dir: Vector3) -> bool:
+	if not alive or not can_control:
+		return false
+	if is_invulnerable():
+		dodged.emit()
+		_popup("DODGE!", Color(0.4, 0.9, 1.0))
+		return false
+	amount = maxi(amount - int(Items.stat(gear, "def")), 1)
+	hp = maxf(hp - amount, 0.0)
+	_since_hurt = 0.0
+	hp_changed.emit(int(hp), max_hp)
+	hurt.emit(amount)
+	_shake = maxf(_shake, 0.3)
+	_knock_v = from_dir.normalized() * 7.0 * Vector3(1, 0, 1)
+	if hp <= 0.0:
+		_die()
+	else:
+		_act_t = _play("Hit_Chest", false, 1.4) * 0.6
+	return true
+
+
+func _die() -> void:
+	alive = false
+	locked = false
+	_roll_t = -1.0
+	died.emit()
+	_play("Death01", false)
+	await get_tree().create_timer(2.8).timeout
+	global_position = spawn_point
+	velocity = Vector3.ZERO
+	_knock_v = Vector3.ZERO
+	hp = max_hp
+	alive = true
+	_since_hurt = 99.0
+	hp_changed.emit(int(hp), max_hp)
+	_play("Idle")
+
+
+func _popup(text: String, col: Color) -> void:
+	var l := Label3D.new()
+	l.text = text
+	l.font_size = 64
+	l.outline_size = 12
+	l.modulate = col
+	l.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	l.no_depth_test = true
+	get_parent().add_child(l)
+	l.global_position = global_position + Vector3(0, 1.6, 0)
+	var t := l.create_tween().set_parallel()
+	t.tween_property(l, "position:y", l.position.y + 0.8, 0.5)
+	t.tween_property(l, "modulate:a", 0.0, 0.5).set_delay(0.15)
+	t.chain().tween_callback(l.queue_free)
+
+
 func _nearest_enemy() -> Node3D:
 	var best: Node3D = null
 	var best_d := lock_range
 	for e in get_tree().get_nodes_in_group("enemy"):
-		if e.get("alive") == false:
+		if e.get("alive") == false or e.get("friend"):
 			continue
 		var d := global_position.distance_to(e.global_position)
 		if d < best_d:
