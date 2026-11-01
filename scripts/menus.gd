@@ -65,7 +65,7 @@ func open_for(node: Node) -> void:
 	elif node.has_method("open_shop"):
 		_mode = "shop"
 		_set_open(true)
-		_show_shop("Welcome to Oakvale! Gear for every kind of trainer.")
+		_show_shop(node.get("greeting") if node.get("greeting") else "Welcome!")
 
 
 func close() -> void:
@@ -126,11 +126,13 @@ func _choose(option: String) -> void:
 # ------------------------------------------------------------------ shop
 
 func _show_shop(status: String) -> void:
-	_title.text = "Oakvale Merchant"
+	_title.text = _talker.display_name if is_instance_valid(_talker) else "Shop"
 	_text.text = "%s\nCoins: %d    ·    Strike %d    Ember %d    Defense %d" % [
 		status, player.coins, player.strike_power(), player.ember_power(), player.defense()]
 	_clear()
-	for id in Items.shop_list():
+	var stock: Array = _talker.get("stock") if is_instance_valid(_talker) and _talker.get("stock") != null else []
+	var cap: int = _talker.get("max_price") if is_instance_valid(_talker) and _talker.get("max_price") != null else 0
+	for id in Items.shop_list(stock, cap):
 		var it: Dictionary = Items.get_item(id)
 		var tag := ""
 		if player.gear.get(it.slot, "") == id:
