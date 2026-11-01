@@ -20,7 +20,7 @@ for rel in list(used):
 for root, _, files in os.walk(os.path.join(P, "assets")):
     for f in files:
         if f.lower().startswith("license") and f.endswith(".txt") and ".gdignore" not in files:
-            used.add(os.path.relpath(os.path.join(root, f), P))
+            used.add(os.path.relpath(os.path.join(root, f), P).replace(os.sep, "/"))
 missing = [u for u in used if not os.path.exists(os.path.join(P, u))]
 for u in sorted(used): print(u)
 print(f"# {len(used)} files, {sum(os.path.getsize(os.path.join(P,u)) for u in used if u not in missing)//2**20} MB, missing={missing}", file=sys.stderr)

@@ -23,6 +23,56 @@ assets/**
 !assets/animations/Universal Animation Library\[Standard\]/License.txt
 !assets/animations/Universal Animation Library\[Standard\]/Unreal-Godot/UAL1_Standard.glb
 !assets/animations/Universal Animation Library\[Standard\]/Unreal-Godot/UAL1_Standard.glb.import
+!assets/characters/Hair_Beard.bin
+!assets/characters/Hair_Beard.gltf
+!assets/characters/Hair_Beard.gltf.import
+!assets/characters/Hair_Buns.bin
+!assets/characters/Hair_Buns.gltf
+!assets/characters/Hair_Buns.gltf.import
+!assets/characters/Hair_Buzzed.bin
+!assets/characters/Hair_Buzzed.gltf
+!assets/characters/Hair_Buzzed.gltf.import
+!assets/characters/Hair_Long.bin
+!assets/characters/Hair_Long.gltf
+!assets/characters/Hair_Long.gltf.import
+!assets/characters/Hair_SimpleParted.bin
+!assets/characters/Hair_SimpleParted.gltf
+!assets/characters/Hair_SimpleParted.gltf.import
+!assets/characters/License_Standard.txt
+!assets/characters/Superhero_Female_FullBody.bin
+!assets/characters/Superhero_Female_Head.bin
+!assets/characters/Superhero_Female_Head.gltf
+!assets/characters/Superhero_Female_Head.gltf.import
+!assets/characters/Superhero_Male_FullBody.bin
+!assets/characters/Superhero_Male_Head.bin
+!assets/characters/Superhero_Male_Head.gltf
+!assets/characters/Superhero_Male_Head.gltf.import
+!assets/characters/T_Eye_Brown.png
+!assets/characters/T_Eye_Brown.png.import
+!assets/characters/T_Eye_Normal_png.png
+!assets/characters/T_Eye_Normal_png.png.import
+!assets/characters/T_Hair_1_BaseColor.png
+!assets/characters/T_Hair_1_BaseColor.png.import
+!assets/characters/T_Hair_1_Normal.png
+!assets/characters/T_Hair_1_Normal.png.import
+!assets/characters/T_Hair_1_Normal_png.png
+!assets/characters/T_Hair_1_Normal_png.png.import
+!assets/characters/T_Hair_2_BaseColor.png
+!assets/characters/T_Hair_2_BaseColor.png.import
+!assets/characters/T_Hair_2_Normal.png
+!assets/characters/T_Hair_2_Normal.png.import
+!assets/characters/T_Superhero_Female_Dark_BaseColor.png
+!assets/characters/T_Superhero_Female_Dark_BaseColor.png.import
+!assets/characters/T_Superhero_Female_Normal.png
+!assets/characters/T_Superhero_Female_Normal.png.import
+!assets/characters/T_Superhero_Female_Roughness.png
+!assets/characters/T_Superhero_Female_Roughness.png.import
+!assets/characters/T_Superhero_Male_Dark.png
+!assets/characters/T_Superhero_Male_Dark.png.import
+!assets/characters/T_Superhero_Male_Normal.png
+!assets/characters/T_Superhero_Male_Normal.png.import
+!assets/characters/T_Superhero_Male_Roughness.png
+!assets/characters/T_Superhero_Male_Roughness.png.import
 !assets/city/Exports/glTF (Godot)/Building_Large_2.bin
 !assets/city/Exports/glTF (Godot)/Building_Large_2.gltf
 !assets/city/Exports/glTF (Godot)/Building_Large_2.gltf.import
@@ -32,6 +82,9 @@ assets/**
 !assets/city/Exports/glTF (Godot)/Building_Small_1.bin
 !assets/city/Exports/glTF (Godot)/Building_Small_1.gltf
 !assets/city/Exports/glTF (Godot)/Building_Small_1.gltf.import
+!assets/city/Exports/glTF (Godot)/Decal_Crosswalk.bin
+!assets/city/Exports/glTF (Godot)/Decal_Crosswalk.gltf
+!assets/city/Exports/glTF (Godot)/Decal_Crosswalk.gltf.import
 !assets/city/Exports/glTF (Godot)/Prop_Bollard.bin
 !assets/city/Exports/glTF (Godot)/Prop_Bollard.gltf
 !assets/city/Exports/glTF (Godot)/Prop_Bollard.gltf.import
@@ -41,6 +94,9 @@ assets/**
 !assets/city/Exports/glTF (Godot)/Prop_Planter_Single.bin
 !assets/city/Exports/glTF (Godot)/Prop_Planter_Single.gltf
 !assets/city/Exports/glTF (Godot)/Prop_Planter_Single.gltf.import
+!assets/city/Exports/glTF (Godot)/Sidewalk_Planter.bin
+!assets/city/Exports/glTF (Godot)/Sidewalk_Planter.gltf
+!assets/city/Exports/glTF (Godot)/Sidewalk_Planter.gltf.import
 !assets/city/Exports/glTF (Godot)/T_Concrete_Asphalt_BaseColor.png
 !assets/city/Exports/glTF (Godot)/T_Concrete_Asphalt_BaseColor.png.import
 !assets/city/Exports/glTF (Godot)/T_Concrete_BaseColor.png
@@ -79,6 +135,8 @@ assets/**
 !assets/city/Exports/glTF (Godot)/T_RedBrick_Normal.png.import
 !assets/city/Exports/glTF (Godot)/T_RedBrick_ORM.png
 !assets/city/Exports/glTF (Godot)/T_RedBrick_ORM.png.import
+!assets/city/Exports/glTF (Godot)/T_Street_Decals.png
+!assets/city/Exports/glTF (Godot)/T_Street_Decals.png.import
 !assets/city/Exports/glTF (Godot)/T_Trim_BaseColor.png
 !assets/city/Exports/glTF (Godot)/T_Trim_BaseColor.png.import
 !assets/city/Exports/glTF (Godot)/T_Trim_Normal.png
@@ -95,6 +153,9 @@ assets/**
 !assets/fantasy-props/Exports/glTF/Anvil.bin
 !assets/fantasy-props/Exports/glTF/Anvil.gltf
 !assets/fantasy-props/Exports/glTF/Anvil.gltf.import
+!assets/fantasy-props/Exports/glTF/Banner_2.bin
+!assets/fantasy-props/Exports/glTF/Banner_2.gltf
+!assets/fantasy-props/Exports/glTF/Banner_2.gltf.import
 !assets/fantasy-props/Exports/glTF/Barrel.bin
 !assets/fantasy-props/Exports/glTF/Barrel.gltf
 !assets/fantasy-props/Exports/glTF/Barrel.gltf.import
@@ -104,6 +165,9 @@ assets/**
 !assets/fantasy-props/Exports/glTF/Bench.bin
 !assets/fantasy-props/Exports/glTF/Bench.gltf
 !assets/fantasy-props/Exports/glTF/Bench.gltf.import
+!assets/fantasy-props/Exports/glTF/Chest_Wood.bin
+!assets/fantasy-props/Exports/glTF/Chest_Wood.gltf
+!assets/fantasy-props/Exports/glTF/Chest_Wood.gltf.import
 !assets/fantasy-props/Exports/glTF/Crate_Wooden.bin
 !assets/fantasy-props/Exports/glTF/Crate_Wooden.gltf
 !assets/fantasy-props/Exports/glTF/Crate_Wooden.gltf.import
@@ -116,6 +180,9 @@ assets/**
 !assets/fantasy-props/Exports/glTF/FarmCrate_Carrot.bin
 !assets/fantasy-props/Exports/glTF/FarmCrate_Carrot.gltf
 !assets/fantasy-props/Exports/glTF/FarmCrate_Carrot.gltf.import
+!assets/fantasy-props/Exports/glTF/Stall_Cart_Empty.bin
+!assets/fantasy-props/Exports/glTF/Stall_Cart_Empty.gltf
+!assets/fantasy-props/Exports/glTF/Stall_Cart_Empty.gltf.import
 !assets/fantasy-props/Exports/glTF/Stall_Empty.bin
 !assets/fantasy-props/Exports/glTF/Stall_Empty.gltf
 !assets/fantasy-props/Exports/glTF/Stall_Empty.gltf.import
@@ -143,6 +210,9 @@ assets/**
 !assets/fantasy-props/Exports/glTF/T_Trim_Props_Normal.png.import
 !assets/fantasy-props/Exports/glTF/T_Trim_Props_ORM.png
 !assets/fantasy-props/Exports/glTF/T_Trim_Props_ORM.png.import
+!assets/fantasy-props/Exports/glTF/Vase_Rubble_Medium.bin
+!assets/fantasy-props/Exports/glTF/Vase_Rubble_Medium.gltf
+!assets/fantasy-props/Exports/glTF/Vase_Rubble_Medium.gltf.import
 !assets/fantasy-props/Exports/glTF/WeaponStand.bin
 !assets/fantasy-props/Exports/glTF/WeaponStand.gltf
 !assets/fantasy-props/Exports/glTF/WeaponStand.gltf.import
@@ -154,9 +224,36 @@ assets/**
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Corner_Exterior_Wood.bin
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Corner_Exterior_Wood.gltf
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Corner_Exterior_Wood.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick1.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick1.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick1.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick2.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick2.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick2.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick3.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick3.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick3.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick4.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick4.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Brick4.gltf.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Chimney.bin
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Chimney.gltf
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Chimney.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_MetalFence_Ornament.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_MetalFence_Ornament.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_MetalFence_Ornament.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine1.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine1.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine1.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine2.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine2.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine2.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine4.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine4.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine4.gltf.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine5.bin
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine5.gltf
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Vine5.gltf.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Wagon.bin
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Wagon.gltf
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/Prop_Wagon.gltf.import
@@ -178,6 +275,10 @@ assets/**
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_Brick_Normal.png.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_Brick_Roughness.png
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_Brick_Roughness.png.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_MetalOrnaments_BaseColor.png
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_MetalOrnaments_BaseColor.png.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_MetalOrnaments_Roughness.png
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_MetalOrnaments_Roughness.png.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_Plaster_BaseColor.png
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_Plaster_BaseColor.png.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_Plaster_Normal.png
@@ -202,6 +303,8 @@ assets/**
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_UnevenBrick_Normal.png.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_UnevenBrick_Roughness.png
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_UnevenBrick_Roughness.png.import
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_VineLeaf_png.png
+!assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_VineLeaf_png.png.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_WoodTrim_BaseColor.png
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_WoodTrim_BaseColor.png.import
 !assets/medieval-village/Medieval Village MegaKit\[Standard\]/glTF/T_WoodTrim_Normal.png
@@ -236,24 +339,68 @@ assets/**
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Aliens/Alien_Scolitex.bin
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Aliens/Alien_Scolitex.gltf
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Aliens/Alien_Scolitex.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/Column_Astra.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/Column_Astra.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/Column_Astra.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/Column_Pipes.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/Column_Pipes.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/Column_Pipes.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_PaddedWall_BaseColor.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_PaddedWall_BaseColor.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_PaddedWall_Normal.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_PaddedWall_Normal.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_PaddedWall_ORM.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_PaddedWall_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_01_BaseColor_Red.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_01_BaseColor_Red.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_01_Normal.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_01_Normal.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_01_ORM.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_01_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_02_BaseColor_Red.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_02_BaseColor_Red.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_02_Normal.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_02_Normal.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_02_ORM.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_02_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_03_BaseColor.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_03_BaseColor.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_03_Normal.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_03_Normal.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_03_ORM.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Columns/T_Trim_03_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_3Plates.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_3Plates.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_3Plates.gltf.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_DarkPlates.bin
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_DarkPlates.gltf
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_DarkPlates.gltf.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Metal.bin
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Metal.gltf
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Metal.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Round1.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Round1.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Round1.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Squares.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Squares.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/Platform_Squares.gltf.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_01_BaseColor_Red.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_01_BaseColor_Red.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_01_Normal.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_01_Normal.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_01_ORM.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_01_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_BaseColor.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_BaseColor.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_BaseColor_Red.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_BaseColor_Red.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_Normal.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_Normal.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_ORM.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Platforms/T_Trim_02_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_AccessPoint.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_AccessPoint.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_AccessPoint.gltf.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Barrel_Large.bin
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Barrel_Large.gltf
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Barrel_Large.gltf.import
@@ -269,17 +416,33 @@ assets/**
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Crate4.bin
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Crate4.gltf
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Crate4.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Fan_Small.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Fan_Small.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Fan_Small.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_ItemHolder.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_ItemHolder.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_ItemHolder.gltf.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Light_Floor.bin
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Light_Floor.gltf
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Light_Floor.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Light_Small.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Light_Small.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Light_Small.gltf.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Vent_Big.bin
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Vent_Big.gltf
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/Prop_Vent_Big.gltf.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Decals.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Decals.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_BaseColor.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_BaseColor.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_BaseColor_Red.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_BaseColor_Red.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_Normal.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_Normal.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_ORM.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_01_ORM.png.import
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_02_BaseColor.png
+!assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_02_BaseColor.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_02_BaseColor_Red.png
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_02_BaseColor_Red.png.import
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Props/T_Trim_02_Normal.png
@@ -322,32 +485,48 @@ assets/**
 !assets/modular-sci-fi/Modular SciFi MegaKit\[Standard\]/glTF/Walls/WallBand_Straight.gltf.import
 !assets/monsters/Big/glTF/Alien.gltf
 !assets/monsters/Big/glTF/Alien.gltf.import
+!assets/monsters/Big/glTF/Birb.gltf
+!assets/monsters/Big/glTF/Birb.gltf.import
 !assets/monsters/Big/glTF/BlueDemon.gltf
 !assets/monsters/Big/glTF/BlueDemon.gltf.import
 !assets/monsters/Big/glTF/Bunny.gltf
 !assets/monsters/Big/glTF/Bunny.gltf.import
 !assets/monsters/Big/glTF/Cactoro.gltf
 !assets/monsters/Big/glTF/Cactoro.gltf.import
+!assets/monsters/Big/glTF/Demon.gltf
+!assets/monsters/Big/glTF/Demon.gltf.import
 !assets/monsters/Big/glTF/Dino.gltf
 !assets/monsters/Big/glTF/Dino.gltf.import
+!assets/monsters/Big/glTF/Fish.gltf
+!assets/monsters/Big/glTF/Fish.gltf.import
 !assets/monsters/Big/glTF/Frog.gltf
 !assets/monsters/Big/glTF/Frog.gltf.import
+!assets/monsters/Big/glTF/Monkroose.gltf
+!assets/monsters/Big/glTF/Monkroose.gltf.import
 !assets/monsters/Big/glTF/MushroomKing.gltf
 !assets/monsters/Big/glTF/MushroomKing.gltf.import
 !assets/monsters/Big/glTF/Ninja.gltf
 !assets/monsters/Big/glTF/Ninja.gltf.import
 !assets/monsters/Big/glTF/Orc.gltf
 !assets/monsters/Big/glTF/Orc.gltf.import
+!assets/monsters/Big/glTF/Orc_Skull.gltf
+!assets/monsters/Big/glTF/Orc_Skull.gltf.import
+!assets/monsters/Big/glTF/Tribal.gltf
+!assets/monsters/Big/glTF/Tribal.gltf.import
 !assets/monsters/Big/glTF/Yeti.gltf
 !assets/monsters/Big/glTF/Yeti.gltf.import
 !assets/monsters/Blob/glTF/Alien.gltf
 !assets/monsters/Blob/glTF/Alien.gltf.import
+!assets/monsters/Blob/glTF/Birb.gltf
+!assets/monsters/Blob/glTF/Birb.gltf.import
 !assets/monsters/Blob/glTF/Cat.gltf
 !assets/monsters/Blob/glTF/Cat.gltf.import
 !assets/monsters/Blob/glTF/Chicken.gltf
 !assets/monsters/Blob/glTF/Chicken.gltf.import
 !assets/monsters/Blob/glTF/Dog.gltf
 !assets/monsters/Blob/glTF/Dog.gltf.import
+!assets/monsters/Blob/glTF/Fish.gltf
+!assets/monsters/Blob/glTF/Fish.gltf.import
 !assets/monsters/Blob/glTF/GreenBlob.gltf
 !assets/monsters/Blob/glTF/GreenBlob.gltf.import
 !assets/monsters/Blob/glTF/GreenSpikyBlob.gltf
@@ -366,22 +545,104 @@ assets/**
 !assets/monsters/Blob/glTF/PinkBlob.gltf.import
 !assets/monsters/Blob/glTF/Wizard.gltf
 !assets/monsters/Blob/glTF/Wizard.gltf.import
+!assets/monsters/Blob/glTF/Yeti.gltf
+!assets/monsters/Blob/glTF/Yeti.gltf.import
+!assets/monsters/Flying/glTF/Alpaking.gltf
+!assets/monsters/Flying/glTF/Alpaking.gltf.import
+!assets/monsters/Flying/glTF/Alpaking_Evolved.gltf
+!assets/monsters/Flying/glTF/Alpaking_Evolved.gltf.import
 !assets/monsters/Flying/glTF/Armabee.gltf
 !assets/monsters/Flying/glTF/Armabee.gltf.import
+!assets/monsters/Flying/glTF/Armabee_Evolved.gltf
+!assets/monsters/Flying/glTF/Armabee_Evolved.gltf.import
+!assets/monsters/Flying/glTF/Demon.gltf
+!assets/monsters/Flying/glTF/Demon.gltf.import
 !assets/monsters/Flying/glTF/Dragon.gltf
 !assets/monsters/Flying/glTF/Dragon.gltf.import
+!assets/monsters/Flying/glTF/Dragon_Evolved.gltf
+!assets/monsters/Flying/glTF/Dragon_Evolved.gltf.import
 !assets/monsters/Flying/glTF/Ghost.gltf
 !assets/monsters/Flying/glTF/Ghost.gltf.import
+!assets/monsters/Flying/glTF/Ghost_Skull.gltf
+!assets/monsters/Flying/glTF/Ghost_Skull.gltf.import
 !assets/monsters/Flying/glTF/Glub.gltf
 !assets/monsters/Flying/glTF/Glub.gltf.import
+!assets/monsters/Flying/glTF/Glub_Evolved.gltf
+!assets/monsters/Flying/glTF/Glub_Evolved.gltf.import
 !assets/monsters/Flying/glTF/Goleling.gltf
 !assets/monsters/Flying/glTF/Goleling.gltf.import
+!assets/monsters/Flying/glTF/Goleling_Evolved.gltf
+!assets/monsters/Flying/glTF/Goleling_Evolved.gltf.import
 !assets/monsters/Flying/glTF/Hywirl.gltf
 !assets/monsters/Flying/glTF/Hywirl.gltf.import
 !assets/monsters/Flying/glTF/Squidle.gltf
 !assets/monsters/Flying/glTF/Squidle.gltf.import
+!assets/monsters/Flying/glTF/Tribal.gltf
+!assets/monsters/Flying/glTF/Tribal.gltf.import
 !assets/monsters/License_Standard.txt
+!assets/outfits/Female_Peasant.bin
+!assets/outfits/Female_Peasant.gltf
+!assets/outfits/Female_Peasant.gltf.import
+!assets/outfits/Female_Ranger.bin
+!assets/outfits/Female_Ranger.gltf
+!assets/outfits/Female_Ranger.gltf.import
+!assets/outfits/License_Standard.txt
+!assets/outfits/Male_Peasant.bin
+!assets/outfits/Male_Peasant.gltf
+!assets/outfits/Male_Peasant.gltf.import
+!assets/outfits/Male_Ranger.bin
+!assets/outfits/Male_Ranger.gltf
+!assets/outfits/Male_Ranger.gltf.import
+!assets/outfits/Male_Ranger_Acc_Pauldron.bin
+!assets/outfits/Male_Ranger_Acc_Pauldron.gltf
+!assets/outfits/Male_Ranger_Acc_Pauldron.gltf.import
+!assets/outfits/Male_Ranger_Arms.bin
+!assets/outfits/Male_Ranger_Arms.gltf
+!assets/outfits/Male_Ranger_Arms.gltf.import
+!assets/outfits/Male_Ranger_Body.bin
+!assets/outfits/Male_Ranger_Body.gltf
+!assets/outfits/Male_Ranger_Body.gltf.import
+!assets/outfits/Male_Ranger_Feet_Boots.bin
+!assets/outfits/Male_Ranger_Feet_Boots.gltf
+!assets/outfits/Male_Ranger_Feet_Boots.gltf.import
+!assets/outfits/Male_Ranger_Legs.bin
+!assets/outfits/Male_Ranger_Legs.gltf
+!assets/outfits/Male_Ranger_Legs.gltf.import
+!assets/outfits/T_Peasant_2_BaseColor.png
+!assets/outfits/T_Peasant_2_BaseColor.png.import
+!assets/outfits/T_Peasant_BaseColor.png
+!assets/outfits/T_Peasant_BaseColor.png.import
+!assets/outfits/T_Peasant_Normal.png
+!assets/outfits/T_Peasant_Normal.png.import
+!assets/outfits/T_Peasant_ORM.png
+!assets/outfits/T_Peasant_ORM.png.import
+!assets/outfits/T_Ranger_3_BaseColor.png
+!assets/outfits/T_Ranger_3_BaseColor.png.import
+!assets/outfits/T_Ranger_BaseColor.png
+!assets/outfits/T_Ranger_BaseColor.png.import
+!assets/outfits/T_Ranger_Normal.png
+!assets/outfits/T_Ranger_Normal.png.import
+!assets/outfits/T_Ranger_ORM.png
+!assets/outfits/T_Ranger_ORM.png.import
+!assets/outfits/T_Ranger_Plate_BaseColor.png
+!assets/outfits/T_Ranger_Plate_BaseColor.png.import
+!assets/outfits/T_Regular_Female_Dark_BaseColor.png
+!assets/outfits/T_Regular_Female_Dark_BaseColor.png.import
+!assets/outfits/T_Regular_Female_Normal.png
+!assets/outfits/T_Regular_Female_Normal.png.import
+!assets/outfits/T_Regular_Female_Roughness.png
+!assets/outfits/T_Regular_Female_Roughness.png.import
+!assets/outfits/T_Regular_Male_Dark_BaseColor.png
+!assets/outfits/T_Regular_Male_Dark_BaseColor.png.import
+!assets/outfits/T_Regular_Male_Normal.png
+!assets/outfits/T_Regular_Male_Normal.png.import
+!assets/outfits/T_Regular_Male_Roughness.png
+!assets/outfits/T_Regular_Male_Roughness.png.import
 !assets/stylized-nature/License_Standard.txt
+!assets/stylized-nature/glTF/Bark_DeadTree.png
+!assets/stylized-nature/glTF/Bark_DeadTree.png.import
+!assets/stylized-nature/glTF/Bark_DeadTree_Normal.png
+!assets/stylized-nature/glTF/Bark_DeadTree_Normal.png.import
 !assets/stylized-nature/glTF/Bark_NormalTree.png
 !assets/stylized-nature/glTF/Bark_NormalTree.png.import
 !assets/stylized-nature/glTF/Bark_NormalTree_Normal.png
@@ -399,6 +660,9 @@ assets/**
 !assets/stylized-nature/glTF/Clover_1.bin
 !assets/stylized-nature/glTF/Clover_1.gltf
 !assets/stylized-nature/glTF/Clover_1.gltf.import
+!assets/stylized-nature/glTF/Clover_2.bin
+!assets/stylized-nature/glTF/Clover_2.gltf
+!assets/stylized-nature/glTF/Clover_2.gltf.import
 !assets/stylized-nature/glTF/CommonTree_1.bin
 !assets/stylized-nature/glTF/CommonTree_1.gltf
 !assets/stylized-nature/glTF/CommonTree_1.gltf.import
@@ -411,6 +675,15 @@ assets/**
 !assets/stylized-nature/glTF/CommonTree_4.bin
 !assets/stylized-nature/glTF/CommonTree_4.gltf
 !assets/stylized-nature/glTF/CommonTree_4.gltf.import
+!assets/stylized-nature/glTF/DeadTree_1.bin
+!assets/stylized-nature/glTF/DeadTree_1.gltf
+!assets/stylized-nature/glTF/DeadTree_1.gltf.import
+!assets/stylized-nature/glTF/DeadTree_2.bin
+!assets/stylized-nature/glTF/DeadTree_2.gltf
+!assets/stylized-nature/glTF/DeadTree_2.gltf.import
+!assets/stylized-nature/glTF/DeadTree_3.bin
+!assets/stylized-nature/glTF/DeadTree_3.gltf
+!assets/stylized-nature/glTF/DeadTree_3.gltf.import
 !assets/stylized-nature/glTF/Fern_1.bin
 !assets/stylized-nature/glTF/Fern_1.gltf
 !assets/stylized-nature/glTF/Fern_1.gltf.import
@@ -487,6 +760,12 @@ assets/**
 !assets/stylized-nature/glTF/TwistedTree_2.bin
 !assets/stylized-nature/glTF/TwistedTree_2.gltf
 !assets/stylized-nature/glTF/TwistedTree_2.gltf.import
+!assets/stylized-nature/glTF/TwistedTree_3.bin
+!assets/stylized-nature/glTF/TwistedTree_3.gltf
+!assets/stylized-nature/glTF/TwistedTree_3.gltf.import
+!assets/stylized-nature/glTF/TwistedTree_4.bin
+!assets/stylized-nature/glTF/TwistedTree_4.gltf
+!assets/stylized-nature/glTF/TwistedTree_4.gltf.import
 
 # obsolete
 tools/gen_city.py
