@@ -32,7 +32,12 @@ const ZONES := [
 	["Training Grounds", Vector2(-18, -116), 18.0],
 	["Wild Grove", Vector2(124, 18), 32.0],
 	["Research Lab", Vector2(18, 122), 16.0],
+	["Ivy Ruins", Vector2(-92, -92), 26.0],
+	["Neon Bazaar", Vector2(92, -90), 26.0],
+	["Old Quarter", Vector2(-90, 92), 26.0],
+	["Skyport", Vector2(94, 94), 26.0],
 ]
+const Minimap := preload("res://scripts/minimap.gd")
 
 
 func _ready() -> void:
@@ -122,6 +127,16 @@ func _ready() -> void:
 	_info.offset_left = 16
 	_info.offset_top = 12
 	root.add_child(_info)
+	var mm: Control = Minimap.new()
+	mm.player = player
+	mm.zones = ZONES
+	mm.anchor_left = 1.0
+	mm.anchor_right = 1.0
+	mm.offset_left = -196
+	mm.offset_right = -16
+	mm.offset_top = 12
+	mm.offset_bottom = 192
+	root.add_child(mm)
 	_prompt = _label("", 26)
 	_prompt.anchor_left = 0.0
 	_prompt.anchor_right = 1.0
@@ -164,7 +179,8 @@ func _process(delta: float) -> void:
 		_prompt.text = ""
 	else:
 		var key := "TALK" if touch else "[F]"
-		_prompt.text = "%s  %s %s" % [key, "Shop at" if near.has_method("open_shop") else "Talk to", near.display_name]
+		var verb := "Shop at" if near.has_method("open_shop") else "Open" if near.get("opened") != null else "Talk to"
+		_prompt.text = "%s  %s %s" % [key, verb, near.display_name]
 	# Target panel follows whatever the player is locked on to.
 	var t = player.target if player.locked else null
 	_top.visible = t != null

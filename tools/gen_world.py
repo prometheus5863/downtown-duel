@@ -1,5 +1,7 @@
 """Generates scenes/arena.tscn: a multi-zone world.
    Downtown (hub) · Training Grounds (N) · Oakvale Village (W) · Wild Grove (E) · Research Lab (S)
+   + hybrid districts on the diagonals: Ivy Ruins (NW) · Neon Bazaar (NE) · Old Quarter (SW) · Skyport (SE)
+   Non-linear: spokes from the hub, a ring road through every zone, and diagonal alleys from Downtown.
    Run:  python3 tools/gen_world.py <project_dir>
    Edit the zone sections below and re-run instead of hand-placing nodes."""
 import sys, json, math, random, struct, os
@@ -13,6 +15,8 @@ NAT  = A + "stylized-nature/glTF/"
 FP   = A + "fantasy-props/Exports/glTF/"
 SCI  = A + "modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/"
 MON  = A + "monsters/"
+CHR  = A + "characters/"
+OUT  = A + "outfits/"
 UAL  = A + "animations/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb"
 
 # ---------------------------------------------------------------- helpers
@@ -75,17 +79,55 @@ def place(parent, rel, x, z, yaw=0.0, y=0.0, scale=1.0, collide=None, name=None)
                      f'[node name="S" type="CollisionShape3D" parent="{parent}/{nm}/Col"]\nposition = {f3(c)}\nshape = SubResource("{sid}")\n')
     return f"{parent}/{nm}"
 
-def plane(parent, name, x, z, sx, sz, mat, y=0.0):
+def plane(parent, name, x, z, sx, sz, mat, y=0.0, yaw=0.0, extra=""):
+    sx, sz = round(sx, 2), round(sz, 2)
     mid = sub(f"pm_{sx}_{sz}_{mat}".replace(".", "p"),
               f'[sub_resource type="PlaneMesh" id="ID"]\nmaterial = SubResource("{mat}")\nsize = Vector2({sx}, {sz})\n')
-    nodes.append(f'[node name="{name}" type="MeshInstance3D" parent="{parent}"]\nposition = {f3((x, y, z))}\nmesh = SubResource("{mid}")\n')
+    head = f'[node name="{name}" type="MeshInstance3D" parent="{parent}"' + (' groups=["road"]' if extra else "") + "]\n"
+    nodes.append(head + f'position = {f3((x, y, z))}\n' + (f"rotation = Vector3(0, {yaw:.5f}, 0)\n" if yaw else "")
+                 + f'mesh = SubResource("{mid}")\n' + extra)
+
+def road(parent, pts, width=7.0, mat="m_road"):
+    """Polyline dirt road; segments overlap by half a width so corners have no gaps. Tagged for the minimap."""
+    for (ax, az), (bx, bz) in zip(pts, pts[1:]):
+        dx, dz = bx - ax, bz - az; ln = math.hypot(dx, dz)
+        y = 0.015 + 0.001 * (len(nodes) % 3)          # stagger overlaps against z-fighting
+        plane(parent, uname("Road"), (ax + bx) / 2, (az + bz) / 2, width, ln + width * 0.5, mat, y, math.atan2(dx, dz),
+              f"metadata/length = {ln:.2f}\nmetadata/width = {width}\n")
+
+def chest(parent, x, z, yaw=0.0, coins=40, xp=15, item=""):
+    nm = uname("Chest")
+    nodes.append(f'[node name="{nm}" type="Node3D" parent="{parent}"]\nposition = {f3((x, 0.02, z))}\n'
+                 + (f"rotation = Vector3(0, {yaw:.5f}, 0)\n" if yaw else "")
+                 + f'script = ExtResource("{ext_id("scripts/chest.gd", "Script")}")\ncoins = {coins}\nxp = {xp}\n'
+                 + (f'item = "{item}"\n' if item else "")
+                 + f'model_scene = ExtResource("{ext_id(FP + "Chest_Wood.gltf")}")\n')
+    sid = sub("box_chest", '[sub_resource type="BoxShape3D" id="ID"]\nsize = Vector3(1.3, 0.8, 0.8)\n')
+    nodes.append(f'[node name="Col" type="StaticBody3D" parent="{parent}/{nm}"]\n\n'
+                 f'[node name="S" type="CollisionShape3D" parent="{parent}/{nm}/Col"]\nposition = Vector3(0, 0.4, 0)\nshape = SubResource("{sid}")\n')
+
+def npc(parent, name, x, z, yaw, parts, tex=None, hair=(0.3, 0.2, 0.12), stock=(), max_price=0, greeting="Welcome!"):
+    """Shopkeeper on the UAL rig dressed with character/outfit glTFs (see scripts/npc.gd)."""
+    nm = name.split()[-1]
+    ps = ", ".join(f'ExtResource("{ext_id(p)}")' for p in parts)
+    s = (f'[node name="{nm}" type="Node3D" parent="{parent}"]\nposition = Vector3({x:.2f}, 0.03, {z:.2f})\n'
+         f'rotation = Vector3(0, {yaw:.5f}, 0)\nscript = ExtResource("{ext_id("scripts/npc.gd", "Script")}")\n'
+         f'display_name = "{name}"\nmodel_scene = ExtResource("{ext_id(UAL)}")\nparts = Array[PackedScene]([{ps}])\n'
+         f'hair_color = Color({hair[0]}, {hair[1]}, {hair[2]}, 1)\ngreeting = "{greeting}"\nmax_price = {max_price}\n')
+    if tex: s += f'outfit_tex = ExtResource("{ext_id(tex, "Texture2D")}")\n'
+    if stock: s += "stock = Array[String]([%s])\n" % ", ".join(f'"{x}"' for x in stock)
+    nodes.append(s)
+    cap = sub("npc_cap", '[sub_resource type="CapsuleShape3D" id="ID"]\nradius = 0.4\nheight = 1.8\n')
+    nodes.append(f'[node name="Col" type="StaticBody3D" parent="{parent}/{nm}"]\n\n[node name="S" type="CollisionShape3D" parent="{parent}/{nm}/Col"]\n'
+                 f'position = Vector3(0, 0.9, 0)\nshape = SubResource("{cap}")\n')
 
 def sign(parent, text, x, z, y=7.0):
     nodes.append(f'[node name="{uname("Sign")}" type="Label3D" parent="{parent}"]\nposition = {f3((x, y, z))}\n'
                  f'billboard = 1\ntext = "{text}"\nfont_size = 160\noutline_size = 36\nmodulate = Color(1, 0.95, 0.8, 1)\n')
 
 monsters = []
-ZONE_HOSTILE = {"Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True}
+ZONE_HOSTILE = {"Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True,
+                "Ruins": True, "Bazaar": False, "Quarter": False, "Skyport": True}
 def monster(parent, name, x, z, model=None, scale=1.0, hp=80, height=None, radius=0.5,
             wander=6.0, speed=2.0, boss=False, color=(0.85, 0.2, 0.2), aggressive=None):
     if model and height is None:
@@ -120,7 +162,9 @@ mat("m_grove", (0.30, 0.46, 0.22))
 mat("m_asphalt", (0.75, 0.75, 0.75), CITY + "T_Concrete_Asphalt_BaseColor.png", 30)
 mat("m_road", (0.55, 0.45, 0.33))
 mat("m_dirt", (0.62, 0.50, 0.36))
-mat("m_cobble", (0.60, 0.57, 0.52))
+mat("m_cobble", (0.46, 0.43, 0.39))
+mat("m_moss", (0.27, 0.36, 0.2))
+mat("m_street", (0.62, 0.62, 0.62), CITY + "T_Concrete_Asphalt_BaseColor.png", 6)
 
 W = group("World")
 plane(W, "Grass", 0, 0, 340, 340, "m_grass", 0.0)
@@ -157,10 +201,10 @@ for (x, z), nm, mdl, hp in [((0,-9),"Gloop",B+"GreenBlob.gltf",80), ((18,4),"Spi
 
 # roads from the city's street exits to each zone
 R = group("Roads", W)
-plane(R, "RoadW", -86, -18, 64, 8, "m_road", 0.015)
-plane(R, "RoadE", 86, 18, 64, 8, "m_road", 0.015)
-plane(R, "RoadN", -18, -84, 8, 60, "m_road", 0.015)
-plane(R, "RoadS", 18, 84, 8, 60, "m_road", 0.015)
+road(R, [(-56, -18), (-108, -18)], 8)
+road(R, [(56, 18), (94, 18)], 8)
+road(R, [(-18, -56), (-18, -102)], 8)
+road(R, [(18, 56), (18, 110)], 8)
 
 # ================================================================ OAKVALE VILLAGE (west)
 VX, VZ = -122, -18
@@ -168,9 +212,9 @@ V = group("Village", W)
 plane(V, "Square", VX, VZ, 30, 30, "m_cobble", 0.02)
 sign(V, "OAKVALE VILLAGE", VX + 12, VZ, 8)
 
-def house(cx, cz, w, d, yaw, style):
+def house(cx, cz, w, d, yaw, style, parent=None):
     """Modular medieval house: wall ring (door front-centre, windows), corner posts, tiled roof."""
-    g = group(uname("House"), V)
+    g = group(uname("House"), parent or V)
     wall = {"plaster": ("Wall_Plaster_Straight", "Wall_Plaster_Door_Round", "Wall_Plaster_Window_Wide_Round"),
             "brick":   ("Wall_UnevenBrick_Straight", "Wall_UnevenBrick_Door_Round", "Wall_UnevenBrick_Window_Wide_Round")}[style]
     segs = []  # (lx, lz, lyaw, kind)
@@ -211,15 +255,11 @@ for i, (dx, dz) in enumerate([(-6, -6), (-6, 0), (-6, 6)]):
 for dx, dz, m in [(4,-9,"Barrel"),(5,-9.6,"Barrel"),(4.5,9,"Crate_Wooden"),(6,9.5,"Crate_Wooden"),(2,-11,"Bench"),(2,11,"Bench")]:
     place(V, FP + m + ".gltf", VX + dx, VZ + dz, random.random()*0.4)
 place(V, MED + "Prop_Wagon.gltf", VX + 7, VZ + 3, 0.3, collide="box")
-# shopkeeper behind the middle stall
-npc_cap = sub("npc_cap", '[sub_resource type="CapsuleShape3D" id="ID"]\nradius = 0.4\nheight = 1.8\n')
-npc_script = ext_id("scripts/npc.gd", "Script")
-npc_model = ext_id(UAL)
-nodes.append('[node name="Merchant" type="Node3D" parent="%s"]\nposition = Vector3(%.2f, 0.03, %.2f)\n'
-             'rotation = Vector3(0, %.5f, 0)\nscript = ExtResource("%s")\ndisplay_name = "Merchant"\nmodel_scene = ExtResource("%s")\n'
-             % (V, VX - 7.6, VZ, math.pi / 2, npc_script, npc_model))
-nodes.append('[node name="Col" type="StaticBody3D" parent="%s/Merchant"]\n\n[node name="S" type="CollisionShape3D" parent="%s/Merchant/Col"]\n'
-             'position = Vector3(0, 0.9, 0)\nshape = SubResource("%s")\n' % (V, V, npc_cap))
+# shopkeeper behind the middle stall: basic gear only
+npc(V, "Merchant Tobin", VX - 7.6, VZ, math.pi / 2,
+    [CHR + "Superhero_Male_Head.gltf", CHR + "Hair_Buzzed.gltf", CHR + "Hair_Beard.gltf", OUT + "Male_Peasant.gltf"],
+    OUT + "T_Peasant_2_BaseColor.png", (0.45, 0.3, 0.18), max_price=160,
+    greeting="Welcome to Oakvale! Starter gear here. Fancier stuff in the Neon Bazaar and the Old Quarter.")
 for i in range(6):
     place(V, MED + "Prop_WoodenFence_Single.gltf", VX - 14 + 2.06*i, VZ + 12.5)
 BG = MON + "Big/glTF/"
@@ -238,10 +278,11 @@ n = 13
 for i in range(n):        # fence ring, gap on the south side for the road
     a = -13 + 2.06*i + 1.03
     place(T, MED + "Prop_WoodenFence_Single.gltf", TX + a, TZ - 13.5, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
-    place(T, MED + "Prop_WoodenFence_Single.gltf", TX - 13.5, TZ + a, math.pi/2, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
-    place(T, MED + "Prop_WoodenFence_Single.gltf", TX + 13.5, TZ + a, math.pi/2, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
-    if abs(a) > 4:
+    if abs(a) > 4:   # gaps west + east (ring road) and south (spoke)
+        place(T, MED + "Prop_WoodenFence_Single.gltf", TX - 13.5, TZ + a, math.pi/2, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
+        place(T, MED + "Prop_WoodenFence_Single.gltf", TX + 13.5, TZ + a, math.pi/2, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
         place(T, MED + "Prop_WoodenFence_Single.gltf", TX + a, TZ + 13.5, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
+chest(T, TX + 11, TZ - 8, -1.57, coins=35, xp=10)
 for row, dz in enumerate((-7, -2)):
     for col, dx in enumerate((-8, -4, 0, 4, 8)):
         monster(T, "Training Dummy", TX + dx, TZ + dz, FP + "Dummy.gltf", 1.0, 120, height=1.9, radius=0.4, wander=0)
@@ -262,7 +303,8 @@ def scatter(models, count, rmin, rmax, scale=(0.8, 1.3), collide=None, avoid_roa
         tries += 1
         a = random.random()*math.tau; r = random.uniform(rmin, rmax)
         x, z = GX + math.cos(a)*r, GZ + math.sin(a)*r
-        if avoid_road and x < GX - 6 and abs(z - GZ) < 6: continue   # keep the entrance path clear
+        if avoid_road and ((x < GX - 6 and abs(z - GZ) < 6) or (abs(x - GX) < 6 and abs(z - GZ) > 6)):
+            continue   # keep the west / north / south entrance paths clear
         place(G, NAT + random.choice(models) + ".gltf", x, z, random.random()*math.tau,
               scale=round(random.uniform(*scale), 2), collide=collide)
         placed += 1
@@ -279,6 +321,7 @@ for (dx, dz), nm, mdl, sc, hp in [((-6,-8),"Emberwing",FL+"Dragon.gltf",0.6,140)
                                   ((-12,-2),"Yeti",BG+"Yeti.gltf",0.65,180), ((4,-16),"Dino",BG+"Dino.gltf",0.65,170),
                                   ((-4,16),"Hopper",BG+"Frog.gltf",0.6,110), ((15,12),"Cactoro",BG+"Cactoro.gltf",0.6,130)]:
     monster(G, nm, GX + dx, GZ + dz, mdl, sc, hp, wander=7, speed=2.2)
+chest(G, GX + 26, GZ - 4, 1.57, coins=60, xp=20, item="ember_charm")
 monster(G, "MUSHROOM KING", GX + 2, GZ, BG + "MushroomKing.gltf", 1.0, 600, radius=1.0, wander=3, speed=1.2, boss=True)
 
 # ================================================================ RESEARCH LAB (south)
@@ -292,8 +335,8 @@ for i in range(NXT):
         x = LX + (i - (NXT-1)/2) * 4; z = LZ + (j - (NZT-1)/2) * 4
         place(L, SCI + "Platforms/" + ("Platform_Metal" if (i + j) % 2 else "Platform_DarkPlates") + ".gltf", x, z, y=0.03)
         edges = []
-        if i == 0: edges.append(0.0)
-        if i == NXT-1: edges.append(math.pi)
+        if i == 0 and j != 1: edges.append(0.0)            # side doors at j == 1 (ring road)
+        if i == NXT-1 and j != 1: edges.append(math.pi)
         if j == 0 and i != NXT//2: edges.append(-math.pi/2)    # entrance gap, north side
         if j == NZT-1: edges.append(math.pi/2)
         for e in edges:
@@ -303,11 +346,175 @@ for dx, dz, m, yaw in [(-6,5.6,"Prop_Computer",math.pi),(-3,5.6,"Prop_Computer",
                        (-7.5,-3,"Prop_Crate3",0.3),(-7.4,-1.4,"Prop_Crate4",0),(7.3,-4,"Prop_Barrel_Large",0),
                        (7.3,1,"Prop_Chest",-1.57),(0,0,"Prop_Light_Floor",0),(-4,-5,"Prop_Light_Floor",0),(4,-5,"Prop_Light_Floor",0)]:
     place(L, SCI + "Props/" + m + ".gltf", LX + dx, LZ + dz, yaw, y=0.03, collide="box")
+chest(L, LX + 7, LZ + 5, math.pi, coins=50, xp=15, item="swift_charm")
 for dx, m in [(-4.5,"Alien_Cyclop"),(0,"Alien_Oculichrysalis"),(4.5,"Alien_Scolitex")]:   # specimens on display
     place(L, SCI + "Aliens/" + m + ".gltf", LX + dx, LZ + 3, math.pi, y=1.15)
 for (dx, dz), nm, mdl, sc, hp in [((-4,-2),"Specimen X-1",BG+"Alien.gltf",0.6,150), ((4,-1),"Specimen X-2",B+"Alien.gltf",0.6,100),
                                   ((0,-12),"Lab Escapee",BG+"BlueDemon.gltf",0.6,160), ((6,-14),"Glub",FL+"Glub.gltf",0.55,90)]:
     monster(L, nm, LX + dx, LZ + dz, mdl, sc, hp, wander=3 if abs(dz) < 6 else 6)
+
+# ================================================================ hybrid districts (diagonals)
+def ring(parent, cx, cz, models, count, rmin, rmax, scale=(0.8, 1.3), collide=None, keep=()):
+    """Random scatter in an annulus around (cx, cz); keep = [(x, z, r)] circles to leave empty (paths, plazas)."""
+    placed = tries = 0
+    while placed < count and tries < count * 30:
+        tries += 1
+        a = random.random() * math.tau; r = random.uniform(rmin, rmax)
+        x, z = cx + math.cos(a) * r, cz + math.sin(a) * r
+        if any(math.hypot(x - kx, z - kz) < kr for kx, kz, kr in keep): continue
+        place(parent, random.choice(models), x, z, random.random() * math.tau,
+              scale=round(random.uniform(*scale), 2), collide=collide)
+        placed += 1
+
+def facing(cx, cz, x, z):
+    """Yaw that turns a model's +Z front toward (cx, cz)."""
+    return math.atan2(cx - x, cz - z)
+
+def building(parent, rel, x, z, yaw):
+    """City building with its footprint centred on (x, z) (models have off-centre origins)."""
+    mn, mx = bounds(rel); ox, oz = rot2((mn[0] + mx[0]) / 2, (mn[2] + mx[2]) / 2, yaw)
+    return place(parent, rel, x - ox, z - oz, yaw, collide="box")
+
+# ---------------------------------------------------------------- IVY RUINS (NW): downtown swallowed by the forest
+IX, IZ = -92, -92
+I = group("Ruins", W)
+plane(I, "Moss", IX, IZ, 54, 54, "m_moss", 0.012)
+sign(I, "IVY RUINS", IX, IZ + 14, 9)
+IVY_ROADS = (0.785, 2.32, 5.69)     # directions (rad) of the three roads into the ruins: Downtown, Oakvale, Training
+for rel, ang, dist in [("Building_Small_1", 1.55, 20), ("Building_Medium_2_001", 3.3, 21), ("Building_Large_2", 4.5, 23)]:
+    x, z = IX + math.cos(ang) * dist, IZ + math.sin(ang) * dist
+    building(I, CITY + rel + ".gltf", x, z, facing(IX, IZ, x, z))
+for k in range(5):          # broken brick walls with ivy, around the plaza
+    a = 0.3 + k * 1.25; x, z = IX + math.cos(a) * 11, IZ + math.sin(a) * 11; yaw = facing(IX, IZ, x, z)
+    for j in range(-1, 2 - (k % 2)):
+        ox, oz = rot2(j * 2.0, 0, yaw)
+        place(I, MED + ("Wall_UnevenBrick_Straight" if j else "Wall_UnevenBrick_Window_Wide_Round") + ".gltf", x + ox, z + oz, yaw,
+              collide=(2.0, 3.1, 0.4, 0, 1.55, 0))
+        vx, vz = rot2(j * 2.0, 0.35, yaw)
+        place(I, MED + random.choice(["Prop_Vine1", "Prop_Vine2", "Prop_Vine4", "Prop_Vine5"]) + ".gltf", x + vx, z + vz, yaw, y=3.0)
+keep_i = [(IX, IZ, 6)] + [(IX + math.cos(a) * r, IZ + math.sin(a) * r, 4.5) for a in IVY_ROADS for r in range(8, 30, 4)]
+ring(I, IX, IZ, [NAT + m + ".gltf" for m in ["TwistedTree_3", "TwistedTree_4", "DeadTree_1", "DeadTree_2", "DeadTree_3", "CommonTree_5"]],
+     14, 6, 26, collide=(0.8, 4, 0.8, 0, 2, 0), keep=keep_i)
+ring(I, IX, IZ, [NAT + m + ".gltf" for m in ["Rock_Medium_1", "Rock_Medium_2", "Bush_Common", "Fern_1", "Plant_7_Big"]], 18, 3, 24, keep=keep_i)
+ring(I, IX, IZ, [MED + m + ".gltf" for m in ["Prop_Brick1", "Prop_Brick2", "Prop_Brick3", "Prop_Brick4"]] + [FP + "Vase_Rubble_Medium.gltf"], 26, 2, 16)
+ring(I, IX, IZ, [NAT + m + ".gltf" for m in ["Grass_Wispy_Tall", "Grass_Common_Tall", "Clover_2", "Mushroom_Common"]], 34, 2, 25, keep=keep_i)
+for k in range(3):
+    place(I, CITY + "Prop_ManholeCover.gltf", IX - 4 + k * 5, IZ + 3 - k * 2, y=0.02)
+chest(I, IX + math.cos(4.05) * 13.5, IZ + math.sin(4.05) * 13.5, facing(IX, IZ, IX + math.cos(4.05), IZ + math.sin(4.05)),
+      coins=70, xp=25, item="shadow_cloak")   # hidden behind a ruined wall
+for (dx, dz), nm, mdl, sc, hp in [((-6, 4), "Ruin Monkey", BG + "Monkroose.gltf", 0.6, 130), ((7, -5), "Tribal Chief", BG + "Tribal.gltf", 0.65, 170),
+                                  ((3, 9), "Skull Orc", BG + "Orc_Skull.gltf", 0.62, 190), ((-9, -7), "Bone Wisp", FL + "Ghost_Skull.gltf", 0.55, 110),
+                                  ((10, 4), "Mask Imp", FL + "Tribal.gltf", 0.55, 100)]:
+    monster(I, nm, IX + dx, IZ + dz, mdl, sc, hp, wander=6, speed=2.3)
+
+# ---------------------------------------------------------------- NEON BAZAAR (NE): sci-fi market in a city block
+NX, NZ = 92, -90
+N = group("Bazaar", W)
+sign(N, "NEON BAZAAR", NX, NZ + 15, 10)
+tiles = ["Platform_Metal", "Platform_DarkPlates", "Platform_Squares", "Platform_3Plates"]
+for i in range(6):
+    for j in range(6):
+        place(N, SCI + "Platforms/" + tiles[(i * 7 + j * 3) % 4] + ".gltf", NX - 10 + i * 4, NZ - 10 + j * 4, y=0.03)
+for rel, x, z in [("Building_Large_2", NX - 2, NZ - 25), ("Building_Medium_2_001", NX + 24, NZ - 8), ("Building_Small_1", NX - 22, NZ - 24)]:
+    building(N, CITY + rel + ".gltf", x, z, facing(NX, NZ, x, z))   # north / east only: roads come in from W, SW, SE
+for k in range(8):          # neon colonnade around the plaza
+    a = k / 8 * math.tau + 0.39; x, z = NX + math.cos(a) * 13.5, NZ + math.sin(a) * 13.5
+    place(N, SCI + "Columns/" + ("Column_Astra" if k % 2 else "Column_Pipes") + ".gltf", x, z, facing(NX, NZ, x, z), collide=(0.8, 4, 0.8, 0, 2, 0))
+    place(N, SCI + "Props/Prop_Light_Floor.gltf", NX + math.cos(a) * 11.5, NZ + math.sin(a) * 11.5, facing(NX, NZ, x, z), y=0.05)
+for k, (dx, dz) in enumerate([(-7, -6), (-7, 0), (-7, 6), (7, -6), (7, 6)]):
+    yaw = math.pi / 2 if dx < 0 else -math.pi / 2
+    place(N, FP + ("Stall_Empty" if k % 2 == 0 else "Stall_Cart_Empty") + ".gltf", NX + dx, NZ + dz, yaw, collide="box")
+    place(N, SCI + "Props/" + ["Prop_Computer", "Prop_Crate3", "Prop_ItemHolder", "Prop_Crate4", "Prop_Computer"][k] + ".gltf",
+          NX + dx + (1.4 if dx < 0 else -1.4), NZ + dz + 0.9, yaw, y=0.05)
+for dx, dz, m in [(-3, -9, "Prop_Barrel_Large"), (3, -9.5, "Prop_Crate3"), (4, -8.6, "Prop_Crate4"), (-9, 10, "Prop_Chest"), (9, -10, "Prop_Fan_Small")]:
+    place(N, SCI + "Props/" + m + ".gltf", NX + dx, NZ + dz, random.random(), y=0.05, collide="box")
+for dx in (-3, 3):
+    place(N, CITY + "Decal_Crosswalk.gltf", NX + dx, NZ + 12.5, y=0.06)
+npc(N, "Gadgeteer Vex", NX + 6.6, NZ, -math.pi / 2,
+    [CHR + "Superhero_Female_Head.gltf", CHR + "Hair_Long.gltf", OUT + "Female_Ranger.gltf"], OUT + "T_Ranger_3_BaseColor.png",
+    (0.15, 0.55, 0.65), stock=("weapon", "charm"), greeting="Fresh tech, old magic. Weapons and charms, no refunds.")
+for (dx, dz), nm, mdl, sc, hp in [((-3, 3), "Alpaking", FL + "Alpaking.gltf", 0.55, 90), ((4, 5), "Alpaca Tycoon", FL + "Alpaking_Evolved.gltf", 0.6, 160),
+                                  ((0, -5), "Queen Armabee", FL + "Armabee_Evolved.gltf", 0.6, 150), ((-4, -3), "Scrap Golem", FL + "Goleling_Evolved.gltf", 0.65, 200),
+                                  ((2, 9), "Neon Birb", BG + "Birb.gltf", 0.55, 80)]:
+    monster(N, nm, NX + dx, NZ + dz, mdl, sc, hp, wander=5)
+
+# ---------------------------------------------------------------- OLD QUARTER (SW): medieval houses on modern streets
+QX, QZ = -90, 92
+Q = group("Quarter", W)
+plane(Q, "Cobbles", QX, QZ, 40, 40, "m_cobble", 0.012)
+plane(Q, "Street", QX, QZ, 8, 40, "m_street", 0.016)
+plane(Q, "CrossStreet", QX, QZ, 40, 8, "m_street", 0.017)
+sign(Q, "OLD QUARTER", QX, QZ - 14, 9)
+house(QX - 11, QZ - 12, 8, 8, math.pi / 2, "brick", Q)
+house(QX + 13, QZ - 14, 6, 8, -math.pi / 2, "plaster", Q)
+house(QX - 11, QZ + 12, 6, 6, math.pi / 2, "plaster", Q)
+building(Q, CITY + "Building_Small_1.gltf", QX + 15, QZ + 14, -math.pi / 2)
+for d in range(-16, 17, 4):     # bollards along the street, planters + manholes in the crossing
+    if abs(d) > 5:
+        for bx, bz in [(QX - 4.6, QZ + d), (QX + 4.6, QZ + d), (QX + d, QZ - 4.6), (QX + d, QZ + 4.6)]:
+            place(Q, CITY + "Prop_Bollard.gltf", bx, bz)
+for x, z in [(QX - 7, QZ - 7), (QX + 7, QZ - 7), (QX - 7, QZ + 7), (QX + 7, QZ + 7)]:
+    place(Q, CITY + "Sidewalk_Planter.gltf", x, z, facing(QX, QZ, x, z), collide="box")
+for x, z in [(QX, QZ), (QX, QZ - 10), (QX + 10, QZ)]:
+    place(Q, CITY + "Prop_ManholeCover.gltf", x, z, y=0.02)
+for dx, dz, yaw in [(0, -3.5, 0.0), (0, 3.5, 0.0), (-3.5, 0, math.pi / 2), (3.5, 0, math.pi / 2)]:
+    place(Q, CITY + "Decal_Crosswalk.gltf", QX + dx, QZ + dz, yaw, y=0.03)
+for k in range(5):
+    place(Q, MED + "Prop_MetalFence_Ornament.gltf", QX + 6 + k * 2, QZ + 8, collide=(2.0, 1.5, 0.3, 0, 0.75, 0))
+for dx, dz, m in [(6, -15, "Barrel"), (7, -15.5, "Barrel"), (-6, 16, "Crate_Wooden"), (-15, -5, "Bench"), (-15, 5, "Bench"), (10, 4, "Barrel_Apples")]:
+    place(Q, FP + m + ".gltf", QX + dx, QZ + dz, random.random() * 0.5)
+place(Q, FP + "WeaponStand.gltf", QX + 8.5, QZ - 11, -math.pi / 2, collide="box")
+place(Q, FP + "Anvil.gltf", QX + 9.5, QZ - 7, 0.4, collide="box")
+place(Q, FP + "Workbench.gltf", QX + 9.5, QZ - 5.3, -math.pi / 2, collide="box")
+npc(Q, "Armorer Brenna", QX + 7.4, QZ - 8.5, -math.pi / 2,
+    [CHR + "Superhero_Female_Head.gltf", CHR + "Hair_Buns.gltf", OUT + "Female_Peasant.gltf"], OUT + "T_Peasant_2_BaseColor.png",
+    (0.55, 0.22, 0.12), stock=("armor",), greeting="Leather, mail, plate. Pick what you can carry, and what you can pay for.")
+chest(Q, QX - 18, QZ + 17, 0.6, coins=55, xp=15)
+for (dx, dz), nm, mdl, sc, hp in [((-6, -2), "Sparrowbit", B + "Birb.gltf", 0.5, 50), ((5, 9), "Puddlefin", B + "Fish.gltf", 0.5, 60),
+                                  ((-3, 10), "Hedge Wizard", B + "Wizard.gltf", 0.55, 110), ((-10, -8), "Snowball", B + "Yeti.gltf", 0.55, 90)]:
+    monster(Q, nm, QX + dx, QZ + dz, mdl, sc, hp, wander=7)
+
+# ---------------------------------------------------------------- SKYPORT (SE): landing pads in the wilds, a dragon on top
+SX, SZ = 94, 94
+SP = group("Skyport", W)
+plane(SP, "Field", SX, SZ, 50, 50, "m_dirt", 0.012)
+sign(SP, "SKYPORT", SX, SZ - 16, 10)
+for dx, dz in [(0, 0), (-12, 8), (11, -9)]:
+    place(SP, SCI + "Platforms/Platform_Round1.gltf", SX + dx, SZ + dz, y=0.03)
+    for k in range(4):
+        a = k * math.pi / 2 + math.pi / 4; x, z = SX + dx + math.cos(a) * 3.6, SZ + dz + math.sin(a) * 3.6
+        place(SP, SCI + "Props/Prop_Light_Small.gltf", x, z, facing(SX + dx, SZ + dz, x, z), y=0.05)
+for k in range(6):
+    a = k / 6 * math.tau; x, z = SX + math.cos(a) * 17, SZ + math.sin(a) * 17
+    place(SP, SCI + "Columns/Column_Pipes.gltf", x, z, 0, collide=(0.9, 5, 0.9, 0, 2.5, 0))
+    place(SP, FP + "Banner_2.gltf", x + 0.5, z, facing(SX, SZ, x, z), y=4.2)
+for dx, dz, m in [(-6, -12, "Prop_Barrel_Large"), (-4.6, -12.4, "Prop_Crate3"), (-5.4, -11, "Prop_Crate4"), (13, 5, "Prop_Crate3"),
+                  (14, 6.2, "Prop_Crate4"), (6, 13, "Prop_Chest"), (-14, -2, "Prop_Vent_Big"), (2, -14, "Prop_AccessPoint")]:
+    place(SP, SCI + "Props/" + m + ".gltf", SX + dx, SZ + dz, random.random(), y=0.05, collide="box" if m != "Prop_Vent_Big" else None)
+place(SP, MED + "Prop_Wagon.gltf", SX - 6, SZ + 18, 0.8, collide="box")
+for i in range(5):
+    place(SP, MED + "Prop_WoodenFence_Single.gltf", SX + 4 + i * 2.06, SZ + 19, collide=(2.06, 1.0, 0.3, 0, 0.5, 0))
+SKY_ROADS = (5.64, 2.49, 3.93)      # Grove, Lab, Downtown
+keep_s = [(SX + math.cos(a) * r, SZ + math.sin(a) * r, 5) for a in SKY_ROADS for r in range(8, 34, 4)]
+ring(SP, SX, SZ, [NAT + m + ".gltf" for m in ["Pine_1", "Pine_2", "Pine_3", "CommonTree_2"]], 12, 22, 30, collide=(0.8, 4, 0.8, 0, 2, 0), keep=keep_s)
+ring(SP, SX, SZ, [NAT + m + ".gltf" for m in ["Rock_Medium_1", "Rock_Medium_3", "Bush_Common", "Grass_Common_Tall"]], 20, 6, 24,
+     keep=[(SX, SZ, 5)] + keep_s)
+chest(SP, SX + 16, SZ + 12, -2.3, coins=90, xp=30, item="obsidian_plate")
+for (dx, dz), nm, mdl, sc, hp in [((-8, 6), "Glubzilla", FL + "Glub_Evolved.gltf", 0.65, 170), ((8, 8), "Hangar Demon", BG + "Demon.gltf", 0.65, 200),
+                                  ((-10, -6), "Imp", FL + "Demon.gltf", 0.55, 110), ((6, -4), "Rotor Fish", BG + "Fish.gltf", 0.6, 120)]:
+    monster(SP, nm, SX + dx, SZ + dz, mdl, sc, hp, wander=6, speed=2.3)
+monster(SP, "SKY WYRM", SX, SZ, FL + "Dragon_Evolved.gltf", 1.1, 520, radius=1.1, wander=3, speed=1.6, boss=True)
+
+# ---------------------------------------------------------------- ring road + diagonal alleys (the non-linear part)
+road(R, [(-122, -34), (-120, -64), (IX, IZ), (-62, -112), (-33, -116)], 6)       # Oakvale -> Ivy Ruins -> Training (west gate)
+road(R, [(-3, -116), (40, -112), (60, -96), (NX, NZ)], 6)                                   # Training (east gate) -> Neon Bazaar
+road(R, [(NX, NZ), (118, -60), (124, -16)], 6)                                   # Bazaar -> Wild Grove (north path)
+road(R, [(124, 52), (118, 76), (SX, SZ)], 6)                                     # Grove (south path) -> Skyport
+road(R, [(SX, SZ), (60, 120), (30, 120)], 6)                                     # Skyport -> Research Lab (east door)
+road(R, [(6, 120), (-40, 116), (QX + 24, QZ)], 6)                                # Lab (west door) -> Old Quarter (east street)
+road(R, [(QX - 24, QZ), (-118, 60), (-121, -2)], 6)                              # Old Quarter (west street) -> Oakvale (south)
+for (ax, az), (bx, bz) in [((-56, -56), (IX, IZ)), ((56, -56), (NX, NZ)), ((-56, 56), (QX, QZ - 24)), ((56, 56), (SX, SZ))]:
+    road(R, [(ax, az), (bx, bz)], 5)                                             # Downtown corners -> each district
 
 # ================================================================ world edge
 E = group("Edge", W)
