@@ -1,7 +1,19 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=24 format=3]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://assets/animations/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb" id="2_model"]
+[ext_resource type="PackedScene" path="res://assets/characters/Superhero_Male_Head.gltf" id="w0"]
+[ext_resource type="PackedScene" path="res://assets/characters/Hair_SimpleParted.gltf" id="w1"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Peasant.gltf" id="w2"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Ranger.gltf" id="w3"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Ranger_Body.gltf" id="w4"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Ranger_Arms.gltf" id="w5"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Ranger_Legs.gltf" id="w6"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Ranger_Feet_Boots.gltf" id="w7"]
+[ext_resource type="PackedScene" path="res://assets/outfits/Male_Ranger_Acc_Pauldron.gltf" id="w8"]
+[ext_resource type="Texture2D" path="res://assets/outfits/T_Peasant_2_BaseColor.png" id="t0"]
+[ext_resource type="Texture2D" path="res://assets/outfits/T_Ranger_3_BaseColor.png" id="t1"]
+[ext_resource type="Texture2D" path="res://assets/outfits/T_Ranger_Plate_BaseColor.png" id="t2"]
 
 [sub_resource type="StandardMaterial3D" id="body_mat"]
 albedo_color = Color(0.2, 0.45, 0.9, 1)
@@ -35,6 +47,8 @@ height = 0.05
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_script")
 model_scene = ExtResource("2_model")
+wardrobe = Array[PackedScene]([ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8")])
+wardrobe_tex = Array[Texture2D]([ExtResource("t0"), ExtResource("t1"), ExtResource("t2")])
 
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("body_mesh")

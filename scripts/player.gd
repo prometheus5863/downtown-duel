@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 const ProjectileScript := preload("res://scripts/projectile.gd")
 const Items := preload("res://scripts/items.gd")
+const Avatar := preload("res://scripts/avatar.gd")
 const GRAVITY := 20.0
 
 @export var speed := 6.0
@@ -11,7 +12,10 @@ var target: Node3D                      ## current lock-on target (nearest enemy
 @export var mouse_sensitivity := 0.004  ## radians per pixel (captured mouse / drag)
 @export var key_turn_speed := 2.2        ## rad/s for Q / E
 @export var cam_height := 1.0           ## pivot height above player origin
-@export var model_scene: PackedScene    ## animated character (Universal Animation Library)
+@export var model_scene: PackedScene    ## animation rig (Universal Animation Library), dressed by avatar.gd
+@export var wardrobe: Array[PackedScene] = []    ## head, hair and outfit glTFs that armor looks refer to
+@export var wardrobe_tex: Array[Texture2D] = []  ## outfit texture variants that armor looks refer to
+@export var hair_color := Color(0.28, 0.17, 0.1)
 
 @export_group("Strike (J)")
 @export var strike_damage := 10
@@ -71,6 +75,8 @@ var _shake := 0.0
 var _anim: AnimationPlayer
 var _act_t := 0.0                       # attack animation lock
 var _jab := false
+var _model: Node3D
+var _parts := {}                        # wardrobe basename -> resource
 
 
 func _ready() -> void:
@@ -92,6 +98,11 @@ func _ready() -> void:
 		m.rotation.y = PI                # model faces +Z, we move along -Z
 		add_child(m)
 		_anim = _find_anim(m)
+		_model = m
+		for r in wardrobe + wardrobe_tex:
+			if r:
+				_parts[r.resource_path.get_file().get_basename()] = r
+		refresh_look()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -180,7 +191,7 @@ func _physics_process(delta: float) -> void:
 			_roll_t = -1.0
 	_since_hurt += delta
 	if alive and _since_hurt > regen_delay and hp < max_hp:
-		hp = minf(hp + regen_rate * delta, max_hp)
+		hp = minf(hp + (regen_rate + Items.stat(gear, "regen")) * delta, max_hp)
 		hp_changed.emit(int(hp), max_hp)
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
@@ -341,7 +352,26 @@ func equip(id: String) -> void:
 	if it.is_empty() or not (id in owned):
 		return
 	gear[it.slot] = id
+	if it.slot == "armor":
+		refresh_look()
 	progress_changed.emit()
+
+
+## Re-dress the character for the equipped armor.
+func refresh_look() -> void:
+	if _model == null:
+		return
+	var look: Dictionary = Items.get_item(gear.armor).get("look", {})
+	var names := ["Superhero_Male_Head"]
+	if not look.get("hood", false):
+		names.append("Hair_SimpleParted")
+	names.append_array(look.get("parts", ["Male_Peasant"]))
+	var parts := []
+	for n in names:
+		if _parts.has(n):
+			parts.append(_parts[n])
+	Avatar.dress(_model, {"parts": parts, "tex": _parts.get(look.get("tex", "")), "tint": look.get("tint", Color.WHITE),
+			"metal": look.get("metal", 0.0), "hair": hair_color})
 
 
 func spend(amount: int) -> bool:
