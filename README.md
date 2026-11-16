@@ -17,6 +17,7 @@ a dressed-up hero whose armor changes how they look.
 | Tab | Lock on to nearest monster (25 m) / release |
 | F | Talk to a monster / shop / open a chest (1–9 pick options, Esc leave) |
 | Wheel | Zoom · Q / E turn camera |
+| F5 / F9 | Save now / reload the last save (the game also autosaves every 2 minutes and when you leave the window) |
 
 **Phone / tablet** (landscape): left thumb = floating joystick, drag anywhere else = camera,
 on-screen STRIKE / EMBER / DODGE / LOCK buttons, TALK appears near monsters/NPCs (true multi-touch). Shadows off + 75 % render scale on touch devices.
@@ -65,6 +66,8 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - `scripts/items.gd` — item database (add gear here). `scripts/menus.gd` — dialogue + shop panel. `scripts/npc.gd` — dressed shopkeepers
   (per-shop stock / price cap). `scripts/chest.gd` — treasure chests. `scripts/minimap.gd` — corner map.
 - `scripts/touch_controls.gd` — virtual joystick, camera drag, TouchScreenButtons, portrait warning, mobile graphics preset.
+- `scripts/game.gd` + `scripts/save_game.gd` — save / load / autosave (schema in `docs/PLAN.md`).
+- `tests/` — headless tests; run `python tools/run_tests.py`.
 - `scripts/hud.gd` — target HP bar, cooldowns, zone banners. `scripts/intro_camera.gd` — Catmull-Rom flyover.
 - Textures capped at 1024 px for the web build (≈62 MB game data).
 
@@ -76,7 +79,8 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - [x] XP & levels, gear, coins & shop
 - [x] Talk-to-monster dialogue with pacifist routes (spare / befriend / followers)
 - [x] Dressed hero + visible armor tiers, hybrid districts, non-linear road network, minimap, chests
-- [ ] Save game (browser storage), quests, followers that fight alongside you
+- [x] Save game (`user://save.json`, browser storage on the web), autosave
+- [ ] Party combat, treats and bond, mining, crafting, Sanctuaries, 2 km streamed world — see `docs/PLAN.md` and `docs/PROGRESS.md`
 - [ ] Capture / party system, 2D overworld ↔ 3D battle transition
 
 ## Credits

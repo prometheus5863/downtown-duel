@@ -526,6 +526,22 @@ func talk_end(result: String) -> void:
 				_state_t = 2.0
 
 
+## Loading a save: this creature was spared earlier.
+func set_spared() -> void:
+	spared = true
+	aggressive = false
+	_provoked = false
+
+
+## Loading a save: this creature was befriended earlier (the route counter is already in the save).
+func restore_friend(p: Node) -> void:
+	_player = p
+	if p.followers.size() < p.MAX_FOLLOWERS and not (self in p.followers):
+		p.followers.append(self)
+		_become_friend()
+		global_position = p.global_position + Vector3(randf_range(-2, 2), 0, randf_range(1.5, 3))
+
+
 func _hostile_options() -> Array:
 	var o := ["Fight!", "Try to calm it down"]
 	if not _snacked:

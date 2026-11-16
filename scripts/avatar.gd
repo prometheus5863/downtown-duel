@@ -20,8 +20,10 @@ static func undress(model: Node) -> void:
 		return
 	for c in skel.get_children():
 		if c.has_meta(DRESSED):
+			for i in c.get_surface_override_material_count():
+				c.set_surface_override_material(i, null)
 			skel.remove_child(c)
-			c.queue_free()
+			c.free()
 		elif c is MeshInstance3D:
 			c.visible = false
 

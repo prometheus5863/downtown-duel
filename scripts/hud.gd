@@ -137,6 +137,22 @@ func _ready() -> void:
 	mm.offset_top = 12
 	mm.offset_bottom = 192
 	root.add_child(mm)
+	var game := get_tree().get_first_node_in_group("game")
+	if game == null:                         # Game is the last node in the scene: not ready yet
+		game = get_parent().get_node_or_null("Game")
+	if game:
+		var toast := _label("Game saved", 18)
+		toast.anchor_left = 1.0
+		toast.anchor_right = 1.0
+		toast.offset_left = -196
+		toast.offset_top = 196
+		toast.modulate = Color(0.7, 1.0, 0.75, 0.0)
+		root.add_child(toast)
+		game.saved.connect(func():
+			var tw := create_tween()
+			tw.tween_property(toast, "modulate:a", 1.0, 0.2)
+			tw.tween_interval(1.4)
+			tw.tween_property(toast, "modulate:a", 0.0, 0.6))
 	_prompt = _label("", 26)
 	_prompt.anchor_left = 0.0
 	_prompt.anchor_right = 1.0

@@ -25,6 +25,14 @@ func can_interact() -> bool:
 	return not opened
 
 
+## Loading a save: this chest was already emptied.
+func set_opened() -> void:
+	opened = true
+	if _model:
+		_model.queue_free()
+		_model = null
+
+
 func talk_begin() -> Dictionary:
 	opened = true
 	var p := get_tree().get_first_node_in_group("player")

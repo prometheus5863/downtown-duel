@@ -4,6 +4,7 @@ extends CharacterBody3D
 const ProjectileScript := preload("res://scripts/projectile.gd")
 const Items := preload("res://scripts/items.gd")
 const Avatar := preload("res://scripts/avatar.gd")
+const SaveGame := preload("res://scripts/save_game.gd")
 const GRAVITY := 20.0
 
 @export var speed := 6.0
@@ -402,6 +403,37 @@ func nearest_interactable(max_dist := 3.2) -> Node:
 			best_d = d
 			best = n
 	return best
+
+
+# ---------------------------------------------------------------- save / load
+
+func to_save() -> Dictionary:
+	return {
+		"level": level, "xp": xp, "coins": coins, "max_hp": max_hp, "hp": int(hp),
+		"pos": SaveGame.arr(global_position), "spawn": SaveGame.arr(spawn_point),
+		"gear": gear.duplicate(), "owned": owned.duplicate(), "route": route.duplicate(),
+	}
+
+
+func from_save(d: Dictionary) -> void:
+	level = int(d.get("level", 1))
+	xp = int(d.get("xp", 0))
+	coins = int(d.get("coins", 0))
+	max_hp = int(d.get("max_hp", max_hp))
+	hp = clampf(float(d.get("hp", max_hp)), 1.0, max_hp)
+	for slot in gear:
+		gear[slot] = String(d.get("gear", {}).get(slot, gear[slot]))
+	owned.assign(d.get("owned", owned))
+	for k in route:
+		route[k] = int(d.get("route", {}).get(k, 0))
+	if d.has("pos"):
+		global_position = SaveGame.v3(d.pos)
+		spawn_point = SaveGame.v3(d.get("spawn", d.pos))
+		velocity = Vector3.ZERO
+		cam_pivot.global_position = global_position + Vector3.UP * cam_height
+	refresh_look()
+	hp_changed.emit(int(hp), max_hp)
+	progress_changed.emit()
 
 
 func is_invulnerable() -> bool:

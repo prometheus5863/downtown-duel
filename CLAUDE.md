@@ -54,11 +54,19 @@ Open-world creature-battle demo: 9 zones (ring road + spokes + alleys), 61 monst
 - project.godot input entries are hand-edited sometimes: InputEvent objects contain nested parens (Vector2(...)) — never
   strip them with a naive regex.
 
-## Next up
-1. Save/load (FileAccess user:// → IndexedDB on web).
-2. Followers assist in combat; simple quests from villagers.
-3. Separate: Merkur-targeted slot prototype + RTP simulation (casino studio lead).
+## Roadmap
+The game is being grown into an open-world creature RPG: spec `docs/FABLE_BRIEF.md`, per-milestone plan
+`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load) is done.
+Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino studio lead).
+
+## Save / load
+- `scripts/save_game.gd` (file I/O, `VERSION`, `migrate()`), `scripts/game.gd` (`Game` node, last in arena.tscn, group
+  "game"): `collect()` / `apply()` turn world state into the save dict. World objects are keyed by node path relative
+  to the scene root, so generator node names must stay stable.
+- Anything new that must persist: add it to `SaveGame.blank()`, `Game.collect()`, `Game.apply()` and `tests/test_save.gd`.
 
 ## Testing
-Headless: `godot --headless --path . -s res://some_test.gd` (SceneTree script). Touch input needs a real window
+`python tools/run_tests.py` runs every `tests/test_*.gd` headless (PASS/FAIL lines; any engine `ERROR:` fails the run).
+Tests use `tests/harness.gd` (`world()`, `ok()`, `eq()`) and a redirected save path. Run them before every commit.
+Single test: `godot --headless --path . -s res://tests/test_save.gd` (SceneTree script). Touch input needs a real window
 (e.g. xvfb) — a 0×0 headless window scales event positions to garbage.

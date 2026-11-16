@@ -531,6 +531,7 @@ for nm, (x, z, sx, sz) in {"N":(0,-BW,2*BW,1),"S":(0,BW,2*BW,1),"E":(BW,0,1,2*BW
 # ---------------------------------------------------------------- write scene
 mon_nodes = emit_monsters()
 ext_id("scenes/player.tscn"); ext_id("scripts/hud.gd", "Script"); ext_id("scripts/intro_camera.gd", "Script")
+ext_id("scripts/game.gd", "Script")
 sub("capsule_mesh", '[sub_resource type="CapsuleMesh" id="ID"]\n')
 sub("floor_shape", '[sub_resource type="BoxShape3D" id="ID"]\nsize = Vector3(340, 1, 340)\n')
 hdr = "\n".join(f'[ext_resource type="{t}" path="res://{r}" id="{rid}"]' for rid, r, t in ext)
@@ -585,6 +586,9 @@ player = NodePath("../Player")
 script = ExtResource("{ext_id("scripts/intro_camera.gd", "Script")}")
 player = NodePath("../Player")
 hud = NodePath("../HUD")
+
+[node name="Game" type="Node" parent="."]
+script = ExtResource("{ext_id("scripts/game.gd", "Script")}")
 '''
 open(os.path.join(P, "scenes/arena.tscn"), "w").write(scene)
 print(f"ok: {len(nodes)} world nodes, {len(monsters)} monsters, {len(ext)} resources, {len(subs)} sub-resources")

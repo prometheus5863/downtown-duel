@@ -1,4 +1,4 @@
-[gd_scene load_steps=253 format=3]
+[gd_scene load_steps=254 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/city/Exports/glTF (Godot)/T_Concrete_Asphalt_BaseColor.png" id="e0"]
 [ext_resource type="PackedScene" path="res://assets/city/Exports/glTF (Godot)/Building_Large_2.gltf" id="e1"]
@@ -170,6 +170,7 @@
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="e167"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="e168"]
 [ext_resource type="Script" path="res://scripts/intro_camera.gd" id="e169"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="e170"]
 
 [sub_resource type="StandardMaterial3D" id="m_grass"]
 albedo_color = Color(0.33, 0.47, 0.24, 1)
@@ -6969,3 +6970,6 @@ player = NodePath("../Player")
 script = ExtResource("e169")
 player = NodePath("../Player")
 hud = NodePath("../HUD")
+
+[node name="Game" type="Node" parent="."]
+script = ExtResource("e170")
