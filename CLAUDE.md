@@ -89,5 +89,9 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
 ## Testing
 `python tools/run_tests.py` runs every `tests/test_*.gd` headless (PASS/FAIL lines; any engine `ERROR:` fails the run).
 Tests use `tests/harness.gd` (`world()`, `ok()`, `eq()`) and a redirected save path. Run them before every commit.
-Single test: `godot --headless --path . -s res://tests/test_save.gd` (SceneTree script). Touch input needs a real window
+Single test: `godot --headless --path . -s res://tests/test_save.gd` (SceneTree script).
+Web check per milestone: `godot --headless --path . --export-release "Web" export/web/index.html`, then
+(a) run the pack: `godot --headless --main-pack export/web/index.pck --quit-after 600` (must print no errors — catches
+files missing from the export), and (b) serve it with the `web-build` config in `.claude/launch.json` (port 8060)
+and load it in a browser. Log the result in docs/PROGRESS.md "Web export checks". Touch input needs a real window
 (e.g. xvfb) — a 0×0 headless window scales event positions to garbage.

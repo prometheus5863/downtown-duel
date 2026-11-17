@@ -13,10 +13,14 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 | M4 – M8 | not started |
 
 ## Standing issues
-- **Web export is NOT VERIFIED.** The Godot 4.7.2 Web export templates are not installed on the dev PC, so
-  `--export-release "Web"` cannot run. Install them (Editor → Manage Export Templates) and re-run the export for
-  every milestone below marked "web: not verified".
-- No new asset packs have been downloaded yet (none needed before M2/M3).
+- **Web build is 86 MB zipped** (149 MB `index.pck` + 39 MB wasm unzipped) after M2. Budget is 120 MB download.
+  The character/outfit and district assets added most of it; M3+ assets must be budgeted (see PLAN risks).
+- No new asset packs have been downloaded yet (none needed before M3).
+
+## Web export checks
+| Date | Build | Result |
+|---|---|---|
+| 2026-11-17 | M0 + M1 + M2 (`eeb024a`) | Export OK with no errors (Godot 4.7.2 templates installed from the official release). In Chromium (browser pane, served from `export/web` on localhost) the engine boots: WebGL 2 / Compatibility, single-threaded, no console errors. The exported `index.pck` also runs 600 frames headless in desktop Godot with zero errors, so every scene, script and `data/*.json` is in the pack. **Not seen:** in-browser gameplay frames (the pane was hidden, so the page didn't render). |
 
 ---
 
@@ -80,7 +84,7 @@ treat dialogue with bond bar, crowned Alpha and a Lustre creature in the Ivy Rui
 overflow, follow, companions killing a locked target with no player input, shared XP, retargeting, exhaustion
 and rest, hold / return, ledger swaps, save round trip of party + storage + HP + command. `tests/test_save.gd`
 still passes (25). Rendered check in a real window: companions fighting the Grove Yeti, party HUD, ledger menu.
-Web: not verified (no templates).
+Web: see "Web export checks".
 
 **Decisions**
 - Companions reuse `enemy.gd` (model, animation, damage, death) with the brain swapped to `companion.gd`, rather
@@ -109,7 +113,7 @@ Web: not verified (no templates).
 - Test tooling: `tests/harness.gd`, `python tools/run_tests.py` (fails on any `FAIL` line or engine error).
 
 **Verified:** `tests/test_save.gd` — 24 checks pass headless (round trip of every field, chest / friend / spared
-state, corrupt file → clean new game with no engine error, v0 → v1 migration). Web: not verified (see above).
+state, corrupt file → clean new game with no engine error, v0 → v1 migration). Web: see "Web export checks".
 
 **Decisions**
 - World objects are keyed by node path relative to the scene root. The generator's names are deterministic, and
