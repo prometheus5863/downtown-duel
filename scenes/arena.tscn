@@ -1295,8 +1295,9 @@ model_scene = ExtResource("e31")
 parts = Array[PackedScene]([ExtResource("e26"), ExtResource("e27"), ExtResource("e28"), ExtResource("e29")])
 hair_color = Color(0.45, 0.3, 0.18, 1)
 greeting = "Welcome to Oakvale! Starter gear here. Fancier stuff in the Neon Bazaar and the Old Quarter."
-max_price = 160
+max_price = 30
 outfit_tex = ExtResource("e32")
+stock = Array[String](["weapon", "armor", "charm", "treat"])
 
 [node name="Col" type="StaticBody3D" parent="World/Village/Tobin"]
 
@@ -4229,7 +4230,7 @@ hair_color = Color(0.15, 0.55, 0.65, 1)
 greeting = "Fresh tech, old magic. Weapons and charms, no refunds."
 max_price = 0
 outfit_tex = ExtResource("e107")
-stock = Array[String](["weapon", "charm"])
+stock = Array[String](["weapon", "charm", "treat"])
 
 [node name="Col" type="StaticBody3D" parent="World/Bazaar/Vex"]
 
@@ -6570,6 +6571,8 @@ respawn_time = 8.0
 attack_damage = 22
 windup_time = 1.1
 attack_cooldown = 2.4
+is_alpha = true
+alpha_drop = "kingcap_spore"
 level = 8
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Grove/MUSHROOMKING1"]
@@ -7020,12 +7023,56 @@ respawn_time = 8.0
 attack_damage = 22
 windup_time = 1.1
 attack_cooldown = 2.4
+is_alpha = true
+alpha_drop = "wyrm_scale"
 level = 10
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Skyport/SKYWYRM1"]
 mesh = SubResource("capsule_mesh")
 
 [node name="Collision" type="CollisionShape3D" parent="World/Skyport/SKYWYRM1"]
+
+[node name="ALPHASKULLCRUSHER1" type="CharacterBody3D" parent="World/Ruins"]
+position = Vector3(-96.00, 0.05, -96.00)
+script = ExtResource("e119")
+display_name = "ALPHA SKULLCRUSHER"
+max_hp = 420
+height = 2.02
+radius = 0.50
+wander_radius = 4
+move_speed = 2.0
+model_scene = ExtResource("e153")
+model_scale = 0.62
+attack_damage = 21
+is_alpha = true
+alpha_drop = "bone_totem"
+level = 9
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Ruins/ALPHASKULLCRUSHER1"]
+mesh = SubResource("capsule_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Ruins/ALPHASKULLCRUSHER1"]
+
+[node name="ALPHAVOIDWALKER1" type="CharacterBody3D" parent="World/Lab"]
+position = Vector3(18.00, 0.05, 118.00)
+script = ExtResource("e119")
+display_name = "ALPHA VOIDWALKER"
+max_hp = 380
+height = 2.13
+radius = 0.50
+wander_radius = 4
+move_speed = 2.2
+model_scene = ExtResource("e148")
+model_scale = 0.6
+attack_damage = 19
+is_alpha = true
+alpha_drop = "void_crystal"
+level = 9
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Lab/ALPHAVOIDWALKER1"]
+mesh = SubResource("capsule_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Lab/ALPHAVOIDWALKER1"]
 
 [node name="Player" parent="." instance=ExtResource("e169")]
 position = Vector3(0, 1.1, 0)

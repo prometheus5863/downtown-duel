@@ -131,16 +131,16 @@ ZONE_LEVEL = {"Village": 1, "Downtown": 2, "Training": 3, "Quarter": 3, "Bazaar"
 ZONE_HOSTILE = {"Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True,
                 "Ruins": True, "Bazaar": False, "Quarter": False, "Skyport": True}
 def monster(parent, name, x, z, model=None, scale=1.0, hp=80, height=None, radius=0.5,
-            wander=6.0, speed=2.0, boss=False, color=(0.85, 0.2, 0.2), aggressive=None):
+            wander=6.0, speed=2.0, boss=False, color=(0.85, 0.2, 0.2), aggressive=None, alpha=""):
     if model and height is None:
         mn, mx = bounds(model); height = max(mx[1], 1.0) * scale
     if aggressive is None:
         aggressive = ZONE_HOSTILE.get(parent.split("/")[-1], True)
-    monsters.append((parent, name, x, z, model, scale, hp, height or 2.0, radius, wander, speed, boss, color, aggressive))
+    monsters.append((parent, name, x, z, model, scale, hp, height or 2.0, radius, wander, speed, boss, color, aggressive, alpha))
 
 def emit_monsters():
     out = ""
-    for parent, nm, x, z, model, scale, hp, h, r, w, spd, boss, c, aggr in monsters:
+    for parent, nm, x, z, model, scale, hp, h, r, w, spd, boss, c, aggr, alpha in monsters:
         node = uname(nm.replace(" ", ""))
         out += f'[node name="{node}" type="CharacterBody3D" parent="{parent}"]\nposition = Vector3({x:.2f}, 0.05, {z:.2f})\n'
         out += f'script = ExtResource("{ext_id("scripts/enemy.gd", "Script")}")\ndisplay_name = "{nm}"\nmax_hp = {hp}\n'
@@ -150,7 +150,8 @@ def emit_monsters():
         if boss: out += "is_boss = true\nrespawn_time = 8.0\nattack_damage = 22\nwindup_time = 1.1\nattack_cooldown = 2.4\n"
         else: out += f"attack_damage = {round(4 + hp / 25)}\n"
         if not aggr: out += "aggressive = false\n"
-        lvl = ZONE_LEVEL.get(parent.split("/")[-1], 1) + (4 if boss else 0)
+        if alpha: out += f'is_alpha = true\nalpha_drop = "{alpha}"\n'
+        lvl = ZONE_LEVEL.get(parent.split("/")[-1], 1) + (4 if boss or alpha else 0)
         if lvl != 1: out += f"level = {lvl}\n"
         out += f'\n[node name="Mesh" type="MeshInstance3D" parent="{parent}/{node}"]\nmesh = SubResource("capsule_mesh")\n'
         out += f'\n[node name="Collision" type="CollisionShape3D" parent="{parent}/{node}"]\n\n'
@@ -262,7 +263,7 @@ place(V, MED + "Prop_Wagon.gltf", VX + 7, VZ + 3, 0.3, collide="box")
 # shopkeeper behind the middle stall: basic gear only
 npc(V, "Merchant Tobin", VX - 7.6, VZ, math.pi / 2,
     [CHR + "Superhero_Male_Head.gltf", CHR + "Hair_Buzzed.gltf", CHR + "Hair_Beard.gltf", OUT + "Male_Peasant.gltf"],
-    OUT + "T_Peasant_2_BaseColor.png", (0.45, 0.3, 0.18), max_price=160,
+    OUT + "T_Peasant_2_BaseColor.png", (0.45, 0.3, 0.18), max_price=30, stock=("weapon", "armor", "charm", "treat"),
     greeting="Welcome to Oakvale! Starter gear here. Fancier stuff in the Neon Bazaar and the Old Quarter.")
 # Creature Ledger (party storage + rest). Interim spot; M5 moves it into the Sanctuary.
 nodes.append('[node name="Ledger" type="Node3D" parent="%s"]\nposition = Vector3(%.2f, 0.03, %.2f)\nrotation = Vector3(0, %.5f, 0)\n'
@@ -442,7 +443,7 @@ for dx in (-3, 3):
     place(N, CITY + "Decal_Crosswalk.gltf", NX + dx, NZ + 12.5, y=0.06)
 npc(N, "Gadgeteer Vex", NX + 6.6, NZ, -math.pi / 2,
     [CHR + "Superhero_Female_Head.gltf", CHR + "Hair_Long.gltf", OUT + "Female_Ranger.gltf"], OUT + "T_Ranger_3_BaseColor.png",
-    (0.15, 0.55, 0.65), stock=("weapon", "charm"), greeting="Fresh tech, old magic. Weapons and charms, no refunds.")
+    (0.15, 0.55, 0.65), stock=("weapon", "charm", "treat"), greeting="Fresh tech, old magic. Weapons and charms, no refunds.")
 for (dx, dz), nm, mdl, sc, hp in [((-3, 3), "Alpaking", FL + "Alpaking.gltf", 0.55, 90), ((4, 5), "Alpaca Tycoon", FL + "Alpaking_Evolved.gltf", 0.6, 160),
                                   ((0, -5), "Queen Armabee", FL + "Armabee_Evolved.gltf", 0.6, 150), ((-4, -3), "Scrap Golem", FL + "Goleling_Evolved.gltf", 0.65, 200),
                                   ((2, 9), "Neon Birb", BG + "Birb.gltf", 0.55, 80)]:
@@ -537,6 +538,22 @@ for nm, (x, z, sx, sz) in {"N":(0,-BW,2*BW,1),"S":(0,BW,2*BW,1),"E":(BW,0,1,2*BW
     sid = sub(f"wall_{sx}_{sz}", f'[sub_resource type="BoxShape3D" id="ID"]\nsize = Vector3({sx}, 6, {sz})\n')
     nodes.append(f'[node name="Wall{nm}" type="StaticBody3D" parent="{E}"]\nposition = Vector3({x}, 3, {z})\n\n'
                  f'[node name="S" type="CollisionShape3D" parent="{E}/Wall{nm}"]\nshape = SubResource("{sid}")\n')
+
+# ---------------------------------------------------------------- Alphas (data/alphas.json)
+ALPHAS = {k: v for k, v in json.load(open(os.path.join(P, "data/alphas.json"))).items() if not k.startswith("_")}
+CREATURES = json.load(open(os.path.join(P, "data/creatures.json")))
+ZONE_NODE = {"Grove": G, "Skyport": SP, "Ruins": I, "Lab": L}
+for i, m in enumerate(monsters):                 # bosses that are their zone's Alpha
+    a = ALPHAS.get(m[0].split("/")[-1])
+    if a and m[1] == a["name"]:
+        monsters[i] = m[:-1] + (a["drop"],)
+for zone, a in ALPHAS.items():                   # Alphas that aren't existing bosses get placed here
+    if "pos" not in a:
+        continue
+    c = CREATURES[a["species"]]
+    monster(ZONE_NODE[zone], a["name"], a["pos"][0], a["pos"][1], c["model"], c["scale"], a.get("hp", c["hp"] * 2),
+            wander=4, speed=c["speed"], aggressive=True, alpha=a["drop"])
+assert sum(1 for m in monsters if m[-1]) == len(ALPHAS), "an Alpha in data/alphas.json was not placed"
 
 # ---------------------------------------------------------------- write scene
 mon_nodes = emit_monsters()

@@ -51,6 +51,10 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - **Party** — up to 3 companions fight beside you with their own element moves; order them with 1–4 (or the
   ATK / FLW / HLD / RET buttons on phones). Extra friends wait at the **Creature Ledger** in Oakvale, where you can
   also rest to heal and revive exhausted companions. Companions level up with the XP you earn.
+- **Treats & bond** — give treats (bought in Oakvale and the Neon Bazaar) to raise a creature's bond; its
+  favourite flavour counts double. At 60 / 100 it asks to join. Hostile creatures must be weakened or calmed first.
+- **Alphas** — one crowned Alpha per wild zone: tougher, angrier below half HP, only Mythic treats win them over,
+  and they drop rare materials. 1 in 200 creatures is a gold **Lustre** variant with +10 % stats.
 - **Elements** — Ember › Verdant › Stone › Gale › Shade › Tide › Ember: 1.5× damage forward, 0.67× backwards.
   Hostile monsters: *Fight*, *Calm it down* (works below 50 % HP, or after a snack; boss below 30 %), *Snack (10 coins)*.
   Failing to calm one makes it attack immediately.
@@ -86,6 +90,7 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - [x] Dressed hero + visible armor tiers, hybrid districts, non-linear road network, minimap, chests
 - [x] Save game (`user://save.json`, browser storage on the web), autosave
 - [x] Party of 3 companions that fight beside you, storage at the Creature Ledger, 6-element wheel, shared XP
+- [x] Treats & bond meter, favourite flavours, crowned Alphas with phase 2 and drops, rare Lustre variants
 - [ ] Party combat, treats and bond, mining, crafting, Sanctuaries, 2 km streamed world — see `docs/PLAN.md` and `docs/PROGRESS.md`
 - [ ] Capture / party system, 2D overworld ↔ 3D battle transition
 

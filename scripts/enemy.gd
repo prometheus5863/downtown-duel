@@ -31,6 +31,8 @@ signal died
 @export var notice_range := 9.0
 @export var is_boss := false
 @export var level := 1                            ## wild level (set per zone by the generator); companions level up
+@export var is_alpha := false                     ## region Alpha: big, crowned, phase 2 below half HP, Mythic treats only
+@export var alpha_drop := ""                      ## data/materials.json id dropped when defeated or calmed
 
 @export_group("Combat")
 @export var aggressive := true                    ## false = peaceful until hit
@@ -80,7 +82,15 @@ var _foe: Node3D               # companion this creature is fighting instead of 
 var friend := false            ## befriended: follows the player, can't be targeted
 var spared := false
 var _snacked := false
-var _affection := 0
+var bond := 0                  ## 0-100. At JOIN_BOND it asks to join. Saved per creature (world.bond)
+var lustre := false            ## rare shiny variant (1 in LUSTRE_ODDS, decided from the scene path so it's stable)
+var _phase2 := false
+var _petted := false           # petting counts once per conversation
+const JOIN_BOND := 60
+const LUSTRE_ODDS := 200
+const BOND_PET := 8
+const BOND_SPARE := 20
+const LUSTRE_TINT := Color(1.0, 0.82, 0.35)
 var _friend_tag: Label3D
 
 const GREET_HOSTILE := ["%s growls and bares its teeth.", "%s eyes you hungrily.", "%s is not in the mood to chat.", "%s puffs itself up to look bigger."]
@@ -121,6 +131,9 @@ func _ready() -> void:
 		_base_mat.albedo_color = color
 		$Mesh.material_override = _base_mat
 		_meshes = [$Mesh]
+	_roll_lustre()
+	if is_alpha:
+		_setup_alpha()
 	_visual.rotation.y = randf() * TAU
 	_state_t = randf_range(1.0, 4.0)
 	if attack_range <= 0.0:
@@ -150,6 +163,94 @@ func _ready() -> void:
 		_ring.position.y = 0.06
 		_ring.visible = false
 		add_child(_ring)
+
+
+## Lustre is decided from a hash of the scene path: the same creature is Lustre on every load, and tests can
+## force it with set_lustre().
+func _roll_lustre() -> void:
+	if friend or is_dummy() or not is_inside_tree() or get_tree().current_scene == null:
+		return
+	var key := String(get_tree().current_scene.get_path_to(self)) if get_tree().current_scene.is_ancestor_of(self) else String(name)
+	if hash(key) % LUSTRE_ODDS == 0:
+		set_lustre(true)
+
+
+func set_lustre(on: bool) -> void:
+	if on == lustre:
+		return
+	lustre = on
+	if on:
+		max_hp = int(round(max_hp * 1.1))
+		hp = max_hp
+		attack_damage = int(round(attack_damage * 1.1))
+		display_name = display_name if display_name.begins_with("Lustre ") else "Lustre " + display_name
+		_tint_meshes(LUSTRE_TINT)
+		var star := Label3D.new()
+		star.text = "✦"
+		star.font_size = 90
+		star.outline_size = 12
+		star.modulate = LUSTRE_TINT
+		star.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		star.position.y = height + 0.35
+		star.name = "LustreStar"
+		add_child(star)
+
+
+## Tinted surface overrides must be dropped before the meshes are freed, or the renderer logs
+## "material is null" while tearing the scene down (same as avatar.gd).
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		for m in _meshes:
+			if is_instance_valid(m):
+				for i in m.get_surface_override_material_count():
+					m.set_surface_override_material(i, null)
+
+
+func _tint_meshes(col: Color) -> void:
+	for m in _meshes:
+		if m == get_node_or_null("Mesh"):
+			continue
+		for i in m.get_surface_override_material_count():
+			var base := m.get_active_material(i)
+			if base is StandardMaterial3D:
+				var mat: StandardMaterial3D = base.duplicate()
+				mat.albedo_color = mat.albedo_color * col
+				mat.emission_enabled = true
+				mat.emission = col * 0.25
+				m.set_surface_override_material(i, mat)
+
+
+func _setup_alpha() -> void:
+	model_scale *= 1.0 if is_boss else 1.5
+	height *= 1.0 if is_boss else 1.5
+	radius *= 1.0 if is_boss else 1.4
+	if model_scene and not is_boss:
+		_visual.scale = _rest_scale()
+		var shape: CapsuleShape3D = $Collision.shape
+		shape.radius = radius
+		shape.height = maxf(height, radius * 2.0)
+		$Collision.position.y = shape.height * 0.5
+		attack_range = radius + 1.4
+	var crown := Label3D.new()
+	crown.text = "♛"
+	crown.font_size = 140
+	crown.outline_size = 18
+	crown.modulate = Color(1.0, 0.8, 0.2)
+	crown.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	crown.position.y = height + 0.6
+	add_child(crown)
+
+
+## Below half HP an Alpha gets angry: faster tells, shorter cooldowns, harder hits.
+func _enter_phase2() -> void:
+	_phase2 = true
+	windup_time *= 0.7
+	attack_cooldown *= 0.6
+	attack_damage = int(round(attack_damage * 1.25))
+	move_speed *= 1.25
+	_tint_meshes(Color(1.0, 0.55, 0.5))
+	ring_fx(5.0, Color(1.0, 0.3, 0.2))
+	_flash_alert(1.2)
 
 
 func aim_point() -> Vector3:
@@ -425,6 +526,8 @@ func take_damage(amount: int, from_dir: Vector3, source: Node = null, attack_ele
 		if hp == 0:
 			_exhaust()
 		return
+	if is_alpha and not _phase2 and hp > 0 and hp <= max_hp / 2:
+		_enter_phase2()
 	_provoked = true
 	# Anger follows the hits: a companion that lands one usually pulls it off the player, and the reverse.
 	if source != null and source.get("friend"):
@@ -500,6 +603,7 @@ func _die() -> void:
 			_player.reward(4, 1, "training")
 		else:
 			_player.reward(max_hp / 2, max_hp / 8 + randi() % 5, "defeated")
+		_give_alpha_drop()
 	_alert.visible = false
 	if _ring:
 		_ring.visible = false
@@ -516,6 +620,14 @@ func _die() -> void:
 	_state_t = 1.0
 	_provoked = false
 	_foe = null
+	_snacked = false
+	if _phase2:                                  # respawns calm and in phase 1
+		_phase2 = false
+		windup_time /= 0.7
+		attack_cooldown /= 0.6
+		attack_damage = int(round(attack_damage / 1.25))
+		move_speed /= 1.25
+		_tint_meshes(LUSTRE_TINT if lustre else Color.WHITE)
 	_visual.scale = _rest_scale()
 	_play(IDLE)
 	$Collision.set_deferred("disabled", false)
@@ -563,39 +675,34 @@ func talk_begin() -> Dictionary:
 		return _say("It's a training dummy. It does not talk back.", [], "leave")
 	_state = "talk"
 	_alert.visible = false
+	_petted = false
+	var extra := "\nFavourite flavour: %s" % favourite_flavour() if bond > 0 else ""
 	if is_hostile():
-		return _say(GREET_HOSTILE.pick_random() % display_name, _hostile_options())
-	return _say(GREET_CALM.pick_random() % display_name, _calm_options())
+		return _say(GREET_HOSTILE.pick_random() % display_name + extra, _hostile_options())
+	return _say(GREET_CALM.pick_random() % display_name + "\n" + _bond_text() + extra, _calm_options())
 
 
 func talk_choose(option: String) -> Dictionary:
 	var n := display_name
+	if option.begins_with("Give "):
+		return _give_treat(_treat_from_option(option))
 	match option:
 		"Fight!":
 			return _say("You raise your fists.", [], "fight")
 		"Try to calm it down":
-			var threshold := 0.3 if is_boss else 0.5
-			if _snacked and not is_boss:
-				threshold = 1.01
-			elif _snacked:
-				threshold = 0.5
+			var threshold := 0.3 if (is_boss or is_alpha) else 0.5
+			if _snacked:
+				threshold = 0.5 if (is_boss or is_alpha) else 1.01
 			if float(hp) / max_hp <= threshold:
 				return _say("%s calms down and lowers its guard. You spared it!" % n, [], "spared")
-			return _say("%s won't listen!  (Weaken it first, or offer a snack.)" % n, [], "fight")
-		"Offer a snack (10 coins)", "Offer a snack (5 coins)":
-			var cost := 10 if option.contains("10") else 5
-			if not _player.spend(cost):
-				return _say("You don't have enough coins.", _hostile_options() if is_hostile() else _calm_options())
-			if is_hostile():
-				_snacked = true
-				return _say("%s snatches the snack and chews suspiciously... it seems calmer." % n, _hostile_options())
-			_affection += 2
-			return _after_affection("%s gobbles the snack!" % n)
+			return _say("%s won't listen!  (Weaken it first, or offer a treat.)" % n, [], "fight")
 		"Pet it":
-			_affection += 1
-			return _after_affection(PET_LINES.pick_random() % n)
+			if not _petted:
+				_petted = true
+				bond = mini(bond + BOND_PET, 100)
+			return _after_bond(PET_LINES.pick_random() % n)
 		"Join me!":
-			if is_boss:
+			if is_boss and not is_alpha:
 				return _say("%s is far too grand to follow anyone... but it bows to you." % n, [], "leave")
 			if _player.party.size() >= _player.MAX_PARTY:
 				return _say("%s wants to come along! Your party is full, so it will wait for you at the Creature Ledger." % n, [], "friend")
@@ -604,6 +711,7 @@ func talk_choose(option: String) -> Dictionary:
 
 
 func talk_end(result: String) -> void:
+	_petted = false
 	match result:
 		"fight":
 			_provoked = true
@@ -615,8 +723,10 @@ func talk_end(result: String) -> void:
 			_provoked = false
 			_state = "idle"
 			_state_t = 2.0
+			bond = mini(bond + BOND_SPARE, 100)
 			if _player:
 				_player.reward(int(max_hp * 0.4), 0, "spared")
+				_give_alpha_drop()
 		"friend":
 			if _player:
 				_player.befriend(self)
@@ -633,21 +743,95 @@ func set_spared() -> void:
 	_provoked = false
 
 
+## Alpha treasure (and, until crafting arrives in M4, one Mythic Morsel so the next Alpha can be befriended).
+func _give_alpha_drop() -> void:
+	if alpha_drop == "" or _player == null or not _player.has_method("add_item"):
+		return
+	_player.add_item(alpha_drop, 1)
+	_player.add_item("mythic_morsel", 1)
+
+
+# ------------------------------------------------------------------ treats & bond
+
+## Bond a treat gives this creature: 0 if refused (Alphas want Mythic), x2 for its favourite flavour.
+func treat_bond(treat_id: String) -> int:
+	var t: Dictionary = Data.table("treats").get(treat_id, {})
+	if t.is_empty():
+		return 0
+	if (is_alpha or is_boss) and t.tier != "mythic":
+		return 0
+	var b := int(t.bond)
+	if t.flavour == favourite_flavour():
+		b *= 2
+	return b
+
+
+func favourite_flavour() -> String:
+	return Data.creature(species).get("flavour", "")
+
+
+func _give_treat(treat_id: String) -> Dictionary:
+	var n := display_name
+	var t: Dictionary = Data.table("treats").get(treat_id, {})
+	if t.is_empty() or _player.item_count(treat_id) <= 0:
+		return _say("You don't have that treat.", _hostile_options() if is_hostile() else _calm_options())
+	var gain := treat_bond(treat_id)
+	if gain == 0:
+		return _say("%s sniffs the %s and turns away. Only a Mythic treat will do for an Alpha." % [n, t.name],
+			_hostile_options() if is_hostile() else _calm_options())
+	_player.remove_item(treat_id, 1)
+	bond = mini(bond + gain, 100)
+	var fav := " It's its favourite!" if t.flavour == favourite_flavour() else ""
+	if is_hostile():
+		_snacked = true
+		return _say("%s snatches the %s and chews suspiciously... it seems calmer.%s" % [n, t.name, fav], _hostile_options())
+	return _after_bond("%s gobbles the %s!%s" % [n, t.name, fav])
+
+
+func _treat_from_option(option: String) -> String:
+	for id in Data.table("treats"):
+		if option.begins_with("Give %s" % Data.table("treats")[id].name):
+			return id
+	return ""
+
+
+## "Give <treat> (<count>)" options for the treats you carry: best tier first, at most 4.
+func _treat_options() -> Array:
+	var out := []
+	if _player == null or not _player.has_method("item_count"):
+		return out
+	var ids: Array = Data.table("treats").keys()
+	ids.reverse()                                 # treats.json lists simple -> mythic
+	for id in ids:
+		var c: int = _player.item_count(id)
+		if c > 0 and out.size() < 4:
+			out.append("Give %s (%d)" % [Data.table("treats")[id].name, c])
+	return out
+
+
 func _hostile_options() -> Array:
 	var o := ["Fight!", "Try to calm it down"]
 	if not _snacked:
-		o.append("Offer a snack (10 coins)")
+		o.append_array(_treat_options())
 	return o
 
 
 func _calm_options() -> Array:
-	return ["Pet it", "Offer a snack (5 coins)", "Leave"]
+	var o := ["Pet it"] if not _petted else []
+	o.append_array(_treat_options())
+	o.append("Leave")
+	return o
 
 
-func _after_affection(line: String) -> Dictionary:
-	if _affection >= 3:
-		return _say(line + "\n%s seems to really like you. Ask it to join you?" % display_name, ["Join me!", "Leave"])
-	return _say(line, _calm_options())
+func _bond_text() -> String:
+	var full := int(round(bond / 10.0))
+	return "Bond  " + "♥".repeat(mini(full, 10)) + "♡".repeat(maxi(10 - full, 0)) + "  %d / 100" % bond
+
+
+func _after_bond(line: String) -> Dictionary:
+	if bond >= JOIN_BOND:
+		return _say(line + "\n%s\n%s seems to really like you. Ask it to join you?" % [_bond_text(), display_name], ["Join me!", "Leave"])
+	return _say(line + "\n" + _bond_text(), _calm_options())
 
 
 func _say(text: String, options: Array, end := "") -> Dictionary:
@@ -673,12 +857,20 @@ func adopt(p: Node, rec: Dictionary = {}, origin := "") -> void:
 	collision_layer = 2            # player, projectiles and melee ignore friends
 	if rec.is_empty():
 		rec = {"uid": "%08x%04x" % [randi(), randi() % 65536], "species": species, "name": display_name,
-			"level": level, "xp": 0, "hp": -1, "origin": origin, "lustre": false}
+			"level": level, "xp": 0, "hp": -1, "origin": origin, "lustre": lustre, "alpha": is_alpha}
 	record = rec
 	origin_id = String(rec.get("origin", ""))
 	display_name = String(rec.get("name", display_name))
 	level = int(rec.get("level", 1))
 	_apply_level()
+	if bool(rec.get("lustre", false)) and not lustre:
+		set_lustre(true)
+	elif lustre:
+		max_hp = int(round(max_hp * 1.1))
+		attack_damage = int(round(attack_damage * 1.1))
+	if bool(rec.get("alpha", false)):
+		max_hp = int(round(max_hp * 1.5))
+		attack_damage = int(round(attack_damage * 1.3))
 	hp = max_hp if int(rec.get("hp", -1)) < 0 else clampi(int(rec.hp), 0, max_hp)
 	wander_radius = maxf(wander_radius, 1.0)      # a befriended dummy still counts as a creature
 	move_speed = float(Data.creature(species).get("speed", move_speed))

@@ -73,6 +73,7 @@ func collect() -> Dictionary:
 	var d := SaveGame.blank()
 	d.play_time = play_time
 	d.player = _player.to_save()
+	d.inventory = _player.inventory.duplicate()
 	d.party = _player.party_records()
 	d.storage = _player.storage.duplicate(true)
 	# Wild creatures that became companions (party or storage) must not reappear in the wild.
@@ -86,6 +87,8 @@ func collect() -> Dictionary:
 			d.world.chests.append(_id(n))
 		elif n.get("spared") == true:
 			d.world.spared.append(_id(n))
+		if n.get("friend") == false and int(n.get("bond")) > 0:
+			d.world.bond[_id(n)] = n.bond
 	return d
 
 
@@ -105,6 +108,13 @@ func apply(d: Dictionary) -> void:
 	flags = d.world.flags
 	sanctuaries = d.world.sanctuaries
 	_player.from_save(d.player)
+	_player.inventory.clear()
+	for id in d.inventory:                 # JSON numbers load as floats
+		_player.inventory[id] = int(d.inventory[id])
+	for id in d.world.bond:
+		var b := _root.get_node_or_null(id)
+		if b and b.get("bond") != null:
+			b.bond = int(d.world.bond[id])
 	for id in d.world.chests:
 		var c := _root.get_node_or_null(id)
 		if c and c.has_method("set_opened"):

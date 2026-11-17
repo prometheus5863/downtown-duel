@@ -7,6 +7,7 @@ const Avatar := preload("res://scripts/avatar.gd")
 const SaveGame := preload("res://scripts/save_game.gd")
 const InputSetup := preload("res://scripts/input_setup.gd")
 const Factory := preload("res://scripts/creature_factory.gd")
+const Data_ := preload("res://scripts/data.gd")
 const GRAVITY := 20.0
 
 @export var speed := 6.0
@@ -71,6 +72,7 @@ var party: Array = []                    ## active companions (enemy.gd nodes wi
 var storage: Array = []                  ## records of companions waiting at the Creature Ledger (unlimited)
 var party_command := "follow"            ## attack | follow | hold | heel (see companion.gd)
 var befriended_origins: Array = []       ## scene paths of wild creatures that are now stored companions
+var inventory := {"berry_bite": 3, "salt_cracker": 2}   ## item id -> count (treats, materials). New game: a few treats
 const MAX_PARTY := 3
 const COMMANDS := {"cmd_attack": "attack", "cmd_follow": "follow", "cmd_hold": "hold", "cmd_return": "heel"}
 const COMMAND_TEXT := {"attack": "ATTACK!", "follow": "FOLLOW", "hold": "HOLD", "heel": "RETURN"}
@@ -395,6 +397,29 @@ func spend(amount: int) -> bool:
 	if coins < amount:
 		return false
 	coins -= amount
+	progress_changed.emit()
+	return true
+
+
+# ---------------------------------------------------------------- inventory
+
+func item_count(id: String) -> int:
+	return int(inventory.get(id, 0))
+
+
+func add_item(id: String, n := 1) -> void:
+	inventory[id] = item_count(id) + n
+	var nm: String = Data_.table("treats").get(id, Data_.table("materials").get(id, {})).get("name", id)
+	_popup("+%d %s" % [n, nm], Color(0.85, 0.75, 1.0), 2.0)
+	progress_changed.emit()
+
+
+func remove_item(id: String, n := 1) -> bool:
+	if item_count(id) < n:
+		return false
+	inventory[id] = item_count(id) - n
+	if inventory[id] == 0:
+		inventory.erase(id)
 	progress_changed.emit()
 	return true
 

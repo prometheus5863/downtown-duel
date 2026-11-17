@@ -57,7 +57,7 @@ Open-world creature-battle demo: 9 zones (ring road + spokes + alleys), 61 monst
 
 ## Roadmap
 The game is being grown into an open-world creature RPG: spec `docs/FABLE_BRIEF.md`, per-milestone plan
-`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load) and M1 (party) are done.
+`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load), M1 (party) and M2 (treats/bond/Alphas) are done.
 Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino studio lead).
 
 ## Creatures & party (M1)
@@ -70,6 +70,15 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
   `scripts/creature_factory.gd` spawns a companion from a record. `scripts/ledger.gd` + menus.gd = storage UI.
 - Projectiles never hit the player or friends (`body.is_in_group("player")` / `friend`).
 - Runtime-added input actions: `scripts/input_setup.gd` (cmd_attack/follow/hold/return = 1-4).
+
+## Treats, bond, Alphas (M2)
+- `data/treats.json` (tier, flavour, bond, price), `data/alphas.json` (zone → species, name, drop, optional pos/hp;
+  the generator places them and asserts all are placed), `data/materials.json`. Species `flavour` in creatures.json.
+- enemy.gd: `bond` (0-100, JOIN_BOND 60), `treat_bond(id)`, `is_alpha` / `alpha_drop` / `_phase2`, `lustre`
+  (`set_lustre`, hash of scene path % 200). Tinted materials are cleared in NOTIFICATION_PREDELETE (else the
+  renderer logs "material is null" at teardown — same trap as avatar.gd).
+- Player `inventory` (id → int; JSON loads floats, Game.apply casts back), `add_item/remove_item/item_count`.
+- Shops sell treats when their `stock` includes "treat".
 
 ## Save / load
 - `scripts/save_game.gd` (file I/O, `VERSION`, `migrate()`), `scripts/game.gd` (`Game` node, last in arena.tscn, group

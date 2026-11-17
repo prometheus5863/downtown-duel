@@ -39,6 +39,7 @@ const ZONES := [
 ]
 const Minimap := preload("res://scripts/minimap.gd")
 const PartyPanel := preload("res://scripts/party_panel.gd")
+const Data := preload("res://scripts/data.gd")
 
 
 func _ready() -> void:
@@ -193,8 +194,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_check_zone()
 	var r: Dictionary = player.route
-	_info.text = "Lv %d   XP %d / %d   Coins %d\nRoute: %s   (defeated %d · spared %d · friends %d)" % [
-		player.level, player.xp, player.xp_to_next(), player.coins,
+	var treats := 0
+	for id in player.inventory:
+		if Data.table("treats").has(id):
+			treats += player.inventory[id]
+	_info.text = "Lv %d   XP %d / %d   Coins %d   Treats %d\nRoute: %s   (defeated %d · spared %d · friends %d)" % [
+		player.level, player.xp, player.xp_to_next(), player.coins, treats,
 		player.route_name(), r.defeated, r.spared, r.friends]
 	_bottom.visible = not menus.is_open
 	var near: Node = null if menus.is_open or not player.can_control else player.nearest_interactable()

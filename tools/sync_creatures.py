@@ -41,6 +41,9 @@ MOVES = {"ember": ["cinder_bite", "fire_spit"], "tide": ["splash_tackle", "bubbl
          "stone": ["rock_bash", "quake_stomp"], "gale": ["gust_dive", "wind_cutter"], "shade": ["shadow_claw", "night_pulse"]}
 
 
+FLAVOUR = {"ember": "spicy", "tide": "savory", "verdant": "bitter", "stone": "savory", "gale": "sweet", "shade": "sour"}
+
+
 def model_height(path):
     d = json.load(open(path))
     sc = {nd["mesh"]: nd.get("scale", [1, 1, 1]) for nd in d.get("nodes", []) if "mesh" in nd}
@@ -63,7 +66,8 @@ for group in ("Blob", "Big", "Flying"):
         e = data.get(sp)
         if e is None:
             e = data[sp] = {"name": name, "element": element, "hp": hp, "atk": atk, "speed": speed, "scale": scale,
-                            "radius": round(0.5 * scale / 0.6, 2), "moves": MOVES[element]}
+                            "radius": round(0.5 * scale / 0.6, 2), "moves": MOVES[element],
+                            "flavour": FLAVOUR[element]}
             added += 1
         e["model"] = f"{MON}/{group}/glTF/{f}"
         e["height"] = round(model_height(os.path.join(folder, f)) * e["scale"], 2)

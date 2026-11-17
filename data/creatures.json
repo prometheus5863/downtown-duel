@@ -12,7 +12,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Blob/glTF/Alien.gltf",
-  "height": 1.96
+  "height": 1.96,
+  "flavour": "sour"
  },
  "Blob/Birb": {
   "name": "Sparrowbit",
@@ -27,7 +28,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Blob/glTF/Birb.gltf",
-  "height": 1.29
+  "height": 1.29,
+  "flavour": "sweet"
  },
  "Blob/Cactoro": {
   "name": "Cactoro",
@@ -42,7 +44,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Blob/glTF/Cactoro.gltf",
-  "height": 1.97
+  "height": 1.97,
+  "flavour": "bitter"
  },
  "Blob/Cat": {
   "name": "Whiskit",
@@ -57,7 +60,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Blob/glTF/Cat.gltf",
-  "height": 0.96
+  "height": 0.96,
+  "flavour": "savory"
  },
  "Blob/Chicken": {
   "name": "Cluckle",
@@ -72,7 +76,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Blob/glTF/Chicken.gltf",
-  "height": 1.05
+  "height": 1.05,
+  "flavour": "savory"
  },
  "Blob/Dog": {
   "name": "Barkley",
@@ -87,7 +92,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Blob/glTF/Dog.gltf",
-  "height": 1.0
+  "height": 1.0,
+  "flavour": "savory"
  },
  "Blob/Fish": {
   "name": "Puddlefin",
@@ -102,7 +108,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Blob/glTF/Fish.gltf",
-  "height": 1.37
+  "height": 1.37,
+  "flavour": "savory"
  },
  "Blob/GreenBlob": {
   "name": "Gloop",
@@ -117,7 +124,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Blob/glTF/GreenBlob.gltf",
-  "height": 1.1
+  "height": 1.1,
+  "flavour": "bitter"
  },
  "Blob/GreenSpikyBlob": {
   "name": "Spikeball",
@@ -132,7 +140,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Blob/glTF/GreenSpikyBlob.gltf",
-  "height": 2.45
+  "height": 2.45,
+  "flavour": "bitter"
  },
  "Blob/Mushnub": {
   "name": "Mushnub",
@@ -147,7 +156,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Blob/glTF/Mushnub.gltf",
-  "height": 1.62
+  "height": 1.62,
+  "flavour": "sweet"
  },
  "Blob/Mushnub_Evolved": {
   "name": "Elder Mushnub",
@@ -162,7 +172,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Blob/glTF/Mushnub_Evolved.gltf",
-  "height": 2.39
+  "height": 2.39,
+  "flavour": "bitter"
  },
  "Blob/Ninja": {
   "name": "Shadekin",
@@ -177,7 +188,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Blob/glTF/Ninja.gltf",
-  "height": 1.67
+  "height": 1.67,
+  "flavour": "sour"
  },
  "Blob/Orc": {
   "name": "Grumblor",
@@ -192,7 +204,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Blob/glTF/Orc.gltf",
-  "height": 1.4
+  "height": 1.4,
+  "flavour": "savory"
  },
  "Blob/Pigeon": {
   "name": "Coo",
@@ -207,7 +220,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Blob/glTF/Pigeon.gltf",
-  "height": 1.08
+  "height": 1.08,
+  "flavour": "bitter"
  },
  "Blob/PinkBlob": {
   "name": "Pinkle",
@@ -222,7 +236,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Blob/glTF/PinkBlob.gltf",
-  "height": 1.16
+  "height": 1.16,
+  "flavour": "sweet"
  },
  "Blob/Wizard": {
   "name": "Hexling",
@@ -237,7 +252,8 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Blob/glTF/Wizard.gltf",
-  "height": 1.56
+  "height": 1.56,
+  "flavour": "bitter"
  },
  "Blob/Yeti": {
   "name": "Snowball",
@@ -252,7 +268,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Blob/glTF/Yeti.gltf",
-  "height": 1.33
+  "height": 1.33,
+  "flavour": "sweet"
  },
  "Big/Alien": {
   "name": "Voidwalker",
@@ -267,7 +284,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Big/glTF/Alien.gltf",
-  "height": 2.13
+  "height": 2.13,
+  "flavour": "sour"
  },
  "Big/Birb": {
   "name": "Galebeak",
@@ -282,7 +300,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Big/glTF/Birb.gltf",
-  "height": 1.83
+  "height": 1.83,
+  "flavour": "sweet"
  },
  "Big/BlueDemon": {
   "name": "Tidefiend",
@@ -297,7 +316,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Big/glTF/BlueDemon.gltf",
-  "height": 1.7
+  "height": 1.7,
+  "flavour": "savory"
  },
  "Big/Bunny": {
   "name": "Bunbun",
@@ -312,7 +332,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Big/glTF/Bunny.gltf",
-  "height": 1.72
+  "height": 1.72,
+  "flavour": "sweet"
  },
  "Big/Cactoro": {
   "name": "Thornback",
@@ -327,7 +348,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Big/glTF/Cactoro.gltf",
-  "height": 2.37
+  "height": 2.37,
+  "flavour": "bitter"
  },
  "Big/Demon": {
   "name": "Cinderhorn",
@@ -342,7 +364,8 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Big/glTF/Demon.gltf",
-  "height": 2.02
+  "height": 2.02,
+  "flavour": "spicy"
  },
  "Big/Dino": {
   "name": "Rockjaw",
@@ -357,7 +380,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Big/glTF/Dino.gltf",
-  "height": 2.09
+  "height": 2.09,
+  "flavour": "savory"
  },
  "Big/Fish": {
   "name": "Rotorfin",
@@ -372,7 +396,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Big/glTF/Fish.gltf",
-  "height": 2.25
+  "height": 2.25,
+  "flavour": "savory"
  },
  "Big/Frog": {
   "name": "Hopper",
@@ -387,7 +412,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Big/glTF/Frog.gltf",
-  "height": 1.61
+  "height": 1.61,
+  "flavour": "sour"
  },
  "Big/Monkroose": {
   "name": "Monkroose",
@@ -402,7 +428,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Big/glTF/Monkroose.gltf",
-  "height": 1.79
+  "height": 1.79,
+  "flavour": "sweet"
  },
  "Big/MushroomKing": {
   "name": "Mushroom King",
@@ -417,7 +444,8 @@
    "spore_burst"
   ],
   "model": "assets/monsters/Big/glTF/MushroomKing.gltf",
-  "height": 3.6
+  "height": 3.6,
+  "flavour": "bitter"
  },
  "Big/Ninja": {
   "name": "Nightblade",
@@ -432,7 +460,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Big/glTF/Ninja.gltf",
-  "height": 1.8
+  "height": 1.8,
+  "flavour": "sour"
  },
  "Big/Orc": {
   "name": "Boulderfist",
@@ -447,7 +476,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Big/glTF/Orc.gltf",
-  "height": 1.92
+  "height": 1.92,
+  "flavour": "savory"
  },
  "Big/Orc_Skull": {
   "name": "Skullcrusher",
@@ -462,7 +492,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Big/glTF/Orc_Skull.gltf",
-  "height": 2.02
+  "height": 2.02,
+  "flavour": "sour"
  },
  "Big/Tribal": {
   "name": "Embermask",
@@ -477,7 +508,8 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Big/glTF/Tribal.gltf",
-  "height": 2.56
+  "height": 2.56,
+  "flavour": "spicy"
  },
  "Big/Yeti": {
   "name": "Frostmaw",
@@ -492,7 +524,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Big/glTF/Yeti.gltf",
-  "height": 1.83
+  "height": 1.83,
+  "flavour": "spicy"
  },
  "Flying/Alpaking": {
   "name": "Alpaking",
@@ -507,7 +540,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Flying/glTF/Alpaking.gltf",
-  "height": 1.82
+  "height": 1.82,
+  "flavour": "sweet"
  },
  "Flying/Alpaking_Evolved": {
   "name": "Alpaca Tycoon",
@@ -522,7 +556,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Flying/glTF/Alpaking_Evolved.gltf",
-  "height": 2.24
+  "height": 2.24,
+  "flavour": "sweet"
  },
  "Flying/Armabee": {
   "name": "Buzzbee",
@@ -537,7 +572,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Flying/glTF/Armabee.gltf",
-  "height": 1.69
+  "height": 1.69,
+  "flavour": "sweet"
  },
  "Flying/Armabee_Evolved": {
   "name": "Queen Armabee",
@@ -552,7 +588,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Flying/glTF/Armabee_Evolved.gltf",
-  "height": 1.77
+  "height": 1.77,
+  "flavour": "sweet"
  },
  "Flying/Demon": {
   "name": "Imp",
@@ -567,7 +604,8 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Flying/glTF/Demon.gltf",
-  "height": 1.55
+  "height": 1.55,
+  "flavour": "spicy"
  },
  "Flying/Dragon": {
   "name": "Emberwing",
@@ -582,7 +620,8 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Flying/glTF/Dragon.gltf",
-  "height": 1.88
+  "height": 1.88,
+  "flavour": "spicy"
  },
  "Flying/Dragon_Evolved": {
   "name": "Sky Wyrm",
@@ -597,7 +636,8 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Flying/glTF/Dragon_Evolved.gltf",
-  "height": 3.47
+  "height": 3.47,
+  "flavour": "spicy"
  },
  "Flying/Ghost": {
   "name": "Wisp",
@@ -612,7 +652,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Flying/glTF/Ghost.gltf",
-  "height": 1.86
+  "height": 1.86,
+  "flavour": "sour"
  },
  "Flying/Ghost_Skull": {
   "name": "Bone Wisp",
@@ -627,7 +668,8 @@
    "night_pulse"
   ],
   "model": "assets/monsters/Flying/glTF/Ghost_Skull.gltf",
-  "height": 1.86
+  "height": 1.86,
+  "flavour": "sour"
  },
  "Flying/Glub": {
   "name": "Glub",
@@ -642,7 +684,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Flying/glTF/Glub.gltf",
-  "height": 2.05
+  "height": 2.05,
+  "flavour": "sour"
  },
  "Flying/Glub_Evolved": {
   "name": "Glubzilla",
@@ -657,7 +700,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Flying/glTF/Glub_Evolved.gltf",
-  "height": 2.75
+  "height": 2.75,
+  "flavour": "savory"
  },
  "Flying/Goleling": {
   "name": "Pebbling",
@@ -672,7 +716,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Flying/glTF/Goleling.gltf",
-  "height": 1.82
+  "height": 1.82,
+  "flavour": "savory"
  },
  "Flying/Goleling_Evolved": {
   "name": "Scrap Golem",
@@ -687,7 +732,8 @@
    "quake_stomp"
   ],
   "model": "assets/monsters/Flying/glTF/Goleling_Evolved.gltf",
-  "height": 2.48
+  "height": 2.48,
+  "flavour": "savory"
  },
  "Flying/Hywirl": {
   "name": "Hywirl",
@@ -702,7 +748,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Flying/glTF/Hywirl.gltf",
-  "height": 1.52
+  "height": 1.52,
+  "flavour": "sweet"
  },
  "Flying/Pigeon": {
   "name": "Skycoo",
@@ -717,7 +764,8 @@
    "wind_cutter"
   ],
   "model": "assets/monsters/Flying/glTF/Pigeon.gltf",
-  "height": 1.62
+  "height": 1.62,
+  "flavour": "sweet"
  },
  "Flying/Squidle": {
   "name": "Squidle",
@@ -732,7 +780,8 @@
    "bubble_shot"
   ],
   "model": "assets/monsters/Flying/glTF/Squidle.gltf",
-  "height": 1.64
+  "height": 1.64,
+  "flavour": "sour"
  },
  "Flying/Tribal": {
   "name": "Mask Imp",
@@ -747,6 +796,7 @@
    "fire_spit"
   ],
   "model": "assets/monsters/Flying/glTF/Tribal.gltf",
-  "height": 2.44
+  "height": 2.44,
+  "flavour": "spicy"
  }
 }

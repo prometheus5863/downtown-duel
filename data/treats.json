@@ -1,0 +1,16 @@
+{
+ "berry_bite":     {"name": "Berry Bite",      "tier": "simple", "flavour": "sweet",  "bond": 12, "price": 8,   "desc": "Mashed wild berries."},
+ "pepper_puff":    {"name": "Pepper Puff",     "tier": "simple", "flavour": "spicy",  "bond": 12, "price": 8,   "desc": "A crunchy chilli puff."},
+ "salt_cracker":   {"name": "Salt Cracker",    "tier": "simple", "flavour": "savory", "bond": 12, "price": 8,   "desc": "Hard tack with sea salt."},
+ "lime_drop":      {"name": "Lime Drop",       "tier": "simple", "flavour": "sour",   "bond": 12, "price": 8,   "desc": "Makes small creatures pucker."},
+ "herb_sprig":     {"name": "Herb Sprig",      "tier": "simple", "flavour": "bitter", "bond": 12, "price": 8,   "desc": "Fresh mountain herbs."},
+ "honey_cake":     {"name": "Honey Cake",      "tier": "hearty", "flavour": "sweet",  "bond": 22, "price": 25,  "desc": "Dense, sticky, irresistible."},
+ "chilli_skewer":  {"name": "Chilli Skewer",   "tier": "hearty", "flavour": "spicy",  "bond": 22, "price": 25,  "desc": "Roasted over open flame."},
+ "mushroom_pie":   {"name": "Mushroom Pie",    "tier": "hearty", "flavour": "savory", "bond": 22, "price": 25,  "desc": "Warm, earthy, filling."},
+ "pickled_plum":   {"name": "Pickled Plum",    "tier": "hearty", "flavour": "sour",   "bond": 22, "price": 25,  "desc": "Tart enough to wake a Golem."},
+ "bitter_bark":    {"name": "Bitter Bark",     "tier": "hearty", "flavour": "bitter", "bond": 22, "price": 25,  "desc": "Smoked tree bark. An acquired taste."},
+ "royal_jelly":    {"name": "Royal Jelly",     "tier": "royal",  "flavour": "sweet",  "bond": 36, "price": 70,  "desc": "Fit for an Armabee queen."},
+ "ember_curry":    {"name": "Ember Curry",     "tier": "royal",  "flavour": "spicy",  "bond": 36, "price": 70,  "desc": "Glows faintly in the bowl."},
+ "feast_platter":  {"name": "Feast Platter",   "tier": "royal",  "flavour": "savory", "bond": 36, "price": 70,  "desc": "A little of everything."},
+ "mythic_morsel":  {"name": "Mythic Morsel",   "tier": "mythic", "flavour": "any",    "bond": 60, "price": 0,   "desc": "Made from an Alpha's treasure. Alphas accept nothing less."}
+}

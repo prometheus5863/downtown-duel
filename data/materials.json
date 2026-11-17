@@ -1,0 +1,6 @@
+{
+ "kingcap_spore": {"name": "Kingcap Spore", "desc": "Glowing spore from the Mushroom King. Treat material."},
+ "wyrm_scale":    {"name": "Wyrm Scale",    "desc": "Still warm. Treat material."},
+ "bone_totem":    {"name": "Bone Totem",    "desc": "Carved by the Skullcrusher's tribe. Treat material."},
+ "void_crystal":  {"name": "Void Crystal",  "desc": "Hums when held. Treat material."}
+}

@@ -8,14 +8,49 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 |---|---|
 | M0 Save / load | **done** |
 | M1 Party & companion combat | **done** |
-| M2 Treats, bond, Lustre, Alphas | next |
-| M3 – M8 | not started |
+| M2 Treats, bond, Lustre, Alphas | **done** |
+| M3 Gathering & block mining | next |
+| M4 – M8 | not started |
 
 ## Standing issues
 - **Web export is NOT VERIFIED.** The Godot 4.7.2 Web export templates are not installed on the dev PC, so
   `--export-release "Web"` cannot run. Install them (Editor → Manage Export Templates) and re-run the export for
   every milestone below marked "web: not verified".
 - No new asset packs have been downloaded yet (none needed before M2/M3).
+
+---
+
+## M2 — Treats, bond, Lustre, Alphas (2026-11-17)
+**Done**
+- **Treats** (`data/treats.json`): 14 treats in 4 tiers (Simple → Hearty → Royal → Mythic) and 5 flavours (sweet,
+  spicy, savory, sour, bitter). Every species has a favourite flavour in `data/creatures.json` (×2 bond).
+- **Inventory** (`player.inventory`, item id → count; saved). New games start with 5 Simple treats. The Oakvale
+  merchant sells Simple + Hearty treats, Gadgeteer Vex in the Neon Bazaar sells Royal ones too.
+- **Bond meter 0–100** replaces the old 3-step affection: petting +8 (once per conversation), treats +bond
+  (×2 favourite), sparing +20. At 60 the creature asks to join. Dialogue shows a heart bar and, after the first
+  bond, the creature's favourite flavour. Bond is saved per wild creature. The coin "snack" is gone; treats calm
+  hostile creatures instead.
+- **Alphas** (`data/alphas.json`): one per wild zone — Mushroom King (Grove), Sky Wyrm (Skyport), Alpha
+  Skullcrusher (Ivy Ruins, new) and Alpha Voidwalker (Lab, new). Crown icon, 1.5× size, level +4, phase 2 below
+  half HP (faster tells, shorter cooldowns, harder hits), accept only Mythic treats, and drop a material
+  (`data/materials.json`) when defeated or calmed. Alphas can now join the party and keep their crown.
+- **Lustre variants:** 1 in 200 creatures, picked from a hash of the scene path so it's stable across loads;
+  gold tint, ✦ marker, +10 % HP and attack, "Lustre" name; stays Lustre as a companion.
+
+**Verified:** `tests/test_bond.gd` — 44 checks (data, bond maths, favourite ×2, petting once, hostile needs calming,
+treat calms, Alpha refuses non-Mythic, phase 2, drops, Alpha befriending, Lustre stats, treat shop + price cap,
+save of inventory, bond and Alpha companion). All 113 checks across the 3 test files pass. Screenshots checked:
+treat dialogue with bond bar, crowned Alpha and a Lustre creature in the Ivy Ruins.
+
+**Decisions**
+- **Interim Mythic source:** until crafting (M4), defeating or calming an Alpha also gives one Mythic Morsel, so the
+  Alpha chain works today: beat one Alpha → befriend the next. M4 replaces this with a recipe that uses Alpha
+  materials.
+- "Fighting beside it" as a bond source is deferred: wild creatures don't fight alongside you yet.
+
+**Known issues**
+- The Lustre tint is subtle on dark models; the ✦ marker is what makes it readable.
+- The Ivy Ruins' new Alpha sits close to the plaza walls; fine in play but worth a look in the M5 layout pass.
 
 ---
 

@@ -1,0 +1,7 @@
+{
+ "_doc": "One Alpha per wild zone: generator places them (gen_world.py), enemy.gd reads scale/drop via is_alpha + species. drop = material id in data/materials.json.",
+ "Grove":   {"species": "Big/MushroomKing",   "name": "MUSHROOM KING",       "drop": "kingcap_spore"},
+ "Skyport": {"species": "Flying/Dragon_Evolved", "name": "SKY WYRM",         "drop": "wyrm_scale"},
+ "Ruins":   {"species": "Big/Orc_Skull",      "name": "ALPHA SKULLCRUSHER",  "drop": "bone_totem", "pos": [-96, -96], "hp": 420},
+ "Lab":     {"species": "Big/Alien",          "name": "ALPHA VOIDWALKER",    "drop": "void_crystal", "pos": [18, 118], "hp": 380}
+}

@@ -27,6 +27,7 @@ static func spawn_companion(record: Dictionary, player: Node3D, pos: Vector3) ->
 	e.height = float(c.get("height", 1.5))
 	e.radius = float(c.get("radius", 0.5))
 	e.aggressive = false
+	e.is_alpha = bool(record.get("alpha", false))          # keeps its crown and size
 	player.get_parent().add_child(e)
 	e.global_position = pos
 	e.adopt(player, record)
