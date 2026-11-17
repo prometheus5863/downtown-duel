@@ -80,6 +80,8 @@ func collect() -> Dictionary:
 	for r in d.party + d.storage:
 		if String(r.get("origin", "")) != "":
 			d.world.befriended.append(r.origin)
+	for m in get_tree().get_nodes_in_group("mine"):
+		d.world.mines[m.mine_id] = m.diff.duplicate()
 	d.world.flags = flags
 	d.world.sanctuaries = sanctuaries
 	for n in get_tree().get_nodes_in_group("interactable"):
@@ -107,6 +109,9 @@ func apply(d: Dictionary) -> void:
 	play_time = float(d.get("play_time", 0.0))
 	flags = d.world.flags
 	sanctuaries = d.world.sanctuaries
+	for m in get_tree().get_nodes_in_group("mine"):
+		if d.world.mines.has(m.mine_id):
+			m.apply_diff(d.world.mines[m.mine_id])
 	_player.from_save(d.player)
 	_player.inventory.clear()
 	for id in d.inventory:                 # JSON numbers load as floats

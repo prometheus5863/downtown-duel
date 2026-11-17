@@ -165,6 +165,9 @@ assets/**
 !assets/fantasy-props/Exports/glTF/Bench.bin
 !assets/fantasy-props/Exports/glTF/Bench.gltf
 !assets/fantasy-props/Exports/glTF/Bench.gltf.import
+!assets/fantasy-props/Exports/glTF/BookStand.bin
+!assets/fantasy-props/Exports/glTF/BookStand.gltf
+!assets/fantasy-props/Exports/glTF/BookStand.gltf.import
 !assets/fantasy-props/Exports/glTF/Chest_Wood.bin
 !assets/fantasy-props/Exports/glTF/Chest_Wood.gltf
 !assets/fantasy-props/Exports/glTF/Chest_Wood.gltf.import
@@ -766,6 +769,25 @@ assets/**
 !assets/stylized-nature/glTF/TwistedTree_4.bin
 !assets/stylized-nature/glTF/TwistedTree_4.gltf
 !assets/stylized-nature/glTF/TwistedTree_4.gltf.import
+!assets/voxel/License.txt
+!assets/voxel/tiles/dirt_grass.png
+!assets/voxel/tiles/dirt_grass.png.import
+!assets/voxel/tiles/gravel_stone.png
+!assets/voxel/tiles/gravel_stone.png.import
+!assets/voxel/tiles/greystone.png
+!assets/voxel/tiles/greystone.png.import
+!assets/voxel/tiles/stone.png
+!assets/voxel/tiles/stone.png.import
+!assets/voxel/tiles/stone_browniron.png
+!assets/voxel/tiles/stone_browniron.png.import
+!assets/voxel/tiles/stone_diamond.png
+!assets/voxel/tiles/stone_diamond.png.import
+!assets/voxel/tiles/stone_gold.png
+!assets/voxel/tiles/stone_gold.png.import
+!assets/voxel/tiles/stone_iron.png
+!assets/voxel/tiles/stone_iron.png.import
+!assets/voxel/tiles/stone_silver.png
+!assets/voxel/tiles/stone_silver.png.import
 
 # obsolete
 tools/gen_city.py

@@ -10,7 +10,7 @@ static func blank() -> Dictionary:
 	return {
 		"version": VERSION, "saved_at": 0, "play_time": 0.0,
 		"player": {}, "inventory": {}, "party": [], "storage": [],
-		"world": {"chests": [], "befriended": [], "spared": [], "bond": {}, "flags": {}, "sanctuaries": []},
+		"world": {"chests": [], "befriended": [], "spared": [], "bond": {}, "mines": {}, "flags": {}, "sanctuaries": []},
 	}
 
 

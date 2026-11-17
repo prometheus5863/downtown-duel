@@ -1,0 +1,89 @@
+{
+ "_doc": "Mine blocks. tile = assets/voxel/tiles/<tile>.png. tier = minimum pickaxe tier. hardness = hits with a pickaxe of exactly that tier. depth = blocks below the hill surface where it can appear (ores: [min, chance]). place = can be placed back from the inventory.",
+ "dirt": {
+  "name": "Dirt",
+  "tile": "dirt_grass",
+  "tier": 0,
+  "hardness": 2,
+  "drop": "dirt",
+  "place": true
+ },
+ "stone": {
+  "name": "Stone",
+  "tile": "stone",
+  "tier": 1,
+  "hardness": 3,
+  "drop": "stone",
+  "place": true
+ },
+ "gravel": {
+  "name": "Gravel",
+  "tile": "gravel_stone",
+  "tier": 0,
+  "hardness": 2,
+  "drop": "stone",
+  "place": false
+ },
+ "copper": {
+  "name": "Copper Ore",
+  "tile": "stone_browniron",
+  "tier": 2,
+  "hardness": 4,
+  "drop": "copper_ore",
+  "depth": [
+   2,
+   0.1
+  ]
+ },
+ "iron": {
+  "name": "Iron Ore",
+  "tile": "stone_iron",
+  "tier": 3,
+  "hardness": 5,
+  "drop": "iron_ore",
+  "depth": [
+   4,
+   0.08
+  ]
+ },
+ "silver": {
+  "name": "Silver Ore",
+  "tile": "stone_silver",
+  "tier": 4,
+  "hardness": 5,
+  "drop": "silver_ore",
+  "depth": [
+   5,
+   0.06
+  ]
+ },
+ "gold": {
+  "name": "Gold Ore",
+  "tile": "stone_gold",
+  "tier": 4,
+  "hardness": 6,
+  "drop": "gold_ore",
+  "depth": [
+   6,
+   0.05
+  ]
+ },
+ "crystal": {
+  "name": "Crystal",
+  "tile": "stone_diamond",
+  "tier": 5,
+  "hardness": 7,
+  "drop": "crystal",
+  "depth": [
+   7,
+   0.05
+  ]
+ },
+ "bedrock": {
+  "name": "Bedrock",
+  "tile": "greystone",
+  "tier": 99,
+  "hardness": 999,
+  "drop": ""
+ }
+}

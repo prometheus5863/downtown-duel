@@ -72,10 +72,13 @@ var party: Array = []                    ## active companions (enemy.gd nodes wi
 var storage: Array = []                  ## records of companions waiting at the Creature Ledger (unlimited)
 var party_command := "follow"            ## attack | follow | hold | heel (see companion.gd)
 var befriended_origins: Array = []       ## scene paths of wild creatures that are now stored companions
-var inventory := {"berry_bite": 3, "salt_cracker": 2}   ## item id -> count (treats, materials). New game: a few treats
+var inventory := {"berry_bite": 3, "salt_cracker": 2, "wood_pick": 1, "wood_axe": 1}  ## item id -> count (treats, tools, materials)
 const MAX_PARTY := 3
-const COMMANDS := {"cmd_attack": "attack", "cmd_follow": "follow", "cmd_hold": "hold", "cmd_return": "heel"}
-const COMMAND_TEXT := {"attack": "ATTACK!", "follow": "FOLLOW", "hold": "HOLD", "heel": "RETURN"}
+const COMMANDS := {"cmd_attack": "attack", "cmd_follow": "follow", "cmd_hold": "hold", "cmd_return": "heel", "cmd_work": "work"}
+const COMMAND_TEXT := {"attack": "ATTACK!", "follow": "FOLLOW", "hold": "HOLD", "heel": "RETURN", "work": "WORK!"}
+const REACH := 2.8                       ## gathering reach for resource nodes
+const MINE_REACH := 5.0                  ## block reach in mines
+var _tool_cd := 0.0
 var talking := false                    ## dialogue / shop open
 var _queued_attack := ""                # LMB/RMB while mouse-captured
 var _roll_t := -1.0                     # time since roll start (-1 = not rolling)
@@ -153,6 +156,7 @@ func zoom_camera(amount: float) -> void:
 func _physics_process(delta: float) -> void:
 	for k in cooldowns:
 		cooldowns[k] = maxf(cooldowns[k] - delta, 0.0)
+	_tool_cd = maxf(_tool_cd - delta, 0.0)
 
 	# Drop lock if the target died / was removed.
 	if locked and not _target_alive():
@@ -178,6 +182,10 @@ func _physics_process(delta: float) -> void:
 		for action in COMMANDS:
 			if Input.is_action_just_pressed(action):
 				command_party(COMMANDS[action])
+		if Input.is_action_pressed("use_tool"):
+			use_tool()
+		if Input.is_action_just_pressed("place_block"):
+			place_block()
 		if Input.is_action_just_pressed("interact"):
 			var n := nearest_interactable()
 			if n:
@@ -401,6 +409,102 @@ func spend(amount: int) -> bool:
 	return true
 
 
+# ---------------------------------------------------------------- tools, gathering, mining
+
+## Best tool of a kind ("pick" / "axe") in the inventory: {id, tier}. Tier 0 = bare hands.
+func best_tool(kind: String) -> Dictionary:
+	var best := {"id": "", "tier": 0}
+	var tools := Data_.rows("tools")
+	for id in inventory:
+		var t: Dictionary = tools.get(id, {})
+		if t.get("kind", "") == kind and int(t.tier) > int(best.tier):
+			best = {"id": id, "tier": int(t.tier)}
+	return best
+
+
+## What the tool would act on right now:
+##   {type: "block", mine, cell, place_cell, label}  - a mine block under the camera's aim (within MINE_REACH)
+##   {type: "node", field, index, label}             - the resource node in front of you (within REACH)
+##   {} - nothing
+func tool_target() -> Dictionary:
+	var b := _block_ray()
+	if not b.is_empty():
+		return b
+	var fwd := -global_transform.basis.z
+	var best := {}
+	var best_d := REACH
+	for f in get_tree().get_nodes_in_group("resource_field"):
+		var i: int = f.nearest(global_position, REACH + 1.5)
+		if i < 0:
+			continue
+		var to: Vector3 = f.world_pos(i) - global_position
+		to.y = 0.0
+		var d := maxf(to.length() - 0.8, 0.0)              # measured to the node's edge, roughly
+		if d < best_d and (to.length() < 1.3 or fwd.dot(to.normalized()) > 0.1):
+			best_d = d
+			best = {"type": "node", "field": f, "index": i, "label": f.info.get("name", f.kind)}
+	return best
+
+
+func _block_ray() -> Dictionary:
+	if get_tree().get_nodes_in_group("mine").is_empty() or not is_inside_tree():
+		return {}
+	var from := camera.global_position
+	var dir := -camera.global_basis.z
+	var q := PhysicsRayQueryParameters3D.create(from, from + dir * (spring_arm.spring_length + MINE_REACH + 1.0))
+	q.exclude = [get_rid()]
+	var r := get_world_3d().direct_space_state.intersect_ray(q)
+	if r.is_empty() or not (r.collider is GridMap) or not r.collider.get_parent().is_in_group("mine"):
+		return {}
+	if r.position.distance_to(global_position) > MINE_REACH:
+		return {}
+	var mine: Node = r.collider.get_parent()
+	var cell: Vector3i = mine.world_to_cell(r.position - r.normal * 0.5)
+	var b: String = mine.block_at(cell)
+	if b == "":
+		return {}
+	return {"type": "block", "mine": mine, "cell": cell, "place_cell": mine.world_to_cell(r.position + r.normal * 0.5),
+		"label": Data_.table("blocks")[b].name}
+
+
+## One swing at whatever tool_target() finds. Returns a short status ("" when nothing happened).
+func use_tool() -> String:
+	if _tool_cd > 0.0 or not alive:
+		return ""
+	var t := tool_target()
+	if t.is_empty():
+		return ""
+	_tool_cd = 0.35
+	_act_t = _play("Punch_Cross", false, 1.8) * 0.5
+	if t.type == "block":
+		var r: Dictionary = t.mine.hit(t.cell, int(best_tool("pick").tier))
+		if r.broke and r.drop != "":
+			add_item(r.drop, 1)
+		elif r.msg.contains("needs"):
+			_popup(r.msg, Color(1.0, 0.6, 0.5), 2.0)
+		return r.msg
+	var need: String = t.field.info.get("tool", "hand")
+	var tier := 1 if need == "hand" else int(best_tool(need).tier)
+	var res: Dictionary = t.field.hit(t.index, need, tier)
+	if res.msg != "":
+		_popup(res.msg, Color(1.0, 0.6, 0.5), 2.0)
+	for item in res.drops:
+		add_item(item, res.drops[item])
+	return res.msg
+
+
+## Put a stone (or dirt) block from the inventory against the block you're aiming at.
+func place_block() -> bool:
+	var t := _block_ray()
+	if t.is_empty():
+		return false
+	var id := "stone" if item_count("stone") > 0 else "dirt" if item_count("dirt") > 0 else ""
+	if id == "" or not t.mine.place(t.place_cell, id):
+		return false
+	remove_item(id, 1)
+	return true
+
+
 # ---------------------------------------------------------------- inventory
 
 func item_count(id: String) -> int:
@@ -409,9 +513,16 @@ func item_count(id: String) -> int:
 
 func add_item(id: String, n := 1) -> void:
 	inventory[id] = item_count(id) + n
-	var nm: String = Data_.table("treats").get(id, Data_.table("materials").get(id, {})).get("name", id)
+	var nm := item_name(id)
 	_popup("+%d %s" % [n, nm], Color(0.85, 0.75, 1.0), 2.0)
 	progress_changed.emit()
+
+
+func item_name(id: String) -> String:
+	for t in ["treats", "materials", "tools"]:
+		if Data_.table(t).has(id):
+			return Data_.table(t)[id].name
+	return id
 
 
 func remove_item(id: String, n := 1) -> bool:

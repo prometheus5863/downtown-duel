@@ -1,4 +1,4 @@
-[gd_scene load_steps=256 format=3]
+[gd_scene load_steps=269 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/city/Exports/glTF (Godot)/T_Concrete_Asphalt_BaseColor.png" id="e0"]
 [ext_resource type="PackedScene" path="res://assets/city/Exports/glTF (Godot)/Building_Large_2.gltf" id="e1"]
@@ -119,60 +119,71 @@
 [ext_resource type="PackedScene" path="res://assets/modular-sci-fi/Modular SciFi MegaKit[Standard]/glTF/Props/Prop_AccessPoint.gltf" id="e116"]
 [ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_4.gltf" id="e117"]
 [ext_resource type="PackedScene" path="res://assets/stylized-nature/glTF/Pine_5.gltf" id="e118"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="e119"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenBlob.gltf" id="e120"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenSpikyBlob.gltf" id="e121"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Ninja.gltf" id="e122"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Wizard.gltf" id="e123"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/PinkBlob.gltf" id="e124"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Orc.gltf" id="e125"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Pigeon.gltf" id="e126"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Alien.gltf" id="e127"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Chicken.gltf" id="e128"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Cat.gltf" id="e129"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Dog.gltf" id="e130"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub.gltf" id="e131"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Bunny.gltf" id="e132"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub_Evolved.gltf" id="e133"]
-[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Dummy.gltf" id="e134"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Orc.gltf" id="e135"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Ninja.gltf" id="e136"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Dragon.gltf" id="e137"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Armabee.gltf" id="e138"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Goleling.gltf" id="e139"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Ghost.gltf" id="e140"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Squidle.gltf" id="e141"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Hywirl.gltf" id="e142"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Yeti.gltf" id="e143"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Dino.gltf" id="e144"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Frog.gltf" id="e145"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Cactoro.gltf" id="e146"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/MushroomKing.gltf" id="e147"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Alien.gltf" id="e148"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/BlueDemon.gltf" id="e149"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Glub.gltf" id="e150"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Monkroose.gltf" id="e151"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Tribal.gltf" id="e152"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Orc_Skull.gltf" id="e153"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Ghost_Skull.gltf" id="e154"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Tribal.gltf" id="e155"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Alpaking.gltf" id="e156"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Alpaking_Evolved.gltf" id="e157"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Armabee_Evolved.gltf" id="e158"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Goleling_Evolved.gltf" id="e159"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Birb.gltf" id="e160"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Birb.gltf" id="e161"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Fish.gltf" id="e162"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Yeti.gltf" id="e163"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Glub_Evolved.gltf" id="e164"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Demon.gltf" id="e165"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Demon.gltf" id="e166"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Fish.gltf" id="e167"]
-[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Dragon_Evolved.gltf" id="e168"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="e169"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="e170"]
-[ext_resource type="Script" path="res://scripts/intro_camera.gd" id="e171"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="e172"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/dirt_grass.png" id="e119"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/stone.png" id="e120"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/gravel_stone.png" id="e121"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/stone_browniron.png" id="e122"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/stone_iron.png" id="e123"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/stone_silver.png" id="e124"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/stone_gold.png" id="e125"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/stone_diamond.png" id="e126"]
+[ext_resource type="Texture2D" path="res://assets/voxel/tiles/greystone.png" id="e127"]
+[ext_resource type="Script" path="res://scripts/mine.gd" id="e128"]
+[ext_resource type="Script" path="res://scripts/resource_field.gd" id="e129"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="e130"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenBlob.gltf" id="e131"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/GreenSpikyBlob.gltf" id="e132"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Ninja.gltf" id="e133"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Wizard.gltf" id="e134"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/PinkBlob.gltf" id="e135"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Orc.gltf" id="e136"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Pigeon.gltf" id="e137"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Alien.gltf" id="e138"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Chicken.gltf" id="e139"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Cat.gltf" id="e140"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Dog.gltf" id="e141"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub.gltf" id="e142"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Bunny.gltf" id="e143"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Mushnub_Evolved.gltf" id="e144"]
+[ext_resource type="PackedScene" path="res://assets/fantasy-props/Exports/glTF/Dummy.gltf" id="e145"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Orc.gltf" id="e146"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Ninja.gltf" id="e147"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Dragon.gltf" id="e148"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Armabee.gltf" id="e149"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Goleling.gltf" id="e150"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Ghost.gltf" id="e151"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Squidle.gltf" id="e152"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Hywirl.gltf" id="e153"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Yeti.gltf" id="e154"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Dino.gltf" id="e155"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Frog.gltf" id="e156"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Cactoro.gltf" id="e157"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/MushroomKing.gltf" id="e158"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Alien.gltf" id="e159"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/BlueDemon.gltf" id="e160"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Glub.gltf" id="e161"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Monkroose.gltf" id="e162"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Tribal.gltf" id="e163"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Orc_Skull.gltf" id="e164"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Ghost_Skull.gltf" id="e165"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Tribal.gltf" id="e166"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Alpaking.gltf" id="e167"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Alpaking_Evolved.gltf" id="e168"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Armabee_Evolved.gltf" id="e169"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Goleling_Evolved.gltf" id="e170"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Birb.gltf" id="e171"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Birb.gltf" id="e172"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Fish.gltf" id="e173"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Blob/glTF/Yeti.gltf" id="e174"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Glub_Evolved.gltf" id="e175"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Demon.gltf" id="e176"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Demon.gltf" id="e177"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Big/glTF/Fish.gltf" id="e178"]
+[ext_resource type="PackedScene" path="res://assets/monsters/Flying/glTF/Dragon_Evolved.gltf" id="e179"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="e180"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="e181"]
+[ext_resource type="Script" path="res://scripts/intro_camera.gd" id="e182"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="e183"]
 
 [sub_resource type="StandardMaterial3D" id="m_grass"]
 albedo_color = Color(0.33, 0.47, 0.24, 1)
@@ -443,6 +454,14 @@ size = Vector3(300, 6, 1)
 
 [sub_resource type="BoxShape3D" id="wall_1_300"]
 size = Vector3(1, 6, 300)
+
+[sub_resource type="PlaneMesh" id="pm_34_34_m_dirt"]
+material = SubResource("m_dirt")
+size = Vector2(34, 34)
+
+[sub_resource type="PlaneMesh" id="pm_5_37p5_m_road"]
+material = SubResource("m_road")
+size = Vector2(5, 37.5)
 
 [sub_resource type="CapsuleMesh" id="capsule_mesh"]
 
@@ -1297,7 +1316,7 @@ hair_color = Color(0.45, 0.3, 0.18, 1)
 greeting = "Welcome to Oakvale! Starter gear here. Fancier stuff in the Neon Bazaar and the Old Quarter."
 max_price = 30
 outfit_tex = ExtResource("e32")
-stock = Array[String](["weapon", "armor", "charm", "treat"])
+stock = Array[String](["weapon", "armor", "charm", "treat", "tool"])
 
 [node name="Col" type="StaticBody3D" parent="World/Village/Tobin"]
 
@@ -4230,7 +4249,7 @@ hair_color = Color(0.15, 0.55, 0.65, 1)
 greeting = "Fresh tech, old magic. Weapons and charms, no refunds."
 max_price = 0
 outfit_tex = ExtResource("e107")
-stock = Array[String](["weapon", "charm", "treat"])
+stock = Array[String](["weapon", "charm", "treat", "tool"])
 
 [node name="Col" type="StaticBody3D" parent="World/Bazaar/Vex"]
 
@@ -4771,7 +4790,7 @@ hair_color = Color(0.55, 0.22, 0.12, 1)
 greeting = "Leather, mail, plate. Pick what you can carry, and what you can pay for."
 max_price = 0
 outfit_tex = ExtResource("e32")
-stock = Array[String](["armor"])
+stock = Array[String](["armor", "tool"])
 
 [node name="Col" type="StaticBody3D" parent="World/Quarter/Brenna"]
 
@@ -5840,16 +5859,101 @@ position = Vector3(-150, 3, 0)
 [node name="S" type="CollisionShape3D" parent="World/Edge/WallW"]
 shape = SubResource("wall_1_300")
 
+[node name="Quarry" type="Node3D" parent="World"]
+
+[node name="QuarryFloor" type="MeshInstance3D" parent="World/Quarry"]
+position = Vector3(-82.000, 0.011, 25.000)
+mesh = SubResource("pm_34_34_m_dirt")
+
+[node name="Sign9" type="Label3D" parent="World/Quarry"]
+position = Vector3(-82.000, 13.000, 9.000)
+billboard = 1
+text = "PEBBLE HILL QUARRY"
+font_size = 160
+outline_size = 36
+modulate = Color(1, 0.95, 0.8, 1)
+
+[node name="Mine" type="Node3D" parent="World/Quarry"]
+position = Vector3(-94, 0, 13)
+script = ExtResource("e128")
+mine_id = "pebble_hill"
+size = Vector3i(24, 11, 24)
+seed_value = 7
+entrance = Vector3i(0, 0, -1)
+tiles = Array[Texture2D]([ExtResource("e119"), ExtResource("e120"), ExtResource("e121"), ExtResource("e122"), ExtResource("e123"), ExtResource("e124"), ExtResource("e125"), ExtResource("e126"), ExtResource("e127")])
+
+[node name="Road26" type="MeshInstance3D" parent="World/Roads" groups=["road"]]
+position = Vector3(-81.000, 0.016, -4.500)
+mesh = SubResource("pm_5_37p5_m_road")
+metadata/length = 35.00
+metadata/width = 5
+
+[node name="Field_rock1" type="Node3D" parent="World/Quarry"]
+script = ExtResource("e129")
+kind = "rock"
+model_scene = ExtResource("e50")
+points = PackedVector3Array(-89.65, 0, 11.11, -65.39, 0, 26.05, -100.20, 0, 22.75, -94.47, 0, 10.08, -100.32, 0, 17.33, -65.68, 0, 28.83, -93.95, 0, 40.17)
+yaws = PackedFloat32Array(6.087, 0.448, 2.241, 1.538, 5.215, 5.734, 4.895)
+
+[node name="Field_copper_vein1" type="Node3D" parent="World/Quarry"]
+script = ExtResource("e129")
+kind = "copper_vein"
+model_scene = ExtResource("e52")
+points = PackedVector3Array(-64.92, 0, 33.64, -64.00, 0, 40.21, -68.91, 0, 37.32, -67.26, 0, 34.93)
+yaws = PackedFloat32Array(1.530, 0.557, 3.890, 1.055)
+
+[node name="Field_iron_vein1" type="Node3D" parent="World/Quarry"]
+script = ExtResource("e129")
+kind = "iron_vein"
+model_scene = ExtResource("e51")
+points = PackedVector3Array(-98.13, 0, 41.76, -96.46, 0, 38.85)
+yaws = PackedFloat32Array(5.820, 4.642)
+
+[node name="Field_berry_bush1" type="Node3D" parent="World/Village"]
+script = ExtResource("e129")
+kind = "berry_bush"
+model_scene = ExtResource("e56")
+points = PackedVector3Array(-100.33, 0, -3.44, -102.22, 0, -10.58, -100.91, 0, -6.76, -103.73, 0, -7.16, -96.60, 0, -4.75, -102.82, 0, -4.29)
+yaws = PackedFloat32Array(4.166, 0.073, 0.685, 1.178, 2.038, 1.262)
+
+[node name="Field_herb_patch1" type="Node3D" parent="World/Village"]
+script = ExtResource("e129")
+kind = "herb_patch"
+model_scene = ExtResource("e53")
+points = PackedVector3Array(-102.92, 0, -49.66, -104.21, 0, -46.80, -99.31, 0, -48.04, -105.78, 0, -49.12, -99.96, 0, -44.67)
+yaws = PackedFloat32Array(2.035, 2.045, 1.696, 5.519, 1.358)
+
+[node name="Field_tree1" type="Node3D" parent="World/Roads"]
+script = ExtResource("e129")
+kind = "tree"
+model_scene = ExtResource("e44")
+points = PackedVector3Array(81.24, 0, -5.54, 73.35, 0, -8.21, 75.78, 0, -0.04, 76.18, 0, -13.81, 73.63, 0, -2.32, 82.58, 0, -2.87, 76.37, 0, -9.04, 81.47, 0, -8.35)
+yaws = PackedFloat32Array(5.380, 5.793, 6.256, 1.688, 3.963, 3.972, 4.420, 2.595)
+
+[node name="Field_mushroom1" type="Node3D" parent="World/Grove"]
+script = ExtResource("e129")
+kind = "mushroom"
+model_scene = ExtResource("e62")
+points = PackedVector3Array(110.04, 0, 36.55, 106.70, 0, 34.58, 104.81, 0, 37.39, 107.42, 0, 38.10, 107.89, 0, 31.02)
+yaws = PackedFloat32Array(2.392, 1.885, 3.373, 5.045, 2.737)
+
+[node name="Field_rock2" type="Node3D" parent="World/Ruins"]
+script = ExtResource("e129")
+kind = "rock"
+model_scene = ExtResource("e50")
+points = PackedVector3Array(-97.38, 0, -70.66, -95.00, 0, -74.07, -92.28, 0, -72.66)
+yaws = PackedFloat32Array(6.006, 0.161, 1.612)
+
 [node name="Gloop1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(0.00, 0.05, -9.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Gloop"
 max_hp = 80
 height = 1.10
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e120")
+model_scene = ExtResource("e131")
 model_scale = 0.6
 attack_damage = 7
 level = 2
@@ -5861,14 +5965,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Spikeball1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(18.00, 0.05, 4.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Spikeball"
 max_hp = 110
 height = 2.45
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e121")
+model_scene = ExtResource("e132")
 model_scale = 0.6
 attack_damage = 8
 level = 2
@@ -5880,14 +5984,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="ShadowNinja1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(-18.00, 0.05, -4.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Shadow Ninja"
 max_hp = 90
 height = 1.67
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e122")
+model_scene = ExtResource("e133")
 model_scale = 0.6
 attack_damage = 8
 level = 2
@@ -5899,14 +6003,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="StreetWizard1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(4.00, 0.05, 18.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Street Wizard"
 max_hp = 120
 height = 1.56
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e123")
+model_scene = ExtResource("e134")
 model_scale = 0.6
 attack_damage = 9
 level = 2
@@ -5918,14 +6022,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Pinkle1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(-4.00, 0.05, -18.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Pinkle"
 max_hp = 60
 height = 1.16
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e124")
+model_scene = ExtResource("e135")
 model_scale = 0.6
 attack_damage = 6
 level = 2
@@ -5937,14 +6041,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="AlleyOrc1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(18.00, 0.05, 30.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Alley Orc"
 max_hp = 140
 height = 1.40
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e125")
+model_scene = ExtResource("e136")
 model_scale = 0.6
 attack_damage = 10
 level = 2
@@ -5956,14 +6060,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Coo1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(-30.00, 0.05, 18.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Coo"
 max_hp = 50
 height = 1.08
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e126")
+model_scene = ExtResource("e137")
 model_scale = 0.6
 attack_damage = 6
 level = 2
@@ -5975,14 +6079,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SpaceBlob1" type="CharacterBody3D" parent="World/Downtown"]
 position = Vector3(30.00, 0.05, -18.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Space Blob"
 max_hp = 100
 height = 1.96
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e127")
+model_scene = ExtResource("e138")
 model_scale = 0.6
 attack_damage = 8
 level = 2
@@ -5994,14 +6098,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Clucky1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-122.00, 0.05, -22.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Clucky"
 max_hp = 40
 height = 1.05
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e128")
+model_scene = ExtResource("e139")
 model_scale = 0.45
 attack_damage = 6
 aggressive = false
@@ -6013,14 +6117,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Bok1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-120.00, 0.05, -13.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Bok"
 max_hp = 40
 height = 1.05
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e128")
+model_scene = ExtResource("e139")
 model_scale = 0.45
 attack_damage = 6
 aggressive = false
@@ -6032,14 +6136,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Whiskers1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-125.00, 0.05, -10.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Whiskers"
 max_hp = 60
 height = 0.96
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e129")
+model_scene = ExtResource("e140")
 model_scale = 0.5
 attack_damage = 6
 aggressive = false
@@ -6051,14 +6155,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Barkley1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-113.00, 0.05, -22.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Barkley"
 max_hp = 70
 height = 1.00
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e130")
+model_scene = ExtResource("e141")
 model_scale = 0.55
 attack_damage = 7
 aggressive = false
@@ -6070,14 +6174,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Mushnub1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-132.00, 0.05, -26.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Mushnub"
 max_hp = 90
 height = 1.62
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e131")
+model_scene = ExtResource("e142")
 model_scale = 0.5
 attack_damage = 8
 aggressive = false
@@ -6089,14 +6193,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Bunbun1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-112.00, 0.05, -8.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Bunbun"
 max_hp = 80
 height = 1.72
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e132")
+model_scene = ExtResource("e143")
 model_scale = 0.5
 attack_damage = 7
 aggressive = false
@@ -6108,14 +6212,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="ElderMushnub1" type="CharacterBody3D" parent="World/Village"]
 position = Vector3(-134.00, 0.05, -14.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Elder Mushnub"
 max_hp = 150
 height = 2.39
 radius = 0.50
 wander_radius = 8
 move_speed = 2.0
-model_scene = ExtResource("e133")
+model_scene = ExtResource("e144")
 model_scale = 0.55
 attack_damage = 10
 aggressive = false
@@ -6127,14 +6231,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy1" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-26.00, 0.05, -123.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6147,14 +6251,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy2" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-22.00, 0.05, -123.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6167,14 +6271,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy3" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-18.00, 0.05, -123.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6187,14 +6291,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy4" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-14.00, 0.05, -123.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6207,14 +6311,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy5" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-10.00, 0.05, -123.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6227,14 +6331,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy6" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-26.00, 0.05, -118.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6247,14 +6351,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy7" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-22.00, 0.05, -118.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6267,14 +6371,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy8" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-18.00, 0.05, -118.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6287,14 +6391,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy9" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-14.00, 0.05, -118.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6307,14 +6411,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TrainingDummy10" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-10.00, 0.05, -118.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Training Dummy"
 max_hp = 120
 height = 1.90
 radius = 0.40
 wander_radius = 0
 move_speed = 2.0
-model_scene = ExtResource("e134")
+model_scene = ExtResource("e145")
 model_scale = 1.0
 attack_damage = 9
 aggressive = false
@@ -6327,14 +6431,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SparringOrc1" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-13.00, 0.05, -110.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Sparring Orc"
 max_hp = 250
 height = 1.92
 radius = 0.50
 wander_radius = 4
 move_speed = 2.0
-model_scene = ExtResource("e135")
+model_scene = ExtResource("e146")
 model_scale = 0.6
 attack_damage = 14
 aggressive = false
@@ -6347,14 +6451,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="NinjaSensei1" type="CharacterBody3D" parent="World/Training"]
 position = Vector3(-23.00, 0.05, -110.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Ninja Sensei"
 max_hp = 220
 height = 1.80
 radius = 0.50
 wander_radius = 4
 move_speed = 2.0
-model_scene = ExtResource("e136")
+model_scene = ExtResource("e147")
 model_scale = 0.6
 attack_damage = 13
 aggressive = false
@@ -6367,14 +6471,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Emberwing1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(118.00, 0.05, 10.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Emberwing"
 max_hp = 140
 height = 1.88
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e137")
+model_scene = ExtResource("e148")
 model_scale = 0.6
 attack_damage = 10
 level = 4
@@ -6386,14 +6490,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Buzzbee1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(131.00, 0.05, 8.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Buzzbee"
 max_hp = 90
 height = 1.69
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e138")
+model_scene = ExtResource("e149")
 model_scale = 0.55
 attack_damage = 8
 level = 4
@@ -6405,14 +6509,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Pebbling1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(134.00, 0.05, 24.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Pebbling"
 max_hp = 120
 height = 1.82
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e139")
+model_scene = ExtResource("e150")
 model_scale = 0.6
 attack_damage = 9
 level = 4
@@ -6424,14 +6528,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Wisp1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(116.00, 0.05, 28.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Wisp"
 max_hp = 80
 height = 1.86
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e140")
+model_scene = ExtResource("e151")
 model_scale = 0.55
 attack_damage = 7
 level = 4
@@ -6443,14 +6547,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Squidle1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(124.00, 0.05, 32.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Squidle"
 max_hp = 90
 height = 1.64
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e141")
+model_scene = ExtResource("e152")
 model_scale = 0.55
 attack_damage = 8
 level = 4
@@ -6462,14 +6566,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Hywirl1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(138.00, 0.05, 16.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Hywirl"
 max_hp = 100
 height = 1.52
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e142")
+model_scene = ExtResource("e153")
 model_scale = 0.55
 attack_damage = 8
 level = 4
@@ -6481,14 +6585,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Yeti1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(112.00, 0.05, 16.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Yeti"
 max_hp = 180
 height = 1.83
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e143")
+model_scene = ExtResource("e154")
 model_scale = 0.65
 attack_damage = 11
 level = 4
@@ -6500,14 +6604,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Dino1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(128.00, 0.05, 2.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Dino"
 max_hp = 170
 height = 2.09
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e144")
+model_scene = ExtResource("e155")
 model_scale = 0.65
 attack_damage = 11
 level = 4
@@ -6519,14 +6623,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Hopper1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(120.00, 0.05, 34.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Hopper"
 max_hp = 110
 height = 1.61
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e145")
+model_scene = ExtResource("e156")
 model_scale = 0.6
 attack_damage = 8
 level = 4
@@ -6538,14 +6642,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Cactoro1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(139.00, 0.05, 30.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Cactoro"
 max_hp = 130
 height = 2.37
 radius = 0.50
 wander_radius = 7
 move_speed = 2.2
-model_scene = ExtResource("e146")
+model_scene = ExtResource("e157")
 model_scale = 0.6
 attack_damage = 9
 level = 4
@@ -6557,14 +6661,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="MUSHROOMKING1" type="CharacterBody3D" parent="World/Grove"]
 position = Vector3(126.00, 0.05, 18.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "MUSHROOM KING"
 max_hp = 600
 height = 3.60
 radius = 1.00
 wander_radius = 3
 move_speed = 1.2
-model_scene = ExtResource("e147")
+model_scene = ExtResource("e158")
 model_scale = 1.0
 is_boss = true
 respawn_time = 8.0
@@ -6582,14 +6686,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SpecimenX-11" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(14.00, 0.05, 120.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Specimen X-1"
 max_hp = 150
 height = 2.13
 radius = 0.50
 wander_radius = 3
 move_speed = 2.0
-model_scene = ExtResource("e148")
+model_scene = ExtResource("e159")
 model_scale = 0.6
 attack_damage = 10
 level = 5
@@ -6601,14 +6705,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SpecimenX-21" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(22.00, 0.05, 121.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Specimen X-2"
 max_hp = 100
 height = 1.96
 radius = 0.50
 wander_radius = 3
 move_speed = 2.0
-model_scene = ExtResource("e127")
+model_scene = ExtResource("e138")
 model_scale = 0.6
 attack_damage = 8
 level = 5
@@ -6620,14 +6724,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="LabEscapee1" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(18.00, 0.05, 110.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Lab Escapee"
 max_hp = 160
 height = 1.70
 radius = 0.50
 wander_radius = 6
 move_speed = 2.0
-model_scene = ExtResource("e149")
+model_scene = ExtResource("e160")
 model_scale = 0.6
 attack_damage = 10
 level = 5
@@ -6639,14 +6743,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Glub1" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(24.00, 0.05, 108.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Glub"
 max_hp = 90
 height = 2.05
 radius = 0.50
 wander_radius = 6
 move_speed = 2.0
-model_scene = ExtResource("e150")
+model_scene = ExtResource("e161")
 model_scale = 0.55
 attack_damage = 8
 level = 5
@@ -6658,14 +6762,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="RuinMonkey1" type="CharacterBody3D" parent="World/Ruins"]
 position = Vector3(-98.00, 0.05, -88.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Ruin Monkey"
 max_hp = 130
 height = 1.79
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e151")
+model_scene = ExtResource("e162")
 model_scale = 0.6
 attack_damage = 9
 level = 5
@@ -6677,14 +6781,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="TribalChief1" type="CharacterBody3D" parent="World/Ruins"]
 position = Vector3(-85.00, 0.05, -97.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Tribal Chief"
 max_hp = 170
 height = 2.56
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e152")
+model_scene = ExtResource("e163")
 model_scale = 0.65
 attack_damage = 11
 level = 5
@@ -6696,14 +6800,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SkullOrc1" type="CharacterBody3D" parent="World/Ruins"]
 position = Vector3(-89.00, 0.05, -83.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Skull Orc"
 max_hp = 190
 height = 2.02
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e153")
+model_scene = ExtResource("e164")
 model_scale = 0.62
 attack_damage = 12
 level = 5
@@ -6715,14 +6819,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="BoneWisp1" type="CharacterBody3D" parent="World/Ruins"]
 position = Vector3(-101.00, 0.05, -99.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Bone Wisp"
 max_hp = 110
 height = 1.86
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e154")
+model_scene = ExtResource("e165")
 model_scale = 0.55
 attack_damage = 8
 level = 5
@@ -6734,14 +6838,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="MaskImp1" type="CharacterBody3D" parent="World/Ruins"]
 position = Vector3(-82.00, 0.05, -88.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Mask Imp"
 max_hp = 100
 height = 2.44
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e155")
+model_scene = ExtResource("e166")
 model_scale = 0.55
 attack_damage = 8
 level = 5
@@ -6753,14 +6857,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Alpaking1" type="CharacterBody3D" parent="World/Bazaar"]
 position = Vector3(89.00, 0.05, -87.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Alpaking"
 max_hp = 90
 height = 1.82
 radius = 0.50
 wander_radius = 5
 move_speed = 2.0
-model_scene = ExtResource("e156")
+model_scene = ExtResource("e167")
 model_scale = 0.55
 attack_damage = 8
 aggressive = false
@@ -6773,14 +6877,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="AlpacaTycoon1" type="CharacterBody3D" parent="World/Bazaar"]
 position = Vector3(96.00, 0.05, -85.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Alpaca Tycoon"
 max_hp = 160
 height = 2.24
 radius = 0.50
 wander_radius = 5
 move_speed = 2.0
-model_scene = ExtResource("e157")
+model_scene = ExtResource("e168")
 model_scale = 0.6
 attack_damage = 10
 aggressive = false
@@ -6793,14 +6897,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="QueenArmabee1" type="CharacterBody3D" parent="World/Bazaar"]
 position = Vector3(92.00, 0.05, -95.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Queen Armabee"
 max_hp = 150
 height = 1.77
 radius = 0.50
 wander_radius = 5
 move_speed = 2.0
-model_scene = ExtResource("e158")
+model_scene = ExtResource("e169")
 model_scale = 0.6
 attack_damage = 10
 aggressive = false
@@ -6813,14 +6917,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="ScrapGolem1" type="CharacterBody3D" parent="World/Bazaar"]
 position = Vector3(88.00, 0.05, -93.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Scrap Golem"
 max_hp = 200
 height = 2.48
 radius = 0.50
 wander_radius = 5
 move_speed = 2.0
-model_scene = ExtResource("e159")
+model_scene = ExtResource("e170")
 model_scale = 0.65
 attack_damage = 12
 aggressive = false
@@ -6833,14 +6937,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="NeonBirb1" type="CharacterBody3D" parent="World/Bazaar"]
 position = Vector3(94.00, 0.05, -81.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Neon Birb"
 max_hp = 80
 height = 1.83
 radius = 0.50
 wander_radius = 5
 move_speed = 2.0
-model_scene = ExtResource("e160")
+model_scene = ExtResource("e171")
 model_scale = 0.55
 attack_damage = 7
 aggressive = false
@@ -6853,14 +6957,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Sparrowbit1" type="CharacterBody3D" parent="World/Quarter"]
 position = Vector3(-96.00, 0.05, 90.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Sparrowbit"
 max_hp = 50
 height = 1.29
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e161")
+model_scene = ExtResource("e172")
 model_scale = 0.5
 attack_damage = 6
 aggressive = false
@@ -6873,14 +6977,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Puddlefin1" type="CharacterBody3D" parent="World/Quarter"]
 position = Vector3(-85.00, 0.05, 101.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Puddlefin"
 max_hp = 60
 height = 1.37
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e162")
+model_scene = ExtResource("e173")
 model_scale = 0.5
 attack_damage = 6
 aggressive = false
@@ -6893,14 +6997,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="HedgeWizard1" type="CharacterBody3D" parent="World/Quarter"]
 position = Vector3(-93.00, 0.05, 102.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Hedge Wizard"
 max_hp = 110
 height = 1.43
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e123")
+model_scene = ExtResource("e134")
 model_scale = 0.55
 attack_damage = 8
 aggressive = false
@@ -6913,14 +7017,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Snowball1" type="CharacterBody3D" parent="World/Quarter"]
 position = Vector3(-100.00, 0.05, 84.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Snowball"
 max_hp = 90
 height = 1.33
 radius = 0.50
 wander_radius = 7
 move_speed = 2.0
-model_scene = ExtResource("e163")
+model_scene = ExtResource("e174")
 model_scale = 0.55
 attack_damage = 8
 aggressive = false
@@ -6933,14 +7037,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Glubzilla1" type="CharacterBody3D" parent="World/Skyport"]
 position = Vector3(86.00, 0.05, 100.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Glubzilla"
 max_hp = 170
 height = 2.75
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e164")
+model_scene = ExtResource("e175")
 model_scale = 0.65
 attack_damage = 11
 level = 6
@@ -6952,14 +7056,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="HangarDemon1" type="CharacterBody3D" parent="World/Skyport"]
 position = Vector3(102.00, 0.05, 102.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Hangar Demon"
 max_hp = 200
 height = 2.02
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e165")
+model_scene = ExtResource("e176")
 model_scale = 0.65
 attack_damage = 12
 level = 6
@@ -6971,14 +7075,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Imp1" type="CharacterBody3D" parent="World/Skyport"]
 position = Vector3(84.00, 0.05, 88.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Imp"
 max_hp = 110
 height = 1.55
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e166")
+model_scene = ExtResource("e177")
 model_scale = 0.55
 attack_damage = 8
 level = 6
@@ -6990,14 +7094,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="RotorFish1" type="CharacterBody3D" parent="World/Skyport"]
 position = Vector3(100.00, 0.05, 90.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "Rotor Fish"
 max_hp = 120
 height = 2.25
 radius = 0.50
 wander_radius = 6
 move_speed = 2.3
-model_scene = ExtResource("e167")
+model_scene = ExtResource("e178")
 model_scale = 0.6
 attack_damage = 9
 level = 6
@@ -7009,14 +7113,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="SKYWYRM1" type="CharacterBody3D" parent="World/Skyport"]
 position = Vector3(94.00, 0.05, 94.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "SKY WYRM"
 max_hp = 520
 height = 3.47
 radius = 1.10
 wander_radius = 3
 move_speed = 1.6
-model_scene = ExtResource("e168")
+model_scene = ExtResource("e179")
 model_scale = 1.1
 is_boss = true
 respawn_time = 8.0
@@ -7032,16 +7136,56 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Collision" type="CollisionShape3D" parent="World/Skyport/SKYWYRM1"]
 
+[node name="Pebbling2" type="CharacterBody3D" parent="World/Quarry"]
+position = Vector3(-66.00, 0.05, 17.00)
+script = ExtResource("e130")
+display_name = "Pebbling"
+max_hp = 120
+height = 1.82
+radius = 0.50
+wander_radius = 5
+move_speed = 2.0
+model_scene = ExtResource("e150")
+model_scale = 0.6
+attack_damage = 9
+aggressive = false
+level = 2
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Quarry/Pebbling2"]
+mesh = SubResource("capsule_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Quarry/Pebbling2"]
+
+[node name="Rockpup1" type="CharacterBody3D" parent="World/Quarry"]
+position = Vector3(-98.00, 0.05, 21.00)
+script = ExtResource("e130")
+display_name = "Rockpup"
+max_hp = 70
+height = 1.00
+radius = 0.50
+wander_radius = 5
+move_speed = 2.0
+model_scene = ExtResource("e141")
+model_scale = 0.55
+attack_damage = 7
+aggressive = false
+level = 2
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Quarry/Rockpup1"]
+mesh = SubResource("capsule_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Quarry/Rockpup1"]
+
 [node name="ALPHASKULLCRUSHER1" type="CharacterBody3D" parent="World/Ruins"]
 position = Vector3(-96.00, 0.05, -96.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "ALPHA SKULLCRUSHER"
 max_hp = 420
 height = 2.02
 radius = 0.50
 wander_radius = 4
 move_speed = 2.0
-model_scene = ExtResource("e153")
+model_scene = ExtResource("e164")
 model_scale = 0.62
 attack_damage = 21
 is_alpha = true
@@ -7055,14 +7199,14 @@ mesh = SubResource("capsule_mesh")
 
 [node name="ALPHAVOIDWALKER1" type="CharacterBody3D" parent="World/Lab"]
 position = Vector3(18.00, 0.05, 118.00)
-script = ExtResource("e119")
+script = ExtResource("e130")
 display_name = "ALPHA VOIDWALKER"
 max_hp = 380
 height = 2.13
 radius = 0.50
 wander_radius = 4
 move_speed = 2.2
-model_scene = ExtResource("e148")
+model_scene = ExtResource("e159")
 model_scale = 0.6
 attack_damage = 19
 is_alpha = true
@@ -7074,17 +7218,17 @@ mesh = SubResource("capsule_mesh")
 
 [node name="Collision" type="CollisionShape3D" parent="World/Lab/ALPHAVOIDWALKER1"]
 
-[node name="Player" parent="." instance=ExtResource("e169")]
+[node name="Player" parent="." instance=ExtResource("e180")]
 position = Vector3(0, 1.1, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("e170")
+script = ExtResource("e181")
 player = NodePath("../Player")
 
 [node name="IntroCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player", "hud")]
-script = ExtResource("e171")
+script = ExtResource("e182")
 player = NodePath("../Player")
 hud = NodePath("../HUD")
 
 [node name="Game" type="Node" parent="."]
-script = ExtResource("e172")
+script = ExtResource("e183")

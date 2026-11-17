@@ -3,7 +3,7 @@ extends VBoxContainer
 ## party command and its keys. Rebuilt when the party changes; bars update every frame.
 
 const Data := preload("res://scripts/data.gd")
-const COMMAND_LABEL := {"attack": "Attack", "follow": "Follow", "hold": "Hold", "heel": "Return"}
+const COMMAND_LABEL := {"attack": "Attack", "follow": "Follow", "hold": "Hold", "heel": "Return", "work": "Work"}
 
 var player: Node
 var touch := false
@@ -82,7 +82,7 @@ func _update() -> void:
 		r[2].text = "%s  Lv %d%s" % [c.display_name, c.level, "  · exhausted" if c.exhausted else ""]
 		r[2].modulate = Color(0.65, 0.65, 0.7) if c.exhausted else Color.WHITE
 	if _cmd:
-		var keys := "" if touch else "    1 Attack · 2 Follow · 3 Hold · 4 Return"
+		var keys := "" if touch else "    1 Attack · 2 Follow · 3 Hold · 4 Return · 5 Work"
 		_cmd.text = "Party: %s%s" % [COMMAND_LABEL.get(player.party_command, "Follow").to_upper(), keys]
 
 

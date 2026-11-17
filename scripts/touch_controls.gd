@@ -32,7 +32,9 @@ func _ready() -> void:
 	_add_button("lock_on", "LOCK", 46, Color(0.5, 0.8, 1.0), func(s): return Vector2(s.x - 115, s.y - 315))
 	_add_button("interact", "TALK", 50, Color(0.6, 1.0, 0.6), func(s): return Vector2(s.x - 260, s.y - 390))
 	# Party orders: a row of small buttons above the joystick, only while you have companions.
-	var orders := [["cmd_attack", "ATK"], ["cmd_follow", "FLW"], ["cmd_hold", "HLD"], ["cmd_return", "RET"]]
+	_add_button("use_tool", "TOOL", 46, Color(0.95, 0.8, 0.5), func(s): return Vector2(s.x - 420, s.y - 210))
+	_add_button("place_block", "PLACE", 40, Color(0.8, 0.8, 0.8), func(s): return Vector2(s.x - 420, s.y - 320))
+	var orders := [["cmd_attack", "ATK"], ["cmd_follow", "FLW"], ["cmd_hold", "HLD"], ["cmd_return", "RET"], ["cmd_work", "WRK"]]
 	for i in orders.size():
 		_add_button(orders[i][0], orders[i][1], 34, Color(0.45, 0.85, 1.0), func(s): return Vector2(60 + i * 78, s.y - 330))
 
@@ -70,6 +72,10 @@ func _process(_delta: float) -> void:
 	for b in _buttons:
 		if b[0].action == "interact":
 			b[0].visible = not menu_open and player.can_control and player.nearest_interactable() != null
+		elif b[0].action == "use_tool" or b[0].action == "place_block":
+			var tt: Dictionary = player.tool_target() if Engine.get_process_frames() % 8 == 0 else b[0].get_meta("tt", {})
+			b[0].set_meta("tt", tt)
+			b[0].visible = not menu_open and not tt.is_empty() and (b[0].action == "use_tool" or tt.get("type", "") == "block")
 		elif String(b[0].action).begins_with("cmd_"):
 			b[0].visible = not menu_open and not player.party.is_empty()
 		else:

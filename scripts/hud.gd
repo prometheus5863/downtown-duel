@@ -24,6 +24,9 @@ var _hurt_flash: ColorRect
 var _banner: Label
 var _title_tween: Tween
 var _zone := ""
+var _cross: Label
+var _tool_t := 0.0
+var _tool_target := {}
 
 ## name, centre (x, z), radius — keep in sync with tools/gen_world.py
 const ZONES := [
@@ -36,6 +39,7 @@ const ZONES := [
 	["Neon Bazaar", Vector2(92, -90), 26.0],
 	["Old Quarter", Vector2(-90, 92), 26.0],
 	["Skyport", Vector2(94, 94), 26.0],
+	["Pebble Hill Quarry", Vector2(-82, 25), 18.0],
 ]
 const Minimap := preload("res://scripts/minimap.gd")
 const PartyPanel := preload("res://scripts/party_panel.gd")
@@ -111,7 +115,7 @@ func _ready() -> void:
 	player.hp_changed.connect(func(hp, mx): _hp_bar.max_value = mx; create_tween().tween_property(_hp_bar, "value", float(hp), 0.12))
 	player.hurt.connect(_on_hurt)
 	player.died.connect(func(): _show_banner("DEFEATED", Color(1, 0.35, 0.3), 2.4))
-	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · 1-4 party orders · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
+	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · R tool / T place · 1-5 party orders · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
 	bottom.add_child(_hint)
 
 	# --- Phones / tablets ---
@@ -145,6 +149,12 @@ func _ready() -> void:
 	mm.offset_top = 12
 	mm.offset_bottom = 192
 	root.add_child(mm)
+	_cross = _label("+", 30)
+	_cross.set_anchors_preset(Control.PRESET_CENTER)
+	_cross.offset_left = -9
+	_cross.offset_top = -22
+	_cross.visible = false
+	root.add_child(_cross)
 	var game := get_tree().get_first_node_in_group("game")
 	if game == null:                         # Game is the last node in the scene: not ready yet
 		game = get_parent().get_node_or_null("Game")
@@ -205,8 +215,23 @@ func _process(delta: float) -> void:
 	var near: Node = null if menus.is_open or not player.can_control else player.nearest_interactable()
 	if near == null:
 		_prompt.text = ""
+		_tool_t -= delta
+		if _tool_t <= 0.0 and not menus.is_open and player.can_control:
+			_tool_t = 0.15                        # ray + field scan at ~7 Hz is plenty for a prompt
+			_tool_target = player.tool_target()
+		var tt := _tool_target if player.can_control and not menus.is_open else {}
+		_cross.visible = tt.get("type", "") == "block"
+		if not tt.is_empty():
+			var key := "TOOL" if touch else "[R]"
+			if tt.type == "block":
+				var placeable: int = player.item_count("stone") + player.item_count("dirt")
+				_prompt.text = "%s Mine %s" % [key, tt.label] + ("   ·   %s place block (%d)" % ["PLACE" if touch else "[T]", placeable] if placeable > 0 else "")
+			else:
+				var need: String = tt.field.info.get("tool", "hand")
+				_prompt.text = "%s %s %s" % [key, {"pick": "Mine", "axe": "Chop"}.get(need, "Gather"), tt.label]
 	else:
 		var key := "TALK" if touch else "[F]"
+		_cross.visible = false
 		var verb := "Shop at" if near.has_method("open_shop") else "Open" if near.get("opened") != null \
 			else "Use" if near.has_method("open_ledger") else "Talk to"
 		_prompt.text = "%s  %s %s" % [key, verb, near.display_name]

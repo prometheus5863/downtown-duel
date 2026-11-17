@@ -9,18 +9,61 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 | M0 Save / load | **done** |
 | M1 Party & companion combat | **done** |
 | M2 Treats, bond, Lustre, Alphas | **done** |
-| M3 Gathering & block mining | next |
-| M4 – M8 | not started |
+| M3 Gathering & block mining | **done** |
+| M4 Inventory & crafting | next |
+| M4.5 – M8 | not started |
 
 ## Standing issues
 - **Web build is 86 MB zipped** (149 MB `index.pck` + 39 MB wasm unzipped) after M2. Budget is 120 MB download.
   The character/outfit and district assets added most of it; M3+ assets must be budgeted (see PLAN risks).
-- No new asset packs have been downloaded yet (none needed before M3).
+- Asset packs added so far: Kenney Voxel Pack (CC0, block tiles; `assets/voxel/`). The rest of the brief's list is
+  fetched when the milestone that needs it starts.
 
 ## Web export checks
 | Date | Build | Result |
 |---|---|---|
+| 2026-11-17 | M3 | Export OK, pack 149 MB (zip about 86 MB). `tools/check_pack.gd` run against the exported pack: world loads, 65 creatures, 8 resource fields, mine generated, player model present (**PACK OK**). In Chromium the loading screen clears and the main loop runs with no game errors (only "zero-size framebuffer" WebGL warnings because the browser pane was hidden, so frames weren't visible). One export produced a 0.2 MB pack while the local web server was serving `export/web`; re-exporting fixed it, so always run check_pack after exporting. |
 | 2026-11-17 | M0 + M1 + M2 (`eeb024a`) | Export OK with no errors (Godot 4.7.2 templates installed from the official release). In Chromium (browser pane, served from `export/web` on localhost) the engine boots: WebGL 2 / Compatibility, single-threaded, no console errors. The exported `index.pck` also runs 600 frames headless in desktop Godot with zero errors, so every scene, script and `data/*.json` is in the pack. **Not seen:** in-browser gameplay frames (the pane was hidden, so the page didn't render). |
+
+---
+
+## M3 — Gathering & block mining (2026-11-17)
+**Done**
+- **Pebble Hill Quarry** (new zone between Oakvale and the Old Quarter, road from the west spoke): a 24×11×24 hill
+  of 1 m blocks in a `GridMap` (`scripts/mine.gd`), generated from noise per seed: dirt on top, stone below,
+  ores by depth under the surface (copper ≥ 2, iron ≥ 4, silver ≥ 5, gold ≥ 6, crystal ≥ 7), noise caves and a
+  3×3 entrance tunnel. Break blocks (**R**, hold to keep mining, hits = hardness, better picks hit harder) and
+  place stone / dirt back (**T**). Only the changes are saved (`world.mines`).
+- **Resource nodes** (`scripts/resource_field.gd`, `data/resources.json`): trees, rocks, copper / iron veins,
+  berry bushes, herbs, mushrooms. One MultiMesh per model part, a collider per node, deplete after a few hits,
+  respawn on a timer. Fields around the quarry, east of Oakvale, between Downtown and the Grove, in the Grove and
+  the Ivy Ruins.
+- **Tools** (`data/tools.json`): wood → stone → copper → iron → crystal pickaxes and wood / stone / iron axes. A new
+  game starts with wooden ones; shops sell the rest (Oakvale: stone, Old Quarter armorer: copper / iron, Neon
+  Bazaar: up to crystal) until crafting (M4). Tool tier gates ores and veins.
+- **Companion Work order (5 / WRK):** creatures with a matching skill (`skills` in creatures.json: mining,
+  lumber, gathering, by element) harvest nodes near you, still defending you, and drops go to your inventory.
+- HUD: crosshair + "[R] Mine Stone · [T] place block (n)" when aiming at a mine block, "[R] Chop Tree" etc. near
+  nodes. Touch: TOOL / PLACE buttons appear when there's something to use them on, WRK in the party row.
+- Block textures: Kenney Voxel Pack (CC0), triplanar so each face shows one tile.
+
+**Verified:** `tests/test_gather.gd`: 39 checks (assets exist, layout deterministic, ores only at their depth,
+entrance open, tier gating, hardness, player tool ray breaks the aimed block, place rules, node deplete / respawn /
+tool kind and tier, gathering by hand, tool shop, a working companion harvests rock, mine diff + tools survive
+save / load). All 152 checks pass. Screenshots: the quarry from the road, the tunnel with the aim prompt.
+
+**Decisions**
+- The mine is a **hill above ground**, not a pit: the world floor is one flat collider, so digging *into* a hill
+  gives the same depth-based ores without cutting holes in it. Depth = blocks under the hill's surface.
+- The block MeshLibrary is built at runtime from `data/blocks.json` + textures listed on the Mine node (keeps them
+  export dependencies), instead of a generated `.tres`.
+- Resource node depletion isn't saved (they respawn in a minute or two anyway); mine edits are.
+- Tools are sold for now; M4 makes them craftable from ores and wood.
+
+**Deferred**
+- Only one mine so far; more mines / quarries come with the region pass (M7). Placed blocks are limited to the
+  mine's bounds.
+- Creatures don't mine blocks in the GridMap, only overworld nodes.
 
 ---
 

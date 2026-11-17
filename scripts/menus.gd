@@ -142,6 +142,11 @@ func _show_shop(status: String) -> void:
 		if "treat" in stock and int(tr.price) > 0 and (cap == 0 or int(tr.price) <= cap):
 			_add("%s  —  %s, %s  [%d coins · have %d]" % [tr.name, tr.tier, tr.flavour, tr.price, player.item_count(id)],
 				_buy_treat.bind(id))
+	for id in Data.rows("tools"):
+		var tl: Dictionary = Data.rows("tools")[id]
+		if "tool" in stock and int(tl.price) > 0 and (cap == 0 or int(tl.price) <= cap):
+			var tag := "owned" if player.item_count(id) > 0 else "%d coins" % tl.price
+			_add("%s  —  %s tier %d  [%s]" % [tl.name, "pickaxe" if tl.kind == "pick" else "axe", tl.tier, tag], _buy_tool.bind(id))
 	for id in Items.shop_list(stock, cap):
 		var it: Dictionary = Items.get_item(id)
 		var tag := ""
@@ -153,6 +158,17 @@ func _show_shop(status: String) -> void:
 			tag = "%d coins" % it.price
 		_add("%s  —  %s   [%s]" % [it.name, it.desc, tag], _buy.bind(id))
 	_add("Leave", close)
+
+
+func _buy_tool(id: String) -> void:
+	var tl: Dictionary = Data.table("tools")[id]
+	if player.item_count(id) > 0:
+		_show_shop("You already have a %s." % tl.name)
+	elif player.spend(int(tl.price)):
+		player.add_item(id, 1)
+		_show_shop("Bought a %s." % tl.name)
+	else:
+		_show_shop("Not enough coins (%d / %d)." % [player.coins, tl.price])
 
 
 func _buy_treat(id: String) -> void:

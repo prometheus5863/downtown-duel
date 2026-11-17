@@ -13,7 +13,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Alien.gltf",
   "height": 1.96,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Blob/Birb": {
   "name": "Sparrowbit",
@@ -29,7 +32,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Birb.gltf",
   "height": 1.29,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Blob/Cactoro": {
   "name": "Cactoro",
@@ -45,7 +51,11 @@
   ],
   "model": "assets/monsters/Blob/glTF/Cactoro.gltf",
   "height": 1.97,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Blob/Cat": {
   "name": "Whiskit",
@@ -61,7 +71,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Cat.gltf",
   "height": 0.96,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "lumber"
+  ]
  },
  "Blob/Chicken": {
   "name": "Cluckle",
@@ -77,7 +90,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Chicken.gltf",
   "height": 1.05,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "gathering"
+  ]
  },
  "Blob/Dog": {
   "name": "Barkley",
@@ -93,7 +109,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Dog.gltf",
   "height": 1.0,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "mining"
+  ]
  },
  "Blob/Fish": {
   "name": "Puddlefin",
@@ -109,7 +128,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Fish.gltf",
   "height": 1.37,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "gathering"
+  ]
  },
  "Blob/GreenBlob": {
   "name": "Gloop",
@@ -125,7 +147,11 @@
   ],
   "model": "assets/monsters/Blob/glTF/GreenBlob.gltf",
   "height": 1.1,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Blob/GreenSpikyBlob": {
   "name": "Spikeball",
@@ -141,7 +167,11 @@
   ],
   "model": "assets/monsters/Blob/glTF/GreenSpikyBlob.gltf",
   "height": 2.45,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Blob/Mushnub": {
   "name": "Mushnub",
@@ -157,7 +187,11 @@
   ],
   "model": "assets/monsters/Blob/glTF/Mushnub.gltf",
   "height": 1.62,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Blob/Mushnub_Evolved": {
   "name": "Elder Mushnub",
@@ -173,7 +207,11 @@
   ],
   "model": "assets/monsters/Blob/glTF/Mushnub_Evolved.gltf",
   "height": 2.39,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Blob/Ninja": {
   "name": "Shadekin",
@@ -189,7 +227,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Ninja.gltf",
   "height": 1.67,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Blob/Orc": {
   "name": "Grumblor",
@@ -205,7 +246,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Orc.gltf",
   "height": 1.4,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "mining"
+  ]
  },
  "Blob/Pigeon": {
   "name": "Coo",
@@ -221,7 +265,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Pigeon.gltf",
   "height": 1.08,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "gathering"
+  ]
  },
  "Blob/PinkBlob": {
   "name": "Pinkle",
@@ -237,7 +284,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/PinkBlob.gltf",
   "height": 1.16,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Blob/Wizard": {
   "name": "Hexling",
@@ -253,7 +303,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Wizard.gltf",
   "height": 1.56,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "mining"
+  ]
  },
  "Blob/Yeti": {
   "name": "Snowball",
@@ -269,7 +322,10 @@
   ],
   "model": "assets/monsters/Blob/glTF/Yeti.gltf",
   "height": 1.33,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Big/Alien": {
   "name": "Voidwalker",
@@ -285,7 +341,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Alien.gltf",
   "height": 2.13,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Big/Birb": {
   "name": "Galebeak",
@@ -301,7 +360,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Birb.gltf",
   "height": 1.83,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Big/BlueDemon": {
   "name": "Tidefiend",
@@ -317,7 +379,10 @@
   ],
   "model": "assets/monsters/Big/glTF/BlueDemon.gltf",
   "height": 1.7,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "gathering"
+  ]
  },
  "Big/Bunny": {
   "name": "Bunbun",
@@ -333,7 +398,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Bunny.gltf",
   "height": 1.72,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Big/Cactoro": {
   "name": "Thornback",
@@ -349,7 +417,11 @@
   ],
   "model": "assets/monsters/Big/glTF/Cactoro.gltf",
   "height": 2.37,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Big/Demon": {
   "name": "Cinderhorn",
@@ -365,7 +437,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Demon.gltf",
   "height": 2.02,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "mining"
+  ]
  },
  "Big/Dino": {
   "name": "Rockjaw",
@@ -381,7 +456,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Dino.gltf",
   "height": 2.09,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "mining"
+  ]
  },
  "Big/Fish": {
   "name": "Rotorfin",
@@ -397,7 +475,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Fish.gltf",
   "height": 2.25,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "gathering"
+  ]
  },
  "Big/Frog": {
   "name": "Hopper",
@@ -413,7 +494,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Frog.gltf",
   "height": 1.61,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "gathering"
+  ]
  },
  "Big/Monkroose": {
   "name": "Monkroose",
@@ -429,7 +513,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Monkroose.gltf",
   "height": 1.79,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "mining"
+  ]
  },
  "Big/MushroomKing": {
   "name": "Mushroom King",
@@ -445,7 +532,11 @@
   ],
   "model": "assets/monsters/Big/glTF/MushroomKing.gltf",
   "height": 3.6,
-  "flavour": "bitter"
+  "flavour": "bitter",
+  "skills": [
+   "lumber",
+   "gathering"
+  ]
  },
  "Big/Ninja": {
   "name": "Nightblade",
@@ -461,7 +552,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Ninja.gltf",
   "height": 1.8,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Big/Orc": {
   "name": "Boulderfist",
@@ -477,7 +571,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Orc.gltf",
   "height": 1.92,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "mining"
+  ]
  },
  "Big/Orc_Skull": {
   "name": "Skullcrusher",
@@ -493,7 +590,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Orc_Skull.gltf",
   "height": 2.02,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Big/Tribal": {
   "name": "Embermask",
@@ -509,7 +609,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Tribal.gltf",
   "height": 2.56,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "mining"
+  ]
  },
  "Big/Yeti": {
   "name": "Frostmaw",
@@ -525,7 +628,10 @@
   ],
   "model": "assets/monsters/Big/glTF/Yeti.gltf",
   "height": 1.83,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Alpaking": {
   "name": "Alpaking",
@@ -541,7 +647,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Alpaking.gltf",
   "height": 1.82,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Alpaking_Evolved": {
   "name": "Alpaca Tycoon",
@@ -557,7 +666,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Alpaking_Evolved.gltf",
   "height": 2.24,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Armabee": {
   "name": "Buzzbee",
@@ -573,7 +685,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Armabee.gltf",
   "height": 1.69,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Armabee_Evolved": {
   "name": "Queen Armabee",
@@ -589,7 +704,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Armabee_Evolved.gltf",
   "height": 1.77,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Demon": {
   "name": "Imp",
@@ -605,7 +723,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Demon.gltf",
   "height": 1.55,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Dragon": {
   "name": "Emberwing",
@@ -621,7 +742,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Dragon.gltf",
   "height": 1.88,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Dragon_Evolved": {
   "name": "Sky Wyrm",
@@ -637,7 +761,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Dragon_Evolved.gltf",
   "height": 3.47,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Ghost": {
   "name": "Wisp",
@@ -653,7 +780,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Ghost.gltf",
   "height": 1.86,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Flying/Ghost_Skull": {
   "name": "Bone Wisp",
@@ -669,7 +799,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Ghost_Skull.gltf",
   "height": 1.86,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "lumber"
+  ]
  },
  "Flying/Glub": {
   "name": "Glub",
@@ -685,7 +818,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Glub.gltf",
   "height": 2.05,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Glub_Evolved": {
   "name": "Glubzilla",
@@ -701,7 +837,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Glub_Evolved.gltf",
   "height": 2.75,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Goleling": {
   "name": "Pebbling",
@@ -717,7 +856,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Goleling.gltf",
   "height": 1.82,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Goleling_Evolved": {
   "name": "Scrap Golem",
@@ -733,7 +875,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Goleling_Evolved.gltf",
   "height": 2.48,
-  "flavour": "savory"
+  "flavour": "savory",
+  "skills": [
+   "mining"
+  ]
  },
  "Flying/Hywirl": {
   "name": "Hywirl",
@@ -749,7 +894,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Hywirl.gltf",
   "height": 1.52,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Pigeon": {
   "name": "Skycoo",
@@ -765,7 +913,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Pigeon.gltf",
   "height": 1.62,
-  "flavour": "sweet"
+  "flavour": "sweet",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Squidle": {
   "name": "Squidle",
@@ -781,7 +932,10 @@
   ],
   "model": "assets/monsters/Flying/glTF/Squidle.gltf",
   "height": 1.64,
-  "flavour": "sour"
+  "flavour": "sour",
+  "skills": [
+   "gathering"
+  ]
  },
  "Flying/Tribal": {
   "name": "Mask Imp",
@@ -797,6 +951,9 @@
   ],
   "model": "assets/monsters/Flying/glTF/Tribal.gltf",
   "height": 2.44,
-  "flavour": "spicy"
+  "flavour": "spicy",
+  "skills": [
+   "mining"
+  ]
  }
 }

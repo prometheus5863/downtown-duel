@@ -16,6 +16,16 @@ static func table(name: String) -> Dictionary:
 	return _cache[name]
 
 
+## Rows of a table without its "_doc" note (and any other "_" key).
+static func rows(name: String) -> Dictionary:
+	var out := {}
+	var t := table(name)
+	for k in t:
+		if not String(k).begins_with("_"):
+			out[k] = t[k]
+	return out
+
+
 static func creatures() -> Dictionary:
 	return table("creatures")
 

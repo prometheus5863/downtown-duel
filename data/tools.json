@@ -1,0 +1,59 @@
+{
+ "_doc": "kind pick (blocks, rocks, ore veins) or axe (trees). tier gates what it can break; icon = assets/voxel/items/<icon>.png. price 0 = not sold (crafted in M4).",
+ "wood_pick": {
+  "name": "Wooden Pickaxe",
+  "kind": "pick",
+  "tier": 1,
+  "price": 0,
+  "icon": "pick_bronze"
+ },
+ "stone_pick": {
+  "name": "Stone Pickaxe",
+  "kind": "pick",
+  "tier": 2,
+  "price": 30,
+  "icon": "pick_silver"
+ },
+ "copper_pick": {
+  "name": "Copper Pickaxe",
+  "kind": "pick",
+  "tier": 3,
+  "price": 90,
+  "icon": "pick_gold"
+ },
+ "iron_pick": {
+  "name": "Iron Pickaxe",
+  "kind": "pick",
+  "tier": 4,
+  "price": 220,
+  "icon": "pick_iron"
+ },
+ "crystal_pick": {
+  "name": "Crystal Pickaxe",
+  "kind": "pick",
+  "tier": 5,
+  "price": 480,
+  "icon": "pick_diamond"
+ },
+ "wood_axe": {
+  "name": "Wooden Axe",
+  "kind": "axe",
+  "tier": 1,
+  "price": 0,
+  "icon": "axe_bronze"
+ },
+ "stone_axe": {
+  "name": "Stone Axe",
+  "kind": "axe",
+  "tier": 2,
+  "price": 30,
+  "icon": "axe_silver"
+ },
+ "iron_axe": {
+  "name": "Iron Axe",
+  "kind": "axe",
+  "tier": 4,
+  "price": 200,
+  "icon": "axe_iron"
+ }
+}

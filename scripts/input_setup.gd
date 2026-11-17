@@ -7,6 +7,9 @@ const ACTIONS := {
 	"cmd_follow": [KEY_2],
 	"cmd_hold": [KEY_3],
 	"cmd_return": [KEY_4],
+	"cmd_work": [KEY_5],
+	"use_tool": [KEY_R],
+	"place_block": [KEY_T],
 }
 
 

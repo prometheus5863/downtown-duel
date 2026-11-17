@@ -6,6 +6,8 @@ extends RefCounted
 ##      follow = assist: creatures that are fighting the player or the party
 ##      hold   = stay put, fight what comes close
 ##      heel   = come back and don't fight ("Return")
+##      work   = harvest resource nodes near the player that match the creature's skills (data: "skills"),
+##               still defending the player like "follow"; drops go to the player's inventory
 ##  - attacks like wild creatures do: wind-up -> move (lunge / shot / slam from data/moves.json) -> recover,
 ##    with its own attack tokens (at most MAX_ATTACKERS companions mid-attack)
 ##  - exhausted (0 HP): follows as a ghost and does nothing until revived
@@ -32,6 +34,10 @@ var _move_id := ""
 var _cd := {}                      # move id -> seconds until ready
 var _dir := Vector3.ZERO
 var _retarget_t := 0.0
+var _job: Node                     # resource field being worked
+var _job_i := -1
+var _job_t := 0.0
+const WORK_RANGE := 16.0
 
 
 func _init(h: CharacterBody3D, p: Node3D) -> void:
@@ -84,7 +90,12 @@ func tick(delta: float) -> void:
 				if _retarget_t <= 0.0 or not _valid(target):
 					target = _pick_target()
 					_retarget_t = 0.4
-				move = _engage(delta) if target else _idle_move(delta)
+				if target:
+					move = _engage(delta)
+				elif player.party_command == "work":
+					move = _work(delta)
+				else:
+					move = _idle_move(delta)
 	host.velocity.x = move.x
 	host.velocity.z = move.z
 	host.move_and_slide()
@@ -223,6 +234,57 @@ func _attackers() -> int:
 		if is_instance_valid(c) and c.brain and c.brain.state in ["windup", "lunge"]:
 			n += 1
 	return n
+
+
+# ------------------------------------------------------------------ working
+
+func skills() -> Array:
+	return Data.creature(host.species).get("skills", [])
+
+
+## Tool tier a working creature counts as: grows with level (Lv 1-3 = 1, 4-7 = 2, ... capped at 4).
+func work_tier() -> int:
+	return clampi(1 + host.level / 4, 1, 4)
+
+
+func _find_job() -> void:
+	_job = null
+	_job_i = -1
+	var best := WORK_RANGE
+	for f in host.get_tree().get_nodes_in_group("resource_field"):
+		if not (f.info.get("skill", "") in skills()) or not f.tool_ok(f.info.get("tool", "hand"), work_tier()):
+			continue
+		var i: int = f.nearest(player.global_position, WORK_RANGE)
+		if i < 0:
+			continue
+		var d: float = f.world_pos(i).distance_to(host.global_position)
+		if d < best:
+			best = d
+			_job = f
+			_job_i = i
+
+
+func _work(delta: float) -> Vector3:
+	if _job == null or not is_instance_valid(_job) or not _job.available(_job_i) \
+			or _job.world_pos(_job_i).distance_to(player.global_position) > WORK_RANGE:
+		_find_job()
+		if _job == null:
+			return _formation(delta)
+	var to: Vector3 = _job.world_pos(_job_i) - host.global_position
+	to.y = 0.0
+	host._face(to, delta * 8.0)
+	if to.length() > host.radius + 1.3:
+		host._play(host.WALK)
+		return to.normalized() * host.move_speed * 2.0
+	host._play(host.IDLE)
+	_job_t -= delta
+	if _job_t <= 0.0:
+		_job_t = 1.0
+		host._play(host.ATTACK, false)
+		var r: Dictionary = _job.hit(_job_i, _job.info.get("tool", "hand"), work_tier())
+		for item in r.drops:
+			player.add_item(item, r.drops[item])
+	return Vector3.ZERO
 
 
 # ------------------------------------------------------------------ following

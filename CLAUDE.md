@@ -57,7 +57,7 @@ Open-world creature-battle demo: 9 zones (ring road + spokes + alleys), 61 monst
 
 ## Roadmap
 The game is being grown into an open-world creature RPG: spec `docs/FABLE_BRIEF.md`, per-milestone plan
-`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load), M1 (party) and M2 (treats/bond/Alphas) are done.
+`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load), M1 (party), M2 (treats/bond/Alphas) and M3 (gathering/mining) are done.
 Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino studio lead).
 
 ## Creatures & party (M1)
@@ -80,6 +80,15 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
 - Player `inventory` (id → int; JSON loads floats, Game.apply casts back), `add_item/remove_item/item_count`.
 - Shops sell treats when their `stock` includes "treat".
 
+## Gathering & mining (M3)
+- `data/blocks.json`, `data/tools.json`, `data/resources.json` (all have a `_doc` key: iterate with `Data.rows()`).
+- `scripts/mine.gd`: GridMap hill, `generate()` deterministic per `seed_value`, `hit(cell, tier)`, `place(cell, id)`,
+  `diff` saved in `world.mines[mine_id]`. Node origin = hill corner; `cell_center()` / `world_to_cell()`.
+- `scripts/resource_field.gd`: MultiMesh field, `nearest()`, `hit(i, tool_kind, tier)`, `available()`, respawn.
+- Player: `best_tool(kind)`, `tool_target()` (camera-centre ray for blocks, nearest node in front otherwise),
+  `use_tool()`, `place_block()`. Companion "work" order uses creature `skills` + `work_tier()`.
+- Generator: `field(parent, kind, pts)` + `cluster()`; the Mine node lists block textures in blocks.json order.
+
 ## Save / load
 - `scripts/save_game.gd` (file I/O, `VERSION`, `migrate()`), `scripts/game.gd` (`Game` node, last in arena.tscn, group
   "game"): `collect()` / `apply()` turn world state into the save dict. World objects are keyed by node path relative
@@ -91,7 +100,8 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
 Tests use `tests/harness.gd` (`world()`, `ok()`, `eq()`) and a redirected save path. Run them before every commit.
 Single test: `godot --headless --path . -s res://tests/test_save.gd` (SceneTree script).
 Web check per milestone: `godot --headless --path . --export-release "Web" export/web/index.html`, then
-(a) run the pack: `godot --headless --main-pack export/web/index.pck --quit-after 600` (must print no errors — catches
-files missing from the export), and (b) serve it with the `web-build` config in `.claude/launch.json` (port 8060)
+(a) check the pack: `godot --headless --main-pack export/web/index.pck -s <abs path>/tools/check_pack.gd` must print
+`PACK OK` (loads the world from the pack; catches files missing from the export or a truncated export. Stop the
+web-build server first: an export while it served `export/web` once produced a 0.2 MB pack), and (b) serve it with the `web-build` config in `.claude/launch.json` (port 8060)
 and load it in a browser. Log the result in docs/PROGRESS.md "Web export checks". Touch input needs a real window
 (e.g. xvfb) — a 0×0 headless window scales event positions to garbage.

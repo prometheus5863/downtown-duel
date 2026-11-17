@@ -41,6 +41,8 @@ MOVES = {"ember": ["cinder_bite", "fire_spit"], "tide": ["splash_tackle", "bubbl
          "stone": ["rock_bash", "quake_stomp"], "gale": ["gust_dive", "wind_cutter"], "shade": ["shadow_claw", "night_pulse"]}
 
 
+SKILLS = {"stone": ["mining"], "verdant": ["lumber", "gathering"], "gale": ["gathering"], "ember": ["mining"],
+          "tide": ["gathering"], "shade": ["lumber"]}
 FLAVOUR = {"ember": "spicy", "tide": "savory", "verdant": "bitter", "stone": "savory", "gale": "sweet", "shade": "sour"}
 
 
@@ -67,7 +69,7 @@ for group in ("Blob", "Big", "Flying"):
         if e is None:
             e = data[sp] = {"name": name, "element": element, "hp": hp, "atk": atk, "speed": speed, "scale": scale,
                             "radius": round(0.5 * scale / 0.6, 2), "moves": MOVES[element],
-                            "flavour": FLAVOUR[element]}
+                            "flavour": FLAVOUR[element], "skills": SKILLS[element]}
             added += 1
         e["model"] = f"{MON}/{group}/glTF/{f}"
         e["height"] = round(model_height(os.path.join(folder, f)) * e["scale"], 2)

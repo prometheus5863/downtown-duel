@@ -126,9 +126,9 @@ def sign(parent, text, x, z, y=7.0):
                  f'billboard = 1\ntext = "{text}"\nfont_size = 160\noutline_size = 36\nmodulate = Color(1, 0.95, 0.8, 1)\n')
 
 monsters = []
-ZONE_LEVEL = {"Village": 1, "Downtown": 2, "Training": 3, "Quarter": 3, "Bazaar": 4, "Grove": 4, "Lab": 5,
+ZONE_LEVEL = {"Quarry": 2, "Village": 1, "Downtown": 2, "Training": 3, "Quarter": 3, "Bazaar": 4, "Grove": 4, "Lab": 5,
               "Ruins": 5, "Skyport": 6}       # wild creature level (a befriended one starts at this level)
-ZONE_HOSTILE = {"Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True,
+ZONE_HOSTILE = {"Quarry": False, "Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True,
                 "Ruins": True, "Bazaar": False, "Quarter": False, "Skyport": True}
 def monster(parent, name, x, z, model=None, scale=1.0, hp=80, height=None, radius=0.5,
             wander=6.0, speed=2.0, boss=False, color=(0.85, 0.2, 0.2), aggressive=None, alpha=""):
@@ -263,7 +263,7 @@ place(V, MED + "Prop_Wagon.gltf", VX + 7, VZ + 3, 0.3, collide="box")
 # shopkeeper behind the middle stall: basic gear only
 npc(V, "Merchant Tobin", VX - 7.6, VZ, math.pi / 2,
     [CHR + "Superhero_Male_Head.gltf", CHR + "Hair_Buzzed.gltf", CHR + "Hair_Beard.gltf", OUT + "Male_Peasant.gltf"],
-    OUT + "T_Peasant_2_BaseColor.png", (0.45, 0.3, 0.18), max_price=30, stock=("weapon", "armor", "charm", "treat"),
+    OUT + "T_Peasant_2_BaseColor.png", (0.45, 0.3, 0.18), max_price=30, stock=("weapon", "armor", "charm", "treat", "tool"),
     greeting="Welcome to Oakvale! Starter gear here. Fancier stuff in the Neon Bazaar and the Old Quarter.")
 # Creature Ledger (party storage + rest). Interim spot; M5 moves it into the Sanctuary.
 nodes.append('[node name="Ledger" type="Node3D" parent="%s"]\nposition = Vector3(%.2f, 0.03, %.2f)\nrotation = Vector3(0, %.5f, 0)\n'
@@ -443,7 +443,7 @@ for dx in (-3, 3):
     place(N, CITY + "Decal_Crosswalk.gltf", NX + dx, NZ + 12.5, y=0.06)
 npc(N, "Gadgeteer Vex", NX + 6.6, NZ, -math.pi / 2,
     [CHR + "Superhero_Female_Head.gltf", CHR + "Hair_Long.gltf", OUT + "Female_Ranger.gltf"], OUT + "T_Ranger_3_BaseColor.png",
-    (0.15, 0.55, 0.65), stock=("weapon", "charm", "treat"), greeting="Fresh tech, old magic. Weapons and charms, no refunds.")
+    (0.15, 0.55, 0.65), stock=("weapon", "charm", "treat", "tool"), greeting="Fresh tech, old magic. Weapons and charms, no refunds.")
 for (dx, dz), nm, mdl, sc, hp in [((-3, 3), "Alpaking", FL + "Alpaking.gltf", 0.55, 90), ((4, 5), "Alpaca Tycoon", FL + "Alpaking_Evolved.gltf", 0.6, 160),
                                   ((0, -5), "Queen Armabee", FL + "Armabee_Evolved.gltf", 0.6, 150), ((-4, -3), "Scrap Golem", FL + "Goleling_Evolved.gltf", 0.65, 200),
                                   ((2, 9), "Neon Birb", BG + "Birb.gltf", 0.55, 80)]:
@@ -479,7 +479,7 @@ place(Q, FP + "Anvil.gltf", QX + 9.5, QZ - 7, 0.4, collide="box")
 place(Q, FP + "Workbench.gltf", QX + 9.5, QZ - 5.3, -math.pi / 2, collide="box")
 npc(Q, "Armorer Brenna", QX + 7.4, QZ - 8.5, -math.pi / 2,
     [CHR + "Superhero_Female_Head.gltf", CHR + "Hair_Buns.gltf", OUT + "Female_Peasant.gltf"], OUT + "T_Peasant_2_BaseColor.png",
-    (0.55, 0.22, 0.12), stock=("armor",), greeting="Leather, mail, plate. Pick what you can carry, and what you can pay for.")
+    (0.55, 0.22, 0.12), stock=("armor", "tool"), greeting="Leather, mail, plate. Pick what you can carry, and what you can pay for.")
 chest(Q, QX - 18, QZ + 17, 0.6, coins=55, xp=15)
 for (dx, dz), nm, mdl, sc, hp in [((-6, -2), "Sparrowbit", B + "Birb.gltf", 0.5, 50), ((5, 9), "Puddlefin", B + "Fish.gltf", 0.5, 60),
                                   ((-3, 10), "Hedge Wizard", B + "Wizard.gltf", 0.55, 110), ((-10, -8), "Snowball", B + "Yeti.gltf", 0.55, 90)]:
@@ -538,6 +538,56 @@ for nm, (x, z, sx, sz) in {"N":(0,-BW,2*BW,1),"S":(0,BW,2*BW,1),"E":(BW,0,1,2*BW
     sid = sub(f"wall_{sx}_{sz}", f'[sub_resource type="BoxShape3D" id="ID"]\nsize = Vector3({sx}, 6, {sz})\n')
     nodes.append(f'[node name="Wall{nm}" type="StaticBody3D" parent="{E}"]\nposition = Vector3({x}, 3, {z})\n\n'
                  f'[node name="S" type="CollisionShape3D" parent="{E}/Wall{nm}"]\nshape = SubResource("{sid}")\n')
+
+# ---------------------------------------------------------------- gathering & mining (M3)
+RES = {k: v for k, v in json.load(open(os.path.join(P, "data/resources.json"))).items() if not k.startswith("_")}
+BLOCKS = [k for k in json.load(open(os.path.join(P, "data/blocks.json"))) if not k.startswith("_")]
+BLOCK_TILES = json.load(open(os.path.join(P, "data/blocks.json")))
+
+def field(parent, kind, pts):
+    """Resource field (scripts/resource_field.gd): pts = [(x, z), ...] in world space; yaw is random."""
+    nm = uname("Field_" + kind)
+    ps = ", ".join(f"{x:.2f}, 0, {z:.2f}" for x, z in pts)
+    ys = ", ".join(f"{random.random() * math.tau:.3f}" for _ in pts)
+    nodes.append(f'[node name="{nm}" type="Node3D" parent="{parent}"]\nscript = ExtResource("{ext_id("scripts/resource_field.gd", "Script")}")\n'
+                 f'kind = "{kind}"\nmodel_scene = ExtResource("{ext_id(RES[kind]["model"])}")\n'
+                 f'points = PackedVector3Array({ps})\nyaws = PackedFloat32Array({ys})\n')
+
+def cluster(cx, cz, n, r, keep_out=()):
+    """n points around (cx, cz) within r, at least 2.6 m apart, avoiding keep_out circles [(x, z, r)]."""
+    pts, tries = [], 0
+    while len(pts) < n and tries < n * 60:
+        tries += 1
+        a = random.random() * math.tau; d = r * math.sqrt(random.random())
+        x, z = cx + math.cos(a) * d, cz + math.sin(a) * d
+        if all(math.hypot(x - px, z - pz) > 2.6 for px, pz in pts) and all(math.hypot(x - kx, z - kz) > kr for kx, kz, kr in keep_out):
+            pts.append((x, z))
+    return pts
+
+# Pebble Hill Quarry: a block-mining hill between Oakvale and the Old Quarter, reached from the west spoke road.
+QX0, QZ0, QSIZE = -82, 25, (24, 11, 24)
+Qy = group("Quarry", W)
+plane(Qy, "QuarryFloor", QX0, QZ0, 34, 34, "m_dirt", 0.011)
+sign(Qy, "PEBBLE HILL QUARRY", QX0, QZ0 - 16, 13)
+tiles = ", ".join(f'ExtResource("{ext_id("assets/voxel/tiles/" + BLOCK_TILES[b]["tile"] + ".png", "Texture2D")}")' for b in BLOCKS)
+nodes.append(f'[node name="Mine" type="Node3D" parent="{Qy}"]\nposition = Vector3({QX0 - QSIZE[0] // 2}, 0, {QZ0 - QSIZE[2] // 2})\n'
+             f'script = ExtResource("{ext_id("scripts/mine.gd", "Script")}")\nmine_id = "pebble_hill"\n'
+             f'size = Vector3i({QSIZE[0]}, {QSIZE[1]}, {QSIZE[2]})\nseed_value = 7\nentrance = Vector3i(0, 0, -1)\n'
+             f'tiles = Array[Texture2D]([{tiles}])\n')
+road(R, [(QX0 + 1, -22), (QX0 + 1, QZ0 - 12)], 5)        # west spoke road -> the tunnel mouth (north side)
+hill = [(QX0, QZ0, 15)]
+field(Qy, "rock", cluster(QX0, QZ0, 7, 20, hill + [(QX0 + 1, QZ0 - 18, 4)]))
+field(Qy, "copper_vein", cluster(QX0 + 14, QZ0 + 12, 4, 6, hill))
+field(Qy, "iron_vein", cluster(QX0 - 15, QZ0 + 14, 2, 4, hill))
+for (dx, dz), nm, mdl, sc, hp in [((16, -8), "Pebbling", FL + "Goleling.gltf", 0.6, 120), ((-16, -4), "Rockpup", B + "Dog.gltf", 0.55, 70)]:
+    monster(Qy, nm, QX0 + dx, QZ0 + dz, mdl, sc, hp, wander=5)
+
+# Gathering spots: berries + herbs east of Oakvale, choppable trees between Downtown and the Grove, mushrooms in the Grove.
+field(V, "berry_bush", cluster(VX + 22, VZ + 10, 6, 5))
+field(V, "herb_patch", cluster(VX + 20, VZ - 30, 5, 4))
+field(R, "tree", cluster(80, -6, 8, 9, [(80, 18, 6)]))
+field(G, "mushroom", cluster(GX - 16, GZ + 17, 5, 4))
+field(I, "rock", cluster(IX - 4, IZ + 20, 3, 4))
 
 # ---------------------------------------------------------------- Alphas (data/alphas.json)
 ALPHAS = {k: v for k, v in json.load(open(os.path.join(P, "data/alphas.json"))).items() if not k.startswith("_")}

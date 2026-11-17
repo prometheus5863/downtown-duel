@@ -1,6 +1,62 @@
 {
- "kingcap_spore": {"name": "Kingcap Spore", "desc": "Glowing spore from the Mushroom King. Treat material."},
- "wyrm_scale":    {"name": "Wyrm Scale",    "desc": "Still warm. Treat material."},
- "bone_totem":    {"name": "Bone Totem",    "desc": "Carved by the Skullcrusher's tribe. Treat material."},
- "void_crystal":  {"name": "Void Crystal",  "desc": "Hums when held. Treat material."}
+ "kingcap_spore": {
+  "name": "Kingcap Spore",
+  "desc": "Glowing spore from the Mushroom King. Treat material."
+ },
+ "wyrm_scale": {
+  "name": "Wyrm Scale",
+  "desc": "Still warm. Treat material."
+ },
+ "bone_totem": {
+  "name": "Bone Totem",
+  "desc": "Carved by the Skullcrusher's tribe. Treat material."
+ },
+ "void_crystal": {
+  "name": "Void Crystal",
+  "desc": "Hums when held. Treat material."
+ },
+ "wood": {
+  "name": "Wood",
+  "desc": "Logs from a chopped tree."
+ },
+ "stone": {
+  "name": "Stone",
+  "desc": "Plain stone. Placeable in mines."
+ },
+ "dirt": {
+  "name": "Dirt",
+  "desc": "Placeable in mines."
+ },
+ "copper_ore": {
+  "name": "Copper Ore",
+  "desc": "Needs a stone pickaxe."
+ },
+ "iron_ore": {
+  "name": "Iron Ore",
+  "desc": "Needs a copper pickaxe."
+ },
+ "silver_ore": {
+  "name": "Silver Ore",
+  "desc": "Needs an iron pickaxe."
+ },
+ "gold_ore": {
+  "name": "Gold Ore",
+  "desc": "Needs an iron pickaxe."
+ },
+ "crystal": {
+  "name": "Crystal",
+  "desc": "Deep in the hills. Needs a crystal pickaxe."
+ },
+ "berries": {
+  "name": "Berries",
+  "desc": "Sweet treat ingredient."
+ },
+ "herbs": {
+  "name": "Herbs",
+  "desc": "Bitter treat ingredient."
+ },
+ "mushroom": {
+  "name": "Mushroom",
+  "desc": "Savory treat ingredient."
+ }
 }

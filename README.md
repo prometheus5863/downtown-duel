@@ -17,7 +17,8 @@ a dressed-up hero whose armor changes how they look.
 | Tab | Lock on to nearest monster (25 m) / release |
 | F | Talk to a monster / shop / open a chest (1–9 pick options, Esc leave) |
 | Wheel | Zoom · Q / E turn camera |
-| 1 2 3 4 | Party orders: Attack my target · Follow · Hold position · Return |
+| R / T | Use tool (mine a block, chop a tree, gather; hold to keep going) / place a block in a mine |
+| 1 2 3 4 5 | Party orders: Attack my target · Follow · Hold position · Return · Work (harvest nearby) |
 | F5 / F9 | Save now / reload the last save (the game also autosaves every 2 minutes and when you leave the window) |
 
 **Phone / tablet** (landscape): left thumb = floating joystick, drag anywhere else = camera,
@@ -55,6 +56,9 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
   favourite flavour counts double. At 60 / 100 it asks to join. Hostile creatures must be weakened or calmed first.
 - **Alphas** — one crowned Alpha per wild zone: tougher, angrier below half HP, only Mythic treats win them over,
   and they drop rare materials. 1 in 200 creatures is a gold **Lustre** variant with +10 % stats.
+- **Gathering & mining** — chop trees, break rocks and ore veins, pick berries / herbs / mushrooms (R). In
+  **Pebble Hill Quarry** dig into a hill of blocks: ores get richer the deeper you go, and better pickaxes are needed
+  for them. Companions with Mining / Lumber / Gathering skills harvest for you on the Work order.
 - **Elements** — Ember › Verdant › Stone › Gale › Shade › Tide › Ember: 1.5× damage forward, 0.67× backwards.
   Hostile monsters: *Fight*, *Calm it down* (works below 50 % HP, or after a snack; boss below 30 %), *Snack (10 coins)*.
   Failing to calm one makes it attack immediately.
@@ -91,10 +95,11 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - [x] Save game (`user://save.json`, browser storage on the web), autosave
 - [x] Party of 3 companions that fight beside you, storage at the Creature Ledger, 6-element wheel, shared XP
 - [x] Treats & bond meter, favourite flavours, crowned Alphas with phase 2 and drops, rare Lustre variants
+- [x] Gathering (trees, rocks, ore veins, berries, herbs, mushrooms) and block mining in Pebble Hill Quarry, tool tiers
 - [ ] Party combat, treats and bond, mining, crafting, Sanctuaries, 2 km streamed world — see `docs/PLAN.md` and `docs/PROGRESS.md`
 - [ ] Capture / party system, 2D overworld ↔ 3D battle transition
 
 ## Credits
-All art CC0 by Quaternius: Downtown City, Medieval Village, Modular Sci-Fi, Stylized Nature,
+Block textures: Kenney Voxel Pack (CC0, kenney.nl). All other art CC0 by Quaternius: Downtown City, Medieval Village, Modular Sci-Fi, Stylized Nature,
 Fantasy Props MegaKits, Ultimate Monsters, Universal Animation Library, Universal Base Characters,
 Modular Character Outfits – Fantasy.

@@ -1,0 +1,141 @@
+{
+ "_doc": "Overworld resource nodes (resource_field.gd). tool: pick | axe | hand. tier = minimum tool tier. hits = with a tool of that tier. drops: item -> [min, max]. respawn seconds. skill = companion work skill that can harvest it. tint multiplies the model colour (ore veins). collider = [sx, sy, sz] box, or null.",
+ "tree": {
+  "name": "Tree",
+  "model": "assets/stylized-nature/glTF/CommonTree_2.gltf",
+  "tool": "axe",
+  "tier": 1,
+  "hits": 4,
+  "drops": {
+   "wood": [
+    2,
+    3
+   ]
+  },
+  "respawn": 90,
+  "skill": "lumber",
+  "collider": [
+   0.8,
+   4,
+   0.8
+  ]
+ },
+ "rock": {
+  "name": "Rock",
+  "model": "assets/stylized-nature/glTF/Rock_Medium_2.gltf",
+  "tool": "pick",
+  "tier": 1,
+  "hits": 3,
+  "drops": {
+   "stone": [
+    2,
+    3
+   ]
+  },
+  "respawn": 90,
+  "skill": "mining",
+  "collider": [
+   1.8,
+   1.4,
+   1.8
+  ]
+ },
+ "copper_vein": {
+  "name": "Copper Vein",
+  "model": "assets/stylized-nature/glTF/Rock_Medium_1.gltf",
+  "tool": "pick",
+  "tier": 2,
+  "hits": 4,
+  "drops": {
+   "copper_ore": [
+    1,
+    2
+   ],
+   "stone": [
+    1,
+    1
+   ]
+  },
+  "respawn": 150,
+  "skill": "mining",
+  "collider": [
+   1.8,
+   1.4,
+   1.8
+  ],
+  "tint": "e0874a"
+ },
+ "iron_vein": {
+  "name": "Iron Vein",
+  "model": "assets/stylized-nature/glTF/Rock_Medium_3.gltf",
+  "tool": "pick",
+  "tier": 3,
+  "hits": 5,
+  "drops": {
+   "iron_ore": [
+    1,
+    2
+   ],
+   "stone": [
+    1,
+    1
+   ]
+  },
+  "respawn": 180,
+  "skill": "mining",
+  "collider": [
+   1.8,
+   1.4,
+   1.8
+  ],
+  "tint": "b8b0c8"
+ },
+ "berry_bush": {
+  "name": "Berry Bush",
+  "model": "assets/stylized-nature/glTF/Bush_Common_Flowers.gltf",
+  "tool": "hand",
+  "tier": 0,
+  "hits": 1,
+  "drops": {
+   "berries": [
+    2,
+    3
+   ]
+  },
+  "respawn": 60,
+  "skill": "gathering",
+  "collider": null
+ },
+ "herb_patch": {
+  "name": "Herb Patch",
+  "model": "assets/stylized-nature/glTF/Fern_1.gltf",
+  "tool": "hand",
+  "tier": 0,
+  "hits": 1,
+  "drops": {
+   "herbs": [
+    1,
+    2
+   ]
+  },
+  "respawn": 60,
+  "skill": "gathering",
+  "collider": null
+ },
+ "mushroom": {
+  "name": "Mushrooms",
+  "model": "assets/stylized-nature/glTF/Mushroom_Laetiporus.gltf",
+  "tool": "hand",
+  "tier": 0,
+  "hits": 1,
+  "drops": {
+   "mushroom": [
+    1,
+    2
+   ]
+  },
+  "respawn": 75,
+  "skill": "gathering",
+  "collider": null
+ }
+}
