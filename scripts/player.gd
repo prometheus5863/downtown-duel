@@ -5,6 +5,8 @@ const ProjectileScript := preload("res://scripts/projectile.gd")
 const Items := preload("res://scripts/items.gd")
 const Avatar := preload("res://scripts/avatar.gd")
 const SaveGame := preload("res://scripts/save_game.gd")
+const InputSetup := preload("res://scripts/input_setup.gd")
+const Factory := preload("res://scripts/creature_factory.gd")
 const GRAVITY := 20.0
 
 @export var speed := 6.0
@@ -39,6 +41,7 @@ signal hp_changed(hp: int, max_hp: int)
 signal progress_changed                  ## level / xp / coins / gear / route counters changed
 signal leveled_up(level: int)
 signal interact_requested(node: Node)
+signal party_changed                     ## party members, their order or the party command changed
 signal hurt(amount: int)
 signal dodged
 signal died
@@ -64,8 +67,13 @@ var coins := 0
 var gear := Items.STARTER.duplicate()
 var owned: Array = ["wood_knuckles", "cloth_tunic"]
 var route := {"defeated": 0, "spared": 0, "friends": 0}
-var followers: Array = []
-const MAX_FOLLOWERS := 3
+var party: Array = []                    ## active companions (enemy.gd nodes with friend = true), max MAX_PARTY
+var storage: Array = []                  ## records of companions waiting at the Creature Ledger (unlimited)
+var party_command := "follow"            ## attack | follow | hold | heel (see companion.gd)
+var befriended_origins: Array = []       ## scene paths of wild creatures that are now stored companions
+const MAX_PARTY := 3
+const COMMANDS := {"cmd_attack": "attack", "cmd_follow": "follow", "cmd_hold": "hold", "cmd_return": "heel"}
+const COMMAND_TEXT := {"attack": "ATTACK!", "follow": "FOLLOW", "hold": "HOLD", "heel": "RETURN"}
 var talking := false                    ## dialogue / shop open
 var _queued_attack := ""                # LMB/RMB while mouse-captured
 var _roll_t := -1.0                     # time since roll start (-1 = not rolling)
@@ -89,6 +97,7 @@ func _ready() -> void:
 	spring_arm.add_excluded_object(get_rid())
 	swipe.visible = false
 	add_to_group("player")
+	InputSetup.ensure()
 	hp = max_hp
 	spawn_point = global_position
 	if model_scene:
@@ -164,6 +173,9 @@ func _physics_process(delta: float) -> void:
 			_strike()
 		if (Input.is_action_just_pressed("attack_ember") or _queued_attack == "ember") and cooldowns.ember == 0.0:
 			_ember()
+		for action in COMMANDS:
+			if Input.is_action_just_pressed(action):
+				command_party(COMMANDS[action])
 		if Input.is_action_just_pressed("interact"):
 			var n := nearest_interactable()
 			if n:
@@ -237,7 +249,7 @@ func _strike() -> void:
 	_flash_swipe()
 	for body in melee_hitbox.get_overlapping_bodies():
 		if body != self and body.has_method("take_damage") and not body.get("friend"):
-			body.take_damage(strike_power(), -global_transform.basis.z)
+			body.take_damage(strike_power(), -global_transform.basis.z, self)
 			_on_hit(0.25, 0.07)
 
 
@@ -252,6 +264,7 @@ func _ember() -> void:
 	p.shooter = self
 	p.direction = dir
 	p.damage = ember_power()
+	p.element = "ember"
 	get_parent().add_child(p)
 	p.global_position = global_position + dir * 0.9
 	p.hit.connect(_on_hit.bind(0.15, 0.04))
@@ -315,6 +328,9 @@ func reward(xp_gain: int, coin_gain: int, kind: String) -> void:
 	xp += xp_gain
 	var txt := "+%d XP" % xp_gain + ("   +%d coins" % coin_gain if coin_gain > 0 else "")
 	_popup(txt, Color(0.6, 1.0, 0.5) if kind == "spared" else Color(1.0, 0.85, 0.3))
+	for c in party:                          # XP is shared with the whole active party
+		if is_instance_valid(c) and c.gain_xp(xp_gain):
+			_popup("%s  Lv %d!" % [c.display_name, c.level], Color(0.6, 0.95, 1.0), 2.3)
 	while xp >= xp_to_next():
 		xp -= xp_to_next()
 		level += 1
@@ -383,13 +399,100 @@ func spend(amount: int) -> bool:
 	return true
 
 
-func add_follower(e: Node) -> bool:
-	if followers.size() >= MAX_FOLLOWERS:
-		return false
-	followers.append(e)
+# ---------------------------------------------------------------- party
+
+## A wild creature agreed to join. Goes to the party, or straight to storage when the party is full.
+## Returns "party" or "storage".
+func befriend(e: Node) -> String:
 	route.friends += 1
+	e.adopt(self, {}, String(get_parent().get_path_to(e)))
+	var where := "party"
+	if party.size() < MAX_PARTY:
+		party.append(e)
+	else:
+		storage.append(e.make_record())
+		e.queue_free()
+		where = "storage"
 	progress_changed.emit()
+	party_changed.emit()
+	return where
+
+
+## Party member i -> storage.
+func deposit(i: int) -> bool:
+	if i < 0 or i >= party.size():
+		return false
+	var c: Node = party[i]
+	party.remove_at(i)
+	storage.append(c.make_record())
+	c.queue_free()
+	party_changed.emit()
 	return true
+
+
+## Stored record i -> party (spawned next to the player).
+func withdraw(i: int) -> bool:
+	if i < 0 or i >= storage.size() or party.size() >= MAX_PARTY:
+		return false
+	var c := Factory.spawn_companion(storage[i], self, _companion_spot(party.size()))
+	if c == null:
+		return false
+	storage.remove_at(i)
+	party.append(c)
+	party_changed.emit()
+	return true
+
+
+func command_party(cmd: String) -> void:
+	party_command = cmd
+	for c in party:
+		if is_instance_valid(c) and c.brain:
+			c.brain.on_command(cmd)
+	if not party.is_empty():
+		_popup(COMMAND_TEXT.get(cmd, cmd), Color(0.6, 0.95, 1.0), 2.2)
+	party_changed.emit()
+
+
+## Sanctuary / ledger rest: full heal for the player and every companion, exhausted ones get back up.
+func rest() -> void:
+	hp = max_hp
+	hp_changed.emit(int(hp), max_hp)
+	for c in party:
+		if is_instance_valid(c):
+			c.heal_full()
+	for r in storage:
+		r["hp"] = -1                         # stored companions are at full health when taken out
+	party_changed.emit()
+
+
+func party_records() -> Array:
+	var out := []
+	for c in party:
+		if is_instance_valid(c):
+			out.append(c.make_record())
+	return out
+
+
+## Rebuilds the party and storage from saved records (called by Game.apply after from_save).
+func load_companions(party_recs: Array, storage_recs: Array) -> void:
+	for c in party:
+		if is_instance_valid(c):
+			c.queue_free()
+	party.clear()
+	storage.assign(storage_recs)
+	for r in party_recs:
+		if party.size() >= MAX_PARTY:
+			storage.append(r)
+			continue
+		var c := Factory.spawn_companion(r, self, _companion_spot(party.size()))
+		if c:
+			party.append(c)
+	party_changed.emit()
+
+
+func _companion_spot(i: int) -> Vector3:
+	var back := global_transform.basis.z * Vector3(1, 0, 1)
+	return global_position + back.normalized().rotated(Vector3.UP, [-0.7, 0.7, 0.0][i % 3]) * 2.5 - Vector3(0, 1.0, 0)
 
 
 func nearest_interactable(max_dist := 3.2) -> Node:
@@ -412,6 +515,7 @@ func to_save() -> Dictionary:
 		"level": level, "xp": xp, "coins": coins, "max_hp": max_hp, "hp": int(hp),
 		"pos": SaveGame.arr(global_position), "spawn": SaveGame.arr(spawn_point),
 		"gear": gear.duplicate(), "owned": owned.duplicate(), "route": route.duplicate(),
+		"party_command": party_command,
 	}
 
 
@@ -424,6 +528,7 @@ func from_save(d: Dictionary) -> void:
 	for slot in gear:
 		gear[slot] = String(d.get("gear", {}).get(slot, gear[slot]))
 	owned.assign(d.get("owned", owned))
+	party_command = String(d.get("party_command", "follow"))
 	for k in route:
 		route[k] = int(d.get("route", {}).get(k, 0))
 	if d.has("pos"):
@@ -441,7 +546,7 @@ func is_invulnerable() -> bool:
 
 
 ## Returns true if the hit landed, false if dodged / ignored.
-func take_damage(amount: int, from_dir: Vector3) -> bool:
+func take_damage(amount: int, from_dir: Vector3, _source: Node = null, _element := "") -> bool:
 	if not alive or not can_control:
 		return false
 	if is_invulnerable():
@@ -479,7 +584,7 @@ func _die() -> void:
 	_play("Idle")
 
 
-func _popup(text: String, col: Color) -> void:
+func _popup(text: String, col: Color, height := 1.6) -> void:
 	var l := Label3D.new()
 	l.text = text
 	l.font_size = 64
@@ -488,7 +593,7 @@ func _popup(text: String, col: Color) -> void:
 	l.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	l.no_depth_test = true
 	get_parent().add_child(l)
-	l.global_position = global_position + Vector3(0, 1.6, 0)
+	l.global_position = global_position + Vector3(0, height, 0)
 	var t := l.create_tween().set_parallel()
 	t.tween_property(l, "position:y", l.position.y + 0.8, 0.5)
 	t.tween_property(l, "modulate:a", 0.0, 0.5).set_delay(0.15)

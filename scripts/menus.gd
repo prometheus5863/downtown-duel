@@ -1,9 +1,10 @@
 extends CanvasLayer
 ## Dialogue + shop panel. Works with mouse, touch (emulated mouse) and number keys (1-9, Esc/F to leave).
 ## Monsters implement talk_begin() / talk_choose(option) / talk_end(result)  (see enemy.gd).
-## Shopkeepers implement open_shop().
+## Shopkeepers implement open_shop(). The Creature Ledger implements open_ledger() (party <-> storage, rest).
 
 const Items := preload("res://scripts/items.gd")
+const Data := preload("res://scripts/data.gd")
 
 var player: Node
 var is_open := false
@@ -62,6 +63,10 @@ func open_for(node: Node) -> void:
 		_mode = "talk"
 		_set_open(true)
 		_show(node.talk_begin())
+	elif node.has_method("open_ledger"):
+		_mode = "ledger"
+		_set_open(true)
+		_show_ledger("Your companions rest here. Swap who travels with you (party of %d)." % player.MAX_PARTY)
 	elif node.has_method("open_shop"):
 		_mode = "shop"
 		_set_open(true)
@@ -147,6 +152,45 @@ func _show_shop(status: String) -> void:
 
 func _buy(id: String) -> void:
 	_show_shop(player.buy(id))
+
+
+# ------------------------------------------------------------------ creature ledger
+
+func _show_ledger(status: String) -> void:
+	_title.text = "Creature Ledger"
+	_text.text = "%s\nParty %d / %d    ·    In storage: %d" % [status, player.party.size(), player.MAX_PARTY, player.storage.size()]
+	_clear()
+	_add("Rest  —  heal yourself and your party, revive exhausted companions", _ledger_rest)
+	for i in player.party.size():
+		var c: Node = player.party[i]
+		_add("Store  %s  Lv %d  (%s)  HP %d / %d" % [c.display_name, c.level, Data.element_name(c.element), c.hp, c.max_hp],
+			_ledger_store.bind(i))
+	if player.party.size() < player.MAX_PARTY:
+		for i in mini(player.storage.size(), 8 - _buttons.size()):
+			var r: Dictionary = player.storage[i]
+			var sp := Data.creature(r.get("species", ""))
+			_add("Take  %s  Lv %d  (%s)" % [r.get("name", "?"), int(r.get("level", 1)), Data.element_name(sp.get("element", ""))],
+				_ledger_take.bind(i))
+	_add("Leave", close)
+
+
+func _ledger_rest() -> void:
+	player.rest()
+	var game := get_tree().get_first_node_in_group("game")
+	if game:
+		game.save()
+	_show_ledger("You feel rested. Everyone is back on their feet.")
+
+
+func _ledger_store(i: int) -> void:
+	var n: String = player.party[i].display_name
+	player.deposit(i)
+	_show_ledger("%s will wait here for you." % n)
+
+
+func _ledger_take(i: int) -> void:
+	var n: String = player.storage[i].get("name", "?")
+	_show_ledger("%s joins your party." % n if player.withdraw(i) else "Your party is full.")
 
 
 # ------------------------------------------------------------------ widgets

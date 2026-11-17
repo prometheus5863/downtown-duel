@@ -32,7 +32,7 @@ func _ready() -> void:
 	t.timeout.connect(save)
 	add_child(t)
 	if load_on_start and SaveGame.exists(path()):
-		load_game()
+		load_game.call_deferred()            # after the scene finishes building: loading spawns companions
 
 
 func _process(delta: float) -> void:
@@ -73,13 +73,17 @@ func collect() -> Dictionary:
 	var d := SaveGame.blank()
 	d.play_time = play_time
 	d.player = _player.to_save()
+	d.party = _player.party_records()
+	d.storage = _player.storage.duplicate(true)
+	# Wild creatures that became companions (party or storage) must not reappear in the wild.
+	for r in d.party + d.storage:
+		if String(r.get("origin", "")) != "":
+			d.world.befriended.append(r.origin)
 	d.world.flags = flags
 	d.world.sanctuaries = sanctuaries
 	for n in get_tree().get_nodes_in_group("interactable"):
 		if n.get("opened") == true:
 			d.world.chests.append(_id(n))
-		elif n.get("friend") == true:
-			d.world.befriended.append(_id(n))
 		elif n.get("spared") == true:
 			d.world.spared.append(_id(n))
 	return d
@@ -111,8 +115,9 @@ func apply(d: Dictionary) -> void:
 			e.set_spared()
 	for id in d.world.befriended:
 		var e := _root.get_node_or_null(id)
-		if e and e.has_method("restore_friend"):
-			e.restore_friend(_player)
+		if e:
+			e.queue_free()                     # this one lives in the party / storage records now
+	_player.load_companions(d.party, d.storage)
 	# A returning player skips the intro flyover.
 	var intro := _root.get_node_or_null("IntroCamera")
 	if intro and intro.has_method("_finish"):

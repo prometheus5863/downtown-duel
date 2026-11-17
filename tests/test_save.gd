@@ -38,8 +38,8 @@ func _init() -> void:
 	var pal: Node = t.find_enemy("Clucky")
 	var pal_id := String(arena.get_path_to(pal))
 	pal.talk_begin()
-	p.add_follower(pal)
 	pal.talk_end("friend")
+	var pal_name: String = pal.display_name
 	var calm: Node = t.find_enemy("Whiskers")
 	var calm_id := String(arena.get_path_to(calm))
 	calm.talk_begin()
@@ -68,8 +68,10 @@ func _init() -> void:
 	t.eq(game.flags.get("tutorial_done"), true, "world flags restored")
 	t.eq(arena.get_node(chest_id).opened, true, "opened chest stays opened")
 	t.eq(arena.get_node(chest_id).can_interact(), false, "opened chest can't be looted twice")
-	t.eq(arena.get_node(pal_id).friend, true, "befriended creature is still a friend")
-	t.ok(arena.get_node(pal_id) in p.followers, "friend is back in the party")
+	t.ok(arena.get_node_or_null(pal_id) == null or arena.get_node(pal_id).is_queued_for_deletion(),
+		"befriended wild creature does not respawn in the wild")
+	t.eq(p.party.size(), 1, "companion is back in the party")
+	t.ok(p.party.size() == 1 and p.party[0].display_name == pal_name and p.party[0].friend, "it is the same companion")
 	t.eq(arena.get_node(calm_id).spared, true, "spared creature stays spared")
 	t.eq(arena.get_node(calm_id).is_hostile(), false, "spared creature is not hostile")
 	t.ok(arena.get_node_or_null("IntroCamera") == null or arena.get_node("IntroCamera").is_queued_for_deletion(),

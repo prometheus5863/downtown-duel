@@ -13,7 +13,7 @@ for t in sorted(glob.glob(os.path.join(P, "tests", "test_*.gd"))):
         continue
     try:
         r = subprocess.run([GODOT, "--headless", "--path", P, "-s", "res://tests/" + name],
-                           capture_output=True, text=True, timeout=600)
+                           capture_output=True, text=True, timeout=400)
         out, code = r.stdout + r.stderr, r.returncode
     except subprocess.TimeoutExpired as e:
         out, code = (e.stdout or "") + "\nTIMEOUT", 1

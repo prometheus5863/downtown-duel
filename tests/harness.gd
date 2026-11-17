@@ -10,8 +10,12 @@ var passed := 0
 var tree: SceneTree
 
 
-func _init(t: SceneTree) -> void:
+func _init(t: SceneTree, timeout := 240.0) -> void:
 	tree = t
+	# Watchdog: a script error stops the test coroutine, which would otherwise leave Godot running forever.
+	t.create_timer(timeout, true, false, true).timeout.connect(func():
+		print("FAIL watchdog: test did not finish within %d s (script error above?)" % timeout)
+		t.quit(1))
 	Game.override_path = TEST_SAVE          # never touch the real save
 	Game.load_on_start = false
 	SaveGame.erase(TEST_SAVE)

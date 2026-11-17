@@ -126,6 +126,8 @@ def sign(parent, text, x, z, y=7.0):
                  f'billboard = 1\ntext = "{text}"\nfont_size = 160\noutline_size = 36\nmodulate = Color(1, 0.95, 0.8, 1)\n')
 
 monsters = []
+ZONE_LEVEL = {"Village": 1, "Downtown": 2, "Training": 3, "Quarter": 3, "Bazaar": 4, "Grove": 4, "Lab": 5,
+              "Ruins": 5, "Skyport": 6}       # wild creature level (a befriended one starts at this level)
 ZONE_HOSTILE = {"Downtown": True, "Village": False, "Training": False, "Grove": True, "Lab": True,
                 "Ruins": True, "Bazaar": False, "Quarter": False, "Skyport": True}
 def monster(parent, name, x, z, model=None, scale=1.0, hp=80, height=None, radius=0.5,
@@ -148,6 +150,8 @@ def emit_monsters():
         if boss: out += "is_boss = true\nrespawn_time = 8.0\nattack_damage = 22\nwindup_time = 1.1\nattack_cooldown = 2.4\n"
         else: out += f"attack_damage = {round(4 + hp / 25)}\n"
         if not aggr: out += "aggressive = false\n"
+        lvl = ZONE_LEVEL.get(parent.split("/")[-1], 1) + (4 if boss else 0)
+        if lvl != 1: out += f"level = {lvl}\n"
         out += f'\n[node name="Mesh" type="MeshInstance3D" parent="{parent}/{node}"]\nmesh = SubResource("capsule_mesh")\n'
         out += f'\n[node name="Collision" type="CollisionShape3D" parent="{parent}/{node}"]\n\n'
     return out
@@ -260,6 +264,12 @@ npc(V, "Merchant Tobin", VX - 7.6, VZ, math.pi / 2,
     [CHR + "Superhero_Male_Head.gltf", CHR + "Hair_Buzzed.gltf", CHR + "Hair_Beard.gltf", OUT + "Male_Peasant.gltf"],
     OUT + "T_Peasant_2_BaseColor.png", (0.45, 0.3, 0.18), max_price=160,
     greeting="Welcome to Oakvale! Starter gear here. Fancier stuff in the Neon Bazaar and the Old Quarter.")
+# Creature Ledger (party storage + rest). Interim spot; M5 moves it into the Sanctuary.
+nodes.append('[node name="Ledger" type="Node3D" parent="%s"]\nposition = Vector3(%.2f, 0.03, %.2f)\nrotation = Vector3(0, %.5f, 0)\n'
+             'script = ExtResource("%s")\nmodel_scene = ExtResource("%s")\n'
+             % (V, VX + 4, VZ - 12.5, 0.0, ext_id("scripts/ledger.gd", "Script"), ext_id(FP + "BookStand.gltf")))
+nodes.append('[node name="Col" type="StaticBody3D" parent="%s/Ledger"]\n\n[node name="S" type="CollisionShape3D" parent="%s/Ledger/Col"]\n'
+             'position = Vector3(0, 0.6, 0)\nshape = SubResource("%s")\n' % (V, V, sub("box_chest", '[sub_resource type="BoxShape3D" id="ID"]\nsize = Vector3(1.3, 0.8, 0.8)\n')))
 for i in range(6):
     place(V, MED + "Prop_WoodenFence_Single.gltf", VX - 14 + 2.06*i, VZ + 12.5)
 BG = MON + "Big/glTF/"

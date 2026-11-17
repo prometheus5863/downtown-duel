@@ -31,7 +31,8 @@ Open-world creature-battle demo: 9 zones (ring road + spokes + alleys), 61 monst
   generated (`tools/make_armor_tex.py`); `tools/shrink_textures.py` downscales source PNGs to 1024 px.
 - Asset whitelist: `.gitignore` lists only used assets — regenerate from `python tools/used_assets.py .` after world changes.
 - Texture imports capped at 1024 px (`process/size_limit`) to keep the web build ~62 MB.
-- Web export preset "Web": scenes filter + `include_filter="scripts/*.gd"` (preloaded scripts aren't detected as deps).
+- Web export preset "Web": scenes filter + `include_filter="scripts/*.gd, data/*.json"` (preloaded scripts and
+  JSON read at runtime aren't detected as deps).
 - Input actions: move_*, lock_on, attack_strike (J/LMB), attack_ember (K/RMB), dodge (Space), interact (F), cam_left/right (Q/E).
 - HUD `ZONES` must match the zone centres in gen_world.py (incl. the 4 diagonal districts).
 - No `class_name` globals; scripts are preloaded.
@@ -56,8 +57,19 @@ Open-world creature-battle demo: 9 zones (ring road + spokes + alleys), 61 monst
 
 ## Roadmap
 The game is being grown into an open-world creature RPG: spec `docs/FABLE_BRIEF.md`, per-milestone plan
-`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load) is done.
+`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load) and M1 (party) are done.
 Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino studio lead).
+
+## Creatures & party (M1)
+- Data: `data/creatures.json` (species id = `"Blob/GreenBlob"`, from the model path), `data/moves.json`,
+  `data/elements.json`, loaded via `scripts/data.gd`. New monster models → `python tools/sync_creatures.py .`
+- `enemy.gd` is every creature. `take_damage(amount, dir, source, element)` (element wheel applied there).
+  `_current_foe()` = companion it's angry at, else the player. Befriended: `adopt(player, record, origin)` →
+  `friend`, `brain` = `companion.gd`, `record` = save record; `exhausted` at 0 HP instead of dying.
+- Player: `party` (nodes, max 3), `storage` (records), `party_command`, `befriend/deposit/withdraw/rest`.
+  `scripts/creature_factory.gd` spawns a companion from a record. `scripts/ledger.gd` + menus.gd = storage UI.
+- Projectiles never hit the player or friends (`body.is_in_group("player")` / `friend`).
+- Runtime-added input actions: `scripts/input_setup.gd` (cmd_attack/follow/hold/return = 1-4).
 
 ## Save / load
 - `scripts/save_game.gd` (file I/O, `VERSION`, `migrate()`), `scripts/game.gd` (`Game` node, last in arena.tscn, group

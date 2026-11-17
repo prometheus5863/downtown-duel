@@ -1,0 +1,752 @@
+{
+ "Blob/Alien": {
+  "name": "Starblob",
+  "element": "shade",
+  "hp": 100,
+  "atk": 10,
+  "speed": 2.2,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Blob/glTF/Alien.gltf",
+  "height": 1.96
+ },
+ "Blob/Birb": {
+  "name": "Sparrowbit",
+  "element": "gale",
+  "hp": 55,
+  "atk": 7,
+  "speed": 2.6,
+  "scale": 0.5,
+  "radius": 0.42,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Blob/glTF/Birb.gltf",
+  "height": 1.29
+ },
+ "Blob/Cactoro": {
+  "name": "Cactoro",
+  "element": "verdant",
+  "hp": 90,
+  "atk": 9,
+  "speed": 1.8,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Blob/glTF/Cactoro.gltf",
+  "height": 1.97
+ },
+ "Blob/Cat": {
+  "name": "Whiskit",
+  "element": "shade",
+  "hp": 65,
+  "atk": 9,
+  "speed": 2.6,
+  "scale": 0.5,
+  "radius": 0.42,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Blob/glTF/Cat.gltf",
+  "height": 0.96
+ },
+ "Blob/Chicken": {
+  "name": "Cluckle",
+  "element": "gale",
+  "hp": 45,
+  "atk": 6,
+  "speed": 2.4,
+  "scale": 0.45,
+  "radius": 0.38,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Blob/glTF/Chicken.gltf",
+  "height": 1.05
+ },
+ "Blob/Dog": {
+  "name": "Barkley",
+  "element": "stone",
+  "hp": 75,
+  "atk": 9,
+  "speed": 2.6,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Blob/glTF/Dog.gltf",
+  "height": 1.0
+ },
+ "Blob/Fish": {
+  "name": "Puddlefin",
+  "element": "tide",
+  "hp": 60,
+  "atk": 8,
+  "speed": 2.2,
+  "scale": 0.5,
+  "radius": 0.42,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Blob/glTF/Fish.gltf",
+  "height": 1.37
+ },
+ "Blob/GreenBlob": {
+  "name": "Gloop",
+  "element": "verdant",
+  "hp": 80,
+  "atk": 8,
+  "speed": 2.0,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Blob/glTF/GreenBlob.gltf",
+  "height": 1.1
+ },
+ "Blob/GreenSpikyBlob": {
+  "name": "Spikeball",
+  "element": "verdant",
+  "hp": 110,
+  "atk": 11,
+  "speed": 1.9,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Blob/glTF/GreenSpikyBlob.gltf",
+  "height": 2.45
+ },
+ "Blob/Mushnub": {
+  "name": "Mushnub",
+  "element": "verdant",
+  "hp": 90,
+  "atk": 8,
+  "speed": 1.8,
+  "scale": 0.5,
+  "radius": 0.42,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Blob/glTF/Mushnub.gltf",
+  "height": 1.62
+ },
+ "Blob/Mushnub_Evolved": {
+  "name": "Elder Mushnub",
+  "element": "verdant",
+  "hp": 150,
+  "atk": 12,
+  "speed": 1.8,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Blob/glTF/Mushnub_Evolved.gltf",
+  "height": 2.39
+ },
+ "Blob/Ninja": {
+  "name": "Shadekin",
+  "element": "shade",
+  "hp": 90,
+  "atk": 12,
+  "speed": 2.8,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Blob/glTF/Ninja.gltf",
+  "height": 1.67
+ },
+ "Blob/Orc": {
+  "name": "Grumblor",
+  "element": "stone",
+  "hp": 140,
+  "atk": 13,
+  "speed": 2.0,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Blob/glTF/Orc.gltf",
+  "height": 1.4
+ },
+ "Blob/Pigeon": {
+  "name": "Coo",
+  "element": "gale",
+  "hp": 50,
+  "atk": 6,
+  "speed": 2.6,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Blob/glTF/Pigeon.gltf",
+  "height": 1.08
+ },
+ "Blob/PinkBlob": {
+  "name": "Pinkle",
+  "element": "tide",
+  "hp": 60,
+  "atk": 7,
+  "speed": 2.0,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Blob/glTF/PinkBlob.gltf",
+  "height": 1.16
+ },
+ "Blob/Wizard": {
+  "name": "Hexling",
+  "element": "ember",
+  "hp": 115,
+  "atk": 13,
+  "speed": 2.0,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Blob/glTF/Wizard.gltf",
+  "height": 1.56
+ },
+ "Blob/Yeti": {
+  "name": "Snowball",
+  "element": "tide",
+  "hp": 90,
+  "atk": 10,
+  "speed": 2.0,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Blob/glTF/Yeti.gltf",
+  "height": 1.33
+ },
+ "Big/Alien": {
+  "name": "Voidwalker",
+  "element": "shade",
+  "hp": 150,
+  "atk": 14,
+  "speed": 2.2,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Big/glTF/Alien.gltf",
+  "height": 2.13
+ },
+ "Big/Birb": {
+  "name": "Galebeak",
+  "element": "gale",
+  "hp": 85,
+  "atk": 10,
+  "speed": 2.6,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Big/glTF/Birb.gltf",
+  "height": 1.83
+ },
+ "Big/BlueDemon": {
+  "name": "Tidefiend",
+  "element": "tide",
+  "hp": 160,
+  "atk": 15,
+  "speed": 2.2,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Big/glTF/BlueDemon.gltf",
+  "height": 1.7
+ },
+ "Big/Bunny": {
+  "name": "Bunbun",
+  "element": "gale",
+  "hp": 80,
+  "atk": 9,
+  "speed": 2.8,
+  "scale": 0.5,
+  "radius": 0.42,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Big/glTF/Bunny.gltf",
+  "height": 1.72
+ },
+ "Big/Cactoro": {
+  "name": "Thornback",
+  "element": "verdant",
+  "hp": 130,
+  "atk": 12,
+  "speed": 1.8,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Big/glTF/Cactoro.gltf",
+  "height": 2.37
+ },
+ "Big/Demon": {
+  "name": "Cinderhorn",
+  "element": "ember",
+  "hp": 200,
+  "atk": 17,
+  "speed": 2.2,
+  "scale": 0.65,
+  "radius": 0.54,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Big/glTF/Demon.gltf",
+  "height": 2.02
+ },
+ "Big/Dino": {
+  "name": "Rockjaw",
+  "element": "stone",
+  "hp": 170,
+  "atk": 15,
+  "speed": 2.2,
+  "scale": 0.65,
+  "radius": 0.54,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Big/glTF/Dino.gltf",
+  "height": 2.09
+ },
+ "Big/Fish": {
+  "name": "Rotorfin",
+  "element": "tide",
+  "hp": 120,
+  "atk": 12,
+  "speed": 2.3,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Big/glTF/Fish.gltf",
+  "height": 2.25
+ },
+ "Big/Frog": {
+  "name": "Hopper",
+  "element": "tide",
+  "hp": 110,
+  "atk": 11,
+  "speed": 2.4,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Big/glTF/Frog.gltf",
+  "height": 1.61
+ },
+ "Big/Monkroose": {
+  "name": "Monkroose",
+  "element": "stone",
+  "hp": 130,
+  "atk": 13,
+  "speed": 2.6,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Big/glTF/Monkroose.gltf",
+  "height": 1.79
+ },
+ "Big/MushroomKing": {
+  "name": "Mushroom King",
+  "element": "verdant",
+  "hp": 600,
+  "atk": 22,
+  "speed": 1.2,
+  "scale": 1.0,
+  "radius": 0.83,
+  "moves": [
+   "vine_lash",
+   "spore_burst"
+  ],
+  "model": "assets/monsters/Big/glTF/MushroomKing.gltf",
+  "height": 3.6
+ },
+ "Big/Ninja": {
+  "name": "Nightblade",
+  "element": "shade",
+  "hp": 220,
+  "atk": 17,
+  "speed": 2.8,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Big/glTF/Ninja.gltf",
+  "height": 1.8
+ },
+ "Big/Orc": {
+  "name": "Boulderfist",
+  "element": "stone",
+  "hp": 250,
+  "atk": 18,
+  "speed": 2.0,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Big/glTF/Orc.gltf",
+  "height": 1.92
+ },
+ "Big/Orc_Skull": {
+  "name": "Skullcrusher",
+  "element": "shade",
+  "hp": 190,
+  "atk": 16,
+  "speed": 2.0,
+  "scale": 0.62,
+  "radius": 0.52,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Big/glTF/Orc_Skull.gltf",
+  "height": 2.02
+ },
+ "Big/Tribal": {
+  "name": "Embermask",
+  "element": "ember",
+  "hp": 170,
+  "atk": 15,
+  "speed": 2.2,
+  "scale": 0.65,
+  "radius": 0.54,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Big/glTF/Tribal.gltf",
+  "height": 2.56
+ },
+ "Big/Yeti": {
+  "name": "Frostmaw",
+  "element": "tide",
+  "hp": 180,
+  "atk": 15,
+  "speed": 2.0,
+  "scale": 0.65,
+  "radius": 0.54,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Big/glTF/Yeti.gltf",
+  "height": 1.83
+ },
+ "Flying/Alpaking": {
+  "name": "Alpaking",
+  "element": "gale",
+  "hp": 90,
+  "atk": 9,
+  "speed": 2.2,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Flying/glTF/Alpaking.gltf",
+  "height": 1.82
+ },
+ "Flying/Alpaking_Evolved": {
+  "name": "Alpaca Tycoon",
+  "element": "gale",
+  "hp": 160,
+  "atk": 14,
+  "speed": 2.2,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Flying/glTF/Alpaking_Evolved.gltf",
+  "height": 2.24
+ },
+ "Flying/Armabee": {
+  "name": "Buzzbee",
+  "element": "stone",
+  "hp": 90,
+  "atk": 10,
+  "speed": 2.6,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Flying/glTF/Armabee.gltf",
+  "height": 1.69
+ },
+ "Flying/Armabee_Evolved": {
+  "name": "Queen Armabee",
+  "element": "stone",
+  "hp": 150,
+  "atk": 14,
+  "speed": 2.6,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Flying/glTF/Armabee_Evolved.gltf",
+  "height": 1.77
+ },
+ "Flying/Demon": {
+  "name": "Imp",
+  "element": "ember",
+  "hp": 110,
+  "atk": 12,
+  "speed": 2.6,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Flying/glTF/Demon.gltf",
+  "height": 1.55
+ },
+ "Flying/Dragon": {
+  "name": "Emberwing",
+  "element": "ember",
+  "hp": 140,
+  "atk": 14,
+  "speed": 2.4,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Flying/glTF/Dragon.gltf",
+  "height": 1.88
+ },
+ "Flying/Dragon_Evolved": {
+  "name": "Sky Wyrm",
+  "element": "ember",
+  "hp": 520,
+  "atk": 22,
+  "speed": 1.6,
+  "scale": 1.1,
+  "radius": 0.92,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Flying/glTF/Dragon_Evolved.gltf",
+  "height": 3.47
+ },
+ "Flying/Ghost": {
+  "name": "Wisp",
+  "element": "shade",
+  "hp": 80,
+  "atk": 10,
+  "speed": 2.4,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Flying/glTF/Ghost.gltf",
+  "height": 1.86
+ },
+ "Flying/Ghost_Skull": {
+  "name": "Bone Wisp",
+  "element": "shade",
+  "hp": 110,
+  "atk": 12,
+  "speed": 2.4,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "shadow_claw",
+   "night_pulse"
+  ],
+  "model": "assets/monsters/Flying/glTF/Ghost_Skull.gltf",
+  "height": 1.86
+ },
+ "Flying/Glub": {
+  "name": "Glub",
+  "element": "tide",
+  "hp": 90,
+  "atk": 9,
+  "speed": 2.2,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Flying/glTF/Glub.gltf",
+  "height": 2.05
+ },
+ "Flying/Glub_Evolved": {
+  "name": "Glubzilla",
+  "element": "tide",
+  "hp": 170,
+  "atk": 15,
+  "speed": 2.2,
+  "scale": 0.65,
+  "radius": 0.54,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Flying/glTF/Glub_Evolved.gltf",
+  "height": 2.75
+ },
+ "Flying/Goleling": {
+  "name": "Pebbling",
+  "element": "stone",
+  "hp": 120,
+  "atk": 11,
+  "speed": 2.0,
+  "scale": 0.6,
+  "radius": 0.5,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Flying/glTF/Goleling.gltf",
+  "height": 1.82
+ },
+ "Flying/Goleling_Evolved": {
+  "name": "Scrap Golem",
+  "element": "stone",
+  "hp": 200,
+  "atk": 16,
+  "speed": 2.0,
+  "scale": 0.65,
+  "radius": 0.54,
+  "moves": [
+   "rock_bash",
+   "quake_stomp"
+  ],
+  "model": "assets/monsters/Flying/glTF/Goleling_Evolved.gltf",
+  "height": 2.48
+ },
+ "Flying/Hywirl": {
+  "name": "Hywirl",
+  "element": "gale",
+  "hp": 100,
+  "atk": 11,
+  "speed": 2.8,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Flying/glTF/Hywirl.gltf",
+  "height": 1.52
+ },
+ "Flying/Pigeon": {
+  "name": "Skycoo",
+  "element": "gale",
+  "hp": 70,
+  "atk": 8,
+  "speed": 2.8,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "gust_dive",
+   "wind_cutter"
+  ],
+  "model": "assets/monsters/Flying/glTF/Pigeon.gltf",
+  "height": 1.62
+ },
+ "Flying/Squidle": {
+  "name": "Squidle",
+  "element": "tide",
+  "hp": 90,
+  "atk": 10,
+  "speed": 2.2,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "splash_tackle",
+   "bubble_shot"
+  ],
+  "model": "assets/monsters/Flying/glTF/Squidle.gltf",
+  "height": 1.64
+ },
+ "Flying/Tribal": {
+  "name": "Mask Imp",
+  "element": "ember",
+  "hp": 100,
+  "atk": 11,
+  "speed": 2.6,
+  "scale": 0.55,
+  "radius": 0.46,
+  "moves": [
+   "cinder_bite",
+   "fire_spit"
+  ],
+  "model": "assets/monsters/Flying/glTF/Tribal.gltf",
+  "height": 2.44
+ }
+}

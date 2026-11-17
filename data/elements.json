@@ -1,0 +1,7 @@
+{
+ "order": ["ember", "verdant", "stone", "gale", "shade", "tide"],
+ "strong": 1.5,
+ "weak": 0.67,
+ "names": {"ember": "Ember", "verdant": "Verdant", "stone": "Stone", "gale": "Gale", "shade": "Shade", "tide": "Tide"},
+ "colors": {"ember": "ff7a2e", "verdant": "5fcf5a", "stone": "b99a6b", "gale": "9fe8f0", "shade": "a070e0", "tide": "4aa3ff"}
+}

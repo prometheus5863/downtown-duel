@@ -17,6 +17,7 @@ a dressed-up hero whose armor changes how they look.
 | Tab | Lock on to nearest monster (25 m) / release |
 | F | Talk to a monster / shop / open a chest (1–9 pick options, Esc leave) |
 | Wheel | Zoom · Q / E turn camera |
+| 1 2 3 4 | Party orders: Attack my target · Follow · Hold position · Return |
 | F5 / F9 | Save now / reload the last save (the game also autosaves every 2 minutes and when you leave the window) |
 
 **Phone / tablet** (landscape): left thumb = floating joystick, drag anywhere else = camera,
@@ -46,7 +47,11 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - **Gear** — weapon (+Strike), armor (flat damage reduction), charm (Ember / speed / dodge / regen).
   **8 armors that change your look**: Cloth Tunic → Traveler's Garb → Leather Vest → Ranger Kit (hood) → Shadow Cloak →
   Iron / Obsidian / Royal Plate. Three shops: Oakvale (starter gear ≤ 160 coins), Neon Bazaar (weapons + charms), Old Quarter (armor).
-- **Talking to monsters (F)** — peaceful monsters: pet / snack → they ask to join and **follow you** (max 3).
+- **Talking to monsters (F)** — peaceful monsters: pet / snack → they ask to join your **party**.
+- **Party** — up to 3 companions fight beside you with their own element moves; order them with 1–4 (or the
+  ATK / FLW / HLD / RET buttons on phones). Extra friends wait at the **Creature Ledger** in Oakvale, where you can
+  also rest to heal and revive exhausted companions. Companions level up with the XP you earn.
+- **Elements** — Ember › Verdant › Stone › Gale › Shade › Tide › Ember: 1.5× damage forward, 0.67× backwards.
   Hostile monsters: *Fight*, *Calm it down* (works below 50 % HP, or after a snack; boss below 30 %), *Snack (10 coins)*.
   Failing to calm one makes it attack immediately.
 - **Route** — HUD tracks defeated / spared / friends → **Pacifist**, **Balanced** or **Hunter**.
@@ -80,6 +85,7 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - [x] Talk-to-monster dialogue with pacifist routes (spare / befriend / followers)
 - [x] Dressed hero + visible armor tiers, hybrid districts, non-linear road network, minimap, chests
 - [x] Save game (`user://save.json`, browser storage on the web), autosave
+- [x] Party of 3 companions that fight beside you, storage at the Creature Ledger, 6-element wheel, shared XP
 - [ ] Party combat, treats and bond, mining, crafting, Sanctuaries, 2 km streamed world — see `docs/PLAN.md` and `docs/PROGRESS.md`
 - [ ] Capture / party system, 2D overworld ↔ 3D battle transition
 

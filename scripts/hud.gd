@@ -38,6 +38,7 @@ const ZONES := [
 	["Skyport", Vector2(94, 94), 26.0],
 ]
 const Minimap := preload("res://scripts/minimap.gd")
+const PartyPanel := preload("res://scripts/party_panel.gd")
 
 
 func _ready() -> void:
@@ -109,7 +110,7 @@ func _ready() -> void:
 	player.hp_changed.connect(func(hp, mx): _hp_bar.max_value = mx; create_tween().tween_property(_hp_bar, "value", float(hp), 0.12))
 	player.hurt.connect(_on_hurt)
 	player.died.connect(func(): _show_banner("DEFEATED", Color(1, 0.35, 0.3), 2.4))
-	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
+	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · 1-4 party orders · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
 	bottom.add_child(_hint)
 
 	# --- Phones / tablets ---
@@ -127,6 +128,12 @@ func _ready() -> void:
 	_info.offset_left = 16
 	_info.offset_top = 12
 	root.add_child(_info)
+	var pp: VBoxContainer = PartyPanel.new()
+	pp.player = player
+	pp.touch = touch != null
+	pp.offset_left = 16
+	pp.offset_top = 70
+	root.add_child(pp)
 	var mm: Control = Minimap.new()
 	mm.player = player
 	mm.zones = ZONES
@@ -195,7 +202,8 @@ func _process(delta: float) -> void:
 		_prompt.text = ""
 	else:
 		var key := "TALK" if touch else "[F]"
-		var verb := "Shop at" if near.has_method("open_shop") else "Open" if near.get("opened") != null else "Talk to"
+		var verb := "Shop at" if near.has_method("open_shop") else "Open" if near.get("opened") != null \
+			else "Use" if near.has_method("open_ledger") else "Talk to"
 		_prompt.text = "%s  %s %s" % [key, verb, near.display_name]
 	# Target panel follows whatever the player is locked on to.
 	var t = player.target if player.locked else null

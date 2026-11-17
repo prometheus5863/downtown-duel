@@ -31,6 +31,10 @@ func _ready() -> void:
 	_add_button("dodge", "DODGE", 54, Color(0.4, 1.0, 0.7), func(s): return Vector2(s.x - 270, s.y - 250))
 	_add_button("lock_on", "LOCK", 46, Color(0.5, 0.8, 1.0), func(s): return Vector2(s.x - 115, s.y - 315))
 	_add_button("interact", "TALK", 50, Color(0.6, 1.0, 0.6), func(s): return Vector2(s.x - 260, s.y - 390))
+	# Party orders: a row of small buttons above the joystick, only while you have companions.
+	var orders := [["cmd_attack", "ATK"], ["cmd_follow", "FLW"], ["cmd_hold", "HLD"], ["cmd_return", "RET"]]
+	for i in orders.size():
+		_add_button(orders[i][0], orders[i][1], 34, Color(0.45, 0.85, 1.0), func(s): return Vector2(60 + i * 78, s.y - 330))
 
 	_portrait = ColorRect.new()
 	_portrait.color = Color(0, 0, 0, 0.85)
@@ -66,6 +70,8 @@ func _process(_delta: float) -> void:
 	for b in _buttons:
 		if b[0].action == "interact":
 			b[0].visible = not menu_open and player.can_control and player.nearest_interactable() != null
+		elif String(b[0].action).begins_with("cmd_"):
+			b[0].visible = not menu_open and not player.party.is_empty()
 		else:
 			b[0].visible = not menu_open
 	_joy_base.visible = not menu_open

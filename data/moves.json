@@ -1,0 +1,14 @@
+{
+ "cinder_bite":   {"name": "Cinder Bite",   "element": "ember",   "kind": "lunge", "power": 1.0,  "cooldown": 1.6, "range": 1.8},
+ "fire_spit":     {"name": "Fire Spit",     "element": "ember",   "kind": "shot",  "power": 1.3,  "cooldown": 4.5, "range": 10.0},
+ "splash_tackle": {"name": "Splash Tackle", "element": "tide",    "kind": "lunge", "power": 1.0,  "cooldown": 1.6, "range": 1.8},
+ "bubble_shot":   {"name": "Bubble Shot",   "element": "tide",    "kind": "shot",  "power": 1.2,  "cooldown": 4.0, "range": 10.0},
+ "vine_lash":     {"name": "Vine Lash",     "element": "verdant", "kind": "lunge", "power": 1.0,  "cooldown": 1.5, "range": 2.0},
+ "spore_burst":   {"name": "Spore Burst",   "element": "verdant", "kind": "slam",  "power": 0.9,  "cooldown": 5.0, "range": 3.5},
+ "rock_bash":     {"name": "Rock Bash",     "element": "stone",   "kind": "lunge", "power": 1.15, "cooldown": 1.9, "range": 1.8},
+ "quake_stomp":   {"name": "Quake Stomp",   "element": "stone",   "kind": "slam",  "power": 1.2,  "cooldown": 6.0, "range": 3.5},
+ "gust_dive":     {"name": "Gust Dive",     "element": "gale",    "kind": "lunge", "power": 0.9,  "cooldown": 1.2, "range": 2.2},
+ "wind_cutter":   {"name": "Wind Cutter",   "element": "gale",    "kind": "shot",  "power": 1.1,  "cooldown": 3.5, "range": 11.0},
+ "shadow_claw":   {"name": "Shadow Claw",   "element": "shade",   "kind": "lunge", "power": 1.1,  "cooldown": 1.7, "range": 1.8},
+ "night_pulse":   {"name": "Night Pulse",   "element": "shade",   "kind": "slam",  "power": 1.0,  "cooldown": 5.0, "range": 3.5}
+}
