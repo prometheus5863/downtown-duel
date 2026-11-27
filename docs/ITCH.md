@@ -8,6 +8,8 @@ python tools/make_itch_zip.py .
 `tools/make_itch_zip.py` zips `export/web/` with `index.html` at the top level (what itch needs) into
 `export/downtown-duel-web.zip`. Check the pack first (see CLAUDE.md → Testing → Web check).
 
+Cover image, screenshots, tagline, tags and a longer description: `docs/itch/PAGE.md` (+ the images next to it).
+
 ## Upload settings (itch.io → Create new project)
 | Field | Value |
 |---|---|
