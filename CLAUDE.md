@@ -97,6 +97,10 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
   `cam` = `scripts/talk_cam.gd` (focus / close_up / relax / release). Creatures react via `enemy.react_affection()`.
 - `scripts/preview_3d.gd`: SubViewport turntable (`show_look(armor_id)` for the hero, `show_model(scene, height)`).
 - `scripts/character_menu.gd` (child of the HUD, process ALWAYS, pauses the tree; action `character_menu` = C).
+- `scripts/controls_menu.gd`: controls screen (H / ?; pauses) + a once-per-save welcome card (Game flag `seen_controls`).
+  There is no always-on hint line any more: add new controls to its KEYS / TOUCH tables.
+- `scripts/fancy_bar.gd`: every bar (glossy fill, damage trail, low pulse, optional "a / b" text); `UI.bar()` returns one.
+  `scripts/ability_pill.gd`: HUD cooldown pills (read `player.cooldowns` via a callable).
 - Player helpers for UI: `look_for(armor_id)`, `stats_with({slot: id})`, `icon_for(name)` (`ui_icons` on player.tscn).
 - Phones: `touch_controls.gd` sets root `content_scale_factor` (`ui_scale_for()`), so the canvas can be ~480 design px
   tall. Menus check `menus.compact()` (< 600 tall) for the phone layouts; touch pads scale by height / 720.

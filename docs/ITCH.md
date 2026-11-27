@@ -30,8 +30,8 @@ with armor you can see on your hero, and level up as you go. Progress saves in y
 
 **Controls (keyboard + mouse):** WASD move · mouse look (click to capture) · J / left click strike ·
 K / right click ember · Space dodge · Tab lock on · F talk / shop · R use tool · T place block ·
-1–5 party orders · C character menu · F5 save.
-**Phone / tablet (landscape):** left thumb moves, drag on the right to look, on-screen buttons for everything else.
+1–5 party orders · C character menu · H all controls · F5 save.
+**Phone / tablet (landscape):** left thumb moves, drag on the right to look, on-screen buttons for everything else, ? for the full list.
 
 Made with Godot 4.7. Art: Quaternius (CC0) and Kenney (CC0).
 

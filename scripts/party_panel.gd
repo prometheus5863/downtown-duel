@@ -3,11 +3,12 @@ extends VBoxContainer
 ## party command and its keys. Rebuilt when the party changes; bars update every frame.
 
 const Data := preload("res://scripts/data.gd")
+const FancyBar := preload("res://scripts/fancy_bar.gd")
 const COMMAND_LABEL := {"attack": "Attack", "follow": "Follow", "hold": "Hold", "heel": "Return", "work": "Work"}
 
 var player: Node
 var touch := false
-var _rows: Array = []                 # [companion, ProgressBar, Label]
+var _rows: Array = []                 # [companion, fancy_bar, Label]
 var _cmd: Label
 
 
@@ -49,16 +50,10 @@ func _rebuild() -> void:
 		col.add_theme_constant_override("separation", 1)
 		var name_l := _label(15)
 		col.add_child(name_l)
-		var bar := ProgressBar.new()
-		bar.show_percentage = false
-		bar.custom_minimum_size = Vector2(170, 9)
-		bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var fill := StyleBoxFlat.new()
-		fill.bg_color = Color(0.35, 0.8, 0.95)
-		var bg := StyleBoxFlat.new()
-		bg.bg_color = Color(0, 0, 0, 0.55)
-		bar.add_theme_stylebox_override("fill", fill)
-		bar.add_theme_stylebox_override("background", bg)
+		var bar: Control = FancyBar.new()
+		bar.custom_minimum_size = Vector2(170, 11)
+		bar.fill_color = Data.element_color(c.element).lerp(Color(0.4, 0.9, 0.6), 0.35)
+		bar.snap(c.hp, c.max_hp)
 		col.add_child(bar)
 		row.add_child(col)
 		add_child(row)

@@ -12,6 +12,7 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 | M3 Gathering & block mining | **done** |
 | Presentation pass (between M3 and M4) | **done** |
 | Phone layout pass + itch.io build | **done** |
+| Bars + controls screen | **done** |
 | M4 Inventory & crafting | next |
 | M4.5 – M8 | not started |
 
@@ -26,6 +27,20 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 |---|---|---|
 | 2026-11-17 | M3 | Export OK, pack 149 MB (zip about 86 MB). `tools/check_pack.gd` run against the exported pack: world loads, 65 creatures, 8 resource fields, mine generated, player model present (**PACK OK**). In Chromium the loading screen clears and the main loop runs with no game errors (only "zero-size framebuffer" WebGL warnings because the browser pane was hidden, so frames weren't visible). A "0.2 MB pack" seen once was a measuring mistake (the export command was piped through `head`, which returned before Godot finished writing). |
 | 2026-11-17 | M0 + M1 + M2 (`eeb024a`) | Export OK with no errors (Godot 4.7.2 templates installed from the official release). In Chromium (browser pane, served from `export/web` on localhost) the engine boots: WebGL 2 / Compatibility, single-threaded, no console errors. The exported `index.pck` also runs 600 frames headless in desktop Godot with zero errors, so every scene, script and `data/*.json` is in the pack. **Not seen:** in-browser gameplay frames (the pane was hidden, so the page didn't render). |
+
+---
+
+## Bars + controls screen (2026-11-27)
+- **Bars** (`scripts/fancy_bar.gd`) everywhere: your HP, the locked-on target, party cards, bond, XP, the
+  character menu. Rounded frame, glossy two-tone fill, a pale **damage trail** that holds for a beat and drains,
+  a red pulse at low HP, "55 / 100" text on the HP and target bars, quarter ticks on the target bar.
+- **Cooldown pills** (`scripts/ability_pill.gd`) replace the "Strike READY" text: they fill as the move recharges,
+  show the seconds left, and glow (with a flash) when ready. Key chips on desktop, none on phones.
+- **No always-on hint line.** `scripts/controls_menu.gd`: a controls screen on **H** (phones: **?**), pausing,
+  grouped cards for the device you're on plus tips; a welcome card on a new game points at it once (saved flag).
+
+**Verified:** 8 new checks in `tests/test_polish.gd` (pills, no hint line, damage trail appears and drains,
+controls screen opens / pauses / marks seen / closes, H bound). Desktop and phone screenshots checked.
 
 ---
 

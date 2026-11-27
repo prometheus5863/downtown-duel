@@ -19,6 +19,7 @@ a dressed-up hero whose armor changes how they look.
 | Wheel | Zoom · Q / E turn camera |
 | R / T | Use tool (mine a block, chop a tree, gather; hold to keep going) / place a block in a mine |
 | 1 2 3 4 5 | Party orders: Attack my target · Follow · Hold position · Return · Work (harvest nearby) |
+| H | Controls screen (every control + tips; a welcome card points at it on a new game) |
 | C | Character menu: your hero in 3D, stats, equipment, party and bag (pauses the game) |
 | F5 / F9 | Save now / reload the last save (the game also autosaves every 2 minutes and when you leave the window) |
 

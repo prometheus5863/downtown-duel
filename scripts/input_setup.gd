@@ -11,6 +11,7 @@ const ACTIONS := {
 	"use_tool": [KEY_R],
 	"place_block": [KEY_T],
 	"character_menu": [KEY_C],
+	"help": [KEY_H],
 }
 
 

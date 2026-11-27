@@ -13,13 +13,16 @@ var _prompt: Label
 var touch: CanvasLayer
 var _hint: Label
 
-var _bar: ProgressBar
+var _bar: Control                      # fancy_bar.gd (target HP)
 var _cd_label: Label
 var _title: Label
 var _top: Control
 var _name_l: Label
 var _zone_l: Label
-var _hp_bar: ProgressBar
+var _hp_bar: Control                   # fancy_bar.gd (player HP)
+var _pills: HBoxContainer
+var controls: CanvasLayer               ## controls_menu.gd (H / ?)
+var _welcome_t := -1.0
 var _hurt_flash: ColorRect
 var _banner: Label
 var _title_tween: Tween
@@ -47,6 +50,9 @@ const Minimap := preload("res://scripts/minimap.gd")
 const PartyPanel := preload("res://scripts/party_panel.gd")
 const Data := preload("res://scripts/data.gd")
 const CharacterMenu := preload("res://scripts/character_menu.gd")
+const FancyBar := preload("res://scripts/fancy_bar.gd")
+const AbilityPill := preload("res://scripts/ability_pill.gd")
+const ControlsMenu := preload("res://scripts/controls_menu.gd")
 var character_menu: CanvasLayer
 
 
@@ -68,15 +74,13 @@ func _ready() -> void:
 	_name_l = _label("", 20)
 	_name_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	top.add_child(_name_l)
-	_bar = ProgressBar.new()
-	_bar.show_percentage = false
-	_bar.custom_minimum_size = Vector2(440, 18)
-	var fill := StyleBoxFlat.new()
-	fill.bg_color = Color(0.86, 0.22, 0.2)
-	var bg := StyleBoxFlat.new()
-	bg.bg_color = Color(0, 0, 0, 0.55)
-	_bar.add_theme_stylebox_override("fill", fill)
-	_bar.add_theme_stylebox_override("background", bg)
+	_bar = FancyBar.new()
+	_bar.custom_minimum_size = Vector2(440, 20)
+	_bar.fill_color = Color(0.92, 0.3, 0.22)
+	_bar.low_color = Color(1.0, 0.6, 0.2)
+	_bar.trail_color = Color(1.0, 0.95, 0.75, 0.9)
+	_bar.show_text = true
+	_bar.ticks = 4
 	top.add_child(_bar)
 
 	# --- Cooldowns + hints (bottom left) ---
@@ -88,21 +92,32 @@ func _ready() -> void:
 	bottom.offset_top = -78
 	bottom.offset_right = 700
 	root.add_child(bottom)
-	_hp_bar = ProgressBar.new()
-	_hp_bar.show_percentage = false
-	_hp_bar.custom_minimum_size = Vector2(320, 16)
+	_hp_bar = FancyBar.new()
+	_hp_bar.custom_minimum_size = Vector2(340, 22)
 	_hp_bar.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	_hp_bar.max_value = player.max_hp
-	_hp_bar.value = player.max_hp
-	var pfill := StyleBoxFlat.new()
-	pfill.bg_color = Color(0.3, 0.85, 0.4)
-	var pbg := StyleBoxFlat.new()
-	pbg.bg_color = Color(0, 0, 0, 0.55)
-	_hp_bar.add_theme_stylebox_override("fill", pfill)
-	_hp_bar.add_theme_stylebox_override("background", pbg)
+	_hp_bar.show_text = true
+	_hp_bar.text_prefix = "HP  "
+	_hp_bar.font_size = 14
+	_hp_bar.snap(player.max_hp, player.max_hp)
 	bottom.add_child(_hp_bar)
-	bottom.offset_top = -100
-	_cd_label = _label("", 22)
+	bottom.offset_top = -78
+	bottom.add_theme_constant_override("separation", 8)
+	# cooldown pills: fill while recharging, glow when ready
+	_pills = HBoxContainer.new()
+	_pills.add_theme_constant_override("separation", 8)
+	_pills.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bottom.add_child(_pills)
+	for a in [["Strike", "J", "strike", Color(1.0, 0.82, 0.38)], ["Ember", "K", "ember", Color(1.0, 0.55, 0.25)],
+			["Dodge", "␣", "dodge", Color(0.45, 1.0, 0.75)]]:
+		var pill: Control = AbilityPill.new()
+		pill.title = a[0]
+		pill.key = a[1]
+		pill.color = a[3]
+		var cd: String = a[2]
+		pill.read_cooldown = func(): return float(player.cooldowns[cd])
+		_pills.add_child(pill)
+	_cd_label = _label("", 1)                 # kept for compatibility; the pills replace the text
+	_cd_label.visible = false
 	bottom.add_child(_cd_label)
 
 	_hurt_flash = ColorRect.new()
@@ -116,10 +131,12 @@ func _ready() -> void:
 	_banner.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_banner.modulate.a = 0.0
 	root.add_child(_banner)
-	player.hp_changed.connect(func(hp, mx): _hp_bar.max_value = mx; create_tween().tween_property(_hp_bar, "value", float(hp), 0.12))
+	player.hp_changed.connect(func(hp, mx): _hp_bar.max_value = mx; _hp_bar.value = float(hp))
 	player.hurt.connect(_on_hurt)
 	player.died.connect(func(): _show_banner("DEFEATED", Color(1, 0.35, 0.3), 2.4))
-	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · R tool / T place · C character · 1-5 party orders · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
+	# (the always-on controls hint line is gone: H / ? opens the controls screen, and new games get a welcome card)
+	_hint = _label("", 1)
+	_hint.visible = false
 	bottom.add_child(_hint)
 
 	# --- Phones / tablets ---
@@ -128,9 +145,11 @@ func _ready() -> void:
 		touch = TouchControls.new()
 		touch.player = player
 		add_child(touch)
-		_hint.text = "Left thumb: move · Drag right side: camera · Buttons: strike / ember / dodge / lock / talk"
-		bottom.offset_left = 300                 # keep text clear of the joystick
-		bottom.offset_top = -92                  # HP bar + cooldowns + hint (was clipped at -40)
+		bottom.offset_left = 300                 # keep clear of the joystick
+		bottom.offset_top = -86
+		for pill in _pills.get_children():
+			pill.key = ""                        # no keyboard on phones
+			pill.custom_minimum_size.x = 112
 
 	# --- Progress line (top left) + interaction prompt ---
 	_info = _label("", 18)
@@ -178,6 +197,10 @@ func _ready() -> void:
 			tw.tween_property(toast, "modulate:a", 1.0, 0.2)
 			tw.tween_interval(1.4)
 			tw.tween_property(toast, "modulate:a", 0.0, 0.6))
+	controls = ControlsMenu.new()
+	controls.player = player
+	controls.touch = touch != null
+	add_child(controls)
 	character_menu = CharacterMenu.new()
 	character_menu.player = player
 	add_child(character_menu)
@@ -253,12 +276,20 @@ func _process(delta: float) -> void:
 	var t = player.target if player.locked else null
 	_top.visible = t != null
 	if t:
+		if not _bar.has_meta("target") or t != _bar.get_meta("target"):   # new target: no trail from the last one
+			_bar.set_meta("target", t)
+			_bar.snap(t.hp, t.max_hp)
 		_name_l.text = t.display_name.to_upper()
 		_bar.max_value = t.max_hp
-		_bar.value = move_toward(_bar.value, t.hp, t.max_hp * 4.0 * delta)
-	var keys := touch == null
-	_cd_label.text = ("[J] Strike  %s    [K] Ember  %s    [Space] Dodge  %s" if keys else "Strike  %s    Ember  %s    Dodge  %s") % [
-		_cd_text(player.cooldowns.strike), _cd_text(player.cooldowns.ember), _cd_text(player.cooldowns.dodge)]
+		_bar.value = t.hp
+	# first time the player gets control on a new game: welcome card pointing at the controls screen
+	if player.can_control and _welcome_t < 0.0:
+		_welcome_t = 1.5
+	elif _welcome_t > 0.0:
+		_welcome_t -= delta
+		if _welcome_t <= 0.0:
+			_welcome_t = 0.0
+			controls.show_welcome()
 
 
 func _on_hurt(amount: int) -> void:

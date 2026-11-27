@@ -122,22 +122,13 @@ static func stat_row(name: String, old_value: float, new_value: float, fmt := "%
 	return h
 
 
-## Thin rounded progress bar.
-static func bar(value: float, max_value: float, col: Color, width := 200.0, height := 10.0) -> ProgressBar:
-	var b := ProgressBar.new()
-	b.show_percentage = false
-	b.max_value = maxf(max_value, 1.0)
-	b.value = value
+## Styled bar (fancy_bar.gd): glossy fill, damage trail. `value` / `max_value` like a ProgressBar.
+static func bar(value: float, max_value: float, col: Color, width := 200.0, height := 10.0) -> Control:
+	var b: Control = preload("res://scripts/fancy_bar.gd").new()
+	b.fill_color = col
+	b.low_at = 0.0                                    # no low-value pulse for bond / XP style bars
 	b.custom_minimum_size = Vector2(width, height)
-	b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var fill := StyleBoxFlat.new()
-	fill.bg_color = col
-	fill.set_corner_radius_all(int(height / 2))
-	var bg := StyleBoxFlat.new()
-	bg.bg_color = Color(0, 0, 0, 0.5)
-	bg.set_corner_radius_all(int(height / 2))
-	b.add_theme_stylebox_override("fill", fill)
-	b.add_theme_stylebox_override("background", bg)
+	b.snap(value, maxf(max_value, 1.0))
 	return b
 
 

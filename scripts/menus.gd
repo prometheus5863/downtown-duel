@@ -22,7 +22,7 @@ var _portrait_slot: Control
 var _title: Label
 var _chips: HBoxContainer
 var _bond_row: HBoxContainer
-var _bond_bar: ProgressBar
+var _bond_bar: Control
 var _bond_l: Label
 var _text: Label
 var _detail: VBoxContainer             # shop: selected item card

@@ -91,6 +91,26 @@ func _init() -> void:
 	await t.frames(2)
 	t.ok(not paused, "closing the character menu unpauses")
 
+	# ---- bars, pills, controls screen ----
+	t.eq(hud._pills.get_child_count(), 3, "three cooldown pills (strike / ember / dodge)")
+	t.eq(hud._hint.visible, false, "no always-on controls hint line")
+	var bar: Control = hud._hp_bar
+	bar.snap(100, 100)
+	bar.value = 40
+	await t.frames(6)
+	t.ok(bar._trail > bar._shown + 1.0, "damage leaves a trail behind the fill", "%s %s" % [bar._trail, bar._shown])
+	await t.frames(90)
+	t.ok(absf(bar._trail - 40.0) < 1.0 and absf(bar._shown - 40.0) < 1.0, "the trail drains to the new value")
+	var cmenu: Node = hud.controls
+	cmenu.open()
+	await t.frames(2)
+	t.ok(cmenu.is_open and paused, "controls screen opens and pauses")
+	t.ok(arena.get_node("Game").flags.get("seen_controls", false), "opening it counts as having seen the controls")
+	cmenu.close()
+	await t.frames(2)
+	t.ok(not paused, "closing the controls screen unpauses")
+	t.ok(InputMap.has_action("help"), "H is bound to the controls screen")
+
 	# ---- phones: UI scale from the real screen size ----
 	var TC := preload("res://scripts/touch_controls.gd")
 	t.ok(absf(TC.ui_scale_for(390.0, 1.0) - 1.477) < 0.01, "iPhone landscape (390 CSS px tall) gets ~1.5x UI")

@@ -15,7 +15,7 @@ var tab := "gear"
 var _root: Control
 var _hero: SubViewportContainer
 var _level_l: Label
-var _xp_bar: ProgressBar
+var _xp_bar: Control
 var _xp_l: Label
 var _coins_l: Label
 var _tabs := {}
@@ -271,7 +271,9 @@ func _party_tab() -> void:
 		var hp := HBoxContainer.new()
 		hp.add_theme_constant_override("separation", 8)
 		hp.add_child(UI.label("HP", 15, UI.DIM))
-		hp.add_child(UI.bar(c.hp, c.max_hp, UI.GOOD, 260, 10))
+		var hb := UI.bar(c.hp, c.max_hp, UI.GOOD, 260, 14)
+		hb.low_at = 0.3
+		hp.add_child(hb)
 		hp.add_child(UI.label("%d / %d" % [c.hp, c.max_hp], 15))
 		v.add_child(hp)
 		var xp := HBoxContainer.new()
