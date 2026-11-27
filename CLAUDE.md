@@ -57,7 +57,7 @@ Open-world creature-battle demo: 9 zones (ring road + spokes + alleys), 61 monst
 
 ## Roadmap
 The game is being grown into an open-world creature RPG: spec `docs/FABLE_BRIEF.md`, per-milestone plan
-`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load), M1 (party), M2 (treats/bond/Alphas) and M3 (gathering/mining) are done.
+`docs/PLAN.md`, status + decisions `docs/PROGRESS.md` (update it every milestone). M0 (save/load), M1 (party), M2 (treats/bond/Alphas), M3 (gathering/mining) and a presentation pass are done.
 Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino studio lead).
 
 ## Creatures & party (M1)
@@ -89,6 +89,16 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
   `use_tool()`, `place_block()`. Companion "work" order uses creature `skills` + `work_tier()`.
 - Generator: `field(parent, kind, pts)` + `cluster()`; the Mine node lists block textures in blocks.json order.
 
+## Menus & presentation
+- `scripts/ui_style.gd`: shared look (panel/card boxes, buttons with key chips, chips, stat rows with deltas, bars,
+  icon tiles, slide_in). Use it for any new UI so menus stay consistent.
+- `scripts/menus.gd`: talk / shop / ledger panel. Keeps `_buttons` (option buttons, text includes the label),
+  `_choose(option)`, `_buy_treat/_buy_tool/_buy`, `_select(i)` + `_buy_selected()` for shops, `_text`.
+  `cam` = `scripts/talk_cam.gd` (focus / close_up / relax / release). Creatures react via `enemy.react_affection()`.
+- `scripts/preview_3d.gd`: SubViewport turntable (`show_look(armor_id)` for the hero, `show_model(scene, height)`).
+- `scripts/character_menu.gd` (child of the HUD, process ALWAYS, pauses the tree; action `character_menu` = C).
+- Player helpers for UI: `look_for(armor_id)`, `stats_with({slot: id})`, `icon_for(name)` (`ui_icons` on player.tscn).
+
 ## Save / load
 - `scripts/save_game.gd` (file I/O, `VERSION`, `migrate()`), `scripts/game.gd` (`Game` node, last in arena.tscn, group
   "game"): `collect()` / `apply()` turn world state into the save dict. World objects are keyed by node path relative
@@ -101,7 +111,7 @@ Tests use `tests/harness.gd` (`world()`, `ok()`, `eq()`) and a redirected save p
 Single test: `godot --headless --path . -s res://tests/test_save.gd` (SceneTree script).
 Web check per milestone: `godot --headless --path . --export-release "Web" export/web/index.html`, then
 (a) check the pack: `godot --headless --main-pack export/web/index.pck -s <abs path>/tools/check_pack.gd` must print
-`PACK OK` (loads the world from the pack; catches files missing from the export or a truncated export. Stop the
-web-build server first: an export while it served `export/web` once produced a 0.2 MB pack), and (b) serve it with the `web-build` config in `.claude/launch.json` (port 8060)
+`PACK OK` (loads the world from the pack; catches files missing from the export. Don't pipe the export command
+through `head`: it ends the shell command while Godot is still writing, so the pack looks truncated (0.2 MB)), and (b) serve it with the `web-build` config in `.claude/launch.json` (port 8060)
 and load it in a browser. Log the result in docs/PROGRESS.md "Web export checks". Touch input needs a real window
 (e.g. xvfb) — a 0×0 headless window scales event positions to garbage.

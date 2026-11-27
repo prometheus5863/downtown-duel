@@ -291,8 +291,11 @@ func _physics_process(delta: float) -> void:
 
 	var move := Vector3.ZERO
 	if _state == "talk":
-		_face(to_p, delta * 6.0)
-		_play(IDLE)
+		# The player has no control while talking, so _current_foe() is null: face the player directly.
+		if _player:
+			_face(_player.global_position - global_position, delta * 6.0)
+		if _busy_t <= 0.0:                          # don't cut off a petting reaction
+			_play(IDLE)
 		velocity.x = 0.0
 		velocity.z = 0.0
 		move_and_slide()
@@ -821,6 +824,63 @@ func _calm_options() -> Array:
 	o.append_array(_treat_options())
 	o.append("Leave")
 	return o
+
+
+## Petting / treat feedback while the camera is in close: happy animation, a squash-and-bounce, hearts that
+## float up (more for bigger bond gains) and, for a favourite, a gold sparkle burst.
+func react_affection(gained: int, favourite := false) -> void:
+	_busy_t = maxf(_play(REACT, false), 0.6)
+	var rest := _rest_scale()
+	var t := create_tween()
+	t.tween_property(_visual, "scale", rest * Vector3(1.15, 0.82, 1.15), 0.12).set_trans(Tween.TRANS_SINE)
+	t.tween_property(_visual, "scale", rest * Vector3(0.92, 1.14, 0.92), 0.14).set_trans(Tween.TRANS_SINE)
+	t.tween_property(_visual, "scale", rest, 0.22).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	for i in clampi(2 + gained / 6, 2, 9):
+		var h := Label3D.new()
+		h.text = "♥"
+		h.font_size = randi_range(36, 58)
+		h.outline_size = 10
+		h.modulate = Color(1.0, randf_range(0.35, 0.6), randf_range(0.55, 0.75))
+		h.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		h.no_depth_test = true
+		add_child(h)
+		h.position = Vector3(randf_range(-0.5, 0.5) * radius * 2.0, height * 0.8, randf_range(-0.3, 0.3))
+		var ht := h.create_tween().set_parallel()
+		var delay := i * 0.09
+		h.modulate.a = 0.0
+		ht.tween_property(h, "modulate:a", 1.0, 0.15).set_delay(delay)
+		ht.tween_property(h, "position:y", height * 1.05 + 0.25 + randf() * 0.3, 1.2).set_delay(delay).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		ht.tween_property(h, "position:x", h.position.x + randf_range(-0.4, 0.4), 1.2).set_delay(delay)
+		ht.tween_property(h, "modulate:a", 0.0, 0.4).set_delay(delay + 0.85)
+		ht.chain().tween_callback(h.queue_free)
+	if favourite:
+		var p := CPUParticles3D.new()
+		p.one_shot = true
+		p.amount = 28
+		p.lifetime = 0.9
+		p.explosiveness = 0.9
+		p.direction = Vector3.UP
+		p.spread = 80.0
+		p.initial_velocity_min = 2.0
+		p.initial_velocity_max = 4.5
+		p.gravity = Vector3(0, -3, 0)
+		p.scale_amount_min = 0.6
+		p.scale_amount_max = 1.2
+		var m := SphereMesh.new()
+		m.radius = 0.05
+		m.height = 0.1
+		var mat := StandardMaterial3D.new()
+		mat.albedo_color = Color(1.0, 0.85, 0.35)
+		mat.emission_enabled = true
+		mat.emission = Color(1.0, 0.75, 0.2)
+		mat.emission_energy_multiplier = 2.0
+		mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		m.material = mat
+		p.mesh = m
+		add_child(p)
+		p.position.y = height * 0.7
+		p.emitting = true
+		get_tree().create_timer(1.6).timeout.connect(p.queue_free)
 
 
 func _bond_text() -> String:

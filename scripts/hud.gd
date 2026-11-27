@@ -24,6 +24,8 @@ var _hurt_flash: ColorRect
 var _banner: Label
 var _title_tween: Tween
 var _zone := ""
+var _lvl_card: Control
+var _cinema_hide: Array = []
 var _cross: Label
 var _tool_t := 0.0
 var _tool_target := {}
@@ -44,6 +46,8 @@ const ZONES := [
 const Minimap := preload("res://scripts/minimap.gd")
 const PartyPanel := preload("res://scripts/party_panel.gd")
 const Data := preload("res://scripts/data.gd")
+const CharacterMenu := preload("res://scripts/character_menu.gd")
+var character_menu: CanvasLayer
 
 
 func _ready() -> void:
@@ -115,7 +119,7 @@ func _ready() -> void:
 	player.hp_changed.connect(func(hp, mx): _hp_bar.max_value = mx; create_tween().tween_property(_hp_bar, "value", float(hp), 0.12))
 	player.hurt.connect(_on_hurt)
 	player.died.connect(func(): _show_banner("DEFEATED", Color(1, 0.35, 0.3), 2.4))
-	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · R tool / T place · 1-5 party orders · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
+	_hint = _label("Click to look around (Esc frees mouse) · WASD move · Space dodge · F talk/shop · R tool / T place · C character · 1-5 party orders · LMB / J strike · RMB / K ember · Tab lock · Wheel zoom · Q/E turn", 15)
 	bottom.add_child(_hint)
 
 	# --- Phones / tablets ---
@@ -133,12 +137,14 @@ func _ready() -> void:
 	_info.offset_left = 16
 	_info.offset_top = 12
 	root.add_child(_info)
+	_cinema_hide.append(_info)
 	var pp: VBoxContainer = PartyPanel.new()
 	pp.player = player
 	pp.touch = touch != null
 	pp.offset_left = 16
 	pp.offset_top = 70
 	root.add_child(pp)
+	_cinema_hide.append(pp)
 	var mm: Control = Minimap.new()
 	mm.player = player
 	mm.zones = ZONES
@@ -149,6 +155,7 @@ func _ready() -> void:
 	mm.offset_top = 12
 	mm.offset_bottom = 192
 	root.add_child(mm)
+	_cinema_hide.append(mm)
 	_cross = _label("+", 30)
 	_cross.set_anchors_preset(Control.PRESET_CENTER)
 	_cross.offset_left = -9
@@ -171,6 +178,9 @@ func _ready() -> void:
 			tw.tween_property(toast, "modulate:a", 1.0, 0.2)
 			tw.tween_interval(1.4)
 			tw.tween_property(toast, "modulate:a", 0.0, 0.6))
+	character_menu = CharacterMenu.new()
+	character_menu.player = player
+	add_child(character_menu)
 	_prompt = _label("", 26)
 	_prompt.anchor_left = 0.0
 	_prompt.anchor_right = 1.0
@@ -181,7 +191,7 @@ func _ready() -> void:
 	menus.player = player
 	add_child(menus)
 	player.interact_requested.connect(menus.open_for)
-	player.leveled_up.connect(func(lv): _show_banner("LEVEL UP!  Lv %d" % lv, Color(1, 0.85, 0.3), 1.4))
+	player.leveled_up.connect(_level_up)
 
 	# --- Zone banner (upper centre) ---
 	_zone_l = _label("", 40)
@@ -212,6 +222,10 @@ func _process(delta: float) -> void:
 		player.level, player.xp, player.xp_to_next(), player.coins, treats,
 		player.route_name(), r.defeated, r.spared, r.friends]
 	_bottom.visible = not menus.is_open
+	for c in _cinema_hide:                       # conversations are framed like cut-scenes: no HUD clutter
+		c.visible = not menus.is_open
+	if _zone_l:
+		_zone_l.visible = not menus.is_open
 	var near: Node = null if menus.is_open or not player.can_control else player.nearest_interactable()
 	if near == null:
 		_prompt.text = ""
@@ -250,6 +264,52 @@ func _process(delta: float) -> void:
 func _on_hurt(amount: int) -> void:
 	_hurt_flash.color.a = clampf(0.12 + amount * 0.012, 0.15, 0.4)
 	create_tween().tween_property(_hurt_flash, "color:a", 0.0, 0.35)
+
+
+## Level-up card: "LEVEL UP" pops in with a gold glow, then a line per stat that went up.
+func _level_up(lv: int) -> void:
+	if _lvl_card:
+		_lvl_card.queue_free()
+	var card := VBoxContainer.new()
+	_lvl_card = card
+	card.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	card.offset_left = -260
+	card.offset_right = 260
+	card.offset_top = 200
+	card.alignment = BoxContainer.ALIGNMENT_CENTER
+	card.add_theme_constant_override("separation", 4)
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_banner.get_parent().add_child(card)
+	var big := _label("LEVEL UP", 64)
+	big.add_theme_color_override("font_color", Color(1.0, 0.86, 0.4))
+	big.add_theme_color_override("font_outline_color", Color(0.45, 0.25, 0.0, 0.95))
+	big.add_theme_constant_override("outline_size", 14)
+	big.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	card.add_child(big)
+	var sub := _label("Level %d" % lv, 30)
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	card.add_child(sub)
+	var lines := ["+%d XP" % player.last_xp_gain, "Max HP  %d  →  %d" % [player.max_hp - 12, player.max_hp],
+		"Strike +2     Ember +2", "Fully healed"]
+	var rows := []
+	for l in lines:
+		var r := _label(l, 20)
+		r.add_theme_color_override("font_color", Color(0.75, 1.0, 0.8))
+		r.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		r.modulate.a = 0.0
+		card.add_child(r)
+		rows.append(r)
+	big.pivot_offset = Vector2(260, 40)
+	big.scale = Vector2(0.4, 0.4)
+	card.modulate.a = 0.0
+	var t := card.create_tween()
+	t.tween_property(card, "modulate:a", 1.0, 0.15)
+	t.parallel().tween_property(big, "scale", Vector2.ONE, 0.45).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	for i in rows.size():
+		t.tween_property(rows[i], "modulate:a", 1.0, 0.25).set_delay(0.05)
+	t.tween_interval(1.8)
+	t.tween_property(card, "modulate:a", 0.0, 0.6)
+	t.tween_callback(card.queue_free)
 
 
 func _show_banner(text: String, col: Color, hold: float) -> void:

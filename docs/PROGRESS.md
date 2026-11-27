@@ -10,6 +10,7 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 | M1 Party & companion combat | **done** |
 | M2 Treats, bond, Lustre, Alphas | **done** |
 | M3 Gathering & block mining | **done** |
+| Presentation pass (between M3 and M4) | **done** |
 | M4 Inventory & crafting | next |
 | M4.5 – M8 | not started |
 
@@ -22,8 +23,49 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 ## Web export checks
 | Date | Build | Result |
 |---|---|---|
-| 2026-11-17 | M3 | Export OK, pack 149 MB (zip about 86 MB). `tools/check_pack.gd` run against the exported pack: world loads, 65 creatures, 8 resource fields, mine generated, player model present (**PACK OK**). In Chromium the loading screen clears and the main loop runs with no game errors (only "zero-size framebuffer" WebGL warnings because the browser pane was hidden, so frames weren't visible). One export produced a 0.2 MB pack while the local web server was serving `export/web`; re-exporting fixed it, so always run check_pack after exporting. |
+| 2026-11-17 | M3 | Export OK, pack 149 MB (zip about 86 MB). `tools/check_pack.gd` run against the exported pack: world loads, 65 creatures, 8 resource fields, mine generated, player model present (**PACK OK**). In Chromium the loading screen clears and the main loop runs with no game errors (only "zero-size framebuffer" WebGL warnings because the browser pane was hidden, so frames weren't visible). A "0.2 MB pack" seen once was a measuring mistake (the export command was piped through `head`, which returned before Godot finished writing). |
 | 2026-11-17 | M0 + M1 + M2 (`eeb024a`) | Export OK with no errors (Godot 4.7.2 templates installed from the official release). In Chromium (browser pane, served from `export/web` on localhost) the engine boots: WebGL 2 / Compatibility, single-threaded, no console errors. The exported `index.pck` also runs 600 frames headless in desktop Godot with zero errors, so every scene, script and `data/*.json` is in the pack. **Not seen:** in-browser gameplay frames (the pane was hidden, so the page didn't render). |
+
+---
+
+## Presentation pass (2026-11-27)
+Asked for by the owner: make conversations, shops, level-ups and the character screen feel polished.
+**Done**
+- **Talk camera** (`scripts/talk_cam.gd`): opening a conversation, shop or the Ledger glides the camera to an
+  over-the-shoulder shot of the speaker, framed left of centre so the menu doesn't cover them; the HUD (stats line,
+  minimap, party cards, zone banner) and the speaker's floating name tag hide meanwhile. Closing glides back.
+- **Petting / treats:** the camera pushes in on the creature, which turns to you, plays its happy animation,
+  squashes and bounces and floats hearts (more for bigger bond gains); a favourite treat adds a gold sparkle
+  burst; a creature joining gets the biggest version.
+- **Menu redesign** (`scripts/menus.gd` + shared `scripts/ui_style.gd`): right-side glass panel with an accent
+  colour per context (element colour for creatures, gold for shops, teal for the Ledger), header with icon tile,
+  name and chips (element, level, Alpha, Lustre, calm / hostile), a bond bar instead of text hearts, typewriter
+  text, styled buttons with key chips. Dialogue and Ledger panels hug their content; shops use the full height.
+- **Shops:** a detail card for the selected item: a turning 3D preview of you wearing an armor
+  (`scripts/preview_3d.gd`), the tool icon or treat glyph, description, what changes if you equip it (green ▲ /
+  red ▼), price and Buy / Equip, plus "you need N more coins". Hover or 1-9 selects, Enter / Space / clicking the
+  selected row again buys.
+- **Level-up:** a gold ring and rising sparkles on the hero, a light flash and a short camera punch-in, and a
+  "LEVEL UP" card that pops in with the XP gained and what went up.
+- **Character menu** (C, or the ME button on phones; pauses the game): the hero on a turntable you can drag,
+  level / XP / route / coins, and tabs: Gear (stat cards + every owned item per slot, click to equip, the preview
+  updates), Party (companion cards with their own 3D model, HP and XP bars, moves, work skills, favourite flavour),
+  Bag (inventory grid with tool / ore icons from the Kenney Voxel Pack, counts).
+
+**Verified:** `tests/test_polish.gd`: 23 checks (camera takes over and looks at the speaker, petting floats
+hearts and pushes the camera in, camera hands back on close, shop detail card + armor preview + defense delta +
+buy from the card, level-up card and light, character menu pause / tabs / equip / bag tiles). All earlier tests
+still pass. Screenshots of every screen checked in a real 1280×720 window.
+
+**Fixed along the way:** creatures in a conversation never turned to face you (the player has no control while
+talking, so their "who am I fighting" check returned nobody); they now always face you.
+
+**Web check:** export OK, pack 149.5 MB; `tools/check_pack.gd` on the exported pack: **PACK OK** (65 creatures,
+8 resource fields).
+
+**Known issues / next**
+- The menu font is still Godot's default; a CC0 display font would lift it further.
+- Touch: the character menu closes with its on-screen Close button (touch buttons are paused with the game).
 
 ---
 

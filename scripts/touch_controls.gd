@@ -32,6 +32,7 @@ func _ready() -> void:
 	_add_button("lock_on", "LOCK", 46, Color(0.5, 0.8, 1.0), func(s): return Vector2(s.x - 115, s.y - 315))
 	_add_button("interact", "TALK", 50, Color(0.6, 1.0, 0.6), func(s): return Vector2(s.x - 260, s.y - 390))
 	# Party orders: a row of small buttons above the joystick, only while you have companions.
+	_add_button("character_menu", "ME", 34, Color(1.0, 0.85, 0.45), func(s): return Vector2(s.x - 60, 250))
 	_add_button("use_tool", "TOOL", 46, Color(0.95, 0.8, 0.5), func(s): return Vector2(s.x - 420, s.y - 210))
 	_add_button("place_block", "PLACE", 40, Color(0.8, 0.8, 0.8), func(s): return Vector2(s.x - 420, s.y - 320))
 	var orders := [["cmd_attack", "ATK"], ["cmd_follow", "FLW"], ["cmd_hold", "HLD"], ["cmd_return", "RET"], ["cmd_work", "WRK"]]

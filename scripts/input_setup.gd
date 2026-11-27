@@ -10,6 +10,7 @@ const ACTIONS := {
 	"cmd_work": [KEY_5],
 	"use_tool": [KEY_R],
 	"place_block": [KEY_T],
+	"character_menu": [KEY_C],
 }
 
 

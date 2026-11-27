@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3]
+[gd_scene load_steps=41 format=3]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://assets/animations/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb" id="2_model"]
@@ -14,6 +14,23 @@
 [ext_resource type="Texture2D" path="res://assets/outfits/T_Peasant_2_BaseColor.png" id="t0"]
 [ext_resource type="Texture2D" path="res://assets/outfits/T_Ranger_3_BaseColor.png" id="t1"]
 [ext_resource type="Texture2D" path="res://assets/outfits/T_Ranger_Plate_BaseColor.png" id="t2"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/apple.png" id="i0"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/axe_bronze.png" id="i1"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/axe_diamond.png" id="i2"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/axe_gold.png" id="i3"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/axe_iron.png" id="i4"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/axe_silver.png" id="i5"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/ore_diamond.png" id="i6"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/ore_gold.png" id="i7"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/ore_iron.png" id="i8"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/ore_silver.png" id="i9"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/pick_bronze.png" id="i10"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/pick_diamond.png" id="i11"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/pick_gold.png" id="i12"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/pick_iron.png" id="i13"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/pick_silver.png" id="i14"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/seed.png" id="i15"]
+[ext_resource type="Texture2D" path="res://assets/voxel/items/wheat.png" id="i16"]
 
 [sub_resource type="StandardMaterial3D" id="body_mat"]
 albedo_color = Color(0.2, 0.45, 0.9, 1)
@@ -49,6 +66,7 @@ script = ExtResource("1_script")
 model_scene = ExtResource("2_model")
 wardrobe = Array[PackedScene]([ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8")])
 wardrobe_tex = Array[Texture2D]([ExtResource("t0"), ExtResource("t1"), ExtResource("t2")])
+ui_icons = Array[Texture2D]([ExtResource("i0"), ExtResource("i1"), ExtResource("i2"), ExtResource("i3"), ExtResource("i4"), ExtResource("i5"), ExtResource("i6"), ExtResource("i7"), ExtResource("i8"), ExtResource("i9"), ExtResource("i10"), ExtResource("i11"), ExtResource("i12"), ExtResource("i13"), ExtResource("i14"), ExtResource("i15"), ExtResource("i16")])
 
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("body_mesh")

@@ -19,6 +19,7 @@ a dressed-up hero whose armor changes how they look.
 | Wheel | Zoom · Q / E turn camera |
 | R / T | Use tool (mine a block, chop a tree, gather; hold to keep going) / place a block in a mine |
 | 1 2 3 4 5 | Party orders: Attack my target · Follow · Hold position · Return · Work (harvest nearby) |
+| C | Character menu: your hero in 3D, stats, equipment, party and bag (pauses the game) |
 | F5 / F9 | Save now / reload the last save (the game also autosaves every 2 minutes and when you leave the window) |
 
 **Phone / tablet** (landscape): left thumb = floating joystick, drag anywhere else = camera,
@@ -96,6 +97,7 @@ the map (coins, XP and gear; gear is equipped if it beats what you wear).
 - [x] Party of 3 companions that fight beside you, storage at the Creature Ledger, 6-element wheel, shared XP
 - [x] Treats & bond meter, favourite flavours, crowned Alphas with phase 2 and drops, rare Lustre variants
 - [x] Gathering (trees, rocks, ore veins, berries, herbs, mushrooms) and block mining in Pebble Hill Quarry, tool tiers
+- [x] Presentation: cinematic talk camera, petting close-ups with hearts, redesigned menus with 3D item previews, level-up celebration, character menu
 - [ ] Party combat, treats and bond, mining, crafting, Sanctuaries, 2 km streamed world — see `docs/PLAN.md` and `docs/PROGRESS.md`
 - [ ] Capture / party system, 2D overworld ↔ 3D battle transition
 

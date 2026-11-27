@@ -20,6 +20,7 @@ var target: Node3D                      ## current lock-on target (nearest enemy
 @export var wardrobe: Array[PackedScene] = []    ## head, hair and outfit glTFs that armor looks refer to
 @export var wardrobe_tex: Array[Texture2D] = []  ## outfit texture variants that armor looks refer to
 @export var hair_color := Color(0.28, 0.17, 0.1)
+@export var ui_icons: Array[Texture2D] = []      ## item icons for menus (assets/voxel/items), by basename
 
 @export_group("Strike (J)")
 @export var strike_damage := 10
@@ -79,6 +80,7 @@ const COMMAND_TEXT := {"attack": "ATTACK!", "follow": "FOLLOW", "hold": "HOLD", 
 const REACH := 2.8                       ## gathering reach for resource nodes
 const MINE_REACH := 5.0                  ## block reach in mines
 var _tool_cd := 0.0
+var last_xp_gain := 0                    ## shown on the level-up card
 var talking := false                    ## dialogue / shop open
 var _queued_attack := ""                # LMB/RMB while mouse-captured
 var _roll_t := -1.0                     # time since roll start (-1 = not rolling)
@@ -337,7 +339,9 @@ func reward(xp_gain: int, coin_gain: int, kind: String) -> void:
 	coins += coin_gain
 	xp += xp_gain
 	var txt := "+%d XP" % xp_gain + ("   +%d coins" % coin_gain if coin_gain > 0 else "")
-	_popup(txt, Color(0.6, 1.0, 0.5) if kind == "spared" else Color(1.0, 0.85, 0.3))
+	last_xp_gain = xp_gain
+	if xp < xp_to_next():                    # on a level-up the HUD's level card shows the gain instead
+		_popup(txt, Color(0.6, 1.0, 0.5) if kind == "spared" else Color(1.0, 0.85, 0.3))
 	for c in party:                          # XP is shared with the whole active party
 		if is_instance_valid(c) and c.gain_xp(xp_gain):
 			_popup("%s  Lv %d!" % [c.display_name, c.level], Color(0.6, 0.95, 1.0), 2.3)
@@ -348,6 +352,7 @@ func reward(xp_gain: int, coin_gain: int, kind: String) -> void:
 		hp = max_hp
 		hp_changed.emit(int(hp), max_hp)
 		leveled_up.emit(level)
+		_level_fx()
 	progress_changed.emit()
 
 
@@ -388,7 +393,16 @@ func equip(id: String) -> void:
 func refresh_look() -> void:
 	if _model == null:
 		return
-	var look: Dictionary = Items.get_item(gear.armor).get("look", {})
+	Avatar.dress(_model, look_for(gear.armor))
+
+
+## Avatar.dress() description of the hero wearing armor `armor_id` (menus use it for previews).
+func look_for(armor_id: String) -> Dictionary:
+	if _parts.is_empty():
+		for r in wardrobe + wardrobe_tex:
+			if r:
+				_parts[r.resource_path.get_file().get_basename()] = r
+	var look: Dictionary = Items.get_item(armor_id).get("look", {})
 	var names := ["Superhero_Male_Head"]
 	if not look.get("hood", false):
 		names.append("Hair_SimpleParted")
@@ -397,8 +411,29 @@ func refresh_look() -> void:
 	for n in names:
 		if _parts.has(n):
 			parts.append(_parts[n])
-	Avatar.dress(_model, {"parts": parts, "tex": _parts.get(look.get("tex", "")), "tint": look.get("tint", Color.WHITE),
-			"metal": look.get("metal", 0.0), "hair": hair_color})
+	return {"parts": parts, "tex": _parts.get(look.get("tex", "")), "tint": look.get("tint", Color.WHITE),
+		"metal": look.get("metal", 0.0), "hair": hair_color}
+
+
+## Combat stats with some slots swapped (`over` = {slot: item id}); {} = as equipped now. Menus compare these.
+func stats_with(over: Dictionary) -> Dictionary:
+	var g := gear.duplicate()
+	for slot in over:
+		g[slot] = over[slot]
+	return {
+		"strike": strike_damage + (level - 1) * 2 + int(Items.stat(g, "atk")),
+		"ember": ember_damage + (level - 1) * 2 + int(Items.stat(g, "ember")),
+		"defense": int(Items.stat(g, "def")),
+		"speed": Items.stat(g, "speed"),
+	}
+
+
+## Menu icon by basename ("pick_iron"), or null.
+func icon_for(icon_name: String) -> Texture2D:
+	for t in ui_icons:
+		if t and t.resource_path.get_file().get_basename() == icon_name:
+			return t
+	return null
 
 
 func spend(amount: int) -> bool:
@@ -718,6 +753,70 @@ func _die() -> void:
 	_since_hurt = 99.0
 	hp_changed.emit(int(hp), max_hp)
 	_play("Idle")
+
+
+## Level-up burst on the hero: an expanding gold ring on the ground, rising sparkles, a light flash and a
+## short camera punch-in.
+func _level_fx() -> void:
+	if not is_inside_tree():
+		return
+	var ring := MeshInstance3D.new()
+	var tm := TorusMesh.new()
+	tm.inner_radius = 0.85
+	tm.outer_radius = 1.0
+	var rmat := StandardMaterial3D.new()
+	rmat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	rmat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	rmat.albedo_color = Color(1.0, 0.85, 0.35, 0.9)
+	tm.material = rmat
+	ring.mesh = tm
+	ring.scale = Vector3(0.3, 0.3, 0.3)
+	add_child(ring)
+	ring.position.y = -0.95
+	var rt := ring.create_tween().set_parallel()
+	rt.tween_property(ring, "scale", Vector3(3.2, 1.0, 3.2), 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	rt.tween_property(rmat, "albedo_color:a", 0.0, 0.7)
+	rt.chain().tween_callback(ring.queue_free)
+	var p := CPUParticles3D.new()
+	p.one_shot = true
+	p.amount = 60
+	p.lifetime = 1.4
+	p.explosiveness = 0.6
+	p.emission_shape = CPUParticles3D.EMISSION_SHAPE_RING
+	p.emission_ring_axis = Vector3.UP
+	p.emission_ring_radius = 0.9
+	p.emission_ring_inner_radius = 0.6
+	p.emission_ring_height = 0.1
+	p.direction = Vector3.UP
+	p.spread = 12.0
+	p.initial_velocity_min = 2.5
+	p.initial_velocity_max = 4.0
+	p.gravity = Vector3(0, -0.6, 0)
+	var sm := SphereMesh.new()
+	sm.radius = 0.04
+	sm.height = 0.08
+	var smat := StandardMaterial3D.new()
+	smat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	smat.albedo_color = Color(1.0, 0.9, 0.5)
+	sm.material = smat
+	p.mesh = sm
+	add_child(p)
+	p.position.y = -0.9
+	p.emitting = true
+	var glow := OmniLight3D.new()
+	glow.light_color = Color(1.0, 0.85, 0.45)
+	glow.omni_range = 6.0
+	glow.light_energy = 3.0
+	add_child(glow)
+	glow.position.y = 0.5
+	glow.create_tween().tween_property(glow, "light_energy", 0.0, 0.9)
+	get_tree().create_timer(1.8).timeout.connect(func():
+		p.queue_free()
+		glow.queue_free())
+	var base_fov := camera.fov
+	var ct := camera.create_tween()
+	ct.tween_property(camera, "fov", base_fov - 8.0, 0.18).set_trans(Tween.TRANS_SINE)
+	ct.tween_property(camera, "fov", base_fov, 0.6).set_trans(Tween.TRANS_SINE)
 
 
 func _popup(text: String, col: Color, height := 1.6) -> void:
