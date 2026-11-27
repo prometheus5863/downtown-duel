@@ -98,6 +98,10 @@ Separate, unrelated: Merkur-targeted slot prototype + RTP simulation (casino stu
 - `scripts/preview_3d.gd`: SubViewport turntable (`show_look(armor_id)` for the hero, `show_model(scene, height)`).
 - `scripts/character_menu.gd` (child of the HUD, process ALWAYS, pauses the tree; action `character_menu` = C).
 - Player helpers for UI: `look_for(armor_id)`, `stats_with({slot: id})`, `icon_for(name)` (`ui_icons` on player.tscn).
+- Phones: `touch_controls.gd` sets root `content_scale_factor` (`ui_scale_for()`), so the canvas can be ~480 design px
+  tall. Menus check `menus.compact()` (< 600 tall) for the phone layouts; touch pads scale by height / 720.
+  Check phone layouts with `--resolution 844x390` and `HUD.force_touch = true` before the arena enters the tree.
+- itch.io: `python tools/make_itch_zip.py .` after the Web export; settings + page text in `docs/ITCH.md`.
 
 ## Save / load
 - `scripts/save_game.gd` (file I/O, `VERSION`, `migrate()`), `scripts/game.gd` (`Game` node, last in arena.tscn, group

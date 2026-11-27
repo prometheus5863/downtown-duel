@@ -91,6 +91,14 @@ func _init() -> void:
 	await t.frames(2)
 	t.ok(not paused, "closing the character menu unpauses")
 
+	# ---- phones: UI scale from the real screen size ----
+	var TC := preload("res://scripts/touch_controls.gd")
+	t.ok(absf(TC.ui_scale_for(390.0, 1.0) - 1.477) < 0.01, "iPhone landscape (390 CSS px tall) gets ~1.5x UI")
+	t.ok(absf(TC.ui_scale_for(1170.0, 3.0) - 1.477) < 0.01, "same phone reported in device pixels (x3) gets the same")
+	t.eq(TC.ui_scale_for(768.0, 1.0), 1.0, "tablets stay at 1x")
+	t.eq(TC.ui_scale_for(1080.0, 1.0), 1.0, "desktop stays at 1x")
+	t.eq(TC.ui_scale_for(200.0, 1.0), 1.8, "scale is capped")
+
 	await t.drop(arena)
 	t.finish()
 

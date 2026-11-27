@@ -37,6 +37,7 @@ var _shop_rows: Array = []             # [kind, id] per shop row button, same or
 var _selected := -1
 var _preview: SubViewportContainer
 var _relax_t: SceneTreeTimer
+var _split: BoxContainer
 var _hidden_tags: Array = []
 
 
@@ -92,14 +93,21 @@ func _ready() -> void:
 	_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(_text)
 
+	# detail card + option list: stacked normally, side by side for shops on short (phone) screens
+	_split = BoxContainer.new()
+	_split.vertical = true
+	_split.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_split.add_theme_constant_override("separation", 12)
+	v.add_child(_split)
 	_detail = VBoxContainer.new()
 	_detail.add_theme_constant_override("separation", 8)
-	v.add_child(_detail)
+	_split.add_child(_detail)
 
 	_list_scroll = ScrollContainer.new()
 	_list_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_list_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_list_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	v.add_child(_list_scroll)
+	_split.add_child(_list_scroll)
 	_opts = VBoxContainer.new()
 	_opts.add_theme_constant_override("separation", 7)
 	_opts.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -164,7 +172,9 @@ func _set_open(on: bool) -> void:
 	player.can_control = not on
 	if on:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		UI.slide_in(_panel, Vector2(80, 0))
+		# fade only: a position tween would restore the old offsets after _fit() resizes the panel
+		_panel.modulate.a = 0.0
+		_panel.create_tween().tween_property(_panel, "modulate:a", 1.0, 0.22)
 
 
 func _input(event: InputEvent) -> void:
@@ -212,15 +222,33 @@ func _say(text: String) -> void:
 func _fit(full: bool) -> void:
 	_panel.anchor_bottom = 1.0 if full else 0.0
 	_panel.offset_bottom = -24 if full else 24
+	# shops on short screens: wider panel, list and detail card side by side
+	var wide := full and compact()
+	_split.vertical = not wide
+	_panel.offset_left = -minf(900.0, _root.get_viewport_rect().size.x - 300.0) if wide else -560.0
+	_detail.custom_minimum_size.x = 300.0 if wide else 0.0
+	if not full:
+		_split.vertical = true
 	_list_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL if full else Control.SIZE_FILL
 	_list_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO if full else ScrollContainer.SCROLL_MODE_DISABLED
-	_panel.reset_size.call_deferred()
+	if not full:                                   # hug the content vertically only (keep the anchored width)
+		_shrink_height.call_deferred()
+
+
+func _shrink_height() -> void:
+	_panel.size = Vector2(_panel.size.x, 0.0)          # clamps up to the content's minimum height
+
+
+## Short screen (phones): the canvas is under ~600 design px tall after UI scaling.
+func compact() -> bool:
+	return _root.get_viewport_rect().size.y < 600.0
 
 
 # ------------------------------------------------------------------ dialogue
 
 func _show(d: Dictionary) -> void:
 	_clear_detail()
+	_text.visible = true
 	var t := _talker
 	if t and t.get("species") != null and t.get("element") != null:
 		var col := Data.element_color(t.element)
@@ -295,6 +323,7 @@ func _show_shop(status: String) -> void:
 		[["%d coins" % player.coins, UI.GOLD], ["shop", UI.DIM]])
 	_bond_row.visible = false
 	_say(status)
+	_text.visible = not compact()                  # phones: the card + coins chip say it; keeps Buy on screen
 	_clear()
 	_shop_rows.clear()
 	for id in Data.table("treats"):
@@ -318,8 +347,11 @@ func _show_shop(status: String) -> void:
 
 func _add_row(name: String, tag: String, row: Array, note := "") -> void:
 	var i := _buttons.size()
-	var b := UI.button(name + ("   ·   " + note if note != "" else ""), UI.GOLD, str(i + 1) if i < 9 else "", 18)
+	var short := compact()
+	var b := UI.button(name + ("   ·   " + note if note != "" and not short else ""), UI.GOLD, str(i + 1) if i < 9 else "", 18)
 	b.custom_minimum_size.y = 44
+	b.clip_text = true                        # the row never forces the panel wider than the screen
+	b.custom_minimum_size.x = 120
 	var c := UI.chip(tag + (" coins" if tag.is_valid_int() else ""), UI.GOLD if tag.is_valid_int() else UI.TEAL, 14)
 	b.add_child(c)
 	c.anchor_top = 0.5
@@ -368,9 +400,11 @@ func _build_detail(row: Array) -> void:
 	var card := PanelContainer.new()
 	card.add_theme_stylebox_override("panel", UI.card_box(UI.GOLD, true))
 	_detail.add_child(card)
-	var h := HBoxContainer.new()
-	h.add_theme_constant_override("separation", 16)
+	var h := BoxContainer.new()                      # preview beside the text; above it in the narrow phone column
+	h.vertical = compact()
+	h.add_theme_constant_override("separation", 16 if not compact() else 8)
 	card.add_child(h)
+	var tile := 90.0 if compact() else 120.0
 	var info := VBoxContainer.new()
 	info.add_theme_constant_override("separation", 6)
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -388,11 +422,11 @@ func _build_detail(row: Array) -> void:
 			if it.slot == "armor":
 				_preview = Preview.new()
 				_preview.player = player
-				_preview.custom_minimum_size = Vector2(150, 190)
+				_preview.custom_minimum_size = Vector2(120, 150) if compact() else Vector2(150, 190)
 				h.add_child(_preview)
 				_preview.show_look.call_deferred(id)
 			else:
-				h.add_child(UI.icon_tile(null, "⚔" if it.slot == "weapon" else "✦", UI.GOLD, 120))
+				h.add_child(UI.icon_tile(null, "⚔" if it.slot == "weapon" else "✦", UI.GOLD, tile))
 			var now: Dictionary = player.stats_with({})
 			var then: Dictionary = player.stats_with({it.slot: id})
 			info.add_child(UI.label(it.slot.capitalize() + "  ·  if you equip it:", 15, UI.DIM))
@@ -408,7 +442,7 @@ func _build_detail(row: Array) -> void:
 			owned = player.item_count(id) > 0
 			desc = "Tier %d %s. %s" % [tl.tier, "pickaxe" if tl.kind == "pick" else "axe",
 				"Breaks ores up to tier %d." % tl.tier if tl.kind == "pick" else "Fells trees faster."]
-			h.add_child(UI.icon_tile(player.icon_for(tl.get("icon", "")), "⛏", UI.GOLD, 120))
+			h.add_child(UI.icon_tile(player.icon_for(tl.get("icon", "")), "⛏", UI.GOLD, tile))
 			info.add_child(UI.stat_row("Tool tier", player.best_tool(tl.kind).tier, maxi(player.best_tool(tl.kind).tier, int(tl.tier))))
 		"treat":
 			var tr: Dictionary = Data.table("treats")[id]
@@ -417,7 +451,7 @@ func _build_detail(row: Array) -> void:
 			price = int(tr.price)
 			var fcol: Color = {"sweet": Color(1.0, 0.55, 0.75), "spicy": Color(1.0, 0.45, 0.25), "savory": Color(0.95, 0.75, 0.4),
 				"sour": Color(0.7, 1.0, 0.4), "bitter": Color(0.55, 0.8, 0.55)}.get(tr.flavour, UI.GOLD)
-			h.add_child(UI.icon_tile(null, "♥", fcol, 120))
+			h.add_child(UI.icon_tile(null, "♥", fcol, tile))
 			info.add_child(UI.label("%s  ·  %s" % [String(tr.tier).capitalize() + " treat", String(tr.flavour).capitalize()], 16, fcol))
 			info.add_child(UI.label("+%d bond  (×2 for creatures who love %s)" % [tr.bond, tr.flavour], 16, UI.TEXT))
 			info.add_child(UI.label("You have %d" % player.item_count(id), 15, UI.DIM))
@@ -497,6 +531,7 @@ func _refresh_shop(status: String) -> void:
 
 func _show_ledger(status: String) -> void:
 	_clear_detail()
+	_text.visible = true
 	_header("Creature Ledger", UI.TEAL, "✎", [["Party %d / %d" % [player.party.size(), player.MAX_PARTY], UI.TEAL],
 		["Storage %d" % player.storage.size(), UI.DIM]])
 	_bond_row.visible = false
@@ -540,6 +575,8 @@ func _ledger_take(i: int) -> void:
 func _add(text: String, cb: Callable) -> void:
 	var i := _buttons.size()
 	var b := UI.button(text, UI.DIM if text in ["Leave", "OK"] else _accent, str(i + 1) if i < 9 else "")
+	if compact():
+		b.custom_minimum_size.y = 44
 	b.pressed.connect(cb)
 	_opts.add_child(b)
 	_buttons.append(b)

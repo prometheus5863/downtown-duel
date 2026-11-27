@@ -130,7 +130,7 @@ func _ready() -> void:
 		add_child(touch)
 		_hint.text = "Left thumb: move · Drag right side: camera · Buttons: strike / ember / dodge / lock / talk"
 		bottom.offset_left = 300                 # keep text clear of the joystick
-		bottom.offset_top = -40
+		bottom.offset_top = -92                  # HP bar + cooldowns + hint (was clipped at -40)
 
 	# --- Progress line (top left) + interaction prompt ---
 	_info = _label("", 18)

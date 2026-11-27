@@ -11,6 +11,7 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 | M2 Treats, bond, Lustre, Alphas | **done** |
 | M3 Gathering & block mining | **done** |
 | Presentation pass (between M3 and M4) | **done** |
+| Phone layout pass + itch.io build | **done** |
 | M4 Inventory & crafting | next |
 | M4.5 – M8 | not started |
 
@@ -25,6 +26,34 @@ Plan: `docs/PLAN.md`. Spec: `docs/FABLE_BRIEF.md`.
 |---|---|---|
 | 2026-11-17 | M3 | Export OK, pack 149 MB (zip about 86 MB). `tools/check_pack.gd` run against the exported pack: world loads, 65 creatures, 8 resource fields, mine generated, player model present (**PACK OK**). In Chromium the loading screen clears and the main loop runs with no game errors (only "zero-size framebuffer" WebGL warnings because the browser pane was hidden, so frames weren't visible). A "0.2 MB pack" seen once was a measuring mistake (the export command was piped through `head`, which returned before Godot finished writing). |
 | 2026-11-17 | M0 + M1 + M2 (`eeb024a`) | Export OK with no errors (Godot 4.7.2 templates installed from the official release). In Chromium (browser pane, served from `export/web` on localhost) the engine boots: WebGL 2 / Compatibility, single-threaded, no console errors. The exported `index.pck` also runs 600 frames headless in desktop Godot with zero errors, so every scene, script and `data/*.json` is in the pack. **Not seen:** in-browser gameplay frames (the pane was hidden, so the page didn't render). |
+
+---
+
+## Phone layout pass + itch.io build (2026-11-27)
+Checked every screen at 844×390 (iPhone landscape) with the touch controls on; most of the UI rendered at about
+half size (buttons ~25 px tall, text ~10 px).
+**Fixed**
+- **UI scale on phones:** `touch_controls.gd` sets the root `content_scale_factor` from the real screen height
+  (window height / screen scale; ~1.5× on a phone in landscape, 1× on tablets and desktops, capped at 1.8×).
+- **Touch pads** keep their physical size: laid out in a 720-tall design space and scaled by height / 720, so they
+  no longer cover the minimap or party cards. Party-order buttons a bit larger; ME moved below the minimap.
+- **Shop on short screens:** wider panel with the item list and detail card side by side, detail card stacked
+  (preview above text), rows show the name only with the price chip, greeting hidden so Buy stays on screen.
+- **Dialogue / ledger panels** hug their content vertically only (a full resize was also shrinking the width);
+  the panel fades in instead of sliding (the slide restored stale offsets after the shop widened it).
+- **Character menu:** narrower hero panel and tabs on short screens; the bag wraps instead of clipping.
+- Touch HUD's bottom block no longer clipped (it was given 40 px for ~80 px of content).
+- Project renamed to **Downtown Duel** (browser tab title); the save folder stays `Arena Proto` so existing
+  desktop saves still load.
+
+**itch.io:** `tools/make_itch_zip.py` builds `export/downtown-duel-web.zip` (86.2 MB, 9 files) and refuses an
+unfinished export. Upload settings and page text: `docs/ITCH.md`. itch's limits: 200 MB per extracted file
+(our pack is 149.5 MB; keep an eye on it as assets grow), 500 MB total, 1,000 files.
+
+**Verified:** 5 new UI-scale checks in `tests/test_polish.gd` (180 checks in total pass). Phone and desktop
+screenshots re-checked after every fix. Web export: PACK OK (65 creatures, 8 resource fields); the build boots in
+Chromium as "Downtown Duel" with no console errors. **Not verified:** a real phone (touch + browser) — the
+layout was checked in a phone-sized desktop window with touch controls forced on.
 
 ---
 

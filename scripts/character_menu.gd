@@ -20,6 +20,9 @@ var _xp_l: Label
 var _coins_l: Label
 var _tabs := {}
 var _body: VBoxContainer
+var _left: PanelContainer
+var _right: PanelContainer
+var _close_b: Button
 
 
 func _ready() -> void:
@@ -36,6 +39,7 @@ func _ready() -> void:
 
 	# --- left: hero ---
 	var left := UI.panel(UI.GOLD)
+	_left = left
 	left.anchor_bottom = 1.0
 	left.offset_left = 24
 	left.offset_top = 24
@@ -55,7 +59,7 @@ func _ready() -> void:
 	_hero = Preview.new()
 	_hero.player = player
 	_hero.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_hero.custom_minimum_size = Vector2(330, 300)
+	_hero.custom_minimum_size = Vector2(300, 140)
 	_hero.spin_speed = 0.35
 	lv.add_child(_hero)
 	lv.add_child(UI.label("drag to turn", 13, UI.DIM))
@@ -64,6 +68,7 @@ func _ready() -> void:
 
 	# --- right: tabs ---
 	var right := UI.panel(UI.GOLD)
+	_right = right
 	right.anchor_right = 1.0
 	right.anchor_bottom = 1.0
 	right.offset_left = 424
@@ -80,6 +85,7 @@ func _ready() -> void:
 	for t in [["gear", "Gear", "1"], ["party", "Party", "2"], ["bag", "Bag", "3"]]:
 		var b := UI.button(t[1], UI.GOLD, t[2], 19)
 		b.custom_minimum_size = Vector2(150, 46)
+		b.clip_text = true
 		b.pressed.connect(show_tab.bind(t[0]))
 		bar.add_child(b)
 		_tabs[t[0]] = b
@@ -88,6 +94,7 @@ func _ready() -> void:
 	bar.add_child(spacer)
 	var x := UI.button("Close", UI.DIM, "C", 18)
 	x.custom_minimum_size = Vector2(130, 46)
+	_close_b = x
 	x.pressed.connect(close)
 	bar.add_child(x)
 	var scroll := ScrollContainer.new()
@@ -121,10 +128,22 @@ func open() -> void:
 	_root.visible = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	_fit()
 	_refresh_hero()
 	show_tab(tab)
 	_root.modulate.a = 0.0
 	_root.create_tween().tween_property(_root, "modulate:a", 1.0, 0.18)
+
+
+## Phones (short canvas): hero panel 280 wide instead of 380, tabs 104 wide instead of 150.
+func _fit() -> void:
+	var short := _root.get_viewport_rect().size.y < 600.0
+	var lw := 280.0 if short else 380.0
+	_left.offset_right = 24 + lw
+	_right.offset_left = 44 + lw
+	for k in _tabs:
+		_tabs[k].custom_minimum_size.x = 120.0 if short else 150.0
+	_close_b.custom_minimum_size.x = 100.0 if short else 130.0
 
 
 func close() -> void:
@@ -274,8 +293,7 @@ func _bag_tab() -> void:
 	if player.inventory.is_empty():
 		_body.add_child(UI.label("Your bag is empty.", 18, UI.DIM))
 		return
-	var grid := GridContainer.new()
-	grid.columns = 5
+	var grid := HFlowContainer.new()                  # wraps to the panel width (phones are narrow)
 	grid.add_theme_constant_override("h_separation", 10)
 	grid.add_theme_constant_override("v_separation", 10)
 	_body.add_child(grid)

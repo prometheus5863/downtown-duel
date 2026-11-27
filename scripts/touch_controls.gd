@@ -3,7 +3,8 @@ extends CanvasLayer
 ##   left 40% of screen  -> floating joystick (move)
 ##   rest of screen      -> drag to turn the camera
 ##   buttons             -> Strike / Ember / Lock (TouchScreenButton = true multi-touch)
-## Also: portrait warning overlay and lighter graphics for mobile GPUs.
+## Also: portrait warning overlay, lighter graphics for mobile GPUs, and a bigger UI on small screens
+## (root content_scale_factor, from the screen's real size) so menus stay readable and tappable on phones.
 
 var player: Node
 
@@ -18,6 +19,7 @@ var _cam_last := Vector2.ZERO
 var _joy_base: Sprite2D
 var _joy_knob: Sprite2D
 var _buttons: Array = []           # [TouchScreenButton, radius, anchor_fn]
+var _k := 1.0                      # pad scale: canvas height / 720 (the pads were designed for a 720 px canvas)
 var _portrait: Control
 
 
@@ -32,12 +34,12 @@ func _ready() -> void:
 	_add_button("lock_on", "LOCK", 46, Color(0.5, 0.8, 1.0), func(s): return Vector2(s.x - 115, s.y - 315))
 	_add_button("interact", "TALK", 50, Color(0.6, 1.0, 0.6), func(s): return Vector2(s.x - 260, s.y - 390))
 	# Party orders: a row of small buttons above the joystick, only while you have companions.
-	_add_button("character_menu", "ME", 34, Color(1.0, 0.85, 0.45), func(s): return Vector2(s.x - 60, 250))
+	_add_button("character_menu", "ME", 34, Color(1.0, 0.85, 0.45), func(s): return Vector2(s.x - 60, 330))
 	_add_button("use_tool", "TOOL", 46, Color(0.95, 0.8, 0.5), func(s): return Vector2(s.x - 420, s.y - 210))
 	_add_button("place_block", "PLACE", 40, Color(0.8, 0.8, 0.8), func(s): return Vector2(s.x - 420, s.y - 320))
 	var orders := [["cmd_attack", "ATK"], ["cmd_follow", "FLW"], ["cmd_hold", "HLD"], ["cmd_return", "RET"], ["cmd_work", "WRK"]]
 	for i in orders.size():
-		_add_button(orders[i][0], orders[i][1], 34, Color(0.45, 0.85, 1.0), func(s): return Vector2(60 + i * 78, s.y - 330))
+		_add_button(orders[i][0], orders[i][1], 40, Color(0.45, 0.85, 1.0), func(s): return Vector2(60 + i * 90, s.y - 330))
 
 	_portrait = ColorRect.new()
 	_portrait.color = Color(0, 0, 0, 0.85)
@@ -52,17 +54,43 @@ func _ready() -> void:
 	_portrait.add_child(msg)
 	add_child(_portrait)
 
-	get_viewport().size_changed.connect(_layout)
+	apply_ui_scale(get_tree())
+	get_viewport().size_changed.connect(_on_resize)
 	_layout()
 	_lighten_graphics()
 
 
+func _on_resize() -> void:
+	apply_ui_scale(get_tree())
+	_layout()
+
+
+## Scale the whole 2D UI so one design pixel is at least ~0.8 CSS px on screen. The project is designed for a
+## 720 px tall canvas; an iPhone in landscape is ~390 CSS px tall, which would shrink a 50 px button to 27 px.
+## Phones get ~1.5x, tablets and desktops stay at 1x.
+static func ui_scale_for(window_height_px: float, screen_scale: float) -> float:
+	var css_h := window_height_px / maxf(screen_scale, 1.0)
+	return clampf(576.0 / maxf(css_h, 1.0), 1.0, 1.8)
+
+
+static func apply_ui_scale(tree: SceneTree) -> void:
+	var w := tree.root
+	var f := ui_scale_for(float(w.size.y), DisplayServer.screen_get_scale())
+	if not is_equal_approx(w.content_scale_factor, f):
+		w.content_scale_factor = f
+
+
 func _layout() -> void:
 	var s := get_viewport().get_visible_rect().size
+	_k = clampf(s.y / 720.0, 0.5, 1.0)
+	var design := s / _k                      # lay out in 720-tall design space, then scale down
 	for b in _buttons:
-		var c: Vector2 = b[2].call(s)
-		b[0].position = c - Vector2(b[1], b[1])
+		var c: Vector2 = b[2].call(design) * _k
+		b[0].scale = Vector2.ONE * _k
+		b[0].position = c - Vector2(b[1], b[1]) * _k
 		b[0].set_meta("center", c)
+	_joy_base.scale = Vector2.ONE * _k
+	_joy_knob.scale = Vector2.ONE * _k
 	_reset_joystick()
 	_portrait.visible = s.y > s.x
 
@@ -114,9 +142,9 @@ func _input(event: InputEvent) -> void:
 				_cam_id = -1
 	elif event is InputEventScreenDrag:
 		if event.index == _joy_id:
-			var v: Vector2 = (event.position - _joy_origin).limit_length(JOY_R)
+			var v: Vector2 = (event.position - _joy_origin).limit_length(JOY_R * _k)
 			_joy_knob.position = _joy_origin + v
-			_set_move(v / JOY_R)
+			_set_move(v / (JOY_R * _k))
 		elif event.index == _cam_id:
 			player.rotate_camera((event.position - _cam_last) * CAM_SENS)
 			_cam_last = event.position
@@ -143,14 +171,14 @@ func _hits_button(p: Vector2) -> bool:
 	for b in _buttons:
 		if not b[0].visible:
 			continue
-		if p.distance_to(b[0].get_meta("center")) <= b[1] * 1.1:
+		if p.distance_to(b[0].get_meta("center")) <= b[1] * _k * 1.1:
 			return true
 	return false
 
 
 func _reset_joystick() -> void:
 	var s := get_viewport().get_visible_rect().size
-	_joy_base.position = Vector2(170, s.y - 160)
+	_joy_base.position = Vector2(170, s.y / _k - 160) * _k
 	_joy_knob.position = _joy_base.position
 
 
